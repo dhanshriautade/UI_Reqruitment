@@ -44,9 +44,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: '', component: MainComponent ,
+    path: 'HR', component: MainComponent ,
     children:[
-      // { path: '', redirectTo: 'HR', pathMatch: 'full' },
+      { path: '', redirectTo: 'HR', pathMatch: 'full' },
       { path: 'HR', component: HrDashboardComponent},
       
     ]
