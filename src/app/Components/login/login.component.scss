@@ -1,0 +1,149 @@
+
+.full-width{
+    background: #adb6ba;
+    left: 0;
+    position: fixed;
+    margin: 0!important;
+    width: 100%;
+    height: calc(100% + 8px);
+    
+}
+.full-width{
+    font-family: 'Maven Pro';
+}
+.main{
+    text-align: center;
+    padding: 0px 120px 0px 120px;
+}
+.confirm{
+    position: fixed;
+    left: 82%;
+        top:16%;
+        
+     }
+.bgimg{
+    margin-top:40px;
+    margin-bottom: 25px;
+    width: 95px;
+    height: 102px;
+}
+
+    .check_item{
+        padding-left: 10px;
+        margin-left: 70px;
+    }
+    .check{
+        height: 17px;
+        border: 1px solid gray;
+        border-radius: 4px;
+      }
+
+
+:host ::ng-deep .ui-card-body{
+padding: 0px !important;
+}
+:host ::ng-deep .ui-card{
+    border-radius: 17px;
+    height: fit-content;
+    // height: 590px;
+}
+.name{
+    font-family: 'Maven Pro';
+    color: #263238; 
+    size: 16px;
+    font-weight: bold;
+}
+.err{
+    text-align: left;
+}
+.logo_name{
+    background-color: #CFD8DC;
+    height: 51px;
+    font-family: 'Maven Pro';
+    font-weight: 700;
+    font-size: xx-large;
+    // padding: 12px;
+    border-radius: 17px 17px 0px 0px;
+}
+
+.ActiveAllUser {
+    height: 33px;
+    width: 115px;
+    // padding: 5px 30px;
+    border-radius: 50px;
+    border: 1px #FCC612 solid;
+    position: relative;
+    z-index: 1;
+    background-color: #90A4AE;
+    font-weight: 700;
+    color: white;
+   
+}
+.fb{
+        width: 17px;
+  }
+  .twitter{
+      width: 19px;
+  }
+  .gmail{
+      width: 25px
+  }
+.footer{
+    //width: 30px;
+    width: 16px;
+    height: 16px;
+}
+input{
+    border: none;
+    border-bottom: 1px solid #CDD5DA;
+    border-radius: 0!important;
+}
+button{
+    width: 130px;
+    border-radius: 15px;
+}
+.tag{
+    padding: 0px 95px 0px 95px;
+}
+.tag1{
+    padding: 0px 105px 0px 95px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.DeactiveAllUser {
+    height: 33px;
+    width: 115px;
+    // padding: 5px 56px;
+    border-radius: 50px;    
+    border: 1px #90A4AE solid;
+    margin-left: -25px;
+    color: white;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    background-color: #90A4AE;
+}
+
+.activeUserList{
+    background: #FCC612;
+    // color: black;;
+    z-index: 10;
+    color: #7c7171;
+    font-weight: 700;
+  
+}
+.sign{
+    margin-right: 53px;
+}
+.reg{
+margin-right: 50px;
+}
+
+.full-width
+{
+    .row{
+        .col-lg-6{
+            // padding: 0px 50px 0px 50px;
+        }
+    }
+}

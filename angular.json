@@ -28,9 +28,10 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-            ],
+              "node_modules/primeng/resources/themes/nova-light/theme.css"
+             ],
             "scripts": []
           },
           "configurations": {

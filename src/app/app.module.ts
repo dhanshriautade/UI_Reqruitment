@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -17,6 +18,10 @@ import { EmployeeComponent } from './Components/employee/employee.component';
 import { JobComponent } from './Components/job/job.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { MainComponent } from './Components/main/main.component';
+import { ToastrModule } from 'ngx-toastr';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {CardModule} from 'primeng/card';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,18 @@ import { MainComponent } from './Components/main/main.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ConfirmDialogModule,
+    CardModule,
+    HttpClientModule, 
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true,
+      preventDuplicates : true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

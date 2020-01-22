@@ -1,1 +1,102 @@
-<p>login works!</p>
+
+<div class="full-width">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-2"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-8 main">
+            <img src="../../../assets/output-onlinepngtools.png" class="bgimg">
+            <p-card class="">
+                <div class="">
+                    <div class="logo_name" style="  font-family:'Maven Pro'">
+                        OFFICE Management
+                    </div>
+                    <div class="name my-3">
+                        Get started with your account
+                    </div>
+                                 
+                    <form #myForm="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class=" tag row my-2">
+                            <label for="name">Email Id / Phone No.</label>
+                            <!-- <i class="fa fa-user icon"></i>  -->
+                            <input type="text" class="form-control" formControlName="email" placeholder="youremail@gmail.com">
+                            <span class="text-danger"
+                            *ngIf="loginForm.controls['email'].hasError('required') &&
+                             (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">This field is
+                            required</span>
+                    <span class="text-danger"
+                            *ngIf="loginForm.controls['email'].hasError('pattern') && 
+                             (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">Please enter valid
+                            email address or phone number</span>
+                        </div>
+                        <div class="tag row my-2">
+                            <label for="name">Password</label>
+                            <input type="password" class="form-control" formControlName="password" placeholder="*********">
+                            <span class="text-danger" *ngIf="loginForm.controls['password'].hasError('required') && 
+                            (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">This
+                                    field is required</span>
+                            <span class="text-danger"
+                                    *ngIf="loginForm.controls['password'].hasError('pattern') && 
+                            (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">Password must be 8 char
+                                    with Special char, digit, uppercase, lowercase</span>
+                        </div>
+                        <!-- <div class="row">
+                       
+                            <div class=" tag1 col sm-12 row my-2"><re-captcha></re-captcha></div></div> -->
+                       
+                       <div class="my-4">
+                        <div class="row">
+                                <div class="col-md-6">
+                                        <div class="row check_item">
+                                                <div class="col-md-1 pl-0 pr-0 pt-1">
+                                                        <input type="checkbox" class="check"
+                                                                style="width: 20px;"
+                                                                formControlName="rememberset">
+                                                </div>
+                                                <div class="col-md-11 pl-0 pr-0"
+                                                        style="vertical-align: middle; margin-top: 3px;">
+                                                        <span>Remember Me</span>
+
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-6 mt-1">
+                                        <a routerLink="/forgot">Forgot Password?</a>
+                                </div>
+                        </div>
+                </div>
+                      
+                        <div class="my-4">
+                            <button class="btn btn-primary" type="submit">Login <i
+                                *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i> </button>
+
+                        </div>
+                        <div class=" tag row my-2">
+                            <span class="reg">
+                                    <a routerLink="/signup">New User Registration</a>
+                            </span>
+                    </div>
+                    <div class="col sm-6"></div>
+                    </form>
+                    <div class="my-3">
+
+                        <img src="../../../assets/beauto .png" class="footer">
+                        @ BEAUTO System Pvt. Ltd. | <a style="color: #6C66E1"> Terms</a>
+
+                    </div>
+                    <!-- <div class="my-3">
+                        <img class="fb mr-4" src="../../../assets/logo/fb.svg">
+                        <img class="twitter mr-4" src="../../../assets/logo/twitter.png">
+                        <img class="gmail mr-4" src="../../../assets/logo/gm.png">
+                    </div> -->
+                </div>
+
+            </p-card>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-2">
+                    <div class=" confirm">
+            <p-confirmDialog></p-confirmDialog>
+            </div>
+        </div>
+
+    </div>
+
+</div>
