@@ -1,48 +1,7 @@
 .header{
-    height: 30px;
+    height: 55px;
 }
 
 .dashboard{
     background-color: #d8d1d12b
 }
-
-.image-box {
-    position: relative;
-  }
-
-  .image-box__background,
-.image-box__overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.image-box__background {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-image: var(--image-url);
-  
-    z-index: 1
-  }
-
-
-
-  .img{
-    width: 1501px;
-    height: 265px;
-  }
-
-  .image-box__content {
-    position: relative;
-  
-    z-index: 3;
-    height: auto;
-    color: white;
-    // min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }

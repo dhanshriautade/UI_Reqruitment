@@ -1,0 +1,83 @@
+.dashboard{
+    overflow: scroll;
+    overflow-x: hidden;
+    }
+    .search{
+    font-size: xx-large;
+    font-weight: bold;
+    margin-right: 472px;
+    padding-left: 267px;
+    }
+    .box{
+    margin-left: 31%;
+    width: 61%;
+    height: 52px;
+    font-size: small;
+    }
+    .btn1{
+    width: 80px;
+    }
+    
+    .card1{
+    margin-top: 13%;
+    width: 130%;
+    }
+    
+    .image-box {
+    position: relative;
+    }
+    
+    .image-box__background,
+    .image-box__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    }
+    
+    .image-box__background {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: var(--image-url);
+    
+    z-index: 1
+    }
+    
+    .img{
+    width: 1548px;
+    height: 265px;
+    }
+    
+    .image-box__content {
+    position: relative;
+    
+    z-index: 3;
+    height: auto;
+    color: white;
+    // min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .job{
+    margin-top: 14%;
+    margin-left: 149px;
+    font-size: x-large;
+    color: gray;
+    }
+    .new{
+    font-weight: bold;
+    }
+    .name{
+    font-size: small;
+    font-weight: bold;
+    }
+    .company{
+    font-size: small;
+    color: #9C9C9B;
+    }
+    .more{
+    float: right;
+    }
