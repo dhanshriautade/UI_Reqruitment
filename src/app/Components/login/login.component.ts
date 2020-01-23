@@ -127,12 +127,13 @@ export class LoginComponent implements OnInit {
                     else
                     if (this.info.status === false ||this.info.status !=  true ){
                       this.toastr.error('Invalid credentials Oops !!!');
+                      this.spinner = false;
                 
                     }                   
                     else
-                    if (this.info.status === 401 ||this.info.responseMessage === 'Email id does not exist' ){
+                    if (this.info.status === '401' ||this.info.responseMessage === 'Email id does not exist' || this.info.responseMessage === 'Unauthorized' ){
                       this.toastr.error('Invalid credentials Oops !!!');
-                
+                      this.spinner = false;
                     }
                 },error => {
 
@@ -143,7 +144,7 @@ export class LoginComponent implements OnInit {
                 }
                 )
                 
-                this.spinner = false;             
+                // this.spinner = false;             
                   
 
      

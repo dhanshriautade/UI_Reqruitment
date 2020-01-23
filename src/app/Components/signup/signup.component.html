@@ -1,1 +1,135 @@
-<p>signup works!</p>
+<div class="full-width">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-2"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-8 main">
+            <img src="/assets/output-onlinepngtools.png" class="bgimg">
+            <p-card class="login_card">
+                <div class="example-form">
+                    <div class="logo_name" style="  font-family:'Maven Pro'">
+                        OFFICE Management
+                    </div>
+                    <div class="name my-3">
+                        Get started with your account
+                    </div>
+
+                    <form #myForm="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class=" tag row my-4">
+                            <div class="col-sm-4 lab">
+                                <label for="name">First Name :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" autocomplete="off" formControlName="firstname"
+                                    placeholder="Enter your first name" class="form-control p-0"
+                                    [ngClass]="{ 'is-invalid': f.firstname.touched && f.firstname.errors }" />
+                                <div *ngIf="f.firstname.touched && f.firstname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstname.errors.required">first Name is required</div>
+                                    <div *ngIf="f.firstname.errors.pattern">Space Not Allowed</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tag row my-4">
+                            <div class="col-sm-4 lab">
+                                <label for="name">Last Name :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" formControlName="lastName" placeholder="Enter your last name"
+                                    class="form-control p-0"
+                                    [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }" />
+                                <div *ngIf="f.lastName.touched && f.lastName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.lastName.errors.required">last Name is required</div>
+                                    <div *ngIf="f.lastName.errors.pattern">Space Not Allowed</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tag row my-4">
+                            <div class="col-sm-4 lab">
+                                <label for="name">Email :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" autocomplete="off" class="form-control p-0" (keyup)="onKey($event)"
+                                    formControlName="email"
+                                    [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
+                                    placeholder="Enter your active email id " />
+                                <div *ngIf="verifyemail" class="duplicate_email"> Duplicate email id !!!</div>
+                                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" tag row my-4  ">
+                            <div class="col-sm-4 lab">
+                                <label for="name">Contact No :</label>
+                            </div>
+                            <div class="col-sm-2">
+                                    <input type="text" formControlName="countryCode" placeholder="+91"
+                                    class="form-control p-0"
+                                    [ngClass]="{ 'is-invalid': f.countryCode.touched && f.countryCode.errors }" />
+
+                            </div>
+
+                            <div class="col-sm-6 ">
+                                    
+                                <input type="text" formControlName="phoneNumber" placeholder="Where recruiter can contact you"
+                                    class="form-control p-0"
+                                    [ngClass]="{ 'is-invalid': f.phoneNumber.touched && f.phoneNumber.errors }" />
+
+                                <div *ngIf="f.phoneNumber.touched && f.phoneNumber.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phoneNumber.errors.required">phone no is required</div>
+                                    <div *ngIf="f.phoneNumber.errors.pattern">it should accept only 10 digits</div>
+                               
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tag row my-4">
+                            <div class="col-sm-4 lab">
+                                <label for="name">Password :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="password" autocomplete="off" class="form-control p-0"
+                                    formControlName="password"
+                                    [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
+                                    placeholder="Password" />
+                                <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">password is required</div>
+                                    <div *ngIf="f.password.errors.pattern">password must Special char, digit,
+                                        uppercase, lowercase</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tag row my-4">
+                            <div class="col-sm-4 lab">
+                                <label for="name">Confirm password :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="password" autocomplete="off" class="form-control p-0"
+                                    formControlName="confpassword"
+                                    [ngClass]="{ 'is-invalid': f.confpassword.touched && f.confpassword.errors }"
+                                    placeholder="Confirm Password" />
+                                <div *ngIf="f.confpassword.touched && f.confpassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f.confpassword.errors.required">confirmpassword is required</div>
+                                    <div *ngIf="f.confpassword.errors.mustMatch">Passwords must match</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="my-4">
+                            <span class="pull-left my-2">
+                                <a routerLink="/login">Already a user?</a>
+                            </span>
+                            <button class="btn btn-primary sign mb-2 ml-4" type="submit">Sign up <i *ngIf="spinner"
+                                    class="pi pi-spin pi-spinner ml-1"></i> </button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </p-card>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-2"></div>
+
+    </div>
+
+</div>
