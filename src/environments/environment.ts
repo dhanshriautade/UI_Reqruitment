@@ -19,7 +19,6 @@ export const environment = {
   getprofile:base_url + 'getprofile',
   AddInfo:base_url + 'experienceprofile',
   CreateJob: base_url + 'addjobcreation',
-  GetAlljob: base_url + 'getalljobpostingdetails',
   getnotification:'http://localhost:8082/getAllNotification'
 };
 

@@ -1,104 +1,105 @@
 <div class="dashboard">
     <div class="row">
-    <div class="image-box">
-    <img class="image-box__background img" src="../../../assets/logo1.png" alt="">
-    <div class="image-box__overlay"></div>
-    <div class="image-box__content">
-    <div class="mt-4">
-    <div class="row search">
-    <div class=" mt-4 ml-5"> Search Jobs:</div> <br>
+        <div class="image-box">
+            <img class="image-box__background img" src="../../../assets/logo1.png" alt="">
+            <div class="image-box__overlay"></div>
+            <div class="image-box__content">
+                <div class="mt-4">
+                    <div class="row search">
+                        <div class=" mt-4 ml-4"> Search Jobs:</div> <br>
+                    </div>
+                    <div class="row">
+                        <input type="text" placeholder="Search Jobs by Skills,Designation,Companies" class="box">
+                        <button type="submit" class="btn-primary btn1">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2">
+                        <div class="card card2">
+
+                            <div class="row">
+                                <img class="profileImage ml-4" src="http://lorempixel.com/100/100" />
+                                <span class="nme pt-2 ml-2 mt-3 ">Rani Bapurao Giramkar</span>
+                            </div>
+                            <div class="row mt-2">
+                                <i class="pi pi-envelope enevlop ml-4"></i>
+                                <span class="company ml-1">ranigiramkar@gmail.com</span>
+                            </div>
+                            <div class="row mt-2">
+                                <i class="pi pi-mobile  enevlop ml-4"></i>
+                                <span class="company ml-1">9734343434</span>
+                            </div>
+                            <div class="row ml-3 mt-3">
+                                <span class="profile">Profile Completeness(Excellent)</span>
+                            </div>
+                            <div class="row deteminate ml-3 mr-3 mt-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-    <input type="text"
-    placeholder="Search Jobs by Skills,Designation,Companies"
-    class="box">
-    <button type="submit" class="btn-primary btn1">Search</button>
+
+
+    <div class="row" style="margin-top: 0%;">
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-4 ">
+            <div class="row ">
+                <div class="new ml-4"> {{data.length}} New Recommended Job(s)</div>
+            </div>
+
+            <div class="card card1 my-2" *ngFor="let dataone of data">
+
+                <div class="row">
+                    <p class="ml-5 name mt-1">{{dataone.jobDescription}}</p>
+                </div>
+                <div class="row mt-0">
+                    <p class="ml-5 company">Beauto System Pvt Ltd</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
+                    <div class="col-sm-2 company pl-0">{{dataone.experienceInYears}} Year</div>
+                    <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
+                    <div class="col-sm-2 company pl-0">pune</div>
+                    <div class="col-sm-6"></div>
+                </div>
+                <div class="row company ml-5 my-1">
+                    <i class="pi pi-android"></i>
+                    <span>{{dataone.skills}}</span>
+                </div>
+                <div class="row company ml-5 my-1">
+                    <i class="pi pi-list"></i>
+                    <span>Job description
+                        Greetings from Beauto System,
+
+                        We are looking for a {{dataone.jobDescription}}</span>
+                </div>
+                <div class="row company ml-5 my-1">
+                    <i class="pi pi-file-o"></i>
+                    <span>Not Disclosed</span>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="mt-5 ml-5 ">
+            <div class="col-sm-6 hardware">
+                <div class="card3">
+                    <div class="card">
+                        <div class="ml-1 mt-1">Hardware</div>
+                        <img src="../../../assets/hardware.png">
+                    </div>
+                    <div class="card mt-3">
+                        <div class="ml-1 mt-1">Software</div>
+                        <img src="../../../assets/software.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="mt-5">
-    <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-4 mt-5 my-2">
-    <div class="card card1">
-    <div class="row my-2">
-    <div class="new ml-4"> 75 New Recommended Job(s)</div>
-    </div>
-    <hr>
-    <div class="row">
-    <p class="ml-5 name">CSS Corp Hiring For Java Developer</p>
-    </div>
-    <div class="row mt-0">
-    <p class="ml-5 company">CSS Corp Pvt Ltd</p>
-    </div>
-    <div class="row">
-    <div class="col-sm-3 ml-5 company"><i class="pi pi-desktop"></i>2 - 5
-    years</div>
-    <div class="col-sm-3 company">pune</div>
-    <div class="col-sm-6"></div>
-    </div>
-    <div class="row company ml-5 my-1">
-    <span>Java,CSS,Spring</span>
-    </div>
-    <div class="row company ml-5 my-1">
-    <span>Job Description Greeting from CSS Corp, We are looking for a Java
-    Devloper with experience</span>
-    </div>
-    <div class="row company ml-5 my-1">
-    <span>Not Disclosed</span>
-    </div>
-    <div class="row">
-    <div class="col-sm 6"></div>
-    <div class="col-sm 6"><a href="" class="more">VIEW ALL</a></div>
-    
-    </div>
-    </div>
-    
-    </div>
-    <div class="col-sm-6"></div>
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-4">
-    <div class="card card1 ">
-    <div class="row my-2">
-    <div class="new ml-4 mt-1"> 75 New Recommended Job(s)</div>
-    </div>
-    <hr>
-    <div class="row">
-    <p class="ml-5 name">CSS Corp Hiring For Java Developer</p>
-    </div>
-    <div class="row mt-0">
-    <p class="ml-5 company">CSS Corp Pvt Ltd</p>
-    </div>
-    <div class="row">
-    <div class="col-sm-3 ml-5 company"><i class="pi pi-desktop"></i>2 - 5
-    years</div>
-    <div class="col-sm-3 company">pune</div>
-    <div class="col-sm-6"><i class="pi pi-check"></i></div>
-    </div>
-    <div class="row company ml-5 my-1">
-    <span>Java,CSS,Spring</span>
-    </div>
-    <div class="row company ml-5 my-1">
-    <span>Job Description Greeting from CSS Corp, We are looking for a Java
-    Devloper with experience</span>
-    </div>
-    <div class="row company ml-5 my-1">
-    <span>Not Disclosed</span>
-    </div>
-    <div class="row">
-    <div class="col-sm 6"></div>
-    <div class="col-sm 6"><a href="" class="more">VIEW ALL</a></div>
-    
-    </div>
-    </div>
-    </div>
-    <div class="col-sm-6"></div>
-    
-    </div>
-    </div>
+</div>
