@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
 
   
   onSubmit(){
-    // this.spinner =  true;
     this.spinner = true;
     this.markFormTouched(this.loginForm);
     if (this.loginForm.valid) {
@@ -77,14 +76,13 @@ export class LoginComponent implements OnInit {
     }
     else{
         this.spinner = true;
-        debugger;
       this.TeamService.Login(this.data).subscribe(res => { 
                   this.info = res;
                   localStorage.setItem('id',this.info.emp_id);
                   localStorage.setItem('email',this.info.email);
                   localStorage.setItem('name',this.info.empName);
                   localStorage.setItem('role',this.info.role);
-                 this.spinner =false;
+               
                   if(this.info.status ===  true && this.info.role == 0){
                     this.toastr.success('Successfully signin !!!');
                     this.router.navigateByUrl('/User');
@@ -129,12 +127,13 @@ export class LoginComponent implements OnInit {
                     else
                     if (this.info.status === false ||this.info.status !=  true ){
                       this.toastr.error('Invalid credentials Oops !!!');
+                      this.spinner = false;
                 
                     }                   
                     else
-                    if (this.info.status === 401 ||this.info.responseMessage === 'Email id does not exist' ){
+                    if (this.info.status === '401' ||this.info.responseMessage === 'Email id does not exist' || this.info.responseMessage === 'Unauthorized' ){
                       this.toastr.error('Invalid credentials Oops !!!');
-                
+                      this.spinner = false;
                     }
                 },error => {
 

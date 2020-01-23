@@ -9,12 +9,13 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
-  // SignUp(data: any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   return this.http.post(environment.signUp, data, { headers: headers });
-  // }
+  SignUp(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.signUp, data, { headers: headers });
+  }
+  
   // AddInformation(data: any){
   //   let headers = new HttpHeaders({
   //     'Content-Type': 'application/json'
@@ -75,21 +76,20 @@ export class TeamService {
   // }
 
 
-  // forgot(data: any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   debugger;
-  //   return this.http.post(environment.forgot + data, { headers: headers });
-  // }
+  forgot(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.forgot + data, { headers: headers });
+  }
  
-  // AlreadyUse(data: any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //    return this.http.post(environment.alreadyUser, data, { headers: headers });
+  AlreadyUse(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+     return this.http.post(environment.alreadyUser, data, { headers: headers });
 
-  // }
+  }
 
   // resumeUpload(data){
   //   let headers = new HttpHeaders({
