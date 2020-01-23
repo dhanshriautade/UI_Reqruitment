@@ -98,6 +98,8 @@ export class SignupComponent implements OnInit {
               if(res.code === '200' || res.code === 200  ){
               this.toastr.success('Successfully Created !!!');
               this.router.navigateByUrl('/login');
+              this.spinner = false;
+      
         
                }
           },error => {
@@ -106,8 +108,7 @@ export class SignupComponent implements OnInit {
           })
 
           this.registerForm.reset();
-          this.spinner = false;
-      
+        
    
       
   }
