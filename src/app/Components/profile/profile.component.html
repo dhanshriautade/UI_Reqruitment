@@ -1,1 +1,597 @@
-<p>profile works!</p>
+<div class=" row">
+
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8 magic">
+        <div class="row mt-3 mb-3">
+            <div class="col-sm-8 ">
+                <img class="user-img" class="img" src="//my.naukri.com/Photo/getProfileImage?v=1579610483000">
+                <label class="ml-3 name">Avhad Mohini Dattatray
+                    <i class="pi pi-pencil mt-2"></i>
+                </label>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <span class="envelop"><i class="pi pi-map-marker" aria-hidden="true"></i></span>
+                        <span class=" mt-2 view"> Pune ,INDIA</span>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <span class="envelop mr-3"><i class="pi pi-mobile " aria-hidden="true"></i></span>
+                        <span class=" mt-2 view" style="text-align: left;">93782813902</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <span class="envelop"><i class="pi pi-briefcase ml-3" aria-hidden="true"></i></span>
+                        <span class=" mt-2 ml-1 view">Fresher</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="envelop"> <i class="pi pi-envelope " aria-hidden="true"></i></span>
+                        <span class=" mt-1 ml-2 view">Youremail@gmail.com</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <label class="view mt-2 ml-3 stren">Profile Strength (Excellent)</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class=" mt-2 mr-5 view views">100%</span>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+            <div class="col-sm-4">
+                <div class="action mt-1 mb-1 mr-2">
+                    <label class="name ml-3 mt-2 ">Pending Action(s)</label>
+                    <label class="view ml-3 mt-2">Please complete your pending action to make your profile attractive to
+                        recruiters.</label>
+                    <label class="name mt-3 mb-3">VIEW ALL</label></div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="profile">Profile Last updated -<span style="font-weight: bold;"> 1 day(s) ago</span></span>
+
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-5">
+                <div><a routerLink="" class="check ">
+                        Check out how recruiters search for candidates like you</a></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+
+</div>
+<div class="row mt-3">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card card1">
+                    <p class="mt-3 header">Quick Links</p>
+                    <div class="ml-3 attach">Attach Resume
+                        <span class="text-primary ml-5">UPDATE</span>
+                    </div>
+                    <div class="ml-3 mt-4 attach">Resume Headline</div>
+                    <div class="ml-3 mt-4 attach"> Primary Skills</div>
+                    <div class="ml-3 mt-4 attach">secondary Skills</div>
+                    <div class="ml-3 mt-4 attach">Education
+                        <span class="text-primary ml-5" style="text-align: end;">ADD</span>
+                    </div>
+                    <div class="ml-3 mt-4 attach"> Projects</div>
+                    <div class="ml-3 mt-4 attach"> Profile Summary</div>
+                    <div class="ml-3 mt-4 attach"> Accomplishments</div>
+                    <div class="ml-3 mt-4 attach">Desired Career Profile</div>
+                    <div class="ml-3 mt-4 mb-2 attach">Personal Details</div>
+
+
+                </div>
+            </div>
+            <div class="col-sm-8">
+
+                <div class="card">
+                    <p class="header">Attach Resume</p>
+                    <div class="ml-3 attach">Resume is the most important document recruiters look for.
+                        Recruiters generally do not look at profiles without resumes.</div>
+                    <div class="ml-3 mt-3">
+
+                        <div class="mb-3 mt-3 ml-2 attach">Supported Formats: doc, docx,pdf, upto 2 MB</div>
+
+                        <div class=" row ml-5">
+                            <input type="file" class=" btn-file-upload1 form-control mt-3 mb-1 ml-5"
+                                value="Upload Resume" placeholder="" (change)="getFileDetails($event)"
+                                formControlName="file" />
+                            <span style="color: #4A90E2;"><i class="pi pi-download ml-5 mt-4"></i></span>
+                            <!-- <span class="ml-5 resume">DELETE RESUME</span> -->
+                        </div>
+
+                        <div class="error" *ngIf="errormassage">Invalid file type or size </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <p class="header">Resume Headline
+                            <span class="pencil"><i class="pi pi-pencil mt-2 ml-2"></i></span>
+                        </p>
+                        <div class="ml-3 mb-3 attach">Jobseeker with B.Tech / B.E. in Computers currently living in pune
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <p class="mt-3 mr-3 header">Key Skills
+                            <span class="pencil"><i class="pi pi-pencil mt-2 ml-2"></i></span>
+
+                            <!-- <div class="clip ml-5 my-2">
+                            <span class="left_chip my-2 ml-1" *ngFor="let primarySkill of this.skillArray;index as i">
+                                {{primarySkill}}
+                                <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeSkill(i)"></i>
+                            </span>
+                        </div> -->
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <div class="mt-3 names  mb-3 header">Education <span class="detail mr-2"
+                                (click)="addEducation()">ADD EDUCATION</span>
+                        </div>
+                        <div class="row">
+                            <div class="card addcard" *ngIf="displayEducation">
+                                <div class="card-header"><span class="addeducation">Add Education</span>
+                                    <i class=" tick pi pi-close mt-2 " aria-hidden="true"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0">Education:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <select id="" class="form-control box" size="0" placeholder="" name=""
+                                            formControlName=''>
+                                            <option value="undefined" disabled>Select education</option>
+                                            <option>Graduation</option>
+                                            <option>Doctorate/PhD</option>
+                                            <option>Master/Post-Graduation</option>
+                                            <option>12 th</option>
+                                            <option>10 th</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0 mt-4">Course:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <select id="" class="form-control box" size="0" placeholder="" name=""
+                                            formControlName=''>
+                                            <option value="undefined" disabled>Select Course</option>
+                                            <option>BE</option>
+                                            <option>M Tech</option>
+                                            <option>MBA</option>
+                                            <option>MCA</option>
+                                            <option>BSC</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0 mt-4">Specialization:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <select id="" class="form-control box" size="0" placeholder="" name=""
+                                            formControlName=''>
+                                            <option value="undefined" disabled>Select Specialization</option>
+                                            <option>Computer</option>
+                                            <option>Mechanical</option>
+                                            <option>Electrical</option>
+                                            <option>Entc</option>
+                                            <option>IT</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0 mt-4">University/Institute:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <input type="text" autocomplete="off" class="form-control text-centre"
+                                            placeholder="Enter University/Institute">
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0 mt-4">Course Type:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-11">
+                                        <input type="radio" name="age" value="30">Full Time
+
+                                        <input type="radio" class="ml-3" name="age" value="30">Part Time
+
+                                        <input type="radio" class="ml-3" name="age" value="30">Correspondance/Distance
+                                        Learning
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0 mt-4">Passing Out Year:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-6">
+                                        <select id="" class="form-control box" size="0" placeholder="" name=""
+                                            formControlName=''>
+                                            <option value="undefined" disabled>Select education</option>
+                                            <option>2012</option>
+                                            <option>2013</option>
+                                            <option>2014</option>
+                                            <option>2015</option>
+                                            <option>2016</option>
+                                            <option>2017</option>
+                                            <option>2018</option>
+                                            <option>2019</option>
+                                            <option>2020</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-5"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <label class="ml-0 mt-4">Grading System:</label>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-6">
+                                        <select id="" class="form-control box" size="0" placeholder="" name=""
+                                            formControlName=''>
+                                            <option value="undefined" disabled>Select education</option>
+                                            <option>Scale 10 Grading System</option>
+                                            <option>Scale 4 Grading System</option>
+                                            <option>% Marks of 100 Maximum</option>
+                                            <option>Course Requires a Pass</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-5"></div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="ml-3 degree">B.Tech/B.E.-Computers
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="ml-3 attach">Jagdamba Education Society Nashik's SND College of Engineering &
+                            Research, Pune</div>
+                        <div class="ml-3 attach"><span>2018</span> <span>(Full Time)</span></div>
+                        <div class="ml-3 mt-5 degree">Other-English
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="ml-3 attach"><span>2014</span></div>
+
+                        <div class="ml-3 mt-5 degree">National Open School-English
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span></div>
+                        <div class="ml-3 attach">2012</div>
+
+                        <div class="ml-3 mt-5 degree">B.Tech/B.E.-Computers
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="ml-3 attach ">Jagdamba Education Society Nashik's SND College of Engineering &
+                            Research, Pune</div>
+                        <div class="ml-3 attach mb-3"><span>2018</span> <span>(Full Time)</span></div>
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <div class="mt-3 names  mb-3 header">IT Skill <span class="detail mr-2">ADD DETAILS</span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 skill">Skill</div>
+                            <div class="col-sm-2 skill">Version</div>
+                            <div class="col-sm-2 skill">Last used</div>
+                            <div class="col-sm-3 skill">Experience</div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                        <div class="row mr-5 mt-2">
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 attach ">Core Java</div>
+                            <div class="col-sm-2 attach">Java 11</div>
+                            <div class="col-sm-2 attach">Last used</div>
+                            <div class="col-sm-3 attach">0 year 0 month</div>
+                            <div class="col-sm-2 "></div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <div class="mt-3 names  mb-3 header">Project <span class="detail mr-2">ADD PROJECT</span>
+                        </div>
+
+                        <div class="ml-3 degree">Project Title
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="ml-3 attach"><span>Client</span></div>
+                        <div class="ml-3 attach">Tag this project with your Employment/Education</div>
+                        <div class="ml-3 attach"><span>2018 To 2019</span></div>
+
+                        <div class="ml-3 attach mb-2"><span>details of Project</span></div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <div class="mt-3 names  mb-3 header">Profile Summary
+                        </div>
+
+                        <div class="ml-3 degree">Add Profile Summary
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="ml-3 attach mb-2"><span>Your Profile Summary should mention the highlights of
+                                your career and education, what your professional interests are,
+                                and what kind of a career you are looking for. Write a meaningful
+                                summary of more than 50 characters.
+                            </span></div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <div class="mt-3 names  mb-3 header">Desired Career Profile
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Industry</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Functional Area</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">IT-Software/Software Services</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">IT Software - Other</div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Role</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Job Type</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">Software Developer</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">Contractual, Permanent</div>
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Employment Type</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Desired Shift</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">Full Time</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">Day</div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Availability to Join</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Expected Salary</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach"><span>Feb</span>, <span>2020</span></span>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">INR <span>1 Lakh</span>(s)<span> 5 Thousand</span></div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Desired Location</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Desired Industry</div>
+                        </div>
+                        <div class="row mb-2">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">Pune</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">Animation</div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class=" ml-3 mt-3 card cards">
+                        <div class="mt-3 names  mb-3 header">Personal Details
+                            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Date of Birth</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Permanent Address</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">06 Feb 1996</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">A/P Dehu ,Tal-Haveli ,Dist-Pune</div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Gender</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Area Pin Code</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">Female</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">422606</div>
+                        </div>
+
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Marital Status</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Hometown</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">Married</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">Sinnar</div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Category</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Work permit for USA</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-5"><span class="ml-4 attach"><span>Feb</span>,
+                                    <span>General</span></span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach"><span>US Citizen</span></div>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-sm-5"><span class="ml-4 summary">Work permit of other country</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 summary">Differently Abled</div>
+                        </div>
+                        <div class="row mb-2">
+
+                            <div class="col-sm-5"><span class="ml-4 attach">India</span></div>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5 attach">None</div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-2 ml-3 skill">Language</div>
+                            <div class="col-sm-3 skill">Proficiency</div>
+                            <div class="col-sm-2 skill">Read</div>
+                            <div class="col-sm-2 skill">Write</div>
+                            <div class="col-sm-2 skill">Speak</div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row mr-5 mt-2">
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 attach ">Core Java</div>
+                            <div class="col-sm-2 attach">Java 11</div>
+                            <div class="col-sm-2 attach">Last used</div>
+                            <div class="col-sm-3 attach">0 year 0 month</div>
+                            <div class="col-sm-2 "></div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-2"></div>
+
+    </div>

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +26,7 @@ import {CardModule} from 'primeng/card';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApplyjobComponent } from './Components/applyjob/applyjob.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,11 +50,13 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     OverlayPanelModule,
     BrowserModule,
     AppRoutingModule,
+    AngularFontAwesomeModule,
     FormsModule,
      ReactiveFormsModule,
     BrowserAnimationsModule,
     ConfirmDialogModule,
     CardModule,
+    Ng2SearchPipeModule,
     HttpClientModule, 
     ToastrModule.forRoot({
       closeButton: true,
