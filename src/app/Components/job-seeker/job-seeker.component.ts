@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamService } from 'src/services/team.service';
 
 @Component({
   selector: 'app-job-seeker',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./job-seeker.component.scss']
 })
 export class JobSeekerComponent implements OnInit {
+  data;
+  term;
+  constructor(public TeamService: TeamService) { 
 
-  constructor() { }
+    this.TeamService.Getalljob().subscribe(res => {
+      console.log(res);
+      this.data = res;
+      console.log(this.data.length);
+     })
+  }
 
   ngOnInit() {
   }

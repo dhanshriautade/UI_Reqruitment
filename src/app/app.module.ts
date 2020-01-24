@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -18,7 +20,11 @@ import { EmployeeComponent } from './Components/employee/employee.component';
 import { JobComponent } from './Components/job/job.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { MainComponent } from './Components/main/main.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {CardModule} from 'primeng/card';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +46,19 @@ import { MainComponent } from './Components/main/main.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    FormsModule,
+     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ConfirmDialogModule,
+    CardModule,
+    Ng2SearchPipeModule,
+    HttpClientModule, 
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true,
+      preventDuplicates : true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

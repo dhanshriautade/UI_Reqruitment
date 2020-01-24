@@ -1,0 +1,137 @@
+.dashboard{
+    overflow: hidden;;
+    }
+    .search{
+    font-size: xx-large;
+    font-weight: bold;
+    margin-right: 472px;
+    padding-left: 267px;
+    }
+    .box{
+        margin-left: 29%;
+        width: 57%;
+    height: 52px;
+    font-size: small;
+    }
+    .btn1{
+    width: 80px;
+    }
+    
+    .card1{
+    width: 130%;
+    }
+    .card2{
+        height: 115%;
+        width: 262%;
+        width: 251%;
+        left: 92%;
+        bottom: 34%;
+    }
+    .card3{
+        width: 239%;
+    }
+    .image-box {
+    position: relative;
+    }
+    
+    .image-box__background,
+    .image-box__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    }
+    
+    .image-box__background {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: var(--image-url);
+    
+    z-index: 1
+    }
+    
+    .img{
+    width: 1548px;
+    height: 265px;
+    z-index: 0;
+    }
+    
+    .image-box__content {
+    position: relative;
+    
+    z-index: 3;
+    height: auto;
+    width: auto;
+    color: white;
+    // min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .imagetag{
+        margin: -31px 0px 0px 105px;
+    }
+
+    .profileimage{ 
+        width: 63px;
+        border-radius: 99px;
+        height: 60px;
+    }
+    .name1{
+        margin-left: 0px !important;
+    }
+    .job{
+    margin-top: 14%;
+    margin-left: 149px;
+    font-size: x-large;
+    color: gray;
+    }
+    .new{
+    font-weight: bold;
+    }
+    .name{
+    font-size: small;
+    font-weight: bold;
+    }
+    .company{
+    font-size: small;
+    color: #9C9C9B;
+    }
+
+    .enevlop{
+        color: #9C9C9B;
+    }
+    .more{
+    float: right;
+    }
+    .pi{
+        font-size: 25px;
+    }
+    .profileImage{
+        width: 45px;
+        border-radius: 25px;
+        }
+       .nme {
+        font-weight: bold;
+        }
+       .deteminate {
+            background-color: blue;
+             height: 4%;
+        }
+        .perform{
+            font-size: small;
+    font-weight: bold;
+        }
+        .profile{
+            font-size: small;
+    font-weight: bold;
+    color: blue;
+        }
+
+    .hardware{
+        margin-left: 38%;
+    }

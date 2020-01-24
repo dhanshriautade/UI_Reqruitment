@@ -1,1 +1,57 @@
-<p>forgot works!</p>
+<div class="full-width">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-2"></div>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 col-8 main">
+                <img src="../../../assets/output-onlinepngtools.png" class="bgimg">
+                <p-card class="login_card">
+                    <div class="example-form">
+                        <div class="logo_name" style="  font-family:'Maven Pro'">
+                            OFFICE Management
+                        </div>
+                        <div class="name my-3">
+                            Get started with your account
+                        </div>
+                        <div class="my-3 for">
+                                  Forgot Password
+                        </div>
+    
+                        <form #myForm="ngForm" [formGroup]="forgetForm" (ngSubmit)="Forgot()">
+                                <div class=" tag row my-2">
+                                        <label for="name">Email Id / Phone No.</label>
+                                        <!-- <i class="fa fa-user icon"></i>  -->
+                                        <input type="text" class="form-control" formControlName="email" placeholder="youremail@gmail.com">
+                                        <span class="text-danger"
+                                        *ngIf="forgetForm.controls['email'].hasError('required') &&
+                                         (forgetForm.controls['email'].dirty || forgetForm.controls['email'].touched)">This field is
+                                        required</span>
+                                <span class="text-danger"
+                                        *ngIf="forgetForm.controls['email'].hasError('pattern') && 
+                                         (forgetForm.controls['email'].dirty || forgetForm.controls['email'].touched)">Please enter valid
+                                        email address or phone number</span>
+                                    </div>
+                               
+                            <div class="my-4">
+    
+                                <button class="btn btn-primary" type="submit">Submit <i *ngIf="spinner"
+                                        class="pi pi-spin pi-spinner ml-1"></i> </button>
+    
+                            </div>
+                        </form>
+                        <div class="my-3">
+                            <span class="pull-left ml-4">
+                                <a routerLink="/login">Login</a>
+                            </span>
+                            <img src="/assets/logo/beauto.png" class="footer">
+                            @ BEAUTO System Pvt. Ltd. | <a style="color: #6C66E1"> Terms</a>
+    
+                        </div>
+                      
+                    </div>
+    
+                </p-card>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-2"></div>
+    
+        </div>
+    
+    </div>
