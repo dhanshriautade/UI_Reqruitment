@@ -46,39 +46,39 @@
     </div>
 
 
-    <div class="row" style="margin-top: 0%;">
+    <div class="row">
         <div class="col-sm-2"></div>
 
         <div class="col-sm-4 ">
             <div class="row ">
-                <div class="new ml-4"> {{data.length}} New Recommended Job(s)</div>
+                <div class="new ml-4"> {{data?.length}} New Recommended Job(s)</div>
             </div>
 
-            <div class="card card1 my-2" *ngFor="let dataone of data |filter:term ">
+            <div class="card card1 my-2" *ngFor="let dataone of data |filter:term ;let i=index">
 
-                <div class="row">
-                    <p class="ml-5 name mt-1">{{dataone.jobDescription}}</p>
+                <div class="row" (click)="viewJobId(i)">
+                    <p class="ml-5 name mt-1">{{dataone?.jobDescription}}</p>
                 </div>
                 <div class="row mt-0">
                     <p class="ml-5 company">Beauto System Pvt Ltd</p>
                 </div>
                 <div class="row">
                     <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
-                    <div class="col-sm-2 company pl-0">{{dataone.experienceInYears}} Year</div>
+                    <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
                     <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
                     <div class="col-sm-2 company pl-0">pune</div>
                     <div class="col-sm-6"></div>
                 </div>
                 <div class="row company ml-5 my-1">
                     <i class="pi pi-android"></i>
-                    <span>{{dataone.skills}}</span>
+                    <span>{{dataone?.skills}}</span>
                 </div>
                 <div class="row company ml-5 my-1">
                     <i class="pi pi-list"></i>
                     <span>Job description
                         Greetings from Beauto System,
 
-                        We are looking for a {{dataone.jobDescription}}</span>
+                        We are looking for a {{dataone?.jobDescription}}</span>
                 </div>
                 <div class="row company ml-5 my-1">
                     <i class="pi pi-file-o"></i>

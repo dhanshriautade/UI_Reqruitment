@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/services/team.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-seeker',
@@ -9,15 +10,21 @@ import { TeamService } from 'src/services/team.service';
 export class JobSeekerComponent implements OnInit {
   data;
   term;
-  constructor(public TeamService: TeamService) { 
+  constructor(public TeamService: TeamService,public router: Router,) { 
 
     this.TeamService.Getalljob().subscribe(res => {
-      console.log(res);
-      this.data = res;
-      console.log(this.data.length);
+         this.data = res;
+    
      })
   }
 
+
+  viewJobId(index:any){
+    console.log(index);
+    localStorage.setItem('ViewJobId', index);
+    this.router.navigateByUrl('/User/ApplyJob');
+
+   }
   ngOnInit() {
   }
 
