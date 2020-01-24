@@ -8,6 +8,7 @@ import { TeamService } from 'src/services/team.service';
 })
 export class JobSeekerComponent implements OnInit {
   data;
+  term;
   constructor(public TeamService: TeamService) { 
 
     this.TeamService.Getalljob().subscribe(res => {

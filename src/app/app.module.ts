@@ -22,7 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {CardModule} from 'primeng/card';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +49,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     BrowserAnimationsModule,
     ConfirmDialogModule,
     CardModule,
+    Ng2SearchPipeModule,
     HttpClientModule, 
     ToastrModule.forRoot({
       closeButton: true,
