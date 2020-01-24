@@ -6,8 +6,8 @@
     <div class="col-sm-8 magic">
         <div class="row mt-3 mb-3">
             <div class="col-sm-8 ">
-                <img class="user-img" class="img" src="//my.naukri.com/Photo/getProfileImage?v=1579610483000">
-                <label class="ml-3 name">Avhad Mohini Dattatray
+                <img class="user-img" class="img" src="http://lorempixel.com/100/100">
+                <label class="ml-3 name">{{ProfileData?.firstName}} {{ProfileData?.lastName}}
                     <i class="pi pi-pencil mt-2"></i>
                 </label>
                 <div class="row">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-sm-6 ">
                         <span class="envelop mr-3"><i class="pi pi-mobile " aria-hidden="true"></i></span>
-                        <span class=" mt-2 view" style="text-align: left;">93782813902</span>
+                        <span class=" mt-2 view" style="text-align: left;">{{ProfileData?.contact}}</span>
                     </div>
                 </div>
                 <div class="row">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-sm-6">
                         <span class="envelop"> <i class="pi pi-envelope " aria-hidden="true"></i></span>
-                        <span class=" mt-1 ml-2 view">Youremail@gmail.com</span>
+                        <span class=" mt-1 ml-2 view">{{ProfileData?.email}}</span>
                     </div>
                 </div>
                 <div class="row">
@@ -109,15 +109,18 @@
                         Recruiters generally do not look at profiles without resumes.</div>
                     <div class="ml-3 mt-3">
 
-                        <div class="mb-3 mt-3 ml-2 attach">Supported Formats: doc, docx,pdf, upto 2 MB</div>
-
-                        <div class=" row ml-5">
-                            <input type="file" class=" btn-file-upload1 form-control mt-3 mb-1 ml-5"
-                                value="Upload Resume" placeholder="" (change)="getFileDetails($event)"
-                                formControlName="file" />
-                            <span style="color: #4A90E2;"><i class="pi pi-download ml-5 mt-4"></i></span>
-                            <!-- <span class="ml-5 resume">DELETE RESUME</span> -->
-                        </div>
+                        <span style="color: #4A90E2;"><i class="pi pi-download ml-5 mt-4"></i></span>
+                           
+                        <div class=" row">
+                          <div class="row my-1">
+                                <input type="file" class=" btn-file-upload1 form-control"
+                                value="Upload Resume" placeholder="" (change)="uploadResume($event  )"
+                               />
+                          </div>
+                               <div class="row my-3">
+                               <div class="attach">Supported Formats: doc, docx,pdf, upto 2 MB</div>
+                     </div>
+                             </div>
 
                         <div class="error" *ngIf="errormassage">Invalid file type or size </div>
 

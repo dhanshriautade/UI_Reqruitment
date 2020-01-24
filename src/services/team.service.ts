@@ -67,13 +67,13 @@ export class TeamService {
  
   }
 
-  // GetProfile(data: any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   return this.http.post(environment.getprofile, data, { headers: headers });
+  GetProfile(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.getprofile, data, { headers: headers });
   
-  // }
+  }
 
 
   forgot(data: any){

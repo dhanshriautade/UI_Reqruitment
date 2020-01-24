@@ -71,7 +71,7 @@ color: white;
 }
 .btn-file-upload1{
     width: 236px;
-  height: 34px;
+  height: 45px;
   position:relative;
   margin-left: 34px;
   
@@ -81,11 +81,11 @@ color: white;
  content:  attr(value);
  position: absolute;
  font-weight: 500;
- height: 34px;
+ height: 60px;
  top: 0;
  left: 0;
  bottom: 0;    
- width: 110px;
+ width: 235px;
  background-color:#4A90E2;
  color: white;
  border-radius: 2px;
@@ -166,4 +166,26 @@ color: white;
 }
 .addeducation{
     font-weight: bold;
+}
+
+
+.action .uploadContainer input[type=file] {
+    position: absolute;
+    font-size: 0;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.btn-large{
+    text-decoration: none;
+    color: #fff;
+    background-color: #4A90E2;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
 }
