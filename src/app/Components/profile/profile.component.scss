@@ -1,0 +1,169 @@
+.magic{
+    background-color: #4A90E2;
+    
+
+ 
+}
+.img{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    float: left;
+}
+.box{
+    border: 1px solid gray;
+}
+.name{
+    font-weight: bold;
+    color: white;
+}
+.view{
+    color: white;
+    font-size: 15px;
+}
+
+.action{
+background-color: #0F5EC9;
+border-radius: 2px solid blue;
+box-shadow: 2px 2px 2px 2px #0F5EC9;
+}
+hr{
+    background-color: white;
+    border-bottom: 1px solid white;
+    margin-top: 0px;
+    height: 4px;
+    width: 512px;
+  
+}
+// .card1{
+//     //overflow: hidden;
+//     position: fixed;
+//     top: 37%;
+    
+// }
+
+.cards{
+top: 53%;
+width: 95%;
+height: 31%;
+
+}.check{
+    text-align: end;
+}
+p{
+   font-weight: bold;text-align: center;
+}
+.button{
+    margin-left: 37%;
+}
+.resume{
+    color: #4A90E2;  
+}
+.envelop{
+color: white;
+}
+.views{
+    float: right;
+}
+.pencil{
+    color: #4A90E2;  
+}
+.btn-file-upload1{
+    width: 236px;
+  height: 34px;
+  position:relative;
+  margin-left: 34px;
+  
+}
+
+.btn-file-upload1:after{
+ content:  attr(value);
+ position: absolute;
+ font-weight: 500;
+ height: 34px;
+ top: 0;
+ left: 0;
+ bottom: 0;    
+ width: 110px;
+ background-color:#4A90E2;
+ color: white;
+ border-radius: 2px;
+ text-align: center;
+ font-size: 12px;
+ line-height: 3;
+ border-radius: 5px;
+ 
+ 
+}
+.error{
+  color: red;
+  margin-left: 36px;
+}
+.format{
+ color: #C7C4BA;
+}
+.primary{
+    width: 84%;
+    margin-left: 28px;
+}
+.add{
+    background-color: #4A90E2;
+    margin-left: 10px;
+    width:63px;
+    color:white;
+}
+.education{
+    margin-left: 41%; 
+}
+.educations{
+    margin-left:50%; 
+}
+.name{
+ text-align: end;
+}
+.skill{
+    font-weight: bold;
+    color: #666B70;
+}
+.names{
+   text-align: center; 
+   font-weight: bold;
+}
+.detail{
+  
+    float: right;
+    color:#4A90E2 ;
+    font-size: 16px;
+}
+.degree{
+    font-weight: bold;
+    color: #666B70;
+}
+.profile{
+    color: #666B70; 
+    font-size: 15px;
+}
+.attach{
+    color: #676767;
+    font-size: 14px;
+}
+.header{
+    color: #3A3333;
+    font-size: large;
+}
+.icon{
+    color:#4A90E2 ;
+}
+.summary{
+    
+        color: #B8B8B8;
+        font-size: 15px;
+     
+}
+.addcard{
+    width: 105%;
+}
+.addeducation{
+    font-weight: bold;
+}
