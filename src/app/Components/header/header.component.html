@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-3 my-3"><img src="../../../assets/beauto_logo.png" class="bgimg logo"></div>
     <div class="col-sm-1 my-3"><a href="User/candidate" class="job">Jobs</a></div>
-    <div class="col-sm-1 my-3"><a href="User/candidate" class="more">More</a></div>
+    <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
     <div class="col-sm-3"></div>
     <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" class="bgimg logo"></div>
     <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
@@ -13,8 +13,21 @@
         <div class="row">
             <div class="col-sm-11">
                 <li class="my-1 profile"><a>Edit Profile</a></li>
-                <li class="my-1"><a>Recommended Jobs</a>  </li>
+                <li class="my-1"><a>Recommended Jobs</a> </li>
                 <li> <a>Logout</a> </li>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+    </ul>
+</p-overlayPanel>
+<p-overlayPanel #op1>
+    <ul class="bullet">
+        <div class="row">
+            <div class="col-sm-11">
+                <li class="my-1 profile"><a>Team</a></li>
+                <li class="my-1"><a>Job</a></li>
+                <li class="my-1"><a>Job Applied</a></li>
             </div>
             <div class="col-sm-1"></div>
         </div>
