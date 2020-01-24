@@ -1,0 +1,66 @@
+.head{
+    background-color: #D5E1FF;
+    height: 88px;
+}
+.Dashboard{
+    background-color: #F7F7F7;
+    overflow: hidden;
+}
+.title{
+    font-weight: bold;
+    font-size: large;
+}
+.card1{
+    width: 135%;
+    bottom: 7%;
+}
+.company{
+    font-size: small;
+    color: #706B6B;
+}
+.pi{
+    font-size: 25px;
+    color: #9C9C9B;
+}
+.logo{
+    border: 1px solid #D2D3D2;
+    width: 61px;
+    height: 62px;
+}
+.btn1{
+    background-color: white;
+    border: 1px solid blue;
+    width: 90px;
+    height: 37px;
+    font-weight: bold;
+    color: blue;
+    float: right
+}
+.btn2{
+    width: 90px;
+    height: 37px;
+    font-weight: bold;
+}
+.job{
+    font-weight: bold;
+}
+.description{
+    color: #3A3A5A;
+    font-size: small;
+}
+.location{
+    font-size: small;
+    font-weight: bold;
+}
+.role{
+    font-size: small;
+    color: #9C9C9B;
+}
+.skill{
+    border: 1px solid #9C9C9B;;
+    font-size: small;
+    border-radius: 8px;
+    height: 26px;
+    width: 96px;
+    text-align: center;
+}

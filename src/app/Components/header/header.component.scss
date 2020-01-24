@@ -7,6 +7,7 @@
     }
     .more{
     font-weight: bold;
+    color: blue;
     }
     .profileImage{
     width: 45px;
@@ -17,3 +18,15 @@
     width: 45px;
     border-radius: 25px;
     }
+    .bullet{
+        list-style-type: none;
+        color: gray;
+       
+    }
+    :host ::ng-deep.ui-overlaypanel-content{
+        background-color: #F5F5F5;
+    }
+      a:hover {
+        
+        color: #0000ff7a;
+      }

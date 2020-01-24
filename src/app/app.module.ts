@@ -22,6 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {CardModule} from 'primeng/card';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApplyjobComponent } from './Components/applyjob/applyjob.component';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     EmployeeComponent,
     JobComponent,
     ResetPasswordComponent,
-    MainComponent
+    MainComponent,
+    ApplyjobComponent
   ],
   imports: [
+    OverlayPanelModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

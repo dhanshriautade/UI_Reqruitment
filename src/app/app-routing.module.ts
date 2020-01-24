@@ -11,6 +11,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { EmployeeComponent } from './Components/employee/employee.component';
 import { AdminComponent } from './Components/admin/admin.component';
 import { HrDashboardComponent } from './Components/hr-dashboard/hr-dashboard.component';
+import { ApplyjobComponent } from './Components/applyjob/applyjob.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'candidate', component: JobSeekerComponent},
       { path: 'home', component: HomeComponent}, 
       { path: 'Profile', component: ProfileComponent},
+      { path: 'ApplyJob', component: ApplyjobComponent},
     ]
   },
   {
