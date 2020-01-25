@@ -100,7 +100,6 @@ export class ProfileComponent implements OnInit {
       var data = {
         documentPaths : [ this.ResumeInfo.documentPaths[0]]
       }
-      debugger;
      this.TeamService.downloadResume(data).subscribe((res: any) => {
       this.ResumeInfo =res;
     })
