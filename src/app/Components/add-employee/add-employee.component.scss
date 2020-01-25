@@ -1,8 +1,60 @@
-.role-card:hover .icon-buttons { 
-    display: inline-block; 
-    width: 25px;
-  }
+.head{
+  background-color: blue;
+  height: 160px;
+}
+.Dashboard{
+  //background-color: #F7F7F7;
+  overflow: hidden;
+}
+.search{
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+}
+.box{
+width: 57%;
+height: 52px;
+font-size: small;
+}
+.btn1{
+width: 80px;
+}
+.employee{
+  font-weight: bold;
+    font-size: larger;
+}
+.name{
+  font-size: small;
+    font-weight: bold;
+    float: right;
+}
+.details{
+  font-size: small;
+  //color: #9C9C9B;
+  color: gray;
+}
 
-  .card-border {
-    border: 1px solid #e7e7e7;
-  }
+.pi-pencil{
+  font-size: 27px;
+color: #3090C7;
+}
+.pi-trash{
+  font-size: 27px;
+  color: 	#DC143C;
+}
+.card1{
+  left: 9%;
+    width: 22%;
+}
+
+
+.role-card:hover .icon-buttons { 
+  display: inline-block; 
+  width: 25px;
+}
+
+
+
+.card-border {
+  border: 1px solid #e7e7e7;
+}
