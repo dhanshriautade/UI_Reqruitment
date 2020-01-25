@@ -17,6 +17,8 @@ export const environment = {
   uploadresume:base_url + 'uploadDocuments',
   forgot: base_url + 'emailexists?email=',
   getprofile:base_url + 'getprofile',
+  GetResume:base_url + 'getCandidateById',
+  downloadResume: base_url + 'downloadCandidateDocument',
   AddInfo:base_url + 'experienceprofile',
   CreateJob: base_url + 'addjobcreation',
   getnotification:'http://localhost:8082/getAllNotification'

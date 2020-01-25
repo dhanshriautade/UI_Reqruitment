@@ -109,7 +109,8 @@
                         Recruiters generally do not look at profiles without resumes.</div>
                     <div class="ml-3 mt-3">
 
-                        <span style="color: #4A90E2;"><i class="pi pi-download ml-5 mt-4"></i></span>
+                        <span style="color: #4A90E2;">{{ResumeInfo?.documentPaths[0]?.split('/')[this.ResumeInfo?.documentPaths[0]?.split('/').length-1]}}
+                            <i (click)="downloadResume()" class="pi pi-download ml-5 mt-4"></i></span>
                            
                         <div class=" row">
                           <div class="row my-1">
