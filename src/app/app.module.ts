@@ -10,7 +10,6 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { ForgotComponent } from './Components/forgot/forgot.component';
 import { HrDashboardComponent } from './Components/hr-dashboard/hr-dashboard.component';
-import { EmpDashboardComponent } from './Components/emp-dashboard/emp-dashboard.component';
 import { AdminComponent } from './Components/admin/admin.component';
 import { JobSeekerComponent } from './Components/job-seeker/job-seeker.component';
 import { ProfileComponent } from './Components/profile/profile.component';
@@ -27,6 +26,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApplyjobComponent } from './Components/applyjob/applyjob.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ViewJobComponent } from './Components/view-job/view-job.component';
+import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SignupComponent,
     ForgotComponent,
     HrDashboardComponent,
-    EmpDashboardComponent,
     AdminComponent,
     JobSeekerComponent,
     ProfileComponent,
@@ -44,7 +44,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     JobComponent,
     ResetPasswordComponent,
     MainComponent,
-    ApplyjobComponent
+    ApplyjobComponent,
+    ViewJobComponent,
+    AddEmployeeComponent
   ],
   imports: [
     OverlayPanelModule,

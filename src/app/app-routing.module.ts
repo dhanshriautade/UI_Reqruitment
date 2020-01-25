@@ -12,6 +12,7 @@ import { EmployeeComponent } from './Components/employee/employee.component';
 import { AdminComponent } from './Components/admin/admin.component';
 import { HrDashboardComponent } from './Components/hr-dashboard/hr-dashboard.component';
 import { ApplyjobComponent } from './Components/applyjob/applyjob.component';
+import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -50,6 +51,7 @@ const routes: Routes = [
     children:[
       { path: '', redirectTo: 'HR', pathMatch: 'full' },
       { path: 'HR', component: HrDashboardComponent},
+      {path: 'team', component: AddEmployeeComponent}
       
     ]
   },
