@@ -67,6 +67,15 @@ export class TeamService {
  
   }
 
+  GetAllEmployee(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.Employeeget, { headers: headers });
+ 
+ 
+  }
+
   GetProfile(data: any){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
