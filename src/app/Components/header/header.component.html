@@ -25,7 +25,9 @@
     <ul class="bullet">
         <div class="row">
             <div class="col-sm-11">
-                <li class="my-1 profile"><a>Team</a></li>
+                <li class="my-1 profile"><a  (click)="hidden = !hidden">Team</a></li>
+                <a href="HR/team"><li class="hidden ml-4" *ngIf ="hidden">Employee</li></a>
+                <a href=""><li class="hidden  ml-4" *ngIf ="hidden">Job Seeker</li></a>
                 <li class="my-1"><a>Job</a></li>
                 <li class="my-1"><a>Job Applied</a></li>
             </div>
