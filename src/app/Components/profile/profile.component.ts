@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { TeamService } from 'src/services/team.service';
-import { HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpParams } from '@angular/common/http';
+import { HttpClientModule,HttpHeaders, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpParams } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-profile',
@@ -19,14 +20,16 @@ export class ProfileComponent implements OnInit {
   valid: boolean = false;
   errormassage: boolean = false;
   val: boolean = false;
+  displayPrimarySkill = false;
   skillArray = [];
   secskillArray = [];
   displayEducation=false;
+  otherFileName;
   submitted: boolean;
   email_id;
   sent_data;
   ProfileData;
-
+  ResumeInfo;
   constructor(public TeamService: TeamService,private http: HttpClient,private datePipe: DatePipe) { 
     this.email_id = localStorage.getItem('email');
   }
@@ -34,6 +37,43 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getProfileEmployee();
+    this.getResume();
+  }
+
+  uploadOtherDoc(event: any){
+    const formData = new FormData();
+     this.otherFileName = [];
+     for(var i=0 ;i< event.target.files.length ; i++){
+      this.otherFileName.push(<File>event.target.files[i]);
+     }
+     formData.append('resume', this.otherFileName[0]);
+
+     for (var i = 0; i < this.otherFileName.length; i++) {
+      formData.append('otherDocs', this.otherFileName[i]);
+    }
+
+    this.sent_data = {
+      "id": this.email_id,
+      "date": this.datePipe.transform(this.myDate, 'yyyy-MM-dd')
+    }
+    formData.append('docsInfo', JSON.stringify(this.sent_data));
+    this.http.post('http://localhost:8081/uploadDocuments', formData, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(events => {
+        if (events.type === HttpEventType.UploadProgress) {
+          this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
+          console.log(this.fileUploadProgress);
+        } else if (events.type === HttpEventType.Response) {
+          this.fileUploadProgress = 'Uploading Completed';
+          console.log(events.body);
+
+        }
+
+      })
+      this.getResume();
+
   }
   uploadResume(event: any) {
     this.fileToUpload = <File>event.target.files[0];
@@ -58,8 +98,6 @@ export class ProfileComponent implements OnInit {
         formData.append('resume', file);
         formData.append('docsInfo', JSON.stringify(this.sent_data));
         formData.append('otherDocs', '');
-   
-   debugger;
         this.http.post('http://localhost:8081/uploadDocuments', formData, {
           reportProgress: true,
           observe: 'events'
@@ -75,6 +113,7 @@ export class ProfileComponent implements OnInit {
             }
     
           })
+          this.getResume();
 
       } else {
         this.errormassage = true;
@@ -84,6 +123,36 @@ export class ProfileComponent implements OnInit {
 
 
     }
+  }
+  getResume(){
+    const formData = new FormData();
+    var email = this.email_id;
+    formData.append('id', email);
+    this.TeamService.GetResume(formData).subscribe((res: any) => {
+      this.ResumeInfo =res;
+    })
+      
+  }
+
+  downloadResume(){
+      var filepath = this.ResumeInfo.resumePath;
+      var request = {
+        downloadDocPath: filepath
+      }
+     
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+       });
+      this.http.post("http://localhost:8081/downloadCandidateDocument", request, { headers: headers, responseType: 'blob' }).subscribe((response: any) => {
+       
+      saveAs(response, this.ResumeInfo.resumePath.split('/')[this.ResumeInfo.resumePath.split('/').length-1])
+      });
+  
+    
+  }
+
+  PrimarySkill(){
+    this.displayPrimarySkill = true;
   }
 
   getProfileEmployee(){

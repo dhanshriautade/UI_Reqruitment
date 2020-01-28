@@ -57,6 +57,7 @@ import {DialogModule} from 'primeng/dialog';
     AngularFontAwesomeModule,
     FormsModule,
      ReactiveFormsModule,
+     DialogModule,
     BrowserAnimationsModule,
     ConfirmDialogModule,
     CardModule,

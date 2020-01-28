@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -83,7 +82,19 @@ export class TeamService {
     return this.http.post(environment.getprofile, data, { headers: headers });
   
   }
+  GetResume(formData){
+  
+    return this.http.post(environment.GetResume, formData);
+  
+  }
 
+  // downloadResume(data){
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //    });
+  //   return this.http.post(environment.downloadResume , data, { headers: headers });
+   
+  // }
 
   forgot(data: any){
     let headers = new HttpHeaders({

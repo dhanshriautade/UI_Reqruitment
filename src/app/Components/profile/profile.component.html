@@ -109,7 +109,8 @@
                         Recruiters generally do not look at profiles without resumes.</div>
                     <div class="ml-3 mt-3">
 
-                        <span style="color: #4A90E2;"><i class="pi pi-download ml-5 mt-4"></i></span>
+                        <span style="color: #4A90E2;">{{ResumeInfo?.resumePath?.split('/')[this.ResumeInfo?.resumePath?.split('/').length-1]}}
+                          -  Uploaded on  - {{ResumeInfo?.date}}  <i (click)="downloadResume()" class="pi pi-download ml-5 mt-4"></i></span>
                            
                         <div class=" row">
                           <div class="row my-1">
@@ -128,6 +129,31 @@
                     </div>
 
                 </div>
+                <div class="card my-3">
+                        <p class="header my-2">Attach Other Document</p>
+                      
+                        <div class="ml-3">
+    
+                            <span style="color: #4A90E2;">{{ResumeInfo?.resumePath?.split('/')[this.ResumeInfo?.resumePath  ?.split('/').length-1]}}
+                              -  Uploaded on  - {{ResumeInfo?.date}}  <i (click)="downloadResume()" class="pi pi-download ml-5 mt-4"></i></span>
+                               
+                            <div class=" row">
+                              <div class="row my-1">
+                                    <input type="file" class=" btn-file-upload1 form-control"
+                                    value="Upload Resume" placeholder="" (change)="uploadOtherDoc($event)" multiple
+                                   />
+                              </div>
+                                   <div class="row my-3">
+                                   <div class="attach">Supported Formats: doc, docx,pdf, upto 2 MB</div>
+                         </div>
+                                 </div>
+    
+                            <div class="error" *ngIf="errormassage">Invalid file type or size </div>
+    
+    
+                        </div>
+    
+                    </div>
 
                 <div class="row">
                     <div class=" ml-3 mt-3 card cards">
@@ -140,18 +166,23 @@
                 </div>
                 <div class="row">
                     <div class=" ml-3 mt-3 card cards">
-                        <p class="mt-3 mr-3 header">Key Skills
-                            <span class="pencil"><i class="pi pi-pencil mt-2 ml-2"></i></span>
+                        <p class="mt-3 mr-3 header" >Key Skills
+                            <span class="pencil" (click)="PrimarySkill()"><i class="pi pi-pencil mt-2 ml-2"></i></span>
 
-                            <!-- <div class="clip ml-5 my-2">
-                            <span class="left_chip my-2 ml-1" *ngFor="let primarySkill of this.skillArray;index as i">
-                                {{primarySkill}}
-                                <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeSkill(i)"></i>
-                            </span>
-                        </div> -->
                     </div>
 
                 </div>
+                <p-dialog header="Title"  [style]="{width: '50vw'}" [(visible)]="displayPrimarySkill">
+                       Add the your Primary Skill
+                       <div class="row">
+                       <span>Skill</span>
+                       <div class="my-3 border">
+                           <div class="slice"> kjdkfdjfkjf</div>
+                           
+                       </div>
+                       </div>
+                </p-dialog>
+                    
 
 
 
