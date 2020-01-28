@@ -50,6 +50,7 @@ import {DialogModule} from 'primeng/dialog';
     AddEmployeeComponent
   ],
   imports: [
+    DialogModule,
     OverlayPanelModule,
     BrowserModule,
     AppRoutingModule,

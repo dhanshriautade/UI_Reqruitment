@@ -1,86 +1,238 @@
-<!-- <div class="Dashboard">
-    <div class="row head">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 mt-4">
-            <div class="row">
-                <span class="search">Search Jobs</span>
-            </div>
-            <div class="row">
-                <input type="text" placeholder="Search Employee by name,email id..." class="box">
-                <button type="submit" class="btn-primary btn1">Search</button>
-            </div>
-        </div>
-        <div class="col-sm-3"></div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-3 employee"><span>Employee Details:</span></div>
-        <div class="col-sm-8"></div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-sm-4">
-        <div class="card card1">
-            <div class="row mt-2">
-                <div class="col-sm-5"> <span class="name">Employee Name :</span></div>
-                <div class="col-sm-4"> <span class="details">Rani Giramkar</span></div>
-                <div class="col-sm-1"> <i class="pi pi-pencil"></i></div>
-                <div class="col-sm-2"><i class="pi pi-trash"></i></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-5"> <span class="name">Skills :</span></div>
-                <div class="col-sm-7"> <span class="details">Java,HTML</span></div>
-            </div>
-            <div class="row mt-1 ">
-                <div class="col-sm-5"> <span class="name">Email ID :</span></div>
-                <div class="col-sm-7"> <span class="details">ranigiramkar@gmail.com</span></div>
-            </div>
-            <div class="row mt-1 ">
-                <div class="col-sm-5"> <span class="name">Contact :</span></div>
-                <div class="col-sm-7"> <span class="details">8788294113</span></div>
-            </div>
-          
-        </div>
-    </div>
-</div>
-</div> -->
-
 <div class="Dashboard">
     <div class="row head">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 mt-4">
-            <div class="row">
-                <span class="search">Search Jobs</span>
-            </div>
-            <div class="row">
-                <input type="text" placeholder="Search Employee by name,email id..." class="box">
-                <button type="submit" class="btn-primary btn1">Search</button>
-            </div>
-        </div>
-        <div class="col-sm-3"></div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 mt-4">
+    <div class="row">
+    <span class="search">Search Jobs</span>
     </div>
-    <div class="row my-3 mt-3 ml-5 mr-5">
-        <div class="col-md-3 col-sm-4 col-lg-4 col-12 my-3" *ngFor="let dataone of infodetailemployee ">
-            <div class="role-card card-border">
-
-                <div class="row mt-2">
-                    <div class="col-sm-5"> <span class="name">Employee Name :</span></div>
-                    <div class="col-sm-4"> <span class="details">{{dataone?.firstName}} {{dataone?.lastName}}</span></div>
-                    <div class="col-sm-1"> <i class="pi pi-pencil"></i></div>
-                    <div class="col-sm-2"><i class="pi pi-trash"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-5"> <span class="name">Skills :</span></div>
-                    <div class="col-sm-7"> <span class="details">Java,HTML</span></div>
-                </div>
-                <div class="row mt-1 ">
-                    <div class="col-sm-5"> <span class="name">Email ID :</span></div>
-                    <div class="col-sm-7"> <span class="details">{{dataone?.email}}</span></div>
-                </div>
-                <div class="row mt-1 ">
-                    <div class="col-sm-5"> <span class="name">Contact :</span></div>
-                    <div class="col-sm-7"> <span class="details">{{dataone?.phoneNo}}</span></div>
-                </div>
-            </div>
-        </div>
+    <div class="row">
+    <input type="text" placeholder="Search Employee by name,email id..." class="box">
+    <button type="submit" class="btn-primary btn1">Search</button>
     </div>
-</div>
+    </div>
+    <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+    <div class="col-sm-10"></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-primary info my-3 ml-4" (click)="PersonalInfo()">Add
+    Employee</button></div>
+    </div>
+    <div class="row">
+    <p-dialog header='' [(visible)]="display" [style]="{width: '55%'}">
+    <p-header class="dialogHeader">
+    <div class="d-flex">
+    <div class="my-2 mr-auto">
+    <img src="../../../assets/user big.png" alt="">
+    <span class="ml-2 mt-2 report">
+    Add Employee</span>
+    </div>
+    <div class="">
+    <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+    (click)="removeSkill()"></i>
+    </div>
+    </div>
+    </p-header>
+    <form class="group grp_form " [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+    <div class="col-sm-8">
+    <label class="mt-3 inform">Personal Information</label>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-2 field">
+    <label class="nam_e">First Name :</label>
+    </div>
+    <div class="col-sm-4 ">
+    <input type="text" autocomplete="off" class="form-control text-centre box"
+    placeholder="first name" name="firstname" formControlName="firstName"
+    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+    <div *ngIf="f.firstName.errors.required">
+    First Name is required</div>
+    <div *ngIf="f.firstName.errors.pattern">
+    Space Not Allowed</div>
+    </div>
+    </div>
+    <div class="col-sm-2 field">
+    <label class="nam_e">Last Name :</label>
+    </div>
+    <div class="col-sm-4 ">
+    <input type="text" autocomplete="off" class="form-control text-centre box"
+    placeholder="last name" name="lastname" formControlName="lastName"
+    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+    <div *ngIf="f.lastName.errors.required">
+    Last Name is required</div>
+    <div *ngIf="f.lastName.errors.pattern">
+    Space Not Allowed</div>
+    </div>
+    </div>
+    </div>
+    <div class="row my-2">
+    <div class="col-sm-2 field">
+    <label class="nam_e">Email :</label>
+    </div>
+    <div class="col-sm-4 ">
+    <input type="text" autocomplete="off" class="form-control text-centre box"
+    placeholder="xyz@gmail.com" name="email" formControlName="email"
+    [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+    <div *ngIf="f.email.errors.required">
+    Email required</div>
+    
+    </div>
+    </div>
+    <div class="col-sm-2 field">
+    <label class="nam_e">DOB :</label>
+    </div>
+    <div class="col-sm-4">
+    <input type="date" autocomplete="off" class="form-control text-centre box1" placeholder=""
+    name="DOB" formControlName="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+    <div *ngIf="f.dob.errors.required">Date
+    of birth required</div>
+    </div>
+    </div>
+    </div>
+    <div class="row ">
+    <div class="col-sm-2 field">
+    <label class="nam_e">Cell No. :</label>
+    </div>
+    <div class="col-sm-4 ">
+    <input type="text" autocomplete="off" class="form-control text-centre box" placeholder=""
+    name="mobile" formControlName="phoneNo"
+    [ngClass]="{ 'is-invalid': submitted && f.phoneNo.errors }">
+    <div *ngIf="submitted && f.phoneNo.errors" class="invalid-feedback">
+    <div *ngIf="f.phoneNo.errors.required">Mobile No. required</div>
+    </div>
+    </div>
+    <div class="col-sm-2 field">
+    <label class="nam_e">Title :</label>
+    </div>
+    <div class="col-sm-4">
+    <input type="text" autocomplete="off" class="form-control text-centre box" placeholder=""
+    name="title" formControlName="title"
+    [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+    <div *ngIf="f.title.errors.required">
+    Title required</div>
+    
+    </div>
+    </div>
+    </div>
+    <div class="row my-2">
+    <div class="col-sm-2 field">
+    <label class="nam_e">Department :</label>
+    </div>
+    <div class="col-sm-4 ">
+    <select id="department" class="form-control code skill box" size="0" name="department"
+    formControlName='department' (change)="getDesignationList()">
+    
+    <option value="" disable>Select
+    department</option>
+    <option>Software</option>
+    <option>Embedded</option>
+    <option>Mechanical</option>
+    </select>
+    
+    </div>
+    <div class="col-sm-2 field">
+    <label class="nam_e">Designation :</label>
+    </div>
+    <div class="col-sm-4 ">
+    <select id="designation" class="form-control code skill box" size="0" name="designation">
+    <option [value]="design" *ngFor="let design of designationList">
+    {{design}}</option>
+    
+    </select>
+    </div>
+    </div>
+    <label class="inform my-2">Identity proof</label>
+    <div class="row my-1">
+    <div class="col-sm-2">
+    <label class="nam_e">Select Id Proof :</label>
+    </div>
+    <div class="col-sm-4">
+    <select id="user_time_zone"
+    class="form-control code skill box"
+    size="0" placeholder="Area Code"
+    name="skill"
+    formControlName='ID'>
+    
+    <option value="" disable>Select
+    ID type</option>
+    <option>Adhar Card</option>
+    <option>Passport</option>
+    <option>PAN Card</option>
+    <option>Driving Lincese
+    </option>
+    <option>Voter ID</option>
+    </select>
+    </div>
+    <div class="col-sm-6">
+    <div class="row">
+    <label class="nam_e"> ID
+    No.:</label>
+    <input type="text" autocomplete="off" class="form-control idno" placeholder="***********"
+    name="id" formControlName="idno">
+    <button type="button" class="btn upload plus">
+    <div class="pluss" (click)="addDocument()">
+    +</div>
+    </button>
+    <span class="mt-2 option">Add
+    more id proof
+    (optional)
+    </span>
+    </div>
+    </div>
+    
+    </div>
+    <div class="row">
+    <div class="clip ml-5 my-2">
+    <span class="left_chip my-2 ml-1"
+    *ngFor="let doc of this.docArray;index as i">
+    {{doc}} <i class=" tick pi pi-times mt-2 "
+    aria-hidden="true"
+    (click)="removeDoc(i)"></i>
+    </span></div>
+    </div>
+    <hr>
+    <div class="row">
+    <div class="col-sm-7"></div>
+    <div class="col-sm-5">
+    <button type="submit" class="btn btn-primary save">
+    Add
+    Employee</button>
+    </div>
+    </div>
+    </form>
+    </p-dialog>
+    </div>
+    
+    <div class="row my-3 mt-1 ml-5 mr-5">
+    <div class="col-md-3 col-sm-4 col-lg-4 col-12 my-3" *ngFor="let dataone of infodetailemployee ">
+    <div class="role-card card-border">
+    
+    <div class="row mt-2">
+    <div class="col-sm-5"> <span class="name">Employee Name :</span></div>
+    <div class="col-sm-4"> <span class="details">{{dataone?.firstName}} {{dataone?.lastName}}</span>
+    </div>
+    <div class="col-sm-1"> <i class="pi pi-pencil" (click)="EditEmployee(i)"></i></div>
+    <div class="col-sm-2"><i class="pi pi-trash" (click)="DeleteEmployee(user?.email)"></i></div>
+    </div>
+    <div class="row">
+    <div class="col-sm-5"> <span class="name">Skills :</span></div>
+    <div class="col-sm-7"> <span class="details">Java,HTML</span></div>
+    </div>
+    <div class="row mt-1 ">
+    <div class="col-sm-5"> <span class="name">Email ID :</span></div>
+    <div class="col-sm-7"> <span class="details">{{dataone?.email}}</span></div>
+    </div>
+    <div class="row mt-1 ">
+    <div class="col-sm-5"> <span class="name">Contact :</span></div>
+    <div class="col-sm-7"> <span class="details">{{dataone?.phoneNo}}</span></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
