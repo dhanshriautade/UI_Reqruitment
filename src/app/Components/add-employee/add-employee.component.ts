@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/services/team.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { EmployeeService } from 'src/services/employee.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
     selector: 'app-add-employee',
     templateUrl: './add-employee.component.html',
@@ -25,7 +26,7 @@ export class AddEmployeeComponent implements OnInit {
     employeeForm = new FormGroup({
     });
     departmentsAndDesignations: any = [];
-    constructor(public TeamService: TeamService, private formBuilder: FormBuilder, public EmployeeService: EmployeeService) {
+    constructor(public TeamService: TeamService, private toastr: ToastrService, private formBuilder: FormBuilder, public EmployeeService: EmployeeService) {
         this.departmentsAndDesignations = [['Software', ["Android", "IOS", "Java"]],
         ["Embedded", ["Embedded department 1", "Embedded department 2", "Embedded department 3"]],
         ["Mechanical", ["Mechanical department 1", "Mechanical department 2", "Mechanical department 3"]]];
@@ -54,7 +55,8 @@ export class AddEmployeeComponent implements OnInit {
         }
     }
     EditEmployee(i: any) {
-        console.log('edit', this.infodetail[i]);
+        console.log('edit', this.infodetail[i].designation);
+
         this.action = ''
         this.display = true;
         this.editStatus = true;
@@ -63,7 +65,8 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.get('title').setValue(this.infodetail[i].title);
         this.employeeForm.get('email').setValue(this.infodetail[i].email);
         this.employeeForm.get('phoneNo').setValue(this.infodetail[i].phoneNo);
-        // this.employeeForm.get('phone').setValue(this.infodetail[i].contact);
+        this.employeeForm.get('department').setValue(this.infodetail[i].department);
+        this.employeeForm.get('designation').setValue(this.infodetail[i].designation);
         this.employeeForm.get('dob').setValue(this.infodetail[i].dob);
         this.employeeForm.get('passport').setValue(this.infodetail[i].passport);
         this.employeeForm.get('pan').setValue(this.infodetail[i].pan);
@@ -72,7 +75,7 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.get('drivingLicence').setValue(this.infodetail[i].drivingLicence);
     }
     DeleteEmployee(email: any) {
-        debugger;
+       
         const emailData =
         {
             "email": email
@@ -122,25 +125,42 @@ export class AddEmployeeComponent implements OnInit {
             "adhar": this.employeeForm.value.adhar,
             "drivingLicence": this.employeeForm.value.drivingLicence,
             "voterId": this.employeeForm.value.voterId,
+            "department": this.employeeForm.value.department,
+            "designation": this.employeeForm.value.designation,
             "status": "1"
         };
-        if (action == 'Save') {
-            this.EmployeeService.AddEmployee(JSON.stringify(this.data)).subscribe(res => {
+        debugger;
+        if (action == 'Save'){
+           
+            this.EmployeeService.AddEmployee(JSON.stringify(this.data)).subscribe((res:any) => {
+                if(res.responseMessage === 'PhoneNo already exists'){
+                this.toastr.success('Phone Number Already Exists !!!');
+                return 0;
+                } else if(res.responseMessage === 'Success'){
+                    this.toastr.success('Successfully Added Employee !!!');
+                }
                 this.submitted = false;
                 this.employeeForm.reset();
                 this.docArray = [];
+                this.getAllEmployeesList();
+                this.display = false;
+                this.employeeForm.reset();
             })
         }
         else {
-            this.EmployeeService.UpdateEmployee(JSON.stringify(this.data)).subscribe(res => {
+            this.EmployeeService.UpdateEmployee(JSON.stringify(this.data)).subscribe((res:any) => {
+                  if(res.responseMessage === 'Success'){
+                        this.toastr.success('Successfully Update Employee !!!');
+                    }
                 this.submitted = false;
                 this.employeeForm.reset();
                 this.docArray = [];
+                this.display = false;
+                this.getAllEmployeesList();
             })
         }
-        this.employeeForm.reset();
-        this.display = false;
-        this.getAllEmployeesList();
+       
+       
     }
     removeSkill() {
         this.display = false;

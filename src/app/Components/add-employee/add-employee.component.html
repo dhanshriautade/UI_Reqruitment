@@ -3,7 +3,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6 mt-4">
             <div class="row">
-                <span class="search">Search Jobs</span>
+                <span class="search">Search Employee</span>
             </div>
             <div class="row">
                 <input type="text" [(ngModel)]="term" placeholder="Search Employee by name,email id..." class="box">
@@ -139,9 +139,9 @@
                         <label class="nam_e">Designation :</label>
                     </div>
                     <div class="col-sm-4 ">
-                        <select id="designation" class="form-control code skill box" size="0" name="designation">
-                            <option [value]="design" *ngFor="let design of designationList">
-                                {{design}}</option>
+                        <select  class="form-control code skill box" size="0" formControlName="designation">
+                            <option [value]="designation" *ngFor="let designation of designationList">
+                                {{designation}}</option>
 
                         </select>
                     </div>
@@ -210,8 +210,10 @@
                     <div class="col-sm-5"> <span class="name">Employee Name :</span></div>
                     <div class="col-sm-4"> <span class="details">{{dataone?.firstName}} {{dataone?.lastName}}</span>
                     </div>
-                    <div class="col-sm-1"> <i class="pi pi-pencil mr-2" (click)="EditEmployee(i)"></i></div>
-                    <div class="col-sm-2"><i class="pi pi-trash ml-2" (click)="DeleteEmployee(dataone?.email)"></i></div>
+                    <div class="col-sm-3"> <i class="pi pi-pencil " (click)="EditEmployee(i)"></i>
+                        <i class="pi pi-trash" (click)="DeleteEmployee(dataone?.email)"></i>
+                    </div>
+                    <!-- <div class="col-sm-2"></i></div> -->
                 </div>
                 <div class="row">
                     <div class="col-sm-5"> <span class="name">Skills :</span></div>
