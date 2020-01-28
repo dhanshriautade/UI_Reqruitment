@@ -163,7 +163,16 @@ export class AddEmployeeComponent implements OnInit {
        
     }
     removeSkill() {
+        debugger
+        if (this.action == 'Save'){
+             this.employeeForm.reset();
+        }
+        else if(this.action == ''){ 
+            this.action = 'Save';
+            this.employeeForm.reset();
+        }
         this.display = false;
+
     }
     addDocument() {
         this.docArray.push(this.employeeForm.get('ID').value + this.employeeForm.get('idno').value)
