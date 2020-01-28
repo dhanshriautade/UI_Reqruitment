@@ -83,7 +83,19 @@ export class TeamService {
     return this.http.post(environment.getprofile, data, { headers: headers });
   
   }
+  GetResume(formData){
+  
+    return this.http.post(environment.GetResume, formData);
+  
+  }
 
+  downloadResume(data){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.downloadResume , data, { headers: headers });
+   
+  }
 
   forgot(data: any){
     let headers = new HttpHeaders({

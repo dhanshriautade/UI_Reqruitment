@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   email_id;
   sent_data;
   ProfileData;
-
+  ResumeInfo;
   constructor(public TeamService: TeamService,private http: HttpClient,private datePipe: DatePipe) { 
     this.email_id = localStorage.getItem('email');
   }
@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getProfileEmployee();
+    this.getResume();
   }
   uploadResume(event: any) {
     this.fileToUpload = <File>event.target.files[0];
@@ -58,8 +59,6 @@ export class ProfileComponent implements OnInit {
         formData.append('resume', file);
         formData.append('docsInfo', JSON.stringify(this.sent_data));
         formData.append('otherDocs', '');
-   
-   debugger;
         this.http.post('http://localhost:8081/uploadDocuments', formData, {
           reportProgress: true,
           observe: 'events'
@@ -75,6 +74,7 @@ export class ProfileComponent implements OnInit {
             }
     
           })
+          this.getResume();
 
       } else {
         this.errormassage = true;
@@ -84,6 +84,25 @@ export class ProfileComponent implements OnInit {
 
 
     }
+  }
+  getResume(){
+    const formData = new FormData();
+    var email = this.email_id;
+    formData.append('id', email);
+    this.TeamService.GetResume(formData).subscribe((res: any) => {
+      this.ResumeInfo =res;
+    })
+      
+  }
+
+  downloadResume(){
+    var filepath = this.ResumeInfo.documentPaths[0]
+      var data = {
+        documentPaths : [ this.ResumeInfo.documentPaths[0]]
+      }
+     this.TeamService.downloadResume(data).subscribe((res: any) => {
+      this.ResumeInfo =res;
+    })
   }
 
   getProfileEmployee(){
