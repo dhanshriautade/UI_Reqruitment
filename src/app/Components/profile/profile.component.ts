@@ -17,9 +17,11 @@ export class ProfileComponent implements OnInit {
   selectedFile = null;
   myDate = new Date();
   fileToUpload: File = null;
+  otherDoc;
   valid: boolean = false;
   errormassage: boolean = false;
   val: boolean = false;
+  otherDocPathName;
   displayPrimarySkill = false;
   skillArray = [];
   secskillArray = [];
@@ -130,6 +132,10 @@ export class ProfileComponent implements OnInit {
     formData.append('id', email);
     this.TeamService.GetResume(formData).subscribe((res: any) => {
       this.ResumeInfo =res;
+
+      this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
+
+
     })
       
   }
