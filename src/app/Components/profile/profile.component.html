@@ -170,38 +170,134 @@
 
                 </div>
 
+              
                 <div class="row">
                     <div class=" ml-3 mt-3 card cards">
-                        <p class="header">Resume Headline
-                            <span class="pencil"><i class="pi pi-pencil mt-2 ml-2"></i></span>
-                        </p>
-                        <div class="ml-3 mb-3 attach">Jobseeker with B.Tech / B.E. in Computers currently living in pune
-                        </div>
+                    <div class="row mt-4">
+                    <div class="col-sm-8">
+                    <p class="header ml-3">Primary Skills <span class="pencil" (click)="addPriSkill()">
+                        <i class="pi pi-pencil mt-2 ml-2"></i></span></p>
                     </div>
-                </div>
-               
-             
-                
-                <div class="row">
-                    <div class=" ml-3 mt-3 card cards">
-                        <p class="mt-3 mr-3 header">Key Skills
-                            <span class="pencil" (click)="PrimarySkill()"><i class="pi pi-pencil mt-2 ml-2"></i></span>
-
+                    <div class="col-sm-4"></div>
+                    <div class="displayskill ml-4 mb-4">
+                       <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.primarySkill">  {{Skill}} </span>
                     </div>
-
-                </div>
-                <p-dialog header="Title" [style]="{width: '50vw'}" [(visible)]="displayPrimarySkill">
-                    Add the your Primary Skill
+                    </div>
+                    <p-dialog [visible]="displayPriSkill" [style]="{width: '50%'}">
+                    <p-header>
+                    <span>Add Skill</span>
+                    </p-header>
+                      <div class="row mb-3">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                    <div><span class="attach ">Tell recruiters what you know or what you are known
+                    for e.g. Direct Marketing, Oracle,
+                    Java etc. We will send you job recommendations based on these skills.
+                    Each skill is separated by a comma. Max limit is 250 character(s)
+                    including
+                    commas.</span></div>
+                    
+                    </div>
+                    <div class="col-sm-1"></div>
+                    </div>
+                    <div class="row my-2 mt-3">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                    <div><span class="clipskill my-2 ml-1"
+                        *ngFor="let Skill of ProfileData?.primarySkill;let i=index">
+                    {{Skill}}
+                    <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+                    (click)="removePriSkill(i)"></i>
+                    </span></div>
+                    <div class="row my-2">
+                        <input type="text"  [(ngModel)]="PrimarySkillValue"
+                    placeholder="Enter your area of expertise/specialization"
+                    name="secskill"class="form-control my-4"
+                    autocomplete="off">
+                   </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    </div>
+                    
                     <div class="row">
-                        <span>Skill</span>
-                        <div class="my-3 border">
-                            <div class="slice"> kjdkfdjfkjf</div>
-
-                        </div>
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-6">
+                    <button type="button"  (click)="cancelPrimarySkill()" class="btn button my-3 ml-4">Cancel </button>
+                    <button type="button"  (click)="AddPrimarySkill()" class="btn btn-primary buttons my-3 ml-4">Save </button>
+                    
                     </div>
-                </p-dialog>
-
-
+                    <div class="col-sm-1"></div>
+                    </div>
+                   
+                    </p-dialog>
+                    </div>
+                    
+                    </div>
+                
+                    <div class="row">
+                            <div class=" ml-3 mt-3 card cards">
+                            <div class="row mt-4">
+                            <div class="col-sm-8">
+                            <p class="header ml-3">Secondary Skills <span class="pencil" (click)="addSecSkill()">
+                                <i class="pi pi-pencil mt-2 ml-2"></i></span></p>
+                            </div>
+                            <div class="col-sm-4"></div>
+                            <div class="displayskill ml-4 mb-4">
+                               <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.secondarySkill">  {{Skill}} </span>
+                            </div>
+                            </div>
+                            <p-dialog [visible]="displaySecSkill" [style]="{width: '50%'}">
+                            <p-header>
+                            <span>Add Skill</span>
+                            </p-header>
+                              <div class="row mb-3">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                            <div><span class="attach ">Tell recruiters what you know or what you are known
+                            for e.g. Direct Marketing, Oracle,
+                            Java etc. We will send you job recommendations based on these skills.
+                            Each skill is separated by a comma. Max limit is 250 character(s)
+                            including
+                            commas.</span></div>
+                            
+                            </div>
+                            <div class="col-sm-1"></div>
+                            </div>
+                            <div class="row my-2 mt-3">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                            <div><span class="clipskill my-2 ml-1"
+                                *ngFor="let Skill of ProfileData?.secondarySkill;let i=index">
+                            {{Skill}}
+                            <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+                            (click)="removesecSkill(i)"></i>
+                            </span></div>
+                            <div class="row my-2">
+                                <input type="text"  [(ngModel)]="secondarySkillValue"
+                            placeholder="Enter your area of expertise/specialization"
+                            name="secskill"class="form-control my-4"
+                            autocomplete="off">
+                           </div>
+                            </div>
+                            <div class="col-sm-1"></div>
+                            </div>
+                            
+                            <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-6">
+                            <button type="button"  (click)="cancelSecondarySkill()" class="btn button my-3 ml-4">Cancel </button>
+                            <button type="button"  (click)="AddSecondarySkill()" class="btn btn-primary buttons my-3 ml-4">Save </button>
+                            
+                            </div>
+                            <div class="col-sm-1"></div>
+                            </div>
+                           
+                            </p-dialog>
+                            </div>
+                            
+                            </div>
+                        
+             
 
 
                 <div class="row">

@@ -27,13 +27,11 @@ export class ApplyjobComponent implements OnInit {
     this.data = {
     
         "emailId": localStorage.getItem('email'),
-        "jobId": localStorage.getItem('ViewJobId')
+        "jobId": localStorage.getItem('ApplyJobId')
     
     }
 
-    debugger;
-
-    this.TeamService.ApplyJob(this.data).subscribe(res => {
+    this.TeamService.ApplyJob(JSON.stringify(this.data)).subscribe(res => {
       console.log('job', res);
     })
   }

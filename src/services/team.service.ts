@@ -36,7 +36,19 @@ export class TeamService {
    });
   return this.http.post(environment.ApplyJob, data, { headers: headers });
   }
+  UpdateSecondarySkill(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.UpdateSecondarySkill, data, { headers: headers });
+    }
 
+  UpdatePrimarySkill(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.UpdatePrimarySkill, data, { headers: headers });
+    }
 
   Login(data: any){
     let headers = new HttpHeaders({
