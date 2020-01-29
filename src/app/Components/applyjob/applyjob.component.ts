@@ -7,20 +7,36 @@ import { TeamService } from 'src/services/team.service';
   styleUrls: ['./applyjob.component.scss']
 })
 export class ApplyjobComponent implements OnInit {
-data;
-viewalljobid;
-dataone;
-  constructor(public TeamService: TeamService) { 
+  data;
+  viewalljobid;
+  dataone;
+  constructor(public TeamService: TeamService) {
     this.viewalljobid = localStorage.getItem('ViewJobId')
 
     this.TeamService.Getalljob().subscribe(res => {
-       console.log(res[ this.viewalljobid]);
       this.data = res;
-      console.log(this.data.length);
-     this.dataone=(res[ this.viewalljobid]);
-     })
+      this.dataone = (res[this.viewalljobid]);
+      localStorage.setItem('ApplyJobId',  this.dataone.jobId);
+
+    })
   }
 
+
+  ApplyJob() {
+   
+    this.data = {
+    
+        "emailId": localStorage.getItem('email'),
+        "jobId": localStorage.getItem('ViewJobId')
+    
+    }
+
+    debugger;
+
+    this.TeamService.ApplyJob(this.data).subscribe(res => {
+      console.log('job', res);
+    })
+  }
 
   ngOnInit() {
   }

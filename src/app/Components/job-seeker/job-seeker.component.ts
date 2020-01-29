@@ -20,7 +20,7 @@ export class JobSeekerComponent implements OnInit {
 
 
   viewJobId(index:any){
-    console.log(index);
+    // console.log(index);
     localStorage.setItem('ViewJobId', index);
     this.router.navigateByUrl('/User/ApplyJob');
 

@@ -30,6 +30,14 @@ export class TeamService {
   //   return this.http.get(environment.getnotification, { headers: headers });
 
   // }
+  ApplyJob(data: any){
+  let headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+   });
+  return this.http.post(environment.ApplyJob, data, { headers: headers });
+  }
+
+
   Login(data: any){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'

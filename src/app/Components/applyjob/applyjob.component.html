@@ -40,8 +40,10 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-sm-6"> <button type="submit" class=" btn1">Save</button></div>
-                            <div class="col-sm-6"> <button type="submit" class="btn-primary btn2">Apply</button></div>
+                            <div class="col-sm-6"> <button  class=" btn1">Save</button></div>
+                            <div class="col-sm-6">
+                                 <button (click)="ApplyJob()">Apply</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,6 +52,7 @@
                 <div class="row mt-4">
                     <span class="ml-5 job">Job Description</span>
                 </div>
+
                 <div class="row mt-2">
                     <span class="ml-5 description">Job description</span>
                 </div>
@@ -90,7 +93,7 @@
                     </span>
                 </div>
                 <div class="row mb-3 ml-4">
-                     <span class="ml-2 mt-3 skill" *ngFor="let data of dataone.skills">{{data}}</span>
+                     <span class="ml-2 mt-3 skill" *ngFor="let data of dataone?.skills">{{data}}</span>
                 </div>
                
             </div>
