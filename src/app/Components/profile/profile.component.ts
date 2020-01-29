@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
     for (var i = 0; i < event.target.files.length; i++) {
       this.otherFileName.push(<File>event.target.files[i]);
     }
-    formData.append('resume', this.otherFileName[0]);
+    formData.append('resume', '');
 
     for (var i = 0; i < this.otherFileName.length; i++) {
       formData.append('otherDocs', this.otherFileName[i]);
@@ -163,6 +163,23 @@ export class ProfileComponent implements OnInit {
     this.http.post("http://localhost:8081/downloadCandidateDocument", request, { headers: headers, responseType: 'blob' }).subscribe((response: any) => {
 
       saveAs(response, this.ResumeInfo.resumePath.split('/')[this.ResumeInfo.resumePath.split('/').length - 1])
+    });
+
+
+  }
+
+  downloadOtherDoc(dataone) {
+    var filepath = dataone;
+    var request = {
+      downloadDocPath: filepath
+    }
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    this.http.post("http://localhost:8081/downloadCandidateDocument", request, { headers: headers, responseType: 'blob' }).subscribe((response: any) => {
+
+      saveAs(response, filepath.split('/')[filepath.split('/').length - 1])
     });
 
 
