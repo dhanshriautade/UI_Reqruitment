@@ -15,6 +15,7 @@ import { saveAs } from 'file-saver';
 export class ProfileComponent implements OnInit {
   fileUploadProgress: string = null;
   selectedFile = null;
+  displayp=false
   myDate = new Date();
   fileToUpload: File = null;
   otherDoc;
@@ -185,7 +186,13 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  PrimarySkill() {
+  EditEmployee(){
+    this.displayp=true;
+  }
+  removeWindow(){
+    this.displayp=false
+  }
+  PrimarySkill(){
     this.displayPrimarySkill = true;
   }
 

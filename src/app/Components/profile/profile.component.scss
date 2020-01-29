@@ -193,8 +193,30 @@ color: white;
     transition: .2s ease-out;
     cursor: pointer;
 }
+<<<<<<< HEAD
 
 .clipskill{
     padding: 10px;    
     background-color: #8080802e;
 }
+=======
+:host ::ng-deep .ui-dialog-titlebar-icon{
+    display: none !important;
+  }
+  .nam_e{
+      text-align: end;
+      font-weight: bold;
+  }
+  :host ::ng-deep .ui-dialog-resizable .ui-dialog-content{
+    overflow-x: hidden;
+  }
+  .info{
+      color: gray;
+  }
+  .job{
+      float: right;
+  }
+  .tag{
+      font-size: small;
+  }
+>>>>>>> rani_dev

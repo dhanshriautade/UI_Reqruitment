@@ -1,1 +1,256 @@
-<p>job works!</p>
+<div class="Dashboard">
+    <div class="card_size">
+        <div class="row head my-3">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 mt-4">
+                <div class="row">
+                    <span class="search">Search Jobs</span>
+                </div>
+                <div class="row mb-4">
+                    <input type="text" placeholder="Search Jobs by Skills,Designation..." class="box">
+                    <button type="submit" class="btn-primary btn1">Search</button>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-10"></div>
+            <div class="col-sm-2"><button type="button" class="btn btn-primary job" (click)="createjob()">Create
+                    Job</button></div>
+        </div>
+        <div class="row centered">
+            <p-dialog [(visible)]="display" [style]="{width: '60%'}" class="abc" class="aa">
+                <p-header class="dialogHeader mt-2">
+                    <img class="imge" src="../../../assets/logo/Create Job.png" alt="">
+                    <span class="ml-2 mt-2 report">Create Job</span>
+                    <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeWindow()"></i>
+                </p-header>
+                <form class="group grp_form" [formGroup]="createJobForm" (ngSubmit)="onSubmit()">
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label>Job ID :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="text-primary">JVL0145</span>
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Designation :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="designation">
+
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label>Experience:</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+
+                                <input type="text" autocomplete="off" class="form-control text-centre exp ml-3"
+                                    placeholder="00" name="exp" formControlName="experienceInYears">
+                                <span class="ml-1 mt-2">Yrs</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Rel. Experience :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <input type="text" autocomplete="off" class="form-control text-centre exp ml-3"
+                                    placeholder="00" name="exp" formControlName="relevantExpInYears">
+                                <span class="ml-1 mt-2">Yrs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label>Package:</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <input type="text" autocomplete="off" class="form-control text-centre exp ml-3"
+                                            placeholder="0.00" name="minpackage" formControlName="minPackage">
+                                        <span class="ml-1 mt-2">to</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <input type="text" autocomplete="off" class="form-control text-centre exp"
+                                            placeholder="0.00" name="maxpackage" formControlName="maxPackage">
+                                        <span class="ml-1 mt-2">LPA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Department :</label>
+                        </div>
+                        <div class="col-sm-4 ">
+                            <select class="dept" name="department" formControlName="department">
+                                <option disabled="true" display="true">Select</option>
+                                <option *ngFor="let n of deptartment" [value]="n.dept">{{n.dept}}</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label>Status :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1"
+                                placeholder="...." name="status" formControlName="status">
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Job Status :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1"
+                                placeholder="...." name="jobstatus" formControlName="jobStatus">
+
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label>Notice Period:</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="dept1" formControlName='noticePeriod'>
+                                <option disabled="true" display="true">Select</option>
+                                <option *ngFor="let n of notice" [value]="n.notes">{{n.notes}}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <label class="font-weight-bold notice">Add Skill's</label>
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label>skill:</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1"
+                                placeholder="type..." name="Skill" formControlName='skills'>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <button type="button" class="btn upload add" (click)='addskill()'>Add</button>
+                            <span class="ml-2 text-muted">Add max 20 skill's.</span>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="clip ml-5 my-2">
+                                    <span class="left_chip my-2 ml-1" *ngFor="let skills of this.skillArray;index as i">
+                                        {{skills}}
+                                        <i class="tick pi pi-times mt-2" aria-hidden="true"
+                                            (click)="removeSkill(i)"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="font-weight-bold notice">Add Description</label>
+                    <div class="row my-2">
+                        <div class="col-sm-2 nam_e">
+                            <label class="notice">Description:</label>
+                        </div>
+                        <div class="col-sm-10 nam_e ">
+                            <div>
+                                <div class="draw">
+                                </div>
+                                <textarea id="description" cols="22" rows="6" autocomplete="off"
+                                    class="form-control text-centre  " placeholder="" name="description"
+                                    formControlName='jobDescription'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row my-2">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6 show_button">
+                            <button type="button" class="btn cancel my-3 mr-4">cancel</button>
+                            <button type="button" class="btn preview my-3 mr-4" (click)="previewjob()">Preview</button>
+                            <button type="submit" class="btn submit my-3 mr-4">Submit
+                                <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </p-dialog>
+
+        </div>
+        <p-dialog [(visible)]="displayp" [style]="{width: '40%'}" class="abc">
+                <p-header class="dialogHeader"> 
+                  <div class="row diaheader"> 
+                   <div class="col-sm-10">
+                    <img class="imge" src="../../../assets/logo/Create Job.png" alt="">
+                    <span class="ml-2 report">JVL0145</span>
+                    </div>
+                    <div class="col-sm-2">
+                     <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removePriview()"></i>
+                    </div>
+                 </div>
+                </p-header>
+                <form class="group grp_form">
+                    <div class="row my-3">
+                        <div class="col-sm-3 text-right pack">Designation:</div>
+                        <div class="col-sm-9 lead">{{data?.designation}}</div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-sm-3 text-right pack">Experience:</div>
+                        <div class="col-sm-9 lead">{{data?.experienceInYears}}</div>
+                    </div>
+                    <div class="row my-3">
+                      <div class="col-sm-3 text-right pack">Rel Experience :</div>
+                      <div class="col-sm-9 lead">{{data?.relevantExpInYears}}</div>
+                  </div>
+                    <div class="row my-3">
+                        <div class="col-sm-3 text-right pack">Package:</div>
+                        <div class="col-sm-9 lead">{{data?.minPackage}} to {{data?.maxPackage}}</div>
+                    </div>
+                    <div class="row my-3">
+                      <div class="col-sm-3 text-right pack">Department:</div>
+                      <div class="col-sm-9 lead">{{data?.department}}</div>
+                  </div>
+                  <div class="row my-3">
+                      <div class="col-sm-3 text-right pack">Status:</div>
+                      <div class="col-sm-9 lead">{{data?.status}}</div>
+                  </div>
+                  <div class="row my-3">
+                      <div class="col-sm-3 text-right pack">Job Status:</div>
+                      <div class="col-sm-9 lead">{{data?.jobStatus}}</div>
+                  </div>
+                    <div class="row my-3">
+                        <div class="col-sm-3 text-right pack">Notice Period:</div>
+                        <div class="col-sm-9 lead">{{data?.noticePeriod}}</div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-sm-3 text-right pack">Skill's:</div>
+                        <div class="col-sm-9 lead">
+                            <div class="row">
+                            <span  class="ml-2 mr-2"  *ngFor="let skills of this.skillArray;index as i">{{skills}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-sm-3 text-right pack">Description:</div>
+                        <div class="col-sm-9 pack">{{data?.jobDescription}}</div>
+                    </div>
+                    <hr class="line">
+                    <div class="row">
+                        <div class="col-sm-9"></div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn windowclose" (click)="removePriview()">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </p-dialog>
+    </div>
+</div>
