@@ -193,3 +193,22 @@ color: white;
     transition: .2s ease-out;
     cursor: pointer;
 }
+:host ::ng-deep .ui-dialog-titlebar-icon{
+    display: none !important;
+  }
+  .nam_e{
+      text-align: end;
+      font-weight: bold;
+  }
+  :host ::ng-deep .ui-dialog-resizable .ui-dialog-content{
+    overflow-x: hidden;
+  }
+  .info{
+      color: gray;
+  }
+  .job{
+      float: right;
+  }
+  .tag{
+      font-size: small;
+  }

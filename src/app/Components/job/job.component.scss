@@ -1,0 +1,118 @@
+.head{
+    background-color: blue;
+}
+.Dashboard{
+    background-color: #F7F7F7;
+    overflow: hidden;
+    height: 89vh;
+}
+.search{
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+}
+.box{
+width: 57%;
+height: 52px;
+font-size: small;
+}
+.btn1{
+width: 80px;
+}
+.job{
+    width: 130px;
+}
+:host ::ng-deep .ui-dialog-titlebar-icon{
+    display: none !important;
+  }
+  .tick{
+float: right;
+  }
+  .report{
+    color: #3E5EFF;
+    font-size: larger;
+   
+  }
+  :host ::ng-deep .ui-dialog-resizable .ui-dialog-content{
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .nam_e{
+    text-align: end;
+  }
+  .box1{
+    width: 73%;
+  }
+  .box2{
+    width: 85%;
+  }
+  .dept{
+    width: 73%;
+    color:#6F838C;
+    border-radius: 5px;
+    padding: 11px 55px 5px 0px;
+    border-color: #CCD8DD;
+    background-color: white;
+}
+.dept1{
+    width: 73%;
+    color:#6F838C;
+    border-radius: 5px;
+    padding: 11px 55px 5px 0px;
+    border-color: #CCD8DD;
+    background-color: white;
+}
+.submit{
+    color: white;
+    background-color: #3E5EFF;
+}
+.preview{
+    color: gray;
+    background-color: #ACBEC6;
+}
+.cancel{
+    color: gray;
+    background-color: white;
+}
+.add{
+    background-color: #ACBEC6;
+    width:65px;
+    color:white;
+}
+:host ::ng-deep  .ui-widget 
+.ui-widget-content .ui-corner-all .ui-shadow .ui-dialog-draggable .ui-dialog-resizable{
+position: relative;
+}
+:host ::ng-deep.aa{
+  position: relative;
+}
+.exp{
+  width: 80px;
+}
+.pack{
+  color: #586B75;
+  font-weight: 550;
+    font-size: small;
+}
+.lead{
+  font-weight: 550;
+  font-size: small;
+  color: #435965;
+}
+.windowclose{
+  background-color: #AFBEC6;
+  color: white;
+  height: 30px;
+  line-height: 1px;
+  width: 120px;
+}
+.left_chip {
+  font-size: 13px;
+  background-color: #EBEFF1;
+  padding: 2px 9px 8px 9px;
+  color: #536D77;
+  border-radius: 15px;
+  display: inline-block;
+  margin-right: 15px;
+  }
+  
