@@ -6,7 +6,7 @@
                 <span class="search">Search Jobs</span>
             </div>
             <div class="row">
-                <input type="text" [(ngModel)]="term"  placeholder="Search Jobs by Skills,Designation..." class="box">
+                <input type="text" [(ngModel)]="term" placeholder="Search Jobs by Skills,Designation..." class="box">
                 <button type="submit" class="btn-primary btn1">Search</button>
             </div>
         </div>
@@ -23,14 +23,28 @@
                     <p class="ml-5 name mt-3">{{dataone?.jobDescription}}</p>
                 </div>
                 <div class="row mt-0">
-                    <p class="ml-5 company">Beauto System Pvt Ltd</p>
+                    <div class="col-sm-6">
+                        <p class="ml-5 company">Beauto System Pvt Ltd</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-9">
+                               
+                            </div>
+                            <div class="col-sm-3">
+                                 <i class="pi pi-pencil" (click)="EditEmployee(i)"></i>
+                                <i class="pi pi-trash mr-2" (click)="DeleteEmployee(dataone?.email)"></i> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
                     <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
                     <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
                     <div class="col-sm-2 company pl-0">pune</div>
-                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                    </div>
                 </div>
                 <div class="row company ml-5 my-1">
                     <i class="pi pi-android"></i>
