@@ -23,15 +23,15 @@
                             <img class="profileimage ml-4" src="http://lorempixel.com/100/100" />
                             </div>
                             <div class="row name1">
-                                 <span class="nme pt-2 ml-2 mt-3 ">Rani Bapurao Giramkar</span>
+                                 <span class="nme pt-2 ml-2 mt-3 ">{{ProfileData?.firstName}} {{ProfileData?.lastName}}</span>
                             </div>
                             <div class="row mt-2">
                                 <i class="pi pi-envelope enevlop ml-4"></i>
-                                <span class="company ml-1">ranigiramkar@gmail.com</span>
+                                <span class="company ml-1">{{ProfileData?.email}}</span>
                             </div>
                             <div class="row mt-2">
                                 <i class="pi pi-mobile  enevlop ml-4"></i>
-                                <span class="company ml-1">9734343434</span>
+                                <span class="company ml-1">{{ProfileData?.contact}}</span>
                             </div>
                             <div class="row ml-3 mt-3">
                                 <span class="profile">Profile Completeness(Excellent)</span>
@@ -57,7 +57,7 @@
             <div class="card card1 my-2" *ngFor="let dataone of data |filter:term ;let i=index">
 
                 <div class="row" (click)="viewJobId(i)">
-                    <p class="ml-5 name mt-1">{{dataone?.jobDescription}}</p>
+                    <p class="ml-5 name mt-1">{{dataone?.jobTitle}}</p>
                 </div>
                 <div class="row mt-0">
                     <p class="ml-5 company">Beauto System Pvt Ltd</p>
@@ -66,7 +66,7 @@
                     <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
                     <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
                     <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
-                    <div class="col-sm-2 company pl-0">pune</div>
+                    <div class="col-sm-2 company pl-0">{{dataone?.location}}</div>
                     <div class="col-sm-6"></div>
                 </div>
                 <div class="row company ml-5 my-1">
@@ -88,19 +88,110 @@
             </div>
 
         </div>
-        <div class="mt-5 ml-5 ">
-            <div class="col-sm-6 hardware">
-                <div class="card3">
+        <!-- <div class="mt-5 ml-5 "> -->
+          
+                <div class="col-sm-6 ">
+                    <div class="row" >
+                    <label class="hardware">Hardware</label>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/process-automation.png">
+                    <div class="learn"><label>Automation</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/embedded.jpeg">
+                    <div class="ml-3 ops"><label>Embedded System</label></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/packagess.jpg">
+                    <div class="learn"><label>Packaging Solution</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/industry1.jpeg">
+                    <div class="ml-2 ops"><label>Industries Automation</label></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/images (2).jpeg">
+                    <div class="archi"><label>Architecting office spaces</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/interior.jpg">
+                    <div class="ml-5 ops"><label>Interiors</label></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/eco.jpeg">
+                    <div class="learn"><label>Energy Ecosystem</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/images (1).jpeg">
+                    <div class="ml-4 ops"><label>Smart Furniture</label></div>
+                    </div>
+                    </div>
+                    <div class="row" >
+                    <label class="hardware">Software</label>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/machine.jpeg">
+                    <div class="learn"><label>machine learning</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/devops.jpg">
+                    <div class="ml-5 ops"><label>Dev ops</label></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/banking.jpeg">
+                    <div class="learn"><label>Banking & Finance</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/userexp.png">
+                    <div class="ml-4 ops"><label>User Experience</label></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/e-commerce.png">
+                    <div class="learn"><label>E-Commerce</label></div>
+                    
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/softarchi.jpeg">
+                    <div class="ml-2 ops"><label>Software Architecture</label></div>
+                    
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <img class="auto"src="../../../assets/cyber.jpeg">
+                    <div class="learn"><label>Cyber Security</label></div>
+                    </div>
+                    <div class="col-sm-6">
+                    <img class="furniture" src="../../../assets/education.jpeg">
+                    <div class="ml-3 ops"><label>Educational Sector</label></div>
+                    </div>
+                    </div>
+                    <!-- <div class="card3">
                     <div class="card">
-                        <div class="ml-1 mt-1">Hardware</div>
-                        <img src="../../../assets/hardware.png">
+                    <div class="ml-1 mt-1">Hardware</div>
+                    <img src="../../../assets/hardware.png">
                     </div>
                     <div class="card mt-3">
-                        <div class="ml-1 mt-1">Software</div>
-                        <img src="../../../assets/software.jpg">
+                    <div class="ml-1 mt-1">Software</div>
+                    <img src="../../../assets/software.jpg">
                     </div>
-                </div>
-            </div>
-        </div>
+                    </div> -->
+                    
+                    </div>
+           
+        <!-- </div> -->
     </div>
 </div>

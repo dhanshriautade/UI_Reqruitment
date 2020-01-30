@@ -10,8 +10,13 @@ import { Router } from '@angular/router';
 export class JobSeekerComponent implements OnInit {
   data;
   term;
+  ProfileData;
   constructor(public TeamService: TeamService,public router: Router,) { 
-
+   
+      this.TeamService.GetProfile(localStorage.getItem('email')).subscribe((res: any) => {
+        this.ProfileData = res;
+      })
+    
     this.TeamService.Getalljob().subscribe(res => {
          this.data = res;
     

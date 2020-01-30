@@ -76,17 +76,20 @@ export class ProfileComponent implements OnInit {
       observe: 'events'
     })
       .subscribe(events => {
+      
         if (events.type === HttpEventType.UploadProgress) {
           this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
           console.log(this.fileUploadProgress);
+          this.getResume();
         } else if (events.type === HttpEventType.Response) {
           this.fileUploadProgress = 'Uploading Completed';
           console.log(events.body);
+          this.getResume();
 
         }
 
       })
-    this.getResume();
+    
 
   }
   uploadResume(event: any) {
@@ -120,9 +123,11 @@ export class ProfileComponent implements OnInit {
             if (events.type === HttpEventType.UploadProgress) {
               this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
               console.log(this.fileUploadProgress);
+              this.getResume();
             } else if (events.type === HttpEventType.Response) {
               this.fileUploadProgress = 'Uploading Completed';
               console.log(events.body);
+              this.getResume();
 
             }
 
