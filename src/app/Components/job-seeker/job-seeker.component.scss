@@ -19,6 +19,7 @@
     
     .card1{
     width: 130%;
+    box-shadow: 6px 6px 9px #E1E3E4;
     }
     .card2{
         height: 115%;
@@ -166,4 +167,8 @@
         margin-left: 140px;
         font-size: 14px;
         font-weight: 700; 
+        }
+
+        .cardmenu:hover{
+           background-color: #f7e2e2;
         }
