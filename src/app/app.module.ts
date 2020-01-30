@@ -29,6 +29,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ViewJobComponent } from './Components/view-job/view-job.component';
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 import {DialogModule} from 'primeng/dialog';
+import {ChartModule} from 'primeng/chart';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,8 @@ import {DialogModule} from 'primeng/dialog';
     AddEmployeeComponent
   ],
   imports: [
+    NgxPaginationModule,
+    ChartModule,
     DialogModule,
     OverlayPanelModule,
     BrowserModule,

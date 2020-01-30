@@ -3,7 +3,8 @@
     <div class="col-sm-1 my-3"><a href="User/candidate" class="job">Jobs</a></div>
     <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
     <div class="col-sm-3"></div>
-    <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" class="bgimg logo"></div>
+    <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
+            class="bgimg logo"></div>
     <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
     <div class="col-sm-2 my-1"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>
 </div>
@@ -25,9 +26,13 @@
     <ul class="bullet">
         <div class="row">
             <div class="col-sm-11">
-                <li class="my-1 profile"><a  (click)="hidden = !hidden">Team</a></li>
-                <a href="HR/team"><li class="hidden ml-4" *ngIf ="hidden">Employee</li></a>
-                <a href=""><li class="hidden  ml-4" *ngIf ="hidden">Job Seeker</li></a>
+                <li class="my-1 profile"><a (click)="hidden = !hidden">Team</a></li>
+                <a href="HR/team">
+                    <li class="hidden ml-4" *ngIf="hidden">Employee</li>
+                </a>
+                <a href="">
+                    <li class="hidden  ml-4" *ngIf="hidden">Job Seeker</li>
+                </a>
                 <li class="my-1"><a>Job</a></li>
                 <li class="my-1"><a>Job Applied</a></li>
             </div>
@@ -36,3 +41,30 @@
 
     </ul>
 </p-overlayPanel>
+<div>
+    <p-overlayPanel #op3>
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="note">Notifications</span></div>
+            <div class="col-sm-8"> <a href="" class="markall">Mark All as Read</a></div>
+        </div>
+        <hr>
+        <ul class="div_hover mb-2">
+
+            <li class="notify" (click)="viewProfile(i)">
+                <div class="row ">
+                    <div class="col-sm-2 ml-0 pl-0"> <img class="profileImage" src="http://lorempixel.com/100/100" />
+                    </div>
+                    <div class="col-sm-10"><span class="notename"> Rani Giramkar :- </span>UI Dev
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <hr>
+        <div>
+            <p class="text-center"><a href="">See All</a></p>
+        </div>
+
+    </p-overlayPanel>
+
+</div>
