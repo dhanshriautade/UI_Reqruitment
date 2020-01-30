@@ -24,6 +24,7 @@ export const environment = {
   CreateJob: base_url + 'addjobcreation',
   UpdatePrimarySkill: base_url + 'updatePrimarySkill',
   UpdateSecondarySkill: base_url + 'updateSecondarySkill',
+  getjobId: base_url + 'getUniqueJobId',
 
   //Notification
   getnotification: notify_url + 'getAllNotification',

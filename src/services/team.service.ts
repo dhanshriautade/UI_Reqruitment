@@ -71,12 +71,22 @@ export class TeamService {
   //   return this.http.get(environment.searchDepartmentWiseJob +'=' + data, { headers: headers });
   
   // }
-  // CreateJob(data: any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   return this.http.post(environment.CreateJob, data, { headers: headers });
-  // }
+  getjobId(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.getjobId, { headers: headers, responseType:'text' });
+ 
+ 
+  }
+
+
+  CreateJob(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.CreateJob, data, { headers: headers });
+  }
 
   Getalljob(){
     let headers = new HttpHeaders({

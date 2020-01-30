@@ -57,7 +57,7 @@
             <div class="card card1 my-2" *ngFor="let dataone of data |filter:term ;let i=index">
 
                 <div class="row" (click)="viewJobId(i)">
-                    <p class="ml-5 name mt-1">{{dataone?.jobDescription}}</p>
+                    <p class="ml-5 name mt-1">{{dataone?.jobTitle}}</p>
                 </div>
                 <div class="row mt-0">
                     <p class="ml-5 company">Beauto System Pvt Ltd</p>
@@ -66,7 +66,7 @@
                     <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
                     <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
                     <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
-                    <div class="col-sm-2 company pl-0">pune</div>
+                    <div class="col-sm-2 company pl-0">{{dataone?.location}}</div>
                     <div class="col-sm-6"></div>
                 </div>
                 <div class="row company ml-5 my-1">

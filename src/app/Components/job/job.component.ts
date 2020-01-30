@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TeamService } from 'src/services/team.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
@@ -11,13 +12,17 @@ export class JobComponent implements OnInit {
   display=false
   submitted: boolean;
   notice;
+  id: string;
+  spinner = false;
   data;
   skillArray = [];
   deptartment: {}[];
   createJobForm = new FormGroup({
 
   })
-  constructor(private formBuilder: FormBuilder,public TeamService: TeamService) { 
+  constructor(private formBuilder: FormBuilder,private toastr: ToastrService, public TeamService: TeamService) { 
+   
+
     this.notice = [
       { 'notes': 'one week' }, { 'notes': ' 15 days' }, { 'notes': '1 month' }, { 'notes': ' 2 month' }, { 'notes': '3 month' }, { 'notes': 'other' }
 
@@ -45,12 +50,16 @@ export class JobComponent implements OnInit {
   }
   createjob(){
     this.display=true
+    this.TeamService.getjobId().subscribe((res:string) => {
+        this.id= res;
+     });
+    
      }
    
   previewjob(){
     this.displayp = true;
     this.data = {
-      "jobId": "A0013",
+      "jobId": this.id,
       "designation": this.createJobForm.value.designation,
       "experienceInYears": this.createJobForm.value.experienceInYears,
       "noticePeriod": this.createJobForm.value.noticePeriod,
@@ -68,6 +77,46 @@ export class JobComponent implements OnInit {
   console.log(this.data)
    
   }
+
+  onSubmit() {
+
+
+    this.submitted = true;
+    this.spinner = true;
+
+    this.data = {
+      "jobId": this.id,
+      "designation": this.createJobForm.value.designation,
+      "experienceInYears": this.createJobForm.value.experienceInYears,
+      "noticePeriod": this.createJobForm.value.noticePeriod,
+      "jobTitle":this.createJobForm.value.title,
+      "location":this.createJobForm.value.location,
+      "minPackage": this.createJobForm.value.minPackage,
+      "maxPackage": this.createJobForm.value.maxPackage,
+      "relevantExpInYears": this.createJobForm.value.relevantExpInYears,
+      "department": this.createJobForm.value.department,
+      "skills": this.skillArray,
+      "jobDescription": this.createJobForm.value.jobDescription,
+      "status": this.createJobForm.value.status,
+      "jobStatus": this.createJobForm.value.jobStatus,
+      "requiredEducation":[this.createJobForm.value.education],
+
+
+    }
+    this.TeamService.CreateJob(this.data).subscribe(res => {
+      this.spinner = false;
+      this.toastr.success('Successfully created job !!!');
+
+    });
+
+    this.createJobForm.reset();
+    this.spinner = false;
+    console.log('this is jobcreation', this.data);
+    this.display = false;
+   
+
+
+  }
   ngOnInit() {
     this.createJobForm = this.formBuilder.group({
       jobId: [''],
@@ -82,6 +131,10 @@ export class JobComponent implements OnInit {
       relevantExpInYears: ['', Validators.required],
       status: [''],
       jobStatus: [''],
+      education: [''],
+      title: [''],
+      location: [''],
+
     })
 
   }
