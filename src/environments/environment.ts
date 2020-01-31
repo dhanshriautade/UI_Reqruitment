@@ -22,6 +22,8 @@ export const environment = {
   downloadResume: base_url + 'downloadCandidateDocument',
   AddInfo:base_url + 'experienceprofile',
   CreateJob: base_url + 'addjobcreation',
+  DeletejobId : base_url + 'deletejobcreationbyid',
+  EditJob: base_url + 'updatejobcreation',
   UpdatePrimarySkill: base_url + 'updatePrimarySkill',
   UpdateSecondarySkill: base_url + 'updateSecondarySkill',
   getjobId: base_url + 'getUniqueJobId',

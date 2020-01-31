@@ -88,6 +88,20 @@ export class TeamService {
     return this.http.post(environment.CreateJob, data, { headers: headers });
   }
 
+  DeletejobId(id:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.DeletejobId + '?id=' + id, { headers: headers });
+  
+  }
+  EditJob(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.EditJob, data, { headers: headers });
+  }
+
   Getalljob(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
