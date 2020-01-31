@@ -31,7 +31,7 @@ export class ApplyjobComponent implements OnInit {
     
     }
 
-    this.TeamService.ApplyJob(JSON.stringify(this.data)).subscribe(res => {
+    this.TeamService.ApplyJob(this.data).subscribe(res => {
       console.log('job', res);
     })
   }

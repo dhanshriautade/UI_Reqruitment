@@ -23,13 +23,13 @@ export class TeamService {
   // }
 
 
-  // getNotification(){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   return this.http.get(environment.getnotification, { headers: headers });
+  getNotification(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.getnotification, { headers: headers });
 
-  // }
+  }
   ApplyJob(data: any){
   let headers = new HttpHeaders({
     'Content-Type': 'application/json'
