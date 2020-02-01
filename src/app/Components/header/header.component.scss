@@ -93,3 +93,9 @@ cursor: pointer;
     .seeall{
       padding: 11px 0px 11px 0px;
     }
+    :host ::ng-deep.ui-dialog .ui-dialog-titlebar{
+      background-color: #BA55D3;
+    }
+    .jobid{
+      color: rebeccapurple;
+    }

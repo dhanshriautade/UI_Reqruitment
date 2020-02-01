@@ -14,6 +14,7 @@ import { HrDashboardComponent } from './Components/hr-dashboard/hr-dashboard.com
 import { ApplyjobComponent } from './Components/applyjob/applyjob.component';
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 import { JobComponent } from './Components/job/job.component';
+import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent}, 
       { path: 'Profile', component: ProfileComponent},
       { path: 'ApplyJob', component: ApplyjobComponent},
+      { path: 'ViewCandidate', component: ViewcandidateapplyComponent}
     ]
   },
   {

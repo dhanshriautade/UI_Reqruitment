@@ -3,7 +3,7 @@
     </div>
     <div class="row">
         <div class="col-sm-2"></div>
-        <div class="c0l-sm-8">
+        <div class="col-sm-8">
             <div class="card card1">
                 <div class="row">
                     <div class="col-sm-8">
@@ -50,54 +50,60 @@
                 </div>
             </div>
             <div class="card card1 my-4">
-                <div class="row mt-4">
-                    <span class="ml-5 job">Job Description</span>
-                </div>
-
-                <div class="row mt-2">
-                    <span class="ml-5 description">Job description</span>
-                </div>
-                <div class="row mt-1">
-                    <span class="ml-5 description">Greetings from Beauto System Pvt Ltd,</span>
-                </div>
-                <div class="row mt-1">
-                    <span class="ml-5 description">{{dataone?.jobDescription}}</span>
-                </div>
-                <div class="row mt-4">
-                    <span class="ml-5 location"><u>Work Location - Pune</u>
-                    </span>
-                </div>
-                <div class="row mt-4">
-                    <span class="ml-5 location"><u>Experience: {{dataone?.experienceInYears}} years</u>
-                    </span>
-                </div>
-                <div class="row my-3">
-                    <div class="col-sm-3 ml-5 roles">
-                        <div class="row my-1">Role</div>
-                        <div class="row my-1">Industry Type</div>
-                        <div class="row my-1">Functional Area</div>
-                        <div class="row my-1">Employment Type</div>
-                        <div class="row my-1">Role Category</div>
+                <div class="row ml-4">
+                    <div class="col-sm-10">
+                        <div class=" mt-4">
+                            <span class=" job">Job Description</span>
+                        </div>
+        
+                        <div class=" mt-2">
+                           
+                            <div class="description">Job description</div>
+                          
+                        </div>
+                        <div class=" mt-1">
+                            <span class="description great">Greetings from Beauto System Pvt Ltd,</span>
+                        </div>
+                        <div class="mt-1">
+                            <span class="description">{{dataone?.jobDescription}}</span>
+                        </div>
+                        <div class=" mt-4">
+                            <span class="location"><u>Work Location - Pune</u>
+                            </span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="location"><u>Experience: {{dataone?.experienceInYears}} years</u>
+                            </span>
+                        </div>
+                        <div class="row my-3 ml-0">
+                            <div class="col-sm-3 roles">
+                                <div class="row my-1">Role</div>
+                                <div class="row my-1">Industry Type</div>
+                                <div class="row my-1">Functional Area</div>
+                                <div class="row my-1">Employment Type</div>
+                                <div class="row my-1">Role Category</div>
+                            </div>
+                            <div class="col-sm-8 role">
+        
+                                <div class="row my-1 ml-1">Software Developer</div>
+                                <div class="row my-1 ml-1">IT-Software / Software Services</div>
+                                <div class="row my-1 ml-1">IT Software - Application Programming, Maintenance</div>
+                                <div class="row my-1 ml-1">Full Time, Permanent</div>
+                                <div class="row my-1 ml-1">Programming & Design</div>
+        
+                            </div>
+                        </div>
+                        <div class="row mt-2 ml-0">
+                            <span class=" location">Key Skills:
+                            </span>
+                        </div>
+                        <div class=" mb-3 ml-0">
+                             <span class="ml-3 mt-3 skill" *ngFor="let data of dataone?.skills">{{data}}</span>
+                        </div>
                     </div>
-                    <div class="col-sm-8 role">
-
-                        <div class="row my-1 ml-1">Software Developer</div>
-                        <div class="row my-1 ml-1">IT-Software / Software Services</div>
-                        <div class="row my-1 ml-1">IT Software - Application Programming, Maintenance</div>
-                        <div class="row my-1 ml-1">Full Time, Permanent</div>
-                        <div class="row my-1 ml-1">Programming & Design</div>
-
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <span class="ml-5 location">Key Skills:
-                    </span>
-                </div>
-                <div class="row mb-3 ml-4">
-                     <span class="ml-2 mt-3 skill" *ngFor="let data of dataone?.skills">{{data}}</span>
-                </div>
-               
+                    <div class="col-sm-2"></div>
             </div>
+        </div>
         </div>
         <div class="col-sm-2"></div>
     </div>

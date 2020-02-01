@@ -1,0 +1,63 @@
+.candidate{
+    background-color: #4A90E2;
+}
+.name{
+    font-weight: bold;
+    color: white;
+}
+.view{
+    color: white;
+    font-size: 15px;
+}
+
+.action{
+background-color: #0F5EC9;
+border-radius: 2px solid blue;
+box-shadow: 2px 2px 2px 2px #0F5EC9;
+}
+.pencil{
+    color: #4A90E2;  
+}
+.img{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    float: left;
+}
+.envelop{
+    color: white;
+    }
+    .views{
+        float: right;
+    }
+    .view{
+        color: white;
+        font-size: 15px;
+    }
+    hr{
+        background-color: white;
+        border-bottom: 1px solid white;
+        margin-top: 0px;
+        height: 4px;
+        width: 512px;
+      
+    }   
+    .pending{
+        height: 89%;
+
+    } 
+    .header{
+        color: #3A3333;
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+    }
+    .attach{
+        color: #676767;
+        font-size: 14px;
+        text-align: center;
+    }
+    .upload_resume{
+        text-align: center;  
+    }

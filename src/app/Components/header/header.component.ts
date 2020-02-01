@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/services/team.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   noteData;
   role;
   display= false;
-  constructor(public TeamService: TeamService,) { 
+  constructor(public TeamService: TeamService, public router: Router) { 
   this.role =localStorage.getItem('role');
   console.log(this.role)
   
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   viewProfile(index:any){
     this.noteData=this.notificationData[index];
-      this.display=true;
+    this.router.navigateByUrl('/User/ViewCandidate');
   
   
     }

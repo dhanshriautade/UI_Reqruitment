@@ -31,6 +31,9 @@ import { AddEmployeeComponent } from './Components/add-employee/add-employee.com
 import {DialogModule} from 'primeng/dialog';
 import {ChartModule} from 'primeng/chart';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MainComponent,
     ApplyjobComponent,
     ViewJobComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    ViewcandidateapplyComponent
+   
+  
+  
   ],
   imports: [
     NgxPaginationModule,

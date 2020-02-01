@@ -55,11 +55,19 @@
                   <ul class="div_hover notebar mb-2" *ngFor="let data of notificationData;let i=index">
         
                     <li class="notify" (click)="viewProfile(i)">
-                      <div class="row mb-2">
-                        <div class="col-sm-2 ml-0 pl-0"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>
-                        <div class="col-sm-10"><span class="notename"> {{data.firstName}} :- </span>{{data.designation}}</div>
-                      </div>
                      
+                      <div class="row mb-2 mr-3">
+                     
+                       <!-- <div class="col-sm-2 ml-0 pl-0"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>  -->
+                        <div class="col-sm-12"><span> {{data.firstName}} {{data.lastName}} :- </span>
+                       
+                        <span>{{data.designation}}</span></div>
+                      </div>
+                      <div class="row mb-2">
+                        
+                        <div class="col-sm-6 "><span>Job Id :-s</span></div>
+                       <div class="col-sm-6"> <span class="jobid"> {{data.jobId}}</span></div>
+                     </div>
         
         
                     </li>
@@ -73,7 +81,7 @@
 
     </p-overlayPanel>
     <div class="Centered">
-            <p-dialog [(visible)]="display" [style]="{width: '62%'}">
+            <!-- <p-dialog [(visible)]="display" [style]="{width: '62%'}">
               <p-header class="dialogHeader mt-2">
                 <span class="ml-2 mt-2 text-primary">Notification Details</span>
               </p-header>
@@ -114,6 +122,6 @@
                 <div class="col-sm-3 text-right pack">notificationId:</div>
                 <div class="col-sm-9 lead">{{noteData?.notificationId}}</div>
               </div>
-            </p-dialog>
+            </p-dialog> -->
           </div>
 </div>
