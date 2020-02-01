@@ -23,6 +23,7 @@ export class HrDashboardComponent implements OnInit {
   spinner = false;
   skillArray = [];
   deptartment: {}[];
+  role;
   createJobForm = new FormGroup({
 
   })
@@ -32,7 +33,7 @@ export class HrDashboardComponent implements OnInit {
   })
   constructor(private formBuilder: FormBuilder,private toastr: ToastrService, public TeamService: TeamService) { 
    
-
+    this.role =localStorage.getItem('role');
     this.notice = [
       { 'notes': 'one week' }, { 'notes': ' 15 days' }, { 'notes': '1 month' }, { 'notes': ' 2 month' }, { 'notes': '3 month' }, { 'notes': 'other' }
 
