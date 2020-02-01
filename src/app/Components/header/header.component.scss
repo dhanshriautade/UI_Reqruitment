@@ -55,3 +55,41 @@
     .notify{
       list-style-type: none;
     }
+    
+    .mark{
+      background: none !important;
+font-size: small;
+    }
+    :host ::ng-deep.ui-overlaypanel-content{
+      background: none !important;
+    }
+   
+    .line{
+      border-bottom: 1px solid 	blue;
+      padding: 0px 0px 0px 0px;
+      
+    }
+    .notes{
+      
+    padding-bottom: 10px;
+    padding-top: 10px;
+   
+ 
+    }
+    .notebar{
+      padding-top: 12px;
+      border-bottom: 1px solid 	blue;
+      margin-bottom: 0px !important;
+    }
+    .notebar:hover{
+background-color: 	#DCDCDC;
+cursor: pointer;
+
+
+    }
+    :host ::ng-deep.ui-overlaypanel .ui-overlaypanel-content {
+      padding:0px !important
+    }
+    .seeall{
+      padding: 11px 0px 11px 0px;
+    }
