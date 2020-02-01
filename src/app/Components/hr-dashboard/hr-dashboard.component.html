@@ -481,8 +481,8 @@
                                
                             </div>
                             <div class="col-sm-3">
-                                 <i class="pi pi-pencil" (click)="EditEmployee(i)"></i>
-                                <i class="pi pi-trash mr-2" (click)="DeleteEmployee(dataone?.jobId)"></i> 
+                                 <i class="pi pi-pencil"  *ngIf="role === '2'" (click)="EditEmployee(i)"></i>
+                                <i class="pi pi-trash mr-2"  *ngIf="role === '2'" (click)="DeleteEmployee(dataone?.jobId)"></i> 
                             </div>
                         </div>
                     </div>
@@ -513,7 +513,7 @@
             </div>
         </div>
         <div class="col-sm-2 my-4">
-                    <button type="button" class="btn btn-primary job" (click)="createjob()">Create
+                    <button type="button" class="btn btn-primary job"  *ngIf="role === '2'" (click)="createjob()">Create
                         Job</button>
                    
                

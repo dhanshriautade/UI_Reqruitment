@@ -10,9 +10,10 @@ export class ApplyjobComponent implements OnInit {
   data;
   viewalljobid;
   dataone;
+  role;
   constructor(public TeamService: TeamService) {
     this.viewalljobid = localStorage.getItem('ViewJobId')
-
+   this.role = localStorage.getItem('role');
     this.TeamService.Getalljob().subscribe(res => {
       this.data = res;
       this.dataone = (res[this.viewalljobid]);

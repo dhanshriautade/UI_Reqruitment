@@ -43,7 +43,7 @@
                         <div class="row mt-5">
                             <div class="col-sm-6"> <button  class="btn btn-primary btn1 mr-2">Save</button></div>
                             <div class="col-sm-6">
-                                 <button class="btn btn-primary apply mr-3" (click)="ApplyJob()">Apply</button>
+                                 <button class="btn btn-primary apply mr-3"   *ngIf="role === '0'" (click)="ApplyJob()">Apply</button>
                             </div>
                         </div>
                     </div>
