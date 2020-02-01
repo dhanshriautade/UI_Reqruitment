@@ -23,10 +23,12 @@ export class AddEmployeeComponent implements OnInit {
     editStatus = false;
     docidArray = [];
     infodetail = [];
+    role;
     employeeForm = new FormGroup({
     });
     departmentsAndDesignations: any = [];
     constructor(public TeamService: TeamService, private toastr: ToastrService, private formBuilder: FormBuilder, public EmployeeService: EmployeeService) {
+        this.role = localStorage.getItem('role');
         this.departmentsAndDesignations = [['Software', ["Android", "IOS", "Java"]],
         ["Embedded", ["Embedded department 1", "Embedded department 2", "Embedded department 3"]],
         ["Mechanical", ["Mechanical department 1", "Mechanical department 2", "Mechanical department 3"]]];
