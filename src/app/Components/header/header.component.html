@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-sm-11">
                 <li class="my-1 profile"><a (click)="hidden = !hidden">Team</a></li>
-                <a href="HR/team">
+                <a href="HR/team" *ngIf="role !== '0'">
                     <li class="hidden ml-4" *ngIf="hidden">Employee</li>
                 </a>
                 <a href="">

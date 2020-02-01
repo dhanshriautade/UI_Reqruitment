@@ -9,13 +9,11 @@ import { TeamService } from 'src/services/team.service';
 export class HeaderComponent implements OnInit {
   notificationData;
   noteData;
+  role;
   display= false;
   constructor(public TeamService: TeamService,) { 
-    this.TeamService.getNotification().subscribe((res: any) => {
-      console.log(res);
-      this.notificationData = res.finalNotificationResponse;
-     
-    })
+  this.role =localStorage.getItem('role');
+  console.log(this.role)
   
   }
 
@@ -27,6 +25,15 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log(localStorage.getItem('role'));
+    if(localStorage.getItem('role') == '2'){
+      this.TeamService.getNotification().subscribe((res: any) => {
+        console.log(res);
+        this.notificationData = res.finalNotificationResponse;
+       
+      })
+    }
+  
   }
 
 }
