@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/services/employee.service';
+import { TeamService } from 'src/services/team.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -14,61 +15,47 @@ export class AdminComponent implements OnInit {
   infodetail = [];
   configer: any;
   data;
+  jobseekercount;
+  jobEmployeecount;
   totalItems = 0;
-  constructor(public EmployeeService: EmployeeService) {
+  Applyjobcount;
+  JobCount;
+
+  constructor(public EmployeeService: EmployeeService, public TeamService: TeamService,) {
+
+    this.EmployeeService.getjobseekercount().subscribe(res => {
+      this.jobseekercount = res.length
+    })
+
+    this.EmployeeService.getEmployeecount().subscribe(res => {
+      this.jobEmployeecount = res.length
+    })
+
+    this.TeamService.getNotification().subscribe((res: any) => {
+      this.Applyjobcount = res.finalNotificationResponse.length;
+     
+    })
+
+    this.TeamService.Getalljob().subscribe((res:any) => {
+      this.JobCount = res.length
+ 
+  })
+
+    http://localhost:8081/findByRole?role=0
     this.data1 = {
+      labels: ['A', 'B', 'C'],
       datasets: [
         {
-          data: [300, 150],
+          data: [300, 150,200],
           backgroundColor: [
-            "#04CF72",
-            "#F4F6F9",
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
           ],
           hoverBackgroundColor: [
-            "#04CF72",
-            "#F4F6F9",
-          ]
-        }]
-    };
-    this.data2 = {
-      datasets: [
-        {
-          data: [300, 100],
-          backgroundColor: [
-            "#F61C5E",
-            "#F4F6F9",
-          ],
-          hoverBackgroundColor: [
-            "#F61C5E",
-            "#F4F6F9",
-          ]
-        }]
-    };
-    this.data3 = {
-      datasets: [
-        {
-          data: [200, 300],
-          backgroundColor: [
-            "#006FCF",
-            "#F4F6F9",
-          ],
-          hoverBackgroundColor: [
-            "#006FCF",
-            "#F4F6F9",
-          ]
-        }]
-    };
-    this.data4 = {
-      datasets: [
-        {
-          data: [300, 200],
-          backgroundColor: [
-            "#F69C00",
-            "#F4F6F9",
-          ],
-          hoverBackgroundColor: [
-            "#F69C00",
-            "#F4F6F9",
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
           ]
         }]
     };

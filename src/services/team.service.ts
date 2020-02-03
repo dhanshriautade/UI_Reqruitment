@@ -30,6 +30,14 @@ export class TeamService {
     return this.http.get(environment.getnotification, { headers: headers });
 
   }
+
+  getNotificationReminder(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.getNotificationReminder, { headers: headers });
+
+  }
   ApplyJob(data: any){
   let headers = new HttpHeaders({
     'Content-Type': 'application/json'

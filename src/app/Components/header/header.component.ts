@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   notificationData;
+  notificationDataReminder;
   noteData;
   role;
   display= false;
@@ -40,8 +41,23 @@ export class HeaderComponent implements OnInit {
         this.notificationData = res.finalNotificationResponse;
        
       })
+
+      this.TeamService.getNotificationReminder().subscribe((res: any) => {
+        console.log(res);
+        this.notificationDataReminder = res.hrCandidateInterviewDto;
+       
+      })
     }
   
+    if(localStorage.getItem('role') == '3'){
+      this.TeamService.getNotificationReminder().subscribe((res: any) => {
+        if(localStorage.getItem('id') ===  res.hrCandidateInterviewDto[0].employeeId)
+        {
+          this.notificationDataReminder = res.hrCandidateInterviewDto;
+        }
+      })
+    }
+
   }
 
 }

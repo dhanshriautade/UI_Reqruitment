@@ -1,83 +1,122 @@
 <div class="row">
-    <div class="col-sm-3 my-3"><img src="../../../assets/beauto_logo.png" class="bgimg logo"></div>
-    <div class="col-sm-1 my-3"><a href="User/candidate" class="job">Jobs</a></div>
-    <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
-    <div class="col-sm-3"></div>
-    <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png"   (click)="op3.toggle($event)"
-            class="bgimg logo"></div>
-    <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
-    <div class="col-sm-2 my-1"> <img class="profileImage" src="../../../assets/manemp.jpeg"  /></div>
+  <div class="col-sm-3 my-3"><img src="../../../assets/beauto_logo.png" class="bgimg logo"></div>
+  <div class="col-sm-1 my-3"><a href="User/candidate" class="job">Jobs</a></div>
+  <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
+      class="bgimg logo"></div>
+  <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op4.toggle($event)"
+      class="bgimg logo"></div>
+  <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
+  <div class="col-sm-2 my-1"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>
 </div>
 
 <p-overlayPanel #op>
-    <ul class="bullet">
-        <div class="row">
-            <div class="col-sm-11">
-                <li class="my-1 profile"><a href="User/Profile">Edit Profile</a></li>
-                <li class="my-1"><a>Recommended Jobs</a> </li>
-                <li (click)="LogOut()"> <a >Logout</a> </li>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
+  <ul class="bullet">
+    <div class="row">
+      <div class="col-sm-11">
+        <li class="my-1 profile"><a href="User/Profile">Edit Profile</a></li>
+        <li class="my-1"><a>Recommended Jobs</a> </li>
+        <li (click)="LogOut()"> <a>Logout</a> </li>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
 
-    </ul>
+  </ul>
 </p-overlayPanel>
 <p-overlayPanel #op1>
-    <ul class="bullet">
-        <div class="row">
-            <div class="col-sm-11">
-                <li class="my-1 profile"><a (click)="hidden = !hidden">Team</a></li>
-                <a href="HR/team" *ngIf="role !== '0'">
-                    <li class="hidden ml-4" *ngIf="hidden">Employee</li>
-                </a>
-                <a href="">
-                    <li class="hidden  ml-4" *ngIf="hidden">Job Seeker</li>
-                </a>
-                <li class="my-1"><a>Job</a></li>
-                <li class="my-1"><a>Job Applied</a></li>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
+  <ul class="bullet">
+    <div class="row">
+      <div class="col-sm-11">
+        <li class="my-1 profile"><a (click)="hidden = !hidden">Team</a></li>
+        <a href="HR/team" *ngIf="role !== '0'">
+          <li class="hidden ml-4" *ngIf="hidden">Employee</li>
+        </a>
+        <a href="">
+          <li class="hidden  ml-4" *ngIf="hidden">Job Seeker</li>
+        </a>
+        <li class="my-1"><a>Job</a></li>
+        <li class="my-1"><a>Job Applied</a></li>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
 
-    </ul>
+  </ul>
 </p-overlayPanel>
 <div>
- 
-    <p-overlayPanel #op3>
-            <div class="row notes">
-                    <div class="col-sm-5">
-                      <span class="note mr-1 ml-1">Notifications</span></div>
-                    <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
-                  </div>
-                  <div class="row ">                 
-                    <div class="col-sm-12 line"></div>
-                  </div>
-                  <ul class="div_hover notebar mb-2" *ngFor="let data of notificationData;let i=index">
-        
-                    <li class="notify" (click)="viewProfile(data.emailId,i)">
-                     
-                      <div class="row mb-2 mr-3">
-                     
-                        <div class="col-sm-12"><span> {{data.firstName}} {{data.lastName}} :- </span>
-                       
-                        <span>{{data.designation}}</span></div>
-                      </div>
-                      <div class="row mb-2">
-                        
-                        <div class="col-sm-6 "><span>Job Id :-s</span></div>
-                       <div class="col-sm-6"> <span class="jobid"> {{data.jobId}}</span></div>
-                     </div>
-        
-        
-                    </li>
-                  
-                  </ul>
-                  
-                  <div class="seeall">
-                    <p class="text-center "><a href="">See All</a></p>
-                  </div>
-        
 
-    </p-overlayPanel>
-   
+  <p-overlayPanel #op3>
+    <div class="row notes">
+      <div class="col-sm-5">
+        <span class="note mr-1 ml-1">Notifications</span></div>
+      <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
+    </div>
+    <div class="row ">
+      <div class="col-sm-12 line"></div>
+    </div>
+    <ul class="div_hover notebar mb-2" *ngFor="let data of notificationData;let i=index">
+
+      <li class="notify" (click)="viewProfile(data.emailId,i)">
+
+        <div class="row mb-2 mr-3">
+
+          <div class="col-sm-12"><span> {{data.firstName}} {{data.lastName}} :- </span>
+
+            <span>{{data.designation}}</span></div>
+        </div>
+        <div class="row mb-2">
+
+          <div class="col-sm-6 "><span>Job Id :-s</span></div>
+          <div class="col-sm-6"> <span class="jobid"> {{data.jobId}}</span></div>
+        </div>
+
+
+      </li>
+
+    </ul>
+
+    <div class="seeall">
+      <p class="text-center "><a href="">See All</a></p>
+    </div>
+
+
+  </p-overlayPanel>
+
+  <p-overlayPanel #op4>
+    <div class="row notes">
+      <div class="col-sm-5">
+        <span class="note mr-1 ml-1">Notifications</span></div>
+      <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
+    </div>
+    <div class="row ">
+      <div class="col-sm-12 line"></div>
+    </div>
+    <ul class="div_hover notebar mb-2" *ngFor="let data of notificationDataReminder;let i=index">
+
+      <li class="notify">
+
+        <div class="row mb-2 mr-3">
+
+          <div class="col-sm-12"><span> Name :- </span>
+
+            <span>{{data.name}} </span></div>
+        </div>
+        <div class="row mb-2">
+
+          <div class="col-sm-6 "><span>Selected Time :-</span></div>
+          <div class="col-sm-6"> <span class="jobid"> {{data.selectedTime}}</span></div>
+        </div>
+
+
+      </li>
+
+    </ul>
+
+    <div class="seeall">
+      <p class="text-center "><a href="">See All</a></p>
+    </div>
+
+
+  </p-overlayPanel>
+
 </div>

@@ -37,6 +37,13 @@ export class EmployeeService {
   getEmployee(){
     return this.http.get<any>(environment.Employeeget);
   }
+  getjobseekercount(){
+    return this.http.get<any>(environment.getjobseekercount);
+  }
+
+  getEmployeecount(){
+    return this.http.get<any>(environment.getEmployeecount);
+  }
 
   getAllJob(){
     return this.http.get<any>(environment.getAllJob); 
