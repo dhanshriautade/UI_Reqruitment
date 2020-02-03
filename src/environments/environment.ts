@@ -9,6 +9,8 @@ export const environment = {
   UpdateEmployee:base_url + 'updateEmployee',
   DeleteEmployee:base_url + 'deleteEmployee',
   Employeeget:base_url + 'getAllEmployeesInfo',
+  getjobseekercount: base_url + 'findByRole?role=0',
+  getEmployeecount: base_url + 'findByRole?role=3',
   getAllJob:base_url + 'getalljobpostingdetails',
   signUp: base_url + 'signup',
   login:base_url + 'check/checkLogin',
