@@ -12,6 +12,7 @@ import { EmployeeService } from 'src/services/employee.service';
 export class ViewcandidateapplyComponent implements OnInit {
   ProfileData;
   notificationData;
+  NotificationGetDataJobId;
   email_id;
   data
   ResumeInfo;
@@ -22,6 +23,9 @@ export class ViewcandidateapplyComponent implements OnInit {
   constructor(public TeamService: TeamService, private http: HttpClient, public EmployeeService: EmployeeService) {
     this.email_id = localStorage.getItem('email');
     this.NotificationGetData = localStorage.getItem('NotificationGetData');
+    this.NotificationGetDataJobId = localStorage.getItem('NotificationGetDataJobId');
+   
+    
     console.log(this.NotificationGetData);
     this.getAllEmployeesList();
     this.getResume();

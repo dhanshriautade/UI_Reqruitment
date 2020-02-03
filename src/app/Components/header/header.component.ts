@@ -20,9 +20,11 @@ export class HeaderComponent implements OnInit {
   
   }
 
-  viewProfile(email:any){
+  viewProfile(email:any,JobId:any){
     this.NotificationGetData = email;
     localStorage.setItem('NotificationGetData', this.NotificationGetData);
+    localStorage.setItem('NotificationGetDataJobId', JobId);
+   
     this.router.navigateByUrl('/User/ViewCandidate');
   
   

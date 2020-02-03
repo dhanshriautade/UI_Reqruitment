@@ -56,7 +56,7 @@
     </div>
     <ul class="div_hover notebar mb-2" *ngFor="let data of notificationData;let i=index">
 
-      <li class="notify" (click)="viewProfile(data.emailId,i)">
+      <li class="notify" (click)="viewProfile(data.emailId,data.jobId)">
 
         <div class="row mb-2 mr-3">
 
@@ -66,7 +66,7 @@
         </div>
         <div class="row mb-2">
 
-          <div class="col-sm-6 "><span>Job Id :-s</span></div>
+          <div class="col-sm-6 "><span>Job Id :-</span></div>
           <div class="col-sm-6"> <span class="jobid"> {{data.jobId}}</span></div>
         </div>
 

@@ -33,7 +33,7 @@
                     <div class="col-sm-1"></div>
                     <div class="col-sm-5">
                         <span class="envelop"><i class="pi pi-id-card ml-3" aria-hidden="true"></i></span>
-                        <span class=" mt-2 ml-1 view">Job_REMJ</span>
+                        <span class=" mt-2 ml-1 view">{{NotificationGetDataJobId}}</span>
                     </div>
                     <div class="col-sm-6">
                        
@@ -55,7 +55,7 @@
                 <button type="button" class=" btn btn-primary assign mt-5 ml-3" (click)="viewjob()">Assign</button>
             </div>
 
-            <p-dialog [(visible)]="displayjob" [style]="{width: '30%'}" class="abc" class="aa">
+            <p-dialog [(visible)]="displayjob" [style]="{width: '50%'}" class="abc" class="aa">
                 <p-header class="dialogHeader mt-2">
                     <!-- <img class="imge" src="../../../assets/logo/Create Job.png" alt=""> -->
                     <span class="ml-2 mt-3 report">Assign</span>
@@ -90,19 +90,17 @@
                                     <label>Job Id :</label>
                                 </div>
                                 <div class="col-sm-8">
-                                   hiiii
+                                   {{NotificationGetDataJobId}}
 
                                 </div>
                             </div>
                             <div class="row my-2">
-                                <div class="col-sm-4">
-                                    <label>Resume :</label>
-                                </div>
-                                <div class="col-sm-8">
-                                Resume.pdf
-
+                                <div class="col-sm-9"></div>
+                                <div class="col-sm-3">
+                                    <button type="button" class=" btn btn-primary send ml-3">Send</button> 
                                 </div>
                             </div>
+                            
                         </div>
                         <div class="col-sm-1"></div>
                     </div>

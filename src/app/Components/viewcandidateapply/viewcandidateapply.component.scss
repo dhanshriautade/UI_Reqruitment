@@ -85,3 +85,10 @@ box-shadow: 2px 2px 2px 2px #0F5EC9;
         left:770px;
     top: 182px;
     }
+    :host ::ng-deep.ui-dialog .ui-dialog-titlebar{
+        background-color: #007bff;
+        color: white;
+    }
+    .tick{
+        color: white;
+    }
