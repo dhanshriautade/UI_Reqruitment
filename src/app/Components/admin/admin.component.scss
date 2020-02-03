@@ -11,11 +11,27 @@
     font-weight: bold;
 }
 .chart{
+    box-shadow: 0 5px 9px #BFBEBF;
     background-color: white;
 }
 .job{
-    background-color: #FF9A16;
+    box-shadow: 0 5px 9px #BFBEBF;
+    background-color: #3D62F0;
+   background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 }
+.job1{
+    box-shadow: 0 5px 9px #BFBEBF;
+    background-color: #FD5664;
+    background-image: linear-gradient(141deg, #F989B0 24%, #F1948A 47%, #F771A0 70%);
+ }
+ .job2{
+    box-shadow: 0 5px 9px #BFBEBF;
+    background-image: linear-gradient(141deg, #F7DC6F 24%, #F9E79F 47%, #F4D03F 70%);
+ }
+ .job3{
+    box-shadow: 0 5px 9px #BFBEBF;
+     background-image: linear-gradient(141deg, #7DCEA0 24%, #48C9B0 35%, #58D68D 70%);
+ }
 .total{
     font-weight: bold;
     color: white;
@@ -38,9 +54,7 @@
     font-weight: 900;
     font-size: x-large;
  }
-.job1{
-   background-color: #F067FF; 
-}
+
 .num1{
     background-color: #FACDBB;
      margin-top: 18px;

@@ -17,58 +17,19 @@ export class AdminComponent implements OnInit {
   totalItems = 0;
   constructor(public EmployeeService: EmployeeService) {
     this.data1 = {
+      labels: ['A', 'B', 'C'],
       datasets: [
         {
-          data: [300, 150],
+          data: [300, 150,200],
           backgroundColor: [
-            "#04CF72",
-            "#F4F6F9",
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
           ],
           hoverBackgroundColor: [
-            "#04CF72",
-            "#F4F6F9",
-          ]
-        }]
-    };
-    this.data2 = {
-      datasets: [
-        {
-          data: [300, 100],
-          backgroundColor: [
-            "#F61C5E",
-            "#F4F6F9",
-          ],
-          hoverBackgroundColor: [
-            "#F61C5E",
-            "#F4F6F9",
-          ]
-        }]
-    };
-    this.data3 = {
-      datasets: [
-        {
-          data: [200, 300],
-          backgroundColor: [
-            "#006FCF",
-            "#F4F6F9",
-          ],
-          hoverBackgroundColor: [
-            "#006FCF",
-            "#F4F6F9",
-          ]
-        }]
-    };
-    this.data4 = {
-      datasets: [
-        {
-          data: [300, 200],
-          backgroundColor: [
-            "#F69C00",
-            "#F4F6F9",
-          ],
-          hoverBackgroundColor: [
-            "#F69C00",
-            "#F4F6F9",
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
           ]
         }]
     };
