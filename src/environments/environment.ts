@@ -32,6 +32,7 @@ export const environment = {
 
   //Notification
   getnotification: notify_url + 'getAllNotification',
+  getNotificationReminder: notify_url +'hrreminder',
   ApplyJob:  notify_url +'jobapplynotification'
 };
 
