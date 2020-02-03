@@ -61,3 +61,27 @@ box-shadow: 2px 2px 2px 2px #0F5EC9;
     .upload_resume{
         text-align: center;  
     }
+    .assign{
+        background-color: white;
+        color: black;
+        width: 49%;
+    }
+    .pi-times{
+        display: none;
+    }
+    .name{
+        text-align: center;
+    }
+    .box{
+        width: 89%;
+        height: 38px;
+        font-size: small;
+        background-color: white;
+    }
+    :host ::ng-deep.ui-dialog-resizable .ui-dialog-content{
+        overflow: hidden;
+    }
+    :host ::ng-deep.ng-trigger {
+        left:770px;
+    top: 182px;
+    }

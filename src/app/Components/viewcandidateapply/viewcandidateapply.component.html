@@ -52,12 +52,62 @@
                 <hr>
             </div>
             <div class="col-sm-4 mt-3 pending">
-                <div class="action mt-1 mb-1 mr-2">
-                    <label class="name ml-3 mt-2 ">Pending Action(s)</label>
-                    <label class="view ml-3 mt-2 mb-3">Please complete your pending action to make your profile attractive to
-                        recruiters.</label>
-                   </div>
+                <button type="button" class=" btn btn-primary assign mt-5 ml-3" (click)="viewjob()">Assign</button>
             </div>
+
+            <p-dialog [(visible)]="displayjob" [style]="{width: '30%'}" class="abc" class="aa">
+                <p-header class="dialogHeader mt-2">
+                    <!-- <img class="imge" src="../../../assets/logo/Create Job.png" alt=""> -->
+                    <span class="ml-2 mt-3 report">Assign</span>
+                    <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeWindow()"></i>
+                </p-header>
+               
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10">
+                            <div class="row my-2">
+                                <div class="col-sm-4">
+                                    <label>Employee :</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select id="employee" name="employee" class="box">
+                                        <option *ngFor="let employee of infodetail">
+                                            {{employee?.firstName}} {{employee?.lastName}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-sm-4">
+                                    <label>Email Id :</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    {{ProfileData?.email}}
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-sm-4">
+                                    <label>Job Id :</label>
+                                </div>
+                                <div class="col-sm-8">
+                                   hiiii
+
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-sm-4">
+                                    <label>Resume :</label>
+                                </div>
+                                <div class="col-sm-8">
+                                Resume.pdf
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+              
+            </p-dialog>
         </div>
     </div>
     <div class="col-sm-2"></div>
