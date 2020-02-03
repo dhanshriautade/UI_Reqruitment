@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
                     }
                     else if(this.info.status ===  true && this.info.role == 3){
                       this.toastr.success('Successfully signin !!!');
-                      this.router.navigateByUrl('/Employee');
+                      this.router.navigateByUrl('/User');
                       this.spinner = false;             
                       this.loginForm.reset();
                     }

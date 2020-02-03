@@ -12,17 +12,24 @@ export class HeaderComponent implements OnInit {
   noteData;
   role;
   display= false;
+  NotificationGetData;
   constructor(public TeamService: TeamService, public router: Router) { 
   this.role =localStorage.getItem('role');
   console.log(this.role)
   
   }
 
-  viewProfile(index:any){
-    this.noteData=this.notificationData[index];
+  viewProfile(email:any){
+    this.NotificationGetData = email;
+    localStorage.setItem('NotificationGetData', this.NotificationGetData);
     this.router.navigateByUrl('/User/ViewCandidate');
   
   
+    }
+
+    LogOut(){
+        localStorage.clear();
+        this.router.navigateByUrl('');
     }
 
   ngOnInit() {

@@ -15,7 +15,7 @@
             <div class="col-sm-11">
                 <li class="my-1 profile"><a href="User/Profile">Edit Profile</a></li>
                 <li class="my-1"><a>Recommended Jobs</a> </li>
-                <li> <a>Logout</a> </li>
+                <li (click)="LogOut()"> <a >Logout</a> </li>
             </div>
             <div class="col-sm-1"></div>
         </div>
@@ -54,11 +54,10 @@
                   </div>
                   <ul class="div_hover notebar mb-2" *ngFor="let data of notificationData;let i=index">
         
-                    <li class="notify" (click)="viewProfile(i)">
+                    <li class="notify" (click)="viewProfile(data.emailId,i)">
                      
                       <div class="row mb-2 mr-3">
                      
-                       <!-- <div class="col-sm-2 ml-0 pl-0"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>  -->
                         <div class="col-sm-12"><span> {{data.firstName}} {{data.lastName}} :- </span>
                        
                         <span>{{data.designation}}</span></div>
@@ -80,48 +79,5 @@
         
 
     </p-overlayPanel>
-    <div class="Centered">
-            <!-- <p-dialog [(visible)]="display" [style]="{width: '62%'}">
-              <p-header class="dialogHeader mt-2">
-                <span class="ml-2 mt-2 text-primary">Notification Details</span>
-              </p-header>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">First Name:</div>
-                <div class="col-sm-9 lead">{{noteData?.firstName}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">Last Name:</div>
-                <div class="col-sm-9 lead">{{noteData?.lastName}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">Date:</div>
-                <div class="col-sm-9 lead">{{noteData?.date}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">contact:</div>
-                <div class="col-sm-9 lead">{{noteData?.contact}}</div>
-              </div>
-      
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">Email Id:</div>
-                <div class="col-sm-9 lead">{{noteData?.emailId}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">jobId:</div>
-                <div class="col-sm-9 lead">{{noteData?.jobId}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">Designation:</div>
-                <div class="col-sm-9 lead">{{noteData?.designation}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">status:</div>
-                <div class="col-sm-9 lead">{{noteData?.status}}</div>
-              </div>
-              <div class="row my-3">
-                <div class="col-sm-3 text-right pack">notificationId:</div>
-                <div class="col-sm-9 lead">{{noteData?.notificationId}}</div>
-              </div>
-            </p-dialog> -->
-          </div>
+   
 </div>
