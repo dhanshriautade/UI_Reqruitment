@@ -21,9 +21,9 @@ export class ViewcandidateapplyComponent implements OnInit {
   infodetail = [];
   constructor(public TeamService: TeamService, private http: HttpClient, public EmployeeService: EmployeeService) {
     this.email_id = localStorage.getItem('email');
-    this.getAllEmployeesList();
     this.NotificationGetData = localStorage.getItem('NotificationGetData');
-    console.log(this.NotificationGetData)
+    console.log(this.NotificationGetData);
+    this.getAllEmployeesList();
     this.getResume();
     this.getProfileEmployee();
   }
@@ -98,6 +98,7 @@ export class ViewcandidateapplyComponent implements OnInit {
     var email = this.NotificationGetData;
     this.TeamService.GetProfile(email).subscribe((res: any) => {
       this.ProfileData = res;
+      console.log('data',this.ProfileData);
     })
   }
   getAllEmployeesList() {
