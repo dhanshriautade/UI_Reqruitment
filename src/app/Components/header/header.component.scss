@@ -63,7 +63,7 @@ font-size: small;
     }
    
     .line{
-      border-bottom: 1px solid 	blue;
+      border-bottom: 1px solid 	grey;
       padding: 0px 0px 0px 0px;
       
     }
@@ -76,7 +76,7 @@ font-size: small;
     }
     .notebar{
       padding-top: 12px;
-      border-bottom: 1px solid 	blue;
+      border-bottom: 1px solid 	gray;
       margin-bottom: 0px !important;
     }
     .notebar:hover{
@@ -97,3 +97,12 @@ cursor: pointer;
     .jobid{
       color: rebeccapurple;
     }
+    :host ::ng-deep .aaaa{
+      width: 325px;
+    }
+    :host ::ng-deep  .ui-overlaypanel .ui-overlaypanel-content{
+      width: 330px;
+     }
+     .empname{
+       color: orange;
+     }
