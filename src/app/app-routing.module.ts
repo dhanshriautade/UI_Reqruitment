@@ -16,6 +16,8 @@ import { AddEmployeeComponent } from './Components/add-employee/add-employee.com
 import { JobComponent } from './Components/job/job.component';
 import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
 
+import { ProfileEmployeeComponent } from './Components/profile-employee/profile-employee.component';
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
@@ -28,7 +30,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'candidate', pathMatch: 'full' },
       { path: 'candidate', component: JobSeekerComponent},
       { path: 'home', component: HomeComponent}, 
-      { path: 'Profile', component: ProfileComponent},
+      { path: 'Profile/Seeker', component: ProfileComponent},
+      {path:'Profile', component: ProfileEmployeeComponent},
       { path: 'ApplyJob', component: ApplyjobComponent},
       { path: 'ViewCandidate', component: ViewcandidateapplyComponent}
     ]

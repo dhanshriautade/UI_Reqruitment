@@ -18,7 +18,9 @@
   <ul class="bullet">
     <div class="row">
       <div class="col-sm-11">
-        <li class="my-1 profile"><a href="User/Profile">Edit Profile</a></li>
+        <li class="my-1 profile" *ngIf="role === '0'"><a href="User/Profile/Seeker">Edit Profile</a></li>
+        <li class="my-1 profile" *ngIf="role !== '0'"><a href="User/Profile">Edit Profile</a></li>
+       
         <li class="my-1"><a>Recommended Jobs</a> </li>
         <li (click)="LogOut()"> <a>Logout</a> </li>
       </div>
@@ -92,16 +94,17 @@
       <div class="col-sm-12 line"></div>
     </div>
 
-    <ul class="div_hover notebar mb-2">
+    <ul class="div_hover notebar mb-2"  *ngFor="let data of notificationDataReminder;let i=index">
+      <!-- <ul class="div_hover notebar mb-2"  > -->
 
       <li class="notify">
 
         <div class="row mb-2 mr-3">
           <span> Name :- </span>
-          <span class="empname ml-1">Snehal </span></div>
+          <span class="empname ml-1">{{data.name}} </span></div>
         <div class="row mb-2">
           <span>Selected Time :-</span>
-          <span class="jobid ml-1"> 12/12/2019 10.40pm</span>
+          <span class="jobid ml-1"> {{data.selectedTime}}</span>
         </div>
 
 

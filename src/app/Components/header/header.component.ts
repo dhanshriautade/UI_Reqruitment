@@ -45,8 +45,8 @@ export class HeaderComponent implements OnInit {
       })
 
       this.TeamService.getNotificationReminder().subscribe((res: any) => {
-        console.log(res);
         this.notificationDataReminder = res.hrCandidateInterviewDto;
+        
        
       })
     }
@@ -56,6 +56,7 @@ export class HeaderComponent implements OnInit {
         if(localStorage.getItem('id') ===  res.hrCandidateInterviewDto[0].employeeId)
         {
           this.notificationDataReminder = res.hrCandidateInterviewDto;
+
         }
       })
     }

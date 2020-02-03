@@ -32,6 +32,7 @@ import {DialogModule} from 'primeng/dialog';
 import {ChartModule} from 'primeng/chart';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
+import { ProfileEmployeeComponent } from './Components/profile-employee/profile-employee.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/vie
     ApplyjobComponent,
     ViewJobComponent,
     AddEmployeeComponent,
-    ViewcandidateapplyComponent
+    ViewcandidateapplyComponent,
+    ProfileEmployeeComponent
    
   
   
