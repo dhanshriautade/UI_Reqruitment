@@ -3,12 +3,15 @@
   <div class="col-sm-1 my-3"><a href="User/candidate" class="job">Jobs</a></div>
   <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
   <div class="col-sm-2"></div>
-  <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
-      class="bgimg logo"></div>
-  <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op4.toggle($event)"
-      class="bgimg logo"></div>
+  <!-- <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
+      class="bgimg logo"></div> -->
+  <div class="col-sm-1 my-3">
+    <img src="../../../assets/Notification.png" (click)="op4.toggle($event)" class="bgimg logo ml-2">
+    <img src="../../../assets/Notification.png" (click)="op3.toggle($event)" class="bgimg logo">
+  </div>
   <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
-  <div class="col-sm-2 my-1"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>
+  <div class="col-sm-1 my-1"> <img class="profileImage" src="http://lorempixel.com/100/100" /></div>
+  <div class="col-sm-2"></div>
 </div>
 
 <p-overlayPanel #op>
@@ -51,7 +54,7 @@
         <span class="note mr-1 ml-1">Notifications</span></div>
       <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
     </div>
-    <div class="row ">
+    <div class="row ml-0 mr-0">
       <div class="col-sm-12 line"></div>
     </div>
     <ul class="div_hover notebar mb-2" *ngFor="let data of notificationData;let i=index">
@@ -66,8 +69,8 @@
         </div>
         <div class="row mb-2">
 
-          <div class="col-sm-6 "><span>Job Id :-</span></div>
-          <div class="col-sm-6"> <span class="jobid"> {{data.jobId}}</span></div>
+          <span class="ml-3">Job Id :-</span>
+          <span class="jobid"> {{data.jobId}}</span>
         </div>
 
 
@@ -84,27 +87,21 @@
 
   <p-overlayPanel #op4>
     <div class="row notes">
-      <div class="col-sm-5">
-        <span class="note mr-1 ml-1">Notifications</span></div>
-      <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
-    </div>
-    <div class="row ">
+      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span></div>
+    <div class="row ml-0 mr-0">
       <div class="col-sm-12 line"></div>
     </div>
-    <ul class="div_hover notebar mb-2" *ngFor="let data of notificationDataReminder;let i=index">
+
+    <ul class="div_hover notebar mb-2">
 
       <li class="notify">
 
         <div class="row mb-2 mr-3">
-
-          <div class="col-sm-12"><span> Name :- </span>
-
-            <span>{{data.name}} </span></div>
-        </div>
+          <span> Name :- </span>
+          <span class="empname ml-1">Snehal </span></div>
         <div class="row mb-2">
-
-          <div class="col-sm-6 "><span>Selected Time :-</span></div>
-          <div class="col-sm-6"> <span class="jobid"> {{data.selectedTime}}</span></div>
+          <span>Selected Time :-</span>
+          <span class="jobid ml-1"> 12/12/2019 10.40pm</span>
         </div>
 
 
