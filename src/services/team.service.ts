@@ -23,13 +23,13 @@ export class TeamService {
   // }
 
 
-  // getNotification(){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   return this.http.get(environment.getnotification, { headers: headers });
+  getNotification(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.getnotification, { headers: headers });
 
-  // }
+  }
   ApplyJob(data: any){
   let headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -86,6 +86,20 @@ export class TeamService {
       'Content-Type': 'application/json'
      });
     return this.http.post(environment.CreateJob, data, { headers: headers });
+  }
+
+  DeletejobId(id:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.DeletejobId + '?id=' + id, { headers: headers });
+  
+  }
+  EditJob(data: any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.EditJob, data, { headers: headers });
   }
 
   Getalljob(){

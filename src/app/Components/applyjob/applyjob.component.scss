@@ -11,12 +11,20 @@
     font-size: large;
 }
 .card1{
-    //width: 135%;
+    width: 86%;
    // bottom: 7%;
+}
+.great{
+    font-weight: bold;
 }
 .company{
     font-size: small;
     color: #706B6B;
+}
+.comp{
+    font-size: small;
+    color: #706B6B;
+    font-weight: bold;
 }
 .pi{
     font-size: 25px;
@@ -30,8 +38,8 @@
 .btn1{
     background-color: white;
     border: 1px solid blue;
-    width: 90px;
-    height: 37px;
+    width: 97%;
+    height: 102%;
     font-weight: bold;
     color: blue;
     float: right
@@ -56,6 +64,12 @@
     font-size: small;
     color: #9C9C9B;
 }
+.roles{
+    font-weight: bold;
+    font-size: small;
+    color:#686868;
+    text-align: center;
+}
 .skill{
     border: 1px solid #9C9C9B;;
     font-size: small;
@@ -64,4 +78,11 @@
     width: 79px;
     text-align: center;
     display: inline-block;
+}
+.apply{
+    width: 97%;
+    height: 102%;
+    color: white;
+ 
+    float: right
 }
