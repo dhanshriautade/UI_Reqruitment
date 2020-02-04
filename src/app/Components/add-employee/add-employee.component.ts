@@ -17,13 +17,15 @@ export class AddEmployeeComponent implements OnInit {
     designationList: any = [];
     submitted: boolean;
     useradd: boolean = false;
-    infodetailemployee
+    infodetailemployee;
+    configer;
     docArray = [];
     documentArray = [];
     editStatus = false;
     docidArray = [];
     infodetail = [];
     role;
+    lengthItem;
     employeeForm = new FormGroup({
     });
     departmentsAndDesignations: any = [];
@@ -35,18 +37,31 @@ export class AddEmployeeComponent implements OnInit {
         this.getAllEmployeesList();
 
     }
+
     getAllEmployeesList() {
-        this.TeamService.GetAllEmployee().subscribe(res => {
-            this.data = res;
-            this.infodetail = [];
-            let keys = Object.keys(this.data);
-            //console.log('keys', keys);
-            for (var i = 0; i < keys.length; i++) {
-                this.infodetail.push(this.data[keys[i]]);
-            }
-             console.log(this.infodetail);
-        })
-    }
+        this.EmployeeService.getEmployee().subscribe(res => {
+          this.infodetail = [];
+          this.data = res;
+          let keys = Object.keys(this.data);
+          // console.log('keys', keys);
+          for (var i = 0; i < keys.length; i++) {
+            this.infodetail.push(this.data[keys[i]]);
+          }
+          if(this.infodetail.length != 0 ){
+            this.lengthItem = this.infodetail.length
+          }
+          else{
+              this.lengthItem = 0
+          }
+          this.configer = {
+            itemsPerPage: 8,
+            currentPage: 1,
+            totalItems: this.lengthItem
+          };
+        //   console.log('list', this.infodetail);
+        });
+      }
+   
     getDesignationList() {
         let dept = this.employeeForm.get('department').value;
         let map = new Map(this.departmentsAndDesignations);
@@ -56,8 +71,13 @@ export class AddEmployeeComponent implements OnInit {
             }
         }
     }
+
+    pageChanged(event) {
+        this.configer.currentPage = event;
+      }
+      
     EditEmployee(i: any) {
-        console.log('edit', this.infodetail[i].designation);
+        // console.log('edit', this.infodetail[i].designation);
 
         this.action = ''
         this.display = true;
@@ -138,6 +158,9 @@ export class AddEmployeeComponent implements OnInit {
                 if(res.responseMessage === 'PhoneNo already exists'){
                 this.toastr.success('Phone Number Already Exists !!!');
                 return 0;
+                } else if(res.responseMessage === 'Email id exists already'){
+                    this.toastr.success('Email Id Already Exists !!!');
+                    return 0;
                 } else if(res.responseMessage === 'Success'){
                     this.toastr.success('Successfully Added Employee !!!');
                 }

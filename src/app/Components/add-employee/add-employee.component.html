@@ -6,7 +6,7 @@
                 <span class="search">Search Employee</span>
             </div>
             <div class="row">
-                <input type="text" [(ngModel)]="term" placeholder="Search Employee by name,email id..." class="box">
+                <input type="text" [(ngModel)]="term" placeholder="Search Employee by name,email id and department..." class="box">
                 <button type="submit" class="btn-primary btn1">Search</button>
             </div>
         </div>
@@ -16,6 +16,42 @@
         <div class="col-sm-10"></div>
         <div class="col-sm-2"><button type="button" class="btn btn-primary info my-3 ml-4" *ngIf="role === '1'" (click)="PersonalInfo()">Add
                 Employee</button></div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped my-2" style="margin: auto; width: 85%;">
+            <thead>
+                <tr class="">
+                    <th>NO</th>
+                    <th align="center" scope="col">First Name</th>
+                    <th align="center" scope="col">Last Name</th>
+                    <th align="center" scope="col">Email</th>
+                    <th align="center" scope="col">Department</th>
+                    <th align="center" scope="col">Phone No.</th>
+                    <th align="center" scope="col">Title</th>
+                    <th align="center" scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let user of infodetail | filter:term | paginate: configer; let i = index">
+
+                            <td>{{i+1}}</td>
+                            <td>{{user?.firstName}}</td>
+                            <td>{{user?.lastName}}</td>
+                            <td> {{user?.email}}</td>
+                            <td> {{user?.department}}</td>
+                            <td>{{user?.phoneNo}}</td>
+                            <td> {{user?.title}}</td>
+                            <td> <i class="pi pi-pencil " *ngIf="role === '1' || role === '2'" (click)="EditEmployee(i)"></i>
+                                <i class="pi pi-trash" *ngIf="role === '1'" (click)="DeleteEmployee(dataone?.email)"></i></td>
+                        </tr>
+                
+            </tbody>
+        </table>
+        <div class="text-right">
+                <pagination-controls (pageChange)="pageChanged($event)">
+                </pagination-controls>
+            </div>
     </div>
     <div class="row">
         <p-dialog header='' [(visible)]="display" [style]="{width: '55%'}">
@@ -203,32 +239,5 @@
         </p-dialog>
     </div>
 
-    <div class="row my-3 mt-1 ml-5 mr-5">
-        <div class="col-md-3 col-sm-4 col-lg-4 col-12 my-3" *ngFor="let dataone of infodetail |filter:term ;let i = index">
-            <div class="role-card card-border">
-
-                <div class="row mt-2">
-                    <div class="col-sm-5"> <span class="name">Employee Name :</span></div>
-                    <div class="col-sm-4"> <span class="details">{{dataone?.firstName}} {{dataone?.lastName}}</span>
-                    </div>
-                    <div class="col-sm-3"> <i class="pi pi-pencil " *ngIf="role === '1' || role === '2'" (click)="EditEmployee(i)"></i>
-                        <i class="pi pi-trash" *ngIf="role === '1'" (click)="DeleteEmployee(dataone?.email)"></i>
-                    </div>
-                    <!-- <div class="col-sm-2"></i></div> -->
-                </div>
-                <div class="row">
-                    <div class="col-sm-5"> <span class="name">Skills :</span></div>
-                    <div class="col-sm-7"> <span class="details">Java,HTML</span></div>
-                </div>
-                <div class="row mt-1 ">
-                    <div class="col-sm-5"> <span class="name">Email ID :</span></div>
-                    <div class="col-sm-7"> <span class="details">{{dataone?.email}}</span></div>
-                </div>
-                <div class="row mt-1 ">
-                    <div class="col-sm-5"> <span class="name">Contact :</span></div>
-                    <div class="col-sm-7"> <span class="details">{{dataone?.phoneNo}}</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 </div>
