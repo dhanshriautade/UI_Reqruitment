@@ -43,7 +43,7 @@
                             <td>{{user?.phoneNo}}</td>
                             <td> {{user?.title}}</td>
                             <td> <i class="pi pi-pencil " *ngIf="role === '1' || role === '2'" (click)="EditEmployee(i)"></i>
-                                <i class="pi pi-trash" *ngIf="role === '1'" (click)="DeleteEmployee(dataone?.email)"></i></td>
+                                <i class="pi pi-trash" *ngIf="role === '1'" (click)="DeleteEmployee(user?.email)"></i></td>
                         </tr>
                 
             </tbody>
