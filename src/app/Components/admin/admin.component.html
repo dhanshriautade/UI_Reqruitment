@@ -1,19 +1,83 @@
 <div class="Dashboard">
     <div class="row head">
-        <div class="my-3 portal ml-5"><span class="ml-3">Job Portal Management</span></div>
+        <div class="col-sm-9">
+            <div class="my-3 portal ml-5"><span class="ml-3">Job Portal Management</span></div>
+        </div>
+        <div class="col-sm-1 my-3 portal pt-2">
+            <label>Deparment :</label>
+        </div>
+        <div class="col-sm-2 my-3">
+            <select id="employee" name="employee" class="box">
+                <option value="" disable>Select
+                    department</option>
+                <option>Software</option>
+                <option>Embedded</option>
+                <option>Mechanical</option>
+            </select>
+        </div>
+
     </div>
     <div class="row my-4 chart ml-5 mr-5">
         <div class="col-sm-3 my-3">
-            <p-chart type="doughnut" [data]="data1" width="271" height="137"></p-chart>
+            <!-- <p-chart type="doughnut" [data]="data1" width="271" height="137"></p-chart> -->
+            <kendo-chart>
+                <ng-template kendoChartDonutCenterTemplate>
+                    007
+                </ng-template>
+                <kendo-chart-series>
+                    <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind" field="share">
+                        <kendo-chart-series-item-labels [content]="labelContent" [visible]="false" color="#fff"
+                            background="none">
+                        </kendo-chart-series-item-labels>
+                    </kendo-chart-series-item>
+                </kendo-chart-series>
+                <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+            </kendo-chart>
         </div>
         <div class="col-sm-3 my-3">
-            <p-chart type="doughnut" [data]="data1" width="271" height="137"></p-chart>
+            <kendo-chart>
+                <ng-template kendoChartDonutCenterTemplate>
+                    007
+                </ng-template>
+                <kendo-chart-series>
+                    <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind" field="share">
+                        <kendo-chart-series-item-labels [content]="labelContent" [visible]="false" color="#fff"
+                            background="none">
+                        </kendo-chart-series-item-labels>
+                    </kendo-chart-series-item>
+                </kendo-chart-series>
+                <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+            </kendo-chart>
         </div>
         <div class="col-sm-3 my-3">
-            <p-chart type="doughnut" [data]="data1" width="271" height="137"></p-chart>
+            <kendo-chart>
+                <ng-template kendoChartDonutCenterTemplate>
+                    007
+                </ng-template>
+                <kendo-chart-series>
+                    <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind" field="share">
+                        <kendo-chart-series-item-labels [content]="labelContent" [visible]="false" color="#fff"
+                            background="none">
+                        </kendo-chart-series-item-labels>
+                    </kendo-chart-series-item>
+                </kendo-chart-series>
+                <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+            </kendo-chart>
         </div>
         <div class="col-sm-3 my-3">
-            <p-chart type="doughnut" [data]="data1" width="271" height="137"></p-chart>
+            <kendo-chart>
+                <ng-template kendoChartDonutCenterTemplate>
+                    007
+                </ng-template>
+                <kendo-chart-series>
+                    <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind" field="share">
+                        <kendo-chart-series-item-labels [content]="labelContent" [visible]="false" color="#fff"
+                            background="none">
+                        </kendo-chart-series-item-labels>
+                    </kendo-chart-series-item>
+                </kendo-chart-series>
+                <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+            </kendo-chart>
         </div>
     </div>
     <div class="row my-4 mt-5 ml-5 mr-5">
@@ -27,7 +91,7 @@
                         <div class="row my-1 ml-5">
                             <div class="col-sm-2 ml-5">
                                 <div class="num my-2 icon">
-                                    <div class="count">0 {{ this.jobseekercount}}</div> 
+                                    <div class="count">0 {{ this.jobseekercount}}</div>
                                 </div>
                             </div>
                             <div class="col-sm-10"></div>
@@ -51,37 +115,37 @@
                 </div>
             </div>
             <div class="row mt-5">
-                    <div class="col-sm-6 job2 mt-4">
-                        <div class="">
-                            <div class="row ml-5">
-                                <div class="my-3 total ml-5">Total Applied Job</div>
-                            </div>
-                            <div class="row my-1 ml-5">
-                                <div class="col-sm-2 ml-5">
-                                    <div class="num my-2 icon">
-                                        <div class="count">0 {{Applyjobcount}}</div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10"></div>
-                            </div>
+                <div class="col-sm-6 job2 mt-4">
+                    <div class="">
+                        <div class="row ml-5">
+                            <div class="my-3 total ml-5">Total Applied Job</div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 mt-4">
-                        <div class="job3">
-                            <div class="row ml-5">
-                                <div class="my-3 total ml-5">Latest Opening</div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-sm-2 ml-5">
-                                    <div class="num1 my-2 icon ml-5">
-                                        <div class="count">0 {{JobCount}}</div>
-                                    </div>
+                        <div class="row my-1 ml-5">
+                            <div class="col-sm-2 ml-5">
+                                <div class="num my-2 icon">
+                                    <div class="count">0 {{Applyjobcount}}</div>
                                 </div>
-                                <div class="col-sm-10"></div>
                             </div>
+                            <div class="col-sm-10"></div>
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-6 mt-4">
+                    <div class="job3">
+                        <div class="row ml-5">
+                            <div class="my-3 total ml-5">Latest Opening</div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm-2 ml-5">
+                                <div class="num1 my-2 icon ml-5">
+                                    <div class="count">0 {{JobCount}}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-6 chart">
             <div class="mt-3 detail">Job Applicant Details</div>

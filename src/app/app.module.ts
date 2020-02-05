@@ -33,8 +33,8 @@ import {ChartModule} from 'primeng/chart';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
 import { ProfileEmployeeComponent } from './Components/profile-employee/profile-employee.component';
-
-
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +61,7 @@ import { ProfileEmployeeComponent } from './Components/profile-employee/profile-
   
   ],
   imports: [
+    ChartsModule,
     NgxPaginationModule,
     ChartModule,
     DialogModule,

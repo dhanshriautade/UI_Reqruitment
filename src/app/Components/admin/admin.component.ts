@@ -20,6 +20,21 @@ export class AdminComponent implements OnInit {
   totalItems = 0;
   Applyjobcount;
   JobCount;
+  public datadonut: any[] = [
+    {
+      kind: 'Completed', share: 0.175,  color:'#37D7FF' 
+    }, 
+    {
+      kind: 'On Hold', share: 0.175 , color:'#FF746D'
+    },
+     {
+      kind: 'In Progress', share: 0.175 ,  color:'#FEE37B'
+    }, 
+    ];
+  
+    public labelContent(e: any): string {
+      return e.category;
+    }
 
   constructor(public EmployeeService: EmployeeService, public TeamService: TeamService,) {
 
@@ -42,23 +57,23 @@ export class AdminComponent implements OnInit {
   })
 
     http://localhost:8081/findByRole?role=0
-    this.data1 = {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-        {
-          data: [300, 150,200],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    };
+    // this.data1 = {
+    //   labels: ['A', 'B', 'C'],
+    //   datasets: [
+    //     {
+    //       data: [300, 150,200],
+    //       backgroundColor: [
+    //         "#FF6384",
+    //         "#36A2EB",
+    //         "#FFCE56"
+    //       ],
+    //       hoverBackgroundColor: [
+    //         "#FF6384",
+    //         "#36A2EB",
+    //         "#FFCE56"
+    //       ]
+    //     }]
+    // };
     this.getAllEmployeesList();
     this.databar = {
       labels: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
