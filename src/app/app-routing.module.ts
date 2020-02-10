@@ -17,6 +17,8 @@ import { JobComponent } from './Components/job/job.component';
 import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
 
 import { ProfileEmployeeComponent } from './Components/profile-employee/profile-employee.component';
+import { JobDetailComponent } from './Components/job-detail/job-detail.component';
+import { LatestOpningComponent } from './Components/latest-opning/latest-opning.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -33,7 +35,9 @@ const routes: Routes = [
       { path: 'Profile/Seeker', component: ProfileComponent},
       {path:'Profile', component: ProfileEmployeeComponent},
       { path: 'ApplyJob', component: ApplyjobComponent},
-      { path: 'ViewCandidate', component: ViewcandidateapplyComponent}
+      { path: 'ViewCandidate', component: ViewcandidateapplyComponent},
+      { path: 'job/detail', component: JobDetailComponent},
+      { path: 'job/View', component: LatestOpningComponent}
     ]
   },
   {

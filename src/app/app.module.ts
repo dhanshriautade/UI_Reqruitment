@@ -33,6 +33,12 @@ import {ChartModule} from 'primeng/chart';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ViewcandidateapplyComponent } from './Components/viewcandidateapply/viewcandidateapply.component';
 import { ProfileEmployeeComponent } from './Components/profile-employee/profile-employee.component';
+import { JobDetailComponent } from './Components/job-detail/job-detail.component';
+import { LatestOpningComponent } from './Components/latest-opning/latest-opning.component';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
+
 
 
 @NgModule({
@@ -55,7 +61,9 @@ import { ProfileEmployeeComponent } from './Components/profile-employee/profile-
     ViewJobComponent,
     AddEmployeeComponent,
     ViewcandidateapplyComponent,
-    ProfileEmployeeComponent
+    ProfileEmployeeComponent,
+    JobDetailComponent,
+    LatestOpningComponent
    
   
   
@@ -80,7 +88,7 @@ import { ProfileEmployeeComponent } from './Components/profile-employee/profile-
       closeButton: true,
       progressBar: true,
       preventDuplicates : true
-    })
+    }), ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,7 +30,13 @@ export class TeamService {
     return this.http.get(environment.getnotification, { headers: headers });
 
   }
+  getAllocatedJobseeker(email:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.getAllocatedJobseeker + '/' + email , { headers: headers });
 
+  }
   getNotificationReminder(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -72,13 +78,13 @@ export class TeamService {
     return this.http.get(environment.sendemail +'?' + data, { headers: headers });
   }
 
-  // searchDepartmentWiseJob(data:any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //    });
-  //   return this.http.get(environment.searchDepartmentWiseJob +'=' + data, { headers: headers });
+  searchDepartmentWiseJob(data:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.searchDepartmentWiseJob +'=' + data, { headers: headers });
   
-  // }
+  }
   getjobId(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -140,6 +146,13 @@ export class TeamService {
   
   }
 
+  AssignEmployeeToInterview(data:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.post(environment.AssignEmployeeToInterview, data, { headers: headers });
+  
+  }
   // downloadResume(data){
   //   let headers = new HttpHeaders({
   //     'Content-Type': 'application/json'
