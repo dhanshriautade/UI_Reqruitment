@@ -5,14 +5,17 @@
   <div class="col-sm-2"></div>
   <!-- <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
       class="bgimg logo"></div> -->
-  <div class="col-sm-1 my-3">
+ 
+  <div class="col-sm-1 my-3" *ngIf="role === '3'">
     <div class="count"> <span class="notifi"> {{count}} </span>  </div>
     <div>
-    <img src="../../../assets/Notification.png" (click)="op4.toggle($event)" class="bgimg logo ml-2">
+    <img src="../../../assets/Notification.png" (click)="op5.toggle($event)" class="bgimg logo ml-2">
     </div>
     
   </div>
-  <div class="col-sm-1 my-3">
+  <div class="col-sm-1 my-3" *ngIf="role === '2'">
+      <div class="count"> <span class="notifi"> {{count}} </span>  </div>
+ 
     <img src="../../../assets/Notification.png" (click)="op3.toggle($event)" class="bgimg logo">
   </div>
   <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
@@ -57,11 +60,12 @@
 <div>
 
   <p-overlayPanel #op3>
-    <div class="row notes">
-      <div class="col-sm-5">
-        <span class="note mr-1 ml-1">Notifications</span></div>
-      <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
-    </div>
+      <div class="row notes">
+          <span class="note mr-1 ml-4 my-2">Notifications for Applied Job seeker</span>
+          <span class="note mr-1 ml-5 my-2 empname"> {{notificationData.length}} </span> 
+       
+        </div>
+  
     <div class="row ml-0 mr-0">
       <div class="col-sm-12 line"></div>
     </div>
@@ -85,23 +89,19 @@
       </li>
 
     </ul>
-
-    <div class="seeall">
-      <p class="text-center "><a href="">See All</a></p>
-    </div>
-
-
-  </p-overlayPanel>
-
-  <p-overlayPanel #op4>
     <div class="row notes">
-      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span></div>
+      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span>
+      <span class="note mr-1 ml-5 my-2 empname"> {{notificationDataReminder.length}} </span> 
+   
+    </div>
     <div class="row ml-0 mr-0">
       <div class="col-sm-12 line"></div>
     </div>
-
-    <ul class="div_hover notebar mb-2"  *ngFor="let data of notificationDataReminder;let i=index">
-      <!-- <ul class="div_hover notebar mb-2"  > -->
+   
+    <div class="row ml-0 mr-0">
+      <div class="col-sm-12 line"></div>
+    </div>
+    <ul class="div_hover notebar mb-2" *ngFor="let data of notificationDataReminder;let i=index">
 
       <li class="notify">
 
@@ -125,4 +125,63 @@
 
   </p-overlayPanel>
 
+  
+
+  <p-overlayPanel #op5>
+    <div class="row notes">
+      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span>
+      <span class="note mr-1 ml-5 my-2 empname"> {{notificationDataReminder.length}} </span> </div>
+    <div class="row ml-0 mr-0">
+      <div class="col-sm-12 line"></div>
+    </div>
+
+    <ul class="div_hover notebar mb-2"  *ngFor="let data of notificationDataReminder;let i=index">
+      <!-- <ul class="div_hover notebar mb-2"  > -->
+
+      <li class="notify">
+
+        <div class="row mb-2 mr-3">
+          <span> Name :- </span>
+          <span class="empname ml-1">{{data.name}} </span></div>
+        <div class="row mb-2">
+          <span>Selected Time :-</span>
+          <span class="jobid ml-1"> {{data.selectedTime}}</span>
+        </div>
+
+
+      </li>
+
+    </ul>
+    <div class="row notes">
+      <span class="note mr-1 ml-4 my-2">Notifications for Allocated Jobseeker</span>
+    
+    </div>
+    <div class="row ml-0 mr-0">
+      <div class="col-sm-12 line"></div>
+    </div>
+
+    <ul class="div_hover notebar mb-2"  *ngFor="let dataone of allocatedJobSeeker;let i=index">
+      <!-- <ul class="div_hover notebar mb-2"  > -->
+
+      <li class="notify">
+
+        <div class="row mb-2 mr-3">
+          <span> Email :- </span>
+          <span class="empname ml-1">{{dataone.candidateEmail}} </span></div>
+        <div class="row mb-2">
+          <span>Resume :-</span>
+          <span class="jobid ml-1"> {{dataone?.candidateDocument?.split('/')[this.dataone?.candidateDocument?.split('/').length-1]}}</span>
+        </div>
+
+
+      </li>
+
+    </ul>
+
+    <div class="seeall">
+      <p class="text-center "><a href="">See All</a></p>
+    </div>
+
+
+  </p-overlayPanel>
 </div>

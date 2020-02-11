@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   notificationData;
   notificationDataReminder;
   count;
+  allocatedJobSeeker;
   noteData;
   role;
   display= false;
@@ -47,7 +48,7 @@ export class HeaderComponent implements OnInit {
        this.count = this.count;
       this.TeamService.getNotificationReminder().subscribe((res: any) => {
         this.notificationDataReminder = res.hrCandidateInterviewDto;
-        debugger;
+       
         this.count = this.count + this.notificationDataReminder.length;    
              })
              this.count =  this.count;
@@ -55,18 +56,22 @@ export class HeaderComponent implements OnInit {
     }
   
     if(localStorage.getItem('role') == '3'){
-      debugger;
       this.TeamService.getNotificationReminder().subscribe((res: any) => {
         if(localStorage.getItem('id') ===  res.hrCandidateInterviewDto[0].employeeId)
         {
           this.notificationDataReminder = res.hrCandidateInterviewDto;
-
+          this.count = this.notificationDataReminder.length; 
+   
         }
       })
 
       var email =  localStorage.getItem('email')
       this.TeamService.getAllocatedJobseeker(email).subscribe((res: any) => {
+        this.allocatedJobSeeker =  res;
+        this.count = this.count + this.allocatedJobSeeker.length;    
+      
       })
+      this.count =  this.count;
     }
 
   }
