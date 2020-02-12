@@ -37,6 +37,21 @@ export class HeaderComponent implements OnInit {
         this.router.navigateByUrl('');
     }
 
+    EmployeePage(){
+      this.router.navigateByUrl('/HR/team');
+
+    }
+    job(){
+      this.router.navigateByUrl('User/candidate');
+    }
+
+    EditProfileSeeker(){
+      this.router.navigateByUrl('User/Profile/Seeker');
+    }
+    EditProfile(){
+      this.router.navigateByUrl('User/Profile');
+    }
+
   ngOnInit() {
     console.log(localStorage.getItem('role'));
     if(localStorage.getItem('role') == '2'){
