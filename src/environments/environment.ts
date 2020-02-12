@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 const base_url = 'http://localhost:8081/';
 const notify_url = 'http://localhost:8085/';
+// const base_url = 'http://localhost:8080/MDPRecruitment/';
+// const notify_url = 'http://localhost:8080/MDPNotification/';
 export const environment = {
   production: false,
   Employeepost:base_url + 'addEmployee',
