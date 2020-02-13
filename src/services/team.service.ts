@@ -145,6 +145,12 @@ export class TeamService {
     return this.http.post(environment.GetResume, formData);
   
   }
+  EmployeeByDepartment(data:any){
+    let headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.getEmployeeByDepartment,data, { headers: headers });
+    }
 
   AssignEmployeeToInterview(data:any){
     let headers = new HttpHeaders({

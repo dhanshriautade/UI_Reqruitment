@@ -32,6 +32,7 @@ export const environment = {
   UpdateSecondarySkill: base_url + 'updateSecondarySkill',
   getjobId: base_url + 'getUniqueJobId',
   AssignEmployeeToInterview: base_url + 'assignCandidateForInterview',
+  getEmployeeByDepartment: base_url + 'getEmployeeInfoByDepartment',
 
   //Notification
   getnotification: notify_url + 'getAllNotification',

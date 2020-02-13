@@ -3,6 +3,8 @@ import { TeamService } from 'src/services/team.service';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpParams } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { saveAs } from 'file-saver';
+
+import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'src/services/employee.service';
 @Component({
   selector: 'app-viewcandidateapply',
@@ -17,14 +19,23 @@ export class ViewcandidateapplyComponent implements OnInit {
   data
   ResumeInfo;
   otherDocPathName;
+  department;
+  selecteddepartment;
+  selectedemployee;
+  dataone;
   displayjob = false;
-  NotificationGetData
+  empdeptdata;
+  NotificationGetData;
+  path;
+
   infodetail = [];
-  constructor(public TeamService: TeamService, private http: HttpClient, public EmployeeService: EmployeeService) {
+  constructor(public TeamService: TeamService, private http: HttpClient,private toastr: ToastrService, public EmployeeService: EmployeeService) {
     this.email_id = localStorage.getItem('email');
     this.NotificationGetData = localStorage.getItem('NotificationGetData');
     this.NotificationGetDataJobId = localStorage.getItem('NotificationGetDataJobId');
-   
+    this.department=[
+      'Software','Embedded','Mechanical'
+    ]
     
     console.log(this.NotificationGetData);
     this.getAllEmployeesList();
@@ -32,6 +43,34 @@ export class ViewcandidateapplyComponent implements OnInit {
     this.getProfileEmployee();
   }
 
+  getDeparmentwiseEmpList() {
+    let dept = this.selecteddepartment
+    this.data = {
+    "department": dept
+    };
+    this.TeamService.EmployeeByDepartment(this.data).subscribe((res: any) => {
+    this.empdeptdata = [];
+    this.dataone = res;
+    var email = this.NotificationGetData;
+    })
+    }
+    AssignEmpployeeToInterview() {
+      if(this.ResumeInfo != null){
+      this.path = this.ResumeInfo.resumePath;
+      }
+      else{
+        this.path  = '';
+      }
+      this.data = {
+      "jobId": this.NotificationGetDataJobId,
+      "candidateEmail": this.ProfileData.email,
+      "candidateDocument": this.path,
+      "employeeId": this.selectedemployee,
+      }
+      this.TeamService.AssignEmployeeToInterview(this.data).subscribe((res: any) => {
+      this.toastr.success('Successfully Assign Employee !!!');
+      })
+      }
   ngOnInit() {
     this.getResume();
     this.getProfileEmployee();
@@ -58,8 +97,9 @@ export class ViewcandidateapplyComponent implements OnInit {
     formData.append('id', email);
     this.TeamService.GetResume(formData).subscribe((res: any) => {
       this.ResumeInfo = res;
+      if(this.ResumeInfo != null){
       this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
-
+      }
 
     })
 
