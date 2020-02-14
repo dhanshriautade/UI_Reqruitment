@@ -99,22 +99,22 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.get('drivingLicence').setValue(this.infodetail[i].drivingLicence); 
         this.docArray = [];
         if(this.infodetail[i].adhar !== ""){
-            this.docArray.push( 'Adhar Card' + this.infodetail[i].adhar);     
+            this.docArray.push( 'Adhar Card' + ' ( ' + this.infodetail[i].adhar + ')');     
                
         }
         if(this.infodetail[i].passport !==  "" ){
-            this.docArray.push('Passport' + this.infodetail[i].passport);
+            this.docArray.push('Passport' + ' ( ' + this.infodetail[i].passport + ')');
       
         }
         if(this.infodetail[i].pan !== ""){
-            this.docArray.push('PAN Card' + this.infodetail[i].pan);
+            this.docArray.push('PAN Card' + ' ( ' +  this.infodetail[i].pan + ')');
                }
         if(this.infodetail[i].drivingLicence !== ""){
-            this.docArray.push('Driving Lincese'+this.infodetail[i].drivingLicence);
+            this.docArray.push('Driving Lincese'+ ' ( ' + this.infodetail[i].drivingLicence + ' )');
       
         }
         if(this.infodetail[i].voterId !== "" ){
-            this.docArray.push('Voter IDt'+ this.infodetail[i].voterId)
+            this.docArray.push('Voter IDt'+ ' ( ' + this.infodetail[i].voterId + ') ')
    
         }
          }
@@ -221,7 +221,13 @@ export class AddEmployeeComponent implements OnInit {
 
     }
     addDocument() {
-        this.docArray.push(this.employeeForm.get('ID').value + this.employeeForm.get('idno').value)
+        if(this.employeeForm.get('ID').value  == '' || this.employeeForm.get('idno').value){
+            this.toastr.error('Please Select Identity Card');
+            return 0;
+        }
+        
+        console.log('type',this.docArray);
+        this.docArray.push(this.employeeForm.get('ID').value + ' ('+ this.employeeForm.get('idno').value + ')')
         this.documentArray.push(this.employeeForm.get('idno').value)
         this.docidArray.push(this.employeeForm.get('ID').value);
 

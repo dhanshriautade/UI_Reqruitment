@@ -160,17 +160,17 @@
       <div class="col-sm-12 line"></div>
     </div>
 
-    <ul class="div_hover notebar mb-2"  *ngFor="let dataone of allocatedJobSeeker;let i=index">
+    <ul class="div_hover notebar mb-2">
       <!-- <ul class="div_hover notebar mb-2"  > -->
 
       <li class="notify">
 
         <div class="row mb-2 mr-3">
           <span> Email :- </span>
-          <span class="empname ml-1">{{dataone.candidateEmail}} </span></div>
+          <span class="empname ml-1">{{allocatedJobSeeker?.candidateEmail}} </span></div>
         <div class="row mb-2">
           <span>Resume :-</span>
-          <span class="jobid ml-1"> {{dataone?.candidateDocument?.split('/')[this.dataone?.candidateDocument?.split('/').length-1]}}</span>
+          <span class="jobid ml-1"> {{allocatedJobSeeker?.candidateDocument?.split('/')[this.allocatedJobSeeker?.candidateDocument?.split('/').length-1]}}</span>
         </div>
 
 
