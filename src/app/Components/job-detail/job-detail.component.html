@@ -5,38 +5,28 @@
                 </div>
                 <div class="col-sm-10 col-md-10 col-lg-10 my-3">
                     <div class=" main my-3 ">
-                        <div class="mt-3 my-2"><span class="job pl-2 pt-3"> Job Summary :JVL015</span></div>
+                        <div class="mt-3 my-2"><span class="job pl-2 pt-3"> Job Summary :{{data?.jobId}}</span></div>
                         <div class="row">
                             <div class="col-sm-1"></div>
                             <div class="col-sm-10">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mt-3 my-2"><span class=" pl-2 pt-3"> Designation :</span><span
-                                                class="design"> Java Lead,(Automation
-                                                Iot)</span><br></div>
+                                                class="design"> {{data?.designation}}</span><br></div>
                                         <div class="mt-3 my-2"><span class=" pl-2 pt-3">Experience :</span><span
-                                                class="design">0 To 3 Yrs.,Relative 03
-                                                Yrs.</span><br></div>
+                                                class="design">{{data?.experienceInYears}}</span><br></div>
                                         <div class="mt-3 my-2"> <span class=" pl-2 pt-3">Package :</span><span
-                                                class="design">4.00 To 8.00 LPA.</span><br></div>
+                                                class="design">{{data?.minPackage}} To {{data?.maxPackage}}</span><br></div>
                                         <div class="mt-3 my-2"><span class=" pl-2 pt-3">Notice period :</span><span
-                                                class="design">2 Month</span><br></div>
+                                                class="design">{{data?.noticePeriod}}</span><br></div>
                                         <div class="mt-3 my-2"><span class="pl-2 pt-3">Skill's :</span><span
-                                                class="design">Java,C,C++,Angular</span><br></div>
+                                                class="design" *ngFor="let skill of data?.skills">{{skill}} </span><br></div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mt-3 my-2"><span class=" job pl-2 pt-3"> Responsibilities -</span> <br>
                                         </div>
     
-                                        <ul style="list-style-type:square;">
-                                            <li class="my-1">Mininum 3 years of experience in java,J2EE,Spring,Springboot
-                                            </li>
-                                            <li class="my-1">Hands on experience in multi-threading,collections and writing
-                                                unit tests</li>
-                                            <li class="my-1" b>Extensive Experience of using design patterns</li>
-                                            <li>Experience using web sockets</li>
-    
-                                        </ul>
+                                        <div> {{data?.jobDescription}}</div>
                                     </div>
     
                                 </div>
@@ -51,7 +41,7 @@
                         <div class="col-sm-1"></div>
                         <div class=" col-sm-10 ">
                             <div class="input-group">
-                                <input type="text" class="search"
+                                <input type="text" class="search"  [(ngModel)]="term"
                                     placeholder="Search Employees,designations,jobs,job ID...">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="button">
@@ -69,7 +59,7 @@
                             <div class="d-flex">
                                 <div class="my-1 mr-auto">
                                  <img class="my-1 ml-3 open" src="../../../assets/Emp List.png" alt=""> 
-                                    <span class="evnt">Candidate List <span class="id">JVL015</span></span>
+                                    <span class="evnt">Candidate List <span class="id">{{data?.jobId}}</span></span>
                                 </div>
                                 <div class="my-2 mr-2">
                                 </div>
@@ -97,24 +87,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td scope="row" class="name">01</td>
-                                        <td class="name">Mohini AVhad</td>
+                                    <tr *ngFor="let job of data?.candidateList| filter:term ;index as i">
+                                        <td scope="row" class="name">{{i+1}}</td>
+                                        <td class="name">{{job.candidateName}}</td>
                                         <td align="center" class="blue text-primary">Resume.doc</td>
-                                        <td align="center" class="name">05</td>
-                                        <td align="center" class="name">03</td>
-                                        <td align="center" class="red">2 Months</td>
-                                        <td align="center" class="red bookmark">03</td>
-                                        <td align="center" class="red">05</td>
-                                        <td align="center" class="red bookmark">Pune</td>
-                                        <td align="center" class="red">07-03-2020</td>
+                                        <td align="center" class="name">{{job?.experienceInYears}}</td>
+                                        <td align="center" class="name">{{job?.relevantExpInYears}}</td>
+                                        <td align="center" class="red">{{job?.noticePeriod}}</td>
+                                        <td align="center" class="red bookmark">{{job?.ctc}}</td>
+                                        <td align="center" class="red">{{job?.ectc}}</td>
+                                        <td align="center" class="red bookmark">{{data?.location}}</td>
+                                        <td align="center" class="red">{{job?.appliedDate}}</td>
                                         <td align="center" class="red"><div (click)="onClick()">
                                             <i class="pi pi-star" [class.active]="isActive"></i>
                                          </div></td>
                                         <td align="center" class="red text-primary" style="z-index: 1;"><i
                                                 class="font fa fa-gear" (click)="op.toggle($event)"></i>   </td>
                                                 <td align="center" class="red text-primary">assign</td>
-                                                <td align="center" class="red">Rejected</td>
+                                                <td align="center" class="red">{{job?.status}}</td>
             
                                             </tr>
                                 </tbody>

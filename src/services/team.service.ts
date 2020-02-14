@@ -37,6 +37,14 @@ export class TeamService {
     return this.http.get(environment.getAllocatedJobseeker  + email , { headers: headers });
 
   }
+
+  getJobIdWiseDetail(id:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+     });
+    return this.http.get(environment.getJobIdWiseDetail  + id , { headers: headers });
+
+  }
   getNotificationReminder(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -50,6 +58,14 @@ export class TeamService {
    });
   return this.http.post(environment.ApplyJob, data, { headers: headers });
   }
+
+  saveCandidateJobApplication(data: any){
+  let headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+   });
+  return this.http.post(environment.saveCandidateJobApplication, data, { headers: headers });
+  }
+
   UpdateSecondarySkill(data: any){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'

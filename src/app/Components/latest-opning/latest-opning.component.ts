@@ -51,6 +51,8 @@ export class LatestOpningComponent implements OnInit {
   name: {}[];
   constructor(private formBuilder: FormBuilder, public router: Router, private toastr: ToastrService, public TeamService: TeamService) {
 
+   
+
     this.notice = [
       { 'notes': 'one week' }, { 'notes': ' 15 days' }, { 'notes': '1 month' }, { 'notes': ' 2 month' }, { 'notes': '3 month' }, { 'notes': 'other' }
 
@@ -135,8 +137,9 @@ export class LatestOpningComponent implements OnInit {
   }
 
 
-  goToJob() {
-    this.router.navigateByUrl('/main/job/detail');
+  goToJob(id) {
+    localStorage.setItem('jobByIdDetail',id);
+    this.router.navigateByUrl('/User/job/detail');
   }
   goToAdmin() {
     this.router.navigateByUrl('/main/admin');

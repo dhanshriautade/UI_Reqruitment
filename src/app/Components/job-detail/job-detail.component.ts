@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TeamService } from 'src/services/team.service';
+
 @Component({
   selector: 'app-job-detail',
   templateUrl: './job-detail.component.html',
@@ -8,8 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class JobDetailComponent implements OnInit {
   displaydilog: boolean;
   isActive: boolean;
+  data;
+  term;
 
-  constructor() { }
+  constructor(public TeamService: TeamService) {
+    this.TeamService.getJobIdWiseDetail(localStorage.getItem('jobByIdDetail')).subscribe((res: any) => {
+      this.data =  res;
+       
+    })
+   }
 
   showTest(){
     this.displaydilog=true;

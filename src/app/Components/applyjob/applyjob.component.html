@@ -8,13 +8,14 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <div class="my-3 ml-2">
-                                <span style="color: blue"> {{dataone?.jobId}} </span> Position For <span style="color: orange "> {{dataone?.jobTitle}} </span>
+                            <span style="color: blue"> {{dataone?.jobId}} </span> Position For <span
+                                style="color: orange "> {{dataone?.jobTitle}} </span>
                             <!-- <p class="ml-5 title mt-3">{{dataone?.jobTitle}}</p> -->
                         </div>
                         <div class="mt-0">
                             <p class="ml-5 comp">Beauto System Pvt Ltd</p>
                         </div>
-                       
+
                         <div class="company ml-5 my-1">
                             <i class="pi pi-briefcase " aria-hidden="true"></i>
                             <span class="ml-1">{{dataone?.experienceInYears}} Year</span>
@@ -35,32 +36,119 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="row mt-4">
-                          
-                            <div class="ml-5"> <span> <img src="../../../assets/output-onlinepngtools.png"
-                                        class="logo">
+
+                            <div class="ml-5"> <span> <img src="../../../assets/output-onlinepngtools.png" class="logo">
                                 </span>
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-sm-6"> <button  class="btn btn-primary btn1 mr-2">Save</button></div>
+                            <div class="col-sm-6"> <button class="btn btn-primary btn1 mr-2">Save</button></div>
                             <div class="col-sm-6">
-                                 <button class="btn btn-primary apply mr-3"   *ngIf="role === '0'" (click)="ApplyJob()">Apply</button>
+                                <button class="btn btn-primary apply mr-3" *ngIf="role === '0'"
+                                    (click)="ApplyJob()">Apply</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <p-dialog [(visible)]="display" [style]="{width: '60%'}" class="abc" class="aa">
+                <p-header class="dialogHeader mt-2">
+                    <img class="imge" src="../../../assets/logo/Create Job.png" alt="">
+                    <span class="ml-2 mt-2 report">Apply Job</span>
+                    <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeWindow()"></i>
+                </p-header>
+                <form class="group grp_form" [formGroup]="applyJobForm" (ngSubmit)="onSubmit()">
+                    <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+                                    <label>Name :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="candidateName">
+                                </div>
+                                <div class="col-sm-2 nam_e">
+                                    <label>Designation :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="designation">
+        
+                                </div>
+                    </div>
+                    <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+                                    <label>notice Period :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="noticePeriod">
+                                </div>
+                                <div class="col-sm-2 nam_e">
+                                    <label>Experience :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="experienceInYears">
+        
+                                </div>
+                    </div>
+                    <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+                                    <label>CTC :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="ctc">
+                                </div>
+                                <div class="col-sm-2 nam_e">
+                                    <label>Expected CTC :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="ectc">
+        
+                                </div>
+                    </div>
+                    <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+                                    <label>Relevant Experience :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                        name="desgn" formControlName="relevantExpInYears">
+                                </div>
+                                <div class="col-sm-2 nam_e">
+                                    <label>Department :</label>
+                                </div>
+                                <div class="col-sm-4">
+                                        <select class="dept" name="department" formControlName="department">
+                                                <option disabled="true" display="true">Select</option>
+                                                <option *ngFor="let n of deptartment" [value]="n.dept">{{n.dept}}</option>
+                
+                                         </select>
+                                </div>
+                    </div>
+                    <div class="row my-2">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-6 show_button">
+                                    <button type="submit" class="btn submit my-3 mr-4">Apply
+                                            <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
+                                        </button>
+                                        </div>
+                                        </div>
+                </form>
+            </p-dialog>
             <div class="card card1 my-4">
                 <div class="row ml-4">
                     <div class="col-sm-10">
                         <div class=" mt-4">
                             <span class=" job">Job Description</span>
                         </div>
-        
+
                         <div class=" mt-2">
-                           
+
                             <div class="description">Job description</div>
-                          
+
                         </div>
                         <div class=" mt-1">
                             <span class="description great">Greetings from Beauto System Pvt Ltd,</span>
@@ -85,13 +173,13 @@
                                 <div class="row my-1">Role Category</div>
                             </div>
                             <div class="col-sm-8 role">
-        
+
                                 <div class="row my-1 ml-1">Software Developer</div>
                                 <div class="row my-1 ml-1">IT-Software / Software Services</div>
                                 <div class="row my-1 ml-1">IT Software - Application Programming, Maintenance</div>
                                 <div class="row my-1 ml-1">Full Time, Permanent</div>
                                 <div class="row my-1 ml-1">Programming & Design</div>
-        
+
                             </div>
                         </div>
                         <div class="row mt-2 ml-0">
@@ -99,12 +187,12 @@
                             </span>
                         </div>
                         <div class=" mb-3 ml-0">
-                             <span class="ml-3 mt-3 skill" *ngFor="let data of dataone?.skills">{{data}}</span>
+                            <span class="ml-3 mt-3 skill" *ngFor="let data of dataone?.skills">{{data}}</span>
                         </div>
                     </div>
                     <div class="col-sm-2"></div>
+                </div>
             </div>
-        </div>
         </div>
         <div class="col-sm-2"></div>
     </div>

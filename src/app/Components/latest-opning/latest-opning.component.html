@@ -486,7 +486,7 @@
                                         <tr *ngFor="let job of getAllJob| paginate: config   | filter:term  ;index as i">
                                             <td scope="row" class="name">{{i+1}}</td>
                                             <td class="name">Java Lead</td>
-                                            <td align="center" class="blue text-primary" (click)="goToJob()">{{job.jobId}}</td>
+                                            <td align="center" class="blue text-primary" (click)="goToJob(job.jobId)">{{job.jobId}}</td>
                                             <td align="center" class="name">05</td>
                                             <td align="center" class="name">03</td>
                                             <td align="center" class="red">07</td>
