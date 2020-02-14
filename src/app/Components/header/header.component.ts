@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/services/team.service';
 import { Router } from '@angular/router';
+import { HttpClientModule, HttpHeaders, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   role;
   display= false;
   NotificationGetData;
-  constructor(public TeamService: TeamService, public router: Router) { 
+  constructor(public TeamService: TeamService, public router: Router,private http: HttpClient) { 
   this.role =localStorage.getItem('role');
   console.log(this.role)
   
@@ -50,6 +51,21 @@ export class HeaderComponent implements OnInit {
     }
     EditProfile(){
       this.router.navigateByUrl('User/Profile');
+    }
+    downloadResume(){
+      var filepath = this.allocatedJobSeeker.candidateDocument;
+      var request = {
+        downloadDocPath: filepath
+      }
+  
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      this.http.post("http://localhost:8081/downloadCandidateDocument", request, { headers: headers, responseType: 'blob' }).subscribe((response: any) => {
+  
+        saveAs(response, this.allocatedJobSeeker.candidateDocument.split('/')[this.allocatedJobSeeker.candidateDocument.split('/').length - 1])
+      });
+  
     }
 
   ngOnInit() {

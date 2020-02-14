@@ -170,7 +170,8 @@
           <span class="empname ml-1">{{allocatedJobSeeker?.candidateEmail}} </span></div>
         <div class="row mb-2">
           <span>Resume :-</span>
-          <span class="jobid ml-1"> {{allocatedJobSeeker?.candidateDocument?.split('/')[this.allocatedJobSeeker?.candidateDocument?.split('/').length-1]}}</span>
+          <span class="jobid ml-1"> {{allocatedJobSeeker?.candidateDocument?.split('/')[this.allocatedJobSeeker?.candidateDocument?.split('/').length-1]}}  <i style="color: #4A90E2;" (click)="downloadResume()" class="pi pi-download "></i>
+          </span>
         </div>
 
 
