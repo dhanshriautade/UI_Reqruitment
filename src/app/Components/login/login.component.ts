@@ -91,13 +91,13 @@ export class LoginComponent implements OnInit {
                     }
                     else if(this.info.status ===  true && this.info.role == 1){
                       this.toastr.success('Successfully signin !!!');
-                      this.router.navigateByUrl('/Admin');
+                      this.router.navigateByUrl('User/job/View');
                       this.spinner = false;             
                       this.loginForm.reset();
                     }
                     else if(this.info.status ===  true && this.info.role == 2){  
                       this.toastr.success('Successfully signin !!!');                   
-                      this.router.navigateByUrl('/HR');
+                      this.router.navigateByUrl('User/job/View');
                       this.spinner = false;             
                       this.loginForm.reset();
                     }
