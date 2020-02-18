@@ -29,11 +29,17 @@ export const environment = {
   UpdatePrimarySkill: base_url + 'updatePrimarySkill',
   UpdateSecondarySkill: base_url + 'updateSecondarySkill',
   getjobId: base_url + 'getUniqueJobId',
+  UpdateCollegeEducationlDetails:  base_url +'updateCollegeEducationlDetails',
+  UpdateSchoolEducationlDetails: base_url +'updateSchoolEducationlDetails',
+  UpdatePostEducationlDetails:  base_url +'updatePostEducationlDetails',
+  UpdatePersonalDetails:  base_url +'updatePersonalDetails',
 
   //Notification
   getnotification: notify_url + 'getAllNotification',
   getNotificationReminder: notify_url +'hrreminder',
-  ApplyJob:  notify_url +'jobapplynotification'
+  ApplyJob:  notify_url +'jobapplynotification',
+  AppliedJob:  notify_url +'jobApplied',
+
 };
 
 /*

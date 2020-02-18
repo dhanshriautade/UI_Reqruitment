@@ -131,7 +131,7 @@ export class AddEmployeeComponent implements OnInit {
             "designation": this.employeeForm.value.designation,
             "status": "1"
         };
-        debugger;
+        // debugger;
         if (action == 'Save'){
            
             this.EmployeeService.AddEmployee(JSON.stringify(this.data)).subscribe((res:any) => {

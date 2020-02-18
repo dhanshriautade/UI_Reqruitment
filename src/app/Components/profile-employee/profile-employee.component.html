@@ -1,1 +1,1017 @@
-<p>profile-employee works!</p>
+ <div class=" row">
+
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8 magic">
+        <div class="row mt-3 mb-3">
+            <div class="col-sm-8 ">
+                <img class="user-img" class="img" src="../../../assets/manemp.jpeg">
+                <label class="ml-3 name">{{ProfileData?.firstName}} {{ProfileData?.lastName}}
+                    <i class="pi pi-pencil mt-2" (click)="EditEmployee()"></i>
+                </label>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <span class="envelop"><i class="pi pi-map-marker" aria-hidden="true"></i></span>
+                        <span class=" mt-2 view"> Pune ,INDIA</span>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <span class="envelop mr-3"><i class="pi pi-mobile " aria-hidden="true"></i></span>
+                        <span class=" mt-2 view" style="text-align: left;">{{ProfileData?.contact}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <span class="envelop"><i class="pi pi-briefcase ml-3" aria-hidden="true"></i></span>
+                        <span class=" mt-2 ml-1 view">Fresher</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="envelop"> <i class="pi pi-envelope " aria-hidden="true"></i></span>
+                        <span class=" mt-1 ml-2 view">{{ProfileData?.email}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <label class="view mt-2 ml-3 stren">Profile Strength (Excellent)</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class=" mt-2 mr-5 view views">100%</span>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+            <div class="col-sm-4">
+                <div class="action mt-1 mb-1 mr-2">
+                    <label class="name ml-3 mt-3 ">Pending Action(s)</label>
+                    <label class="view ml-3 mt-2">Please complete your pending action to make your profile attractive to
+                        recruiters.</label>
+                    <label class="name mt-3 mb-3">VIEW ALL</label></div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+</div>
+
+<p-dialog [(visible)]="displayprofile" [style]="{width: '25%'}" class="abc">
+    <p-header class="dialogHeader">
+        <div class="row diaheader">
+            <div class="col-sm-10">
+                <span class="ml-2 text-primary">Edit Profile</span>
+            </div>
+            <div class="col-sm-2">
+                <i class=" tick pi pi-times mt-2 mr-2 " aria-hidden="true" (click)="removeWindow()"></i>
+            </div>
+        </div>
+    </p-header>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">First Name:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="first name">
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">Last Name:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="last name">
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">Email Id:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="xyz@gmail.com">
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">Contact:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="Mobile No.">
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary job my-2" (click)="createjob()">Update</button>
+        </div>
+    </div>
+</p-dialog>
+<div class="row my-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card cardBox">
+            <div class="row mt-4">
+                <div class="col-sm-8">
+                    <p class="header ml-3">Attach Resume</p>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+            <div class="ml-3 attach">Resume is the most important document recruiters look for.
+                Recruiters generally do not look at profiles without resumes.</div>
+
+            <div class="row my-3 ml-3">
+                <span
+                    style="color: #4A90E2;">{{ResumeInfo?.resumePath?.split('/')[this.ResumeInfo?.resumePath?.split('/').length-1]}}
+                    - Uploaded on - {{ResumeInfo?.date}} </span>
+                <i style="color: #4A90E2;" (click)="downloadResume()" class="pi pi-download ml-5"></i>
+
+            </div>
+            <div class="row mb-4">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 border">
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <div class="my-3"> <input type="file"
+                                    class=" btn-file-upload1 form-control mt-2 my-4" value="UPLOAD RESUME"
+                                    placeholder="" (change)="uploadResume($event )" /></div>
+                            <div class="error" *ngIf="errormassage">Please ensure the file size is less
+                                than 2MB and file type is doc, docx, rtf or pdf. </div>
+                            <div class="upload my-4 ml-5">Supported Formats: doc, docx,pdf, upto 2 MB</div>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card my-3">
+            <p class="header my-2 ml-3">Attach Other Document</p>
+
+            <div class="ml-3">
+                <div *ngFor="let dataone of otherDocPathName">
+                    <span style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
+                        - Uploaded on - {{ResumeInfo?.date}} <i (click)="downloadOtherDoc(dataone)"
+                            class="pi pi-download ml-5 mt-4"></i></span>
+                </div>
+                <div class="row mb-4 my-3">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10 border">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <div class="my-3"> <input type="file"
+                                        class=" btn-file-upload1 form-control mt-2 my-4" value="UPLOAD DOCUMENT"
+                                        placeholder="" (change)="uploadOtherDoc($event)" multiple /></div>
+                                <div class="error" *ngIf="errormassage">Invalid file type or size </div>
+                                <div class="upload my-4">Supported Formats: doc, docx,pdf, upto 2 MB</div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-2"></div> 
+</div>
+<div class="row my-3">
+    <div class="col-sm-2"></div> 
+    <div class="col-sm-8">
+    <div class="card cards">
+       
+            <div class="col-sm-8">
+                <p class="header ml-3">Primary Skills <span class="pencil" (click)="addPriSkill()">
+                        <i class="pi pi-pencil mt-2 ml-2"></i></span></p>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="displayskill ml-4 mb-4">
+                <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.primarySkill"> {{Skill}}
+                </span>
+            </div>
+       
+        <p-dialog [visible]="displayPriSkill" [style]="{width: '50%'}">
+            <p-header>
+                <span>Add Skill</span>
+            </p-header>
+            <div class="row mb-3">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <div><span class="attach ">Tell recruiters what you know or what you are known
+                            for e.g. Direct Marketing, Oracle,
+                            Java etc. We will send you job recommendations based on these skills.
+                            Each skill is separated by a comma. Max limit is 250 character(s)
+                            including
+                            commas.</span></div>
+
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2 mt-3">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <div><span class="clipskill my-2 ml-1"
+                            *ngFor="let Skill of ProfileData?.primarySkill;let i=index">
+                            {{Skill}}
+                            <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+                                (click)="removePriSkill(i)"></i>
+                        </span></div>
+                    <div class="row my-2">
+                        <input type="text" [(ngModel)]="PrimarySkillValue"
+                            placeholder="Enter your area of expertise/specialization" name="secskill"
+                            class="form-control my-4" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-6">
+                    <button type="button" (click)="cancelPrimarySkill()"
+                        class="btn button my-3 ml-4">Cancel </button>
+                    <button type="button" (click)="AddPrimarySkill()"
+                        class="btn btn-primary buttons my-3 ml-4">Save </button>
+
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+        </p-dialog>
+    </div>
+</div> 
+    <div class="col-sm-2"></div> 
+</div>
+<div class="row my-3">
+    <div class="col-sm-2"></div> 
+    <div class="col-sm-8">
+        <div class="  card cards">
+            <div class="row mt-4">
+                <div class="col-sm-8">
+                    <p class="header ml-3">Secondary Skills <span class="pencil" (click)="addSecSkill()">
+                            <i class="pi pi-pencil mt-2 ml-2"></i></span></p>
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="displayskill ml-4 mb-4">
+                    <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.secondarySkill">
+                        {{Skill}} </span>
+                </div>
+            </div>
+            <p-dialog [visible]="displaySecSkill" [style]="{width: '50%'}">
+                <p-header>
+                    <span>Add Skill</span>
+                </p-header>
+                <div class="row mb-3">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                        <div><span class="attach ">Tell recruiters what you know or what you are known
+                                for e.g. Direct Marketing, Oracle,
+                                Java etc. We will send you job recommendations based on these skills.
+                                Each skill is separated by a comma. Max limit is 250 character(s)
+                                including
+                                commas.</span></div>
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row my-2 mt-3">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                        <div><span class="clipskill my-2 ml-1"
+                                *ngFor="let Skill of ProfileData?.secondarySkill;let i=index">
+                                {{Skill}}
+                                <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+                                    (click)="removesecSkill(i)"></i>
+                            </span></div>
+                        <div class="row my-2">
+                            <input type="text" [(ngModel)]="secondarySkillValue"
+                                placeholder="Enter your area of expertise/specialization" name="secskill"
+                                class="form-control my-4" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-6">
+                        <button type="button" (click)="cancelSecondarySkill()"
+                            class="btn button my-3 ml-4">Cancel </button>
+                        <button type="button" (click)="AddSecondarySkill()"
+                            class="btn btn-primary buttons my-3 ml-4">Save </button>
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+            </p-dialog>
+        </div>
+    </div> 
+    <div class="col-sm-2"></div> 
+</div>
+
+
+<p-dialog [(visible)]="displayDetails" [style]="{width: '63%'}">
+    <p-header class="dialogHeader">
+        <div class="row">
+            <div class="col-sm-11">
+                <span class=" text-primary">Add Persoanl Details</span>
+            </div>
+            <div class="col-sm-1">
+                <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true" (click)="removedialog()"></i>
+            </div>
+        </div>
+    </p-header>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Date of Birth :</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <select class=" month" formControlName='expMonth'>
+                        <option *ngFor="let dates of date" [value]="dates.id">{{dates.id}}</option>
+                    </select>
+             
+              
+                    <select class=" month" formControlName='expMonth'>
+                        <option *ngFor="let months of month" [value]="months.id">{{months.name}}</option>
+                    </select>
+              
+                
+                    <select class=" month" formControlName='expMonth'>
+                        <option *ngFor="let years of year" [value]="years.id">{{years.value}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Gender :</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <input type="radio" name="age" value="30">Male
+
+                    <input type="radio" class="ml-3" name="age" value="30">Female
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Permanent Address : </label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row mu-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <input type="text" autocomplete="off" class="university"
+                        placeholder="Enter Address" >
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-3">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Hometown :</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <input type="text" autocomplete="off" class="university"
+                        placeholder="*********" >
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-3">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Pincode :</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <input type="text" autocomplete="off" class="university"
+                        placeholder="*************" >
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+           
+            <div class="row my-3">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Marital Status:</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <select id="" class="form-control box" size="0" placeholder="">
+                        <option>Select</option>
+                        <option>Single/unmarried</option>
+                        <option>Married</option>
+                        <option>Widowed</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Category :</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <select id="" class="form-control box" size="0" placeholder="">
+                        <option>Select</option>
+                        <option>General</option>
+                        <option>SC</option>
+                        <option>ST</option>
+                        <option>OBC- Creamy</option>
+                        <option>OBC- Non-Creamy</option>
+                     
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <label class="head">Differently Abled :</label>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <input type="radio" name="age" value="30">Yes
+
+                    <input type="radio" class="ml-3" name="age" value="30">No
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Work Permit for USA :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="">
+                    <option>Select</option>
+                    <option>Have H1 Visa</option>
+                    <option>Need H1 Visa</option>
+                    <option>TN Permit Holder</option>
+                    <option>Green Card Holder</option>
+                    <option>US Citizen</option>
+                    <option>Authorized to work in US</option>
+                 
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Work Permit for Other Countries :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="">
+                    <option>Select</option>
+                    <option>India</option>
+                    <option>China</option>
+                    <option>Dubai</option>
+                    <option>Austrelia</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                 
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Languages :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <input type="radio" name="age" value="30">English
+                <input type="radio" class="ml-3" name="age" value="30">Marathi
+                <input type="radio" class="ml-3" name="age" value="30">Hindi
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+           
+            <div class="row">
+                <div class="col-sm-7"></div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn button my-3 ml-4" (click)="removeDetails()">Cancel </button>
+
+                    <button type="button" class="btn btn-primary buttons my-3 ml-4" (click)="savePersoanlDetails()">Save </button>
+
+
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+</p-dialog> 
+
+
+
+<div class="row my-3">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class=" card cards">
+            <div class="mt-3 names  ml-3 mb-3 header">Personal Details
+                <span class="icon"><i class="pi pi-pencil mt-2" (click)="addDetails()"></i></span>
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Date of Birth</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 summary">Permanent Address</div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-5"><span class="ml-4 attach">06 Feb 1996</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 attach">A/P Dehu ,Tal-Haveli ,Dist-Pune</div>
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Gender</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 summary">Area Pin Code</div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-5"><span class="ml-4 attach">Female</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 attach">422666</div>
+            </div>
+
+            <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Marital Status</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 summary">Hometown</div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-5"><span class="ml-4 attach">married</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 attach">Dapur,Sinnar</div>
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Category</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 summary">Work permit for USA
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-5"><span class="ml-4 attach">General</span>,
+                        </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 attach"><span>Have H1 Visa</span></div>
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Work permit for USA</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 summary">Differently Abled
+                </div>
+            </div>
+            <!-- <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Current Location</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 summary">ID type & Number</div>
+            </div> -->
+            <div class="row mb-2">
+
+                <div class="col-sm-5"><span class="ml-4 attach">India</span></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5 attach">none</div>
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-sm-5"><span class="ml-4 summary">Languages</span></div>
+                <div class="col-sm-7"></div>                          
+            </div>
+            <div class="row mb-2">
+
+                <div class="col-sm-5"><span class="ml-4 attach">java,Html</span></div>
+                <div class="col-sm-7"></div>
+               
+            </div>
+        </div>
+</div>
+<div class="col-sm-2"></div>
+</div>
+<p-dialog [(visible)]="displayeducation" [style]="{width: '50%'}">
+    <p-header class="dialogHeader">
+        <div class="row">
+            <div class="col-sm-11">
+                <span class=" text-primary">Add Educational Details</span>
+            </div>
+            <div class="col-sm-1">
+                <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true"
+                    (click)="removedetail()"></i>
+            </div>
+        </div>
+    </p-header>
+    
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Education :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="" >
+                    <option>Select education</option>
+                    <option>Doctorate/PhD</option>
+                    <option>Master/Post-Graduation</option>
+                    <option>12 th</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Course :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="" >
+                    <option>Select Course</option>
+                    <option>CA</option>
+                    <option>CS</option>
+                    <option>MBA</option>
+                    <option>MCA</option>
+                    <option>Diploma</option>
+                    <option>BE</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Specialization :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row mu-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="" >
+                    <option>Select Specialization</option>
+                    <option>CA</option>
+                    <option>CS</option>
+                    <option>ENTC</option>
+                    <option>IT</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">University/Institute :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <input type="text" autocomplete="off" class="university"
+                    placeholder="University name" >
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-3">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Cource Type :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="radio" name="age" value="30">Full Time
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="radio" name="age" value="30">Part Time
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="radio" name="age" value="30">Correspondance/Distance Learning
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Passing Out Year:</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="">
+                    <option>Select Passing Out Year</option>
+                    <option>2014</option>
+                    <option>2013</option>
+                    <option>2012</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Grading :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="" >
+                    <option>Grading System</option>
+                    <option>Scale 10 Grading System</option>
+                    <option>%marks of 100 Maximum</option>
+                    <option>Course requires a pass</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7"></div>
+            <div class="col-sm-4">
+                <button type="button" class="btn button my-3 ml-4" (click)="removeEducation()">Cancel </button>
+
+                <button type="button" class="btn btn-primary buttons my-3 ml-4">Save </button>
+
+
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+   
+</p-dialog>
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+    <div class="  mt-3 card cards">
+        <div class="mt-3 names  ml-3 mb-3 header">Education <span class="detail mr-2"
+                (click)="addEducation()">ADD EDUCATION</span>
+        </div>
+      
+        <div class="ml-3 degree">B.Tech/B.E.-Computers
+            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+        </div>
+        <div class="ml-3 attach">Jagdamba Education Society Nashik's SND College of Engineering &
+            Research, Pune</div>
+        <div class="ml-3 attach"><span>2018</span> <span>(Full Time)</span></div>
+        <div class="ml-3 mt-5 degree">Other-English
+            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+        </div>
+        <div class="ml-3 attach"><span>2014</span></div>
+    
+        <div class="ml-3 mt-5 degree">National Open School-English
+            <span class="icon"><i class="pi pi-pencil mt-2"></i></span></div>
+        <div class="ml-3 attach">2012</div>
+    
+        <div class="ml-3 mt-5 degree">B.Tech/B.E.-Computers
+            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
+        </div>
+        <div class="ml-3 attach ">Jagdamba Education Society Nashik's SND College of Engineering &
+            Research, Pune</div>
+        <div class="ml-3 attach mb-3"><span>2018</span> <span>(Full Time)</span></div>
+    
+    
+    
+    </div>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+<p-dialog [(visible)]="displayProject" [style]="{width: '50%'}">
+    <p-header class="dialogHeader">
+        <div class="row ">
+
+            <div class="col-sm-11">
+                <span class=" text-primary">Add Project</span>
+            </div>
+            <div class="col-sm-1">
+                <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true"
+                    (click)="projectremove()"></i>
+            </div>
+        </div>
+    </p-header>
+    
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Project Title :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <input type="text" autocomplete="off" class="university"
+                placeholder="Enter Project Title" >
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2 mt-4">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Tag this project with your Employment/Education :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select id="" class="form-control box" size="0" placeholder="" >
+                    <option>Select Course</option>
+                    <option>UG - Computers</option>
+                    <option>Class XII</option>
+                    <option>Class X</option>
+                     
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Client : </label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row mu-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <input type="text" autocomplete="off" class="university"
+                placeholder="Enter Client Name" >
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+       
+        <div class="row my-3 mt-4">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Project Status :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="radio" name="age" value="30">In Progressed
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="radio" name="age" value="30">Finished
+                    </div>
+                    <div class="col-sm-6">
+                      
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Started Working From :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <select class=" month">
+                    <option>Select year</option>
+                    <option *ngFor="let years of year" [value]="years.id">{{years.value}}</option>
+                </select>
+                <select class=" month">
+                    <option>Select month</option>
+                    <option *ngFor="let months of month" [value]="months.id">{{months.name}}</option>
+                </select>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2 mt-4">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Worked Till :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <input type="text" autocomplete="off" class="university"
+                placeholder="Enter" >
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2 mt-4">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <label class="head">Details of Project :</label>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <textarea id="project"  cols="71" placeholder="Type here.."> </textarea>                                  
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7"></div>
+            <div class="col-sm-4">
+                <button type="button" class="btn button my-3 ml-4" (click)="removeProject()">Cancel </button>
+
+                <button type="button" class="btn btn-primary buttons my-3 ml-4">Save </button>
+
+
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+    
+</p-dialog>
+<div class="row my-3">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+            <div class="mt-3 card cards">
+                <div class="mt-3 names  ml-3 mb-3 header">Projects <span class="detail mr-2"
+                    (click)="addCertification()">ADD PROJECT</span>
+            </div>
+               
+            </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+
+
+

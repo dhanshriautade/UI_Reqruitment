@@ -1,179 +1,182 @@
 .magic{
     background-color: #4A90E2;
     
-
- 
-}
-.img{
+    
+    
+    }
+    .img{
     border-radius: 50%;
     width: 60px;
     height: 60px;
     display: inline-block;
     float: left;
-}
-.box{
-    border: 1px solid gray;
-}
-.name{
+    }
+    .box{
+        width: 98%;
+        height: 48px;
+        font-size: small;
+        background-color: white;
+    }
+    .name{
     font-weight: bold;
     color: white;
-}
-.view{
+    }
+    .view{
     color: white;
     font-size: 15px;
-}
-
-.action{
-background-color: #0F5EC9;
-border-radius: 2px solid blue;
-box-shadow: 2px 2px 2px 2px #0F5EC9;
-}
-hr{
+    }
+    
+    .action{
+    background-color: #0F5EC9;
+    border-radius: 2px solid blue;
+    box-shadow: 2px 2px 2px 2px #0F5EC9;
+    }
+    hr{
     background-color: white;
     border-bottom: 1px solid white;
     margin-top: 0px;
     height: 4px;
     width: 512px;
-  
-}
-// .card1{
-//     //overflow: hidden;
-//     position: fixed;
-//     top: 37%;
     
-// }
-
-.cards{
-top: 53%;
-width: 95%;
-height: 31%;
-
-}.check{
+    }
+    // .card1{
+    // //overflow: hidden;
+    // position: fixed;
+    // top: 37%;
+    
+    // }
+    
+    .cards{
+    top: 53%;
+    width: 95%;
+    height: 31%;
+    
+    }.check{
     text-align: end;
-}
-p{
-   font-weight: bold;text-align: center;
-}
-.button{
+    }
+    p{
+    font-weight: bold;text-align: center;
+    }
+    .button{
     margin-left: 37%;
-}
-.resume{
-    color: #4A90E2;  
-}
-.envelop{
-color: white;
-}
-.views{
+    }
+    .resume{
+    color: #4A90E2;
+    }
+    .envelop{
+    color: white;
+    }
+    .views{
     float: right;
-}
-.pencil{
-    color: #4A90E2;  
-}
-.btn-file-upload1{
+    }
+    .pencil{
+    color: #4A90E2;
+    }
+    .btn-file-upload1{
     width: 236px;
-  height: 45px;
-  position:relative;
-  margin-left: 34px;
-  
-}
-
-.btn-file-upload1:after{
- content:  attr(value);
- position: absolute;
- font-weight: 500;
- height: 60px;
- top: 0;
- left: 0;
- bottom: 0;    
- width: 235px;
- background-color:#4A90E2;
- color: white;
- border-radius: 2px;
- text-align: center;
- font-size: 12px;
- line-height: 3;
- border-radius: 5px;
- 
- 
-}
-.error{
-  color: red;
-  margin-left: 36px;
-}
-.format{
- color: #C7C4BA;
-}
-.primary{
+    height: 45px;
+    position:relative;
+    margin-left: 34px;
+    
+    }
+    
+    .btn-file-upload1:after{
+    content: attr(value);
+    position: absolute;
+    font-weight: 500;
+    height: 60px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 235px;
+    background-color:#4A90E2;
+    color: white;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 3;
+    border-radius: 5px;
+    
+    
+    }
+    .error{
+    color: red;
+    margin-left: 36px;
+    }
+    .format{
+    color: #C7C4BA;
+    }
+    .primary{
     width: 84%;
     margin-left: 28px;
-}
-.add{
+    }
+    .add{
     background-color: #4A90E2;
     margin-left: 10px;
     width:63px;
     color:white;
-}
-.education{
-    margin-left: 41%; 
-}
-.educations{
-    margin-left:50%; 
-}
-.name{
- text-align: end;
-}
-.skill{
+    }
+    .education{
+    margin-left: 41%;
+    }
+    .educations{
+    margin-left:50%;
+    }
+    .name{
+    text-align: end;
+    }
+    .skill{
     font-weight: bold;
     color: #666B70;
-}
-.names{
-   text-align: center; 
-   font-weight: bold;
-}
-.detail{
-  
+    }
+    .names{
+    text-align: center;
+    font-weight: bold;
+    }
+    .detail{
+    
     float: right;
     color:#4A90E2 ;
     font-size: 16px;
-}
-.degree{
+    }
+    .degree{
     font-weight: bold;
     color: #666B70;
-}
-.profile{
-    color: #666B70; 
+    }
+    .profile{
+    color: #666B70;
     font-size: 15px;
-}
-.attach{
+    }
+    .attach{
     color: #676767;
     font-size: 14px;
-}
-.border{
+    }
+    .border{
     border: 1px solid gray;
     
-}
-.header{
+    }
+    .header{
     color: #3A3333;
     font-size: large;
-}
-.icon{
+    }
+    .icon{
     color:#4A90E2 ;
-}
-.summary{
+    }
+    .summary{
     
-        color: #B8B8B8;
-        font-size: 15px;
-     
-}
-.addcard{
+    color: #B8B8B8;
+    font-size: 15px;
+    
+    }
+    .addcard{
     width: 105%;
-}
-.addeducation{
+    }
+    .addeducation{
     font-weight: bold;
-}
-
-
-.action .uploadContainer input[type=file] {
+    }
+    
+    
+    .action .uploadContainer input[type=file] {
     position: absolute;
     font-size: 0;
     top: 0;
@@ -182,9 +185,9 @@ color: white;
     width: 100%;
     opacity: 0;
     z-index: 1;
-}
-
-.btn-large{
+    }
+    
+    .btn-large{
     text-decoration: none;
     color: #fff;
     background-color: #4A90E2;
@@ -192,28 +195,79 @@ color: white;
     letter-spacing: .5px;
     transition: .2s ease-out;
     cursor: pointer;
-}
-
-.clipskill{
-    padding: 10px;    
+    }
+    
+    .clipskill{
+    padding: 10px;
     background-color: #8080802e;
-}
-:host ::ng-deep .ui-dialog-titlebar-icon{
+    }
+    :host ::ng-deep .ui-dialog-titlebar-icon{
     display: none !important;
-  }
-  .nam_e{
-      text-align: end;
-      font-weight: bold;
-  }
-  :host ::ng-deep .ui-dialog-resizable .ui-dialog-content{
+    }
+    .nam_e{
+    text-align: end;
+    font-weight: bold;
+    }
+    :host ::ng-deep .ui-dialog-resizable .ui-dialog-content{
     overflow-x: hidden;
-  }
-  .info{
-      color: gray;
-  }
-  .job{
-      float: right;
-  }
-  .tag{
-      font-size: small;
-  }
+    }
+    .info{
+    color: gray;
+    }
+    .job{
+    float: right;
+    }
+    .tag{
+    font-size: small;
+    }
+   
+    .month{
+    color:#6F838C;
+    border-radius: 5px;
+    padding: 11px 55px 5px 0px;
+    border-color: #CCD8DD;
+    
+    width: 98%;
+    height: 100%;
+
+    }
+    .edit{
+    text-align: end;
+    }
+    
+    .pluss{
+    color:white;
+    background-color: #3EECB6;
+    font-size: larger;
+    border-radius: 77px;
+    height: 25px;
+    width: 25px;
+    font-weight: 700;
+    }
+    .plus{
+    border: 1px solid gainsboro;
+    }
+    .left_chip {
+    font-size: 13px;
+    background-color: white;
+    padding: 2px 9px 8px 9px;
+    color: #3424c7;
+    border-radius: 15px;
+    display: inline-block;
+    margin-right: 15px;
+    }
+    .clip{
+    background-color: #9e9e9e;
+    }
+    .line{
+    border-bottom: 1px solid gray;
+  
+    }
+    .head{
+    font-weight: bold;
+    }
+    .university{
+    width: 98%;
+    height:154%;
+    
+    }
