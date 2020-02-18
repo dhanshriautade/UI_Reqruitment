@@ -209,7 +209,7 @@ export class AddEmployeeComponent implements OnInit {
        
     }
     removeSkill() {
-        debugger
+       
         if (this.action == 'Save'){
              this.employeeForm.reset();
         }
@@ -221,9 +221,17 @@ export class AddEmployeeComponent implements OnInit {
 
     }
     addDocument() {
-        if(this.employeeForm.get('ID').value  == '' || this.employeeForm.get('idno').value){
+        if (this.action == 'Save'){
+            if(this.employeeForm.get('ID').value == '')  {
             this.toastr.error('Please Select Identity Card');
             return 0;
+            }
+        }
+        else{
+        if(this.employeeForm.get('ID').value  == '' || this.employeeForm.get('idno').value == '' || this.employeeForm.get('idno').value == null ){
+            this.toastr.error('Please Select Identity Card');
+            return 0;
+        }
         }
         
         console.log('type',this.docArray);
@@ -248,5 +256,6 @@ export class AddEmployeeComponent implements OnInit {
     }
     PersonalInfo() {
         this.display = true;
+        this.docArray = [];
     }
 }
