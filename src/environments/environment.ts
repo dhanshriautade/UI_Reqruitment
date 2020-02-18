@@ -35,7 +35,7 @@ export const environment = {
   getEmployeeByDepartment: base_url + 'getEmployeeInfoByDepartment',
   saveCandidateJobApplication: base_url + 'savecandidatejobapplication',
   getJobIdWiseDetail:base_url + 'jobidwithcandidates?jobId=',
-
+  allotTimetoJobseeker: base_url + 'allotTime',
   //Notification
   getnotification: notify_url + 'getAllNotification',
   getNotificationReminder: notify_url +'hrreminder',

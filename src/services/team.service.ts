@@ -148,7 +148,12 @@ export class TeamService {
  
  
   }
-
+  AllocateTimeToJobSeeker(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.allotTimetoJobseeker, data, { headers: headers });
+  }
   GetProfile(data: any){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'

@@ -36,6 +36,7 @@ import { ProfileEmployeeComponent } from './Components/profile-employee/profile-
 import { JobDetailComponent } from './Components/job-detail/job-detail.component';
 import { LatestOpningComponent } from './Components/latest-opning/latest-opning.component';
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import {CalendarModule} from 'primeng/calendar';
 import 'hammerjs';
 
 
@@ -69,6 +70,7 @@ import 'hammerjs';
   
   ],
   imports: [
+    CalendarModule,
     NgxPaginationModule,
     ChartModule,
     DialogModule,

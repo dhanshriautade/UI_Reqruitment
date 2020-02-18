@@ -116,3 +116,19 @@ cursor: pointer;
      .empname{
        color: orange;
      }
+
+
+     :host ::ng-deep .ui-dialog .ui-dialog-content{
+      height: 500px
+  }
+  .time{
+      font-weight: bold;
+  }
+  .cal{
+      top: 35.0156px;
+  }
+
+  :host ::ng-deep.ng-trigger-overlayAnimation .ng-tns-c6-5
+   .ui-datepicker.ui-widget-content {
+      top: 35.0156px;
+    }

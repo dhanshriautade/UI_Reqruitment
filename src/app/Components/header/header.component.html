@@ -163,7 +163,7 @@
     <ul class="div_hover notebar mb-2">
       <!-- <ul class="div_hover notebar mb-2"  > -->
 
-      <li class="notify">
+      <li class="notify" (click)="onClickAssignTime()">
 
         <div class="row mb-2 mr-3">
           <span> Email :- </span>
@@ -185,4 +185,47 @@
 
 
   </p-overlayPanel>
+  <p-dialog [(visible)]="display" [style]="{width: '50%'}" class="abc" class="aa">
+    <p-header class="dialogHeader mt-2">
+        <span>Assign Time</span>
+    </p-header>
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label class="time">Time Slot1 :</label>
+        </div>
+        <div class="col-sm-10">
+            <p-calendar [(ngModel)]="Selectedtime1" [showTime]="true" ></p-calendar>
+        </div>   
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label class="time">Time Slot2 :</label>
+        </div>
+        <div class="col-sm-10">
+            <p-calendar [(ngModel)]="Selectedtime2" [showTime]="true"></p-calendar>
+        </div>   
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label class="time">Time Slot3 :</label>
+        </div>
+        <div class="col-sm-10">
+            <p-calendar [(ngModel)]="Selectedtime3" [showTime]="true"></p-calendar>
+        </div>   
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2"> <label class="time">Employee ID :</label></div>
+        <div class="col-sm-10" [(ngModel)]="empid">{{ProfileData?.email}}</div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2"> <label class="time">Email ID :</label></div>
+        <div class="col-sm-10"  [(ngModel)]="email">{{allocatedJobSeeker?.candidateEmail}}</div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2">
+             <button type="button" class="btn btn-primary" (click)="AssignTime()">Send</button>
+        </div>
+    </div>
+</p-dialog>
 </div>
