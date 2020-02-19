@@ -1,12 +1,21 @@
 <div class="row">
   <div class="col-sm-3 my-3"><img src="../../../assets/beauto_logo.png" class="bgimg logo"></div>
-  <div class="col-sm-1 my-3"><a href="User/candidate" class="job">Jobs</a></div>
+  <div class="col-sm-1 my-3"><a (click)="job()"class="job">Jobs</a></div>
   <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
   <div class="col-sm-2"></div>
   <!-- <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
       class="bgimg logo"></div> -->
-  <div class="col-sm-1 my-3">
-    <img src="../../../assets/Notification.png" (click)="op4.toggle($event)" class="bgimg logo ml-2">
+ 
+  <div class="col-sm-1 my-3" *ngIf="role === '3'">
+    <div class="count"> <span class="notifi"> {{count}} </span>  </div>
+    <div>
+    <img src="../../../assets/Notification.png" (click)="op5.toggle($event)" class="bgimg logo ml-2">
+    </div>
+    
+  </div>
+  <div class="col-sm-1 my-3" *ngIf="role === '2'">
+      <div class="count"> <span class="notifi"> {{count}} </span>  </div>
+ 
     <img src="../../../assets/Notification.png" (click)="op3.toggle($event)" class="bgimg logo">
   </div>
   <div class="col-sm-1 my-3"><a class="more" (click)="op.toggle($event)">MY JOB</a></div>
@@ -18,8 +27,8 @@
   <ul class="bullet">
     <div class="row">
       <div class="col-sm-11">
-        <li class="my-1 profile" *ngIf="role === '0'"><a href="User/Profile/Seeker">Edit Profile</a></li>
-        <li class="my-1 profile" *ngIf="role !== '0'"><a href="User/Profile">Edit Profile</a></li>
+        <li class="my-1 profile" *ngIf="role === '0'"><a (click)="EditProfileSeeker()">Edit Profile</a></li>
+        <li class="my-1 profile" *ngIf="role !== '0'"><a (click)="EditProfile()">Edit Profile</a></li>
        
         <li class="my-1"><a>Recommended Jobs</a> </li>
         <li (click)="LogOut()"> <a>Logout</a> </li>
@@ -34,10 +43,10 @@
     <div class="row">
       <div class="col-sm-11">
         <li class="my-1 profile"><a (click)="hidden = !hidden">Team</a></li>
-        <a href="HR/team" *ngIf="role !== '0'">
+        <a (click)="EmployeePage()" *ngIf="role !== '0'">
           <li class="hidden ml-4" *ngIf="hidden">Employee</li>
         </a>
-        <a href="">
+        <a>
           <li class="hidden  ml-4" *ngIf="hidden">Job Seeker</li>
         </a>
         <li class="my-1"><a>Job</a></li>
@@ -51,11 +60,12 @@
 <div>
 
   <p-overlayPanel #op3>
-    <div class="row notes">
-      <div class="col-sm-5">
-        <span class="note mr-1 ml-1">Notifications</span></div>
-      <div class="col-sm-7 mark"> <a href="" class="ml-2">Mark All as Read</a></div>
-    </div>
+      <div class="row notes">
+          <span class="note mr-1 ml-4 my-2">Notifications for Applied Job seeker</span>
+          <span class="note mr-1 ml-5 my-2 empname"> {{notificationData?.length}} </span> 
+       
+        </div>
+  
     <div class="row ml-0 mr-0">
       <div class="col-sm-12 line"></div>
     </div>
@@ -79,17 +89,48 @@
       </li>
 
     </ul>
+    <div class="row notes">
+      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span>
+      <span class="note mr-1 ml-5 my-2 empname"> {{notificationDataReminder?.length}} </span> 
+   
+    </div>
+    <div class="row ml-0 mr-0">
+      <div class="col-sm-12 line"></div>
+    </div>
+   
+    <div class="row ml-0 mr-0">
+      <div class="col-sm-12 line"></div>
+    </div>
+    <ul class="div_hover notebar mb-2" *ngFor="let data of notificationDataReminder;let i=index">
+
+      <li class="notify">
+
+        <div class="row mb-2 mr-3">
+          <span> Name :- </span>
+          <span class="empname ml-1">{{data.name}} </span></div>
+        <div class="row mb-2">
+          <span>Selected Time :-</span>
+          <span class="jobid ml-1"> {{data.selectedTime}}</span>
+        </div>
+
+
+      </li>
+
+    </ul>
 
     <div class="seeall">
-      <p class="text-center "><a href="">See All</a></p>
+      <p class="text-center "><a>See All</a></p>
     </div>
 
 
   </p-overlayPanel>
 
-  <p-overlayPanel #op4>
+  
+
+  <p-overlayPanel #op5>
     <div class="row notes">
-      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span></div>
+      <span class="note mr-1 ml-4 my-2">Notifications for reminder</span>
+      <span class="note mr-1 ml-5 my-2 empname"> {{notificationDataReminder?.length}} </span> </div>
     <div class="row ml-0 mr-0">
       <div class="col-sm-12 line"></div>
     </div>
@@ -111,12 +152,80 @@
       </li>
 
     </ul>
+    <div class="row notes">
+      <span class="note mr-1 ml-4 my-2">Notifications for Allocated Jobseeker</span>
+    
+    </div>
+    <div class="row ml-0 mr-0">
+      <div class="col-sm-12 line"></div>
+    </div>
+
+    <ul class="div_hover notebar mb-2">
+      <!-- <ul class="div_hover notebar mb-2"  > -->
+
+      <li class="notify" (click)="onClickAssignTime()">
+
+        <div class="row mb-2 mr-3">
+          <span> Email :- </span>
+          <span class="empname ml-1">{{allocatedJobSeeker?.candidateEmail}} </span></div>
+        <div class="row mb-2">
+          <span>Resume :-</span>
+          <span class="jobid ml-1"> {{allocatedJobSeeker?.candidateDocument?.split('/')[this.allocatedJobSeeker?.candidateDocument?.split('/').length-1]}}  <i style="color: #4A90E2;" (click)="downloadResume()" class="pi pi-download "></i>
+          </span>
+        </div>
+
+
+      </li>
+
+    </ul>
 
     <div class="seeall">
-      <p class="text-center "><a href="">See All</a></p>
+      <p class="text-center "><a>See All</a></p>
     </div>
 
 
   </p-overlayPanel>
-
+  <p-dialog [(visible)]="display" [style]="{width: '50%'}" class="abc" class="aa">
+    <p-header class="dialogHeader mt-2">
+        <span>Assign Time</span>
+    </p-header>
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label class="time">Time Slot1 :</label>
+        </div>
+        <div class="col-sm-10">
+            <p-calendar [(ngModel)]="Selectedtime1" [showTime]="true" ></p-calendar>
+        </div>   
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label class="time">Time Slot2 :</label>
+        </div>
+        <div class="col-sm-10">
+            <p-calendar [(ngModel)]="Selectedtime2" [showTime]="true"></p-calendar>
+        </div>   
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label class="time">Time Slot3 :</label>
+        </div>
+        <div class="col-sm-10">
+            <p-calendar [(ngModel)]="Selectedtime3" [showTime]="true"></p-calendar>
+        </div>   
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2"> <label class="time">Employee ID :</label></div>
+        <div class="col-sm-10" [(ngModel)]="empid">{{ProfileData?.email}}</div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-2"> <label class="time">Email ID :</label></div>
+        <div class="col-sm-10"  [(ngModel)]="email">{{allocatedJobSeeker?.candidateEmail}}</div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2">
+             <button type="button" class="btn btn-primary" (click)="AssignTime()">Send</button>
+        </div>
+    </div>
+</p-dialog>
 </div>

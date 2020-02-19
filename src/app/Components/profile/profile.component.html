@@ -682,11 +682,12 @@
                     <div class="row my-2">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-10">
-                            <select id="" class="form-control box" size="0" placeholder="" >
-                                <option>Select education</option>
-                                <option>Doctorate/PhD</option>
-                                <option>Master/Post-Graduation</option>
-                                <option>12 th</option>
+                            <select id="" class="form-control box" size="0" placeholder=""[(ngModel)]="selectedGraduation" >
+                                <option disabled>Select education</option>
+                                <option>Graduation/Diploma</option>
+                                <option>Coctorate/PHD</option>
+                              
+                                <option>other</option>
                             </select>
                         </div>
                         <div class="col-sm-1"></div>
@@ -701,7 +702,7 @@
                     <div class="row my-2">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-10">
-                            <select id="" class="form-control box" size="0" placeholder="" >
+                            <select id="" class="form-control box" size="0" placeholder="" [(ngModel)]="selectedGradCourse" >
                                 <option>Select Course</option>
                                 <option>CA</option>
                                 <option>CS</option>
@@ -816,7 +817,7 @@
                         <div class="col-sm-4">
                             <button type="button" class="btn button my-3 ml-4" (click)="removeEducation()">Cancel </button>
 
-                            <button type="button" class="btn btn-primary buttons my-3 ml-4">Save </button>
+                            <button type="button" class="btn btn-primary buttons my-3 ml-4"(click)="saveEducationDetails()">Save </button>
 
 
                         </div>
@@ -846,7 +847,7 @@
                     <div class="row my-2">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-10">
-                            <select id="" class="form-control box" size="0" placeholder="" >
+                            <select id="" class="form-control box" size="0" placeholder="" [(ngModel)]="selectedGraduation" >
                                 <option>Select education</option>
                                 <option>Doctorate/PhD</option>
                                 <option>Master/Post-Graduation</option>
@@ -1321,7 +1322,7 @@
                         <div><span class="ml-3 mb-4 font-weight-bold">Add Graduational Details</span><span class="icon"><i class="pi pi-pencil mt-2"  (click)="addEducation()" ></i></span>
                         </div>
                     
-                        <div class="ml-3 degree">B.Tech/B.E.-Computers
+                        <div class="ml-3 degree">{{selectedGraduation}} - {{selectedGradCourse}}
                            
                         </div>
                         <div class="ml-3 attach">Jagdamba Education Society Nashik's SND College of Engineering &

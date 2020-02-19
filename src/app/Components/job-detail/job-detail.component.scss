@@ -1,0 +1,120 @@
+.main{
+    background-color: white;    
+    //padding: 6px;
+}
+.dashboard{
+    height: 89vh;
+    background-color: #ECEFF1;
+ }
+ .job{
+     font-weight: bold;
+     color: #253238;
+ }
+ .design{
+    font-weight: bold;
+    color: #787c7e;
+
+ }
+ .head{
+    background-color:#8EA3AF;
+   
+    //padding: 0px 14px 0px 14px;
+   
+}
+.font{
+   font-size: 25px;
+}
+.stars{
+    color: gray;
+    font-size: 25px;
+}
+.search{
+    width: 490px;
+    height: 33px;
+    margin-top: 3px;
+    border-radius: 6px;
+    padding: 23px,6px,4px,5px;
+    font-size: smaller;
+}
+.evnt{
+
+    color: black;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size:large;
+    
+    }
+    .card-header{
+        padding: 0px !important;
+    }
+    .id{
+        color: #157DEC;
+        font-weight: 700;
+    }
+    .stars{
+color: white;
+padding-top: 5px;
+font-size: 25px;
+    }
+    .headone{
+        height: 10px!important;
+        background-color: #90A4AE;
+        color: white;
+    }
+    .table-striped tbody tr:nth-of-type(odd){
+        background-color: #F4F4F5
+         }
+     
+     .table-striped tbody tr:nth-of-type(even){
+             background-color: #F5FBFF
+              }
+              th ,td {
+                border-right: 1px solid white;
+                
+            }
+            :host ::ng-deep .pi-times{
+                display: none;
+            }
+            .action{
+                background-color: #8AA4AF;
+                width: 100%;
+             color: white;
+            }
+            .select{
+                background-color: #CCD8DD;
+                width:100%;
+            }
+            .reject{
+                background-color:#EBEFF1;
+                width:100%;
+                color: #157DEC;
+            }
+            .hold{
+                background-color: #CCD8DD;
+                width:100%;
+            }
+            :host ::ng-deep .ui-overlaypanel-content{
+                padding:0px !important
+            }
+            .Centered{
+              width: 4%;
+                position: fixed;
+                top: 73%;
+	            left: 77%;  
+            }
+            .pi-star {
+                color:#ACBEC6;
+                font-size: 26px;
+            }
+            .fa-star {
+                color:white;
+                font-size: 19px;
+            }
+            
+            .pi-star.active {
+                color: #FFC900;
+                font-size: 26px;
+            }
+             
+         
+            

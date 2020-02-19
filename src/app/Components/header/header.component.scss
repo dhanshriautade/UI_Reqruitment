@@ -14,6 +14,16 @@
     height: 50px;
     border-radius: 27px;
     }
+
+    .count{
+      margin: 0px 8px -24px 100px;
+    }
+
+    .notifi{
+      background-color: #c8057a96;
+    border-radius: 16px;
+    padding: 4px;
+    }
     
     
     .bullet{
@@ -106,3 +116,19 @@ cursor: pointer;
      .empname{
        color: orange;
      }
+
+
+     :host ::ng-deep .ui-dialog .ui-dialog-content{
+      height: 500px
+  }
+  .time{
+      font-weight: bold;
+  }
+  .cal{
+      top: 35.0156px;
+  }
+
+  :host ::ng-deep.ng-trigger-overlayAnimation .ng-tns-c6-5
+   .ui-datepicker.ui-widget-content {
+      top: 35.0156px;
+    }

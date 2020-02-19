@@ -57,8 +57,8 @@
             <div class="card card1 my-4 cardmenu" *ngFor="let dataone of data |filter:term ;let i=index">
                  <div class="" (click)="viewJobId(dataone.jobId)">
                 <div class="row">
-                    <p class="ml-5 name mt-1"> <span style="color: blue"> {{dataone?.jobId}} </span> Position For <span style="color: orange "> {{dataone?.jobTitle}} </span></p>
-                </div>
+                    <p class="ml-5 name mt-1"></p>
+                </div> <span style="color: blue"> {{dataone?.jobTitle}} </span> Position  <span style="color: orange "> {{dataone?.jobId}} </span>
                 <div class="row mt-0">
                     <p class="ml-5 company">Beauto System Pvt Ltd</p>
                 </div>
@@ -92,94 +92,97 @@
               
         <div class="col-sm-2 "></div>
           
-        <div class="col-sm-4 ">                   
-                    <label class="hardware">Hardware</label>
-                 
-                    <div class="row">
-                    <div class="col-sm-6">
-                   <div> <img class="images"src="assets/process-automation.png"></div>
-                    <div class="text ml-4"><label>Automation</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                   <div> <img class="furniture" src="../../../assets/embedded.jpeg"></div>
-                    <div class="ml-3 ops"><label>Embedded System</label></div>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                    <div><img class="images"src="../../../assets/packagess.jpg"></div>
-                    <div class="text ml-2"><label>Packaging Solution</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                    <div><img class="furniture" src="../../../assets/industry1.jpeg"></div>
-                    <div class="ml-2 ops"><label>Industries Automation</label></div>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                    <div><img class="images"src="../../../assets/images (2).jpeg"></div>
-                    <div class="architech"><label>Architecting office spaces</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                    <img class="furniture" src="../../../assets/interior.jpg">
-                    <div class="ml-5 ops"><label>Interiors</label></div>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                        <div><img class="images"src="../../../assets/eco.jpeg"></div>
-                    <div class="text ml-3"><label>Energy Ecosystem</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div><img class="furniture" src="../../../assets/images (1).jpeg"></div>
-                    <div class="ml-4 ops"><label>Smart Furniture</label></div>
-                    </div>
-                    </div>
-                  
-                    <label class="hardware">Software</label>
-                
-                    <div class="row">
-                    <div class="col-sm-6">
-                        <div> <img class="images"src="../../../assets/machine.jpeg"></div>
-                    <div class="text ml-2"><label>machine learning</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div> <img class="furniture" src="../../../assets/devops.jpg"></div>
-                    <div class="ml-5 ops"><label>Dev ops</label></div>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                    <div><img class="images"src="../../../assets/banking.jpeg"></div>
-                    <div class="text ml-2"><label>Banking & Finance</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                    <div><img class="furniture" src="../../../assets/userexp.png"></div>
-                    <div class="ml-4 ops"><label>User Experience</label></div>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                    <div><img class="images"src="../../../assets/e-commerce.png"></div>
-                    <div class="text ml-4"><label>E-Commerce</label></div>
-                    
-                    </div>
-                    <div class="col-sm-6">
-                        <div><img class="furniture" src="../../../assets/softarchi.jpeg"></div>
-                    <div class="ml-2 ops"><label>Software Architecture</label></div>
-                    
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-sm-6">
-                    <div><img class="images"src="../../../assets/cyber.jpeg"></div>
-                    <div class="text ml-3"><label>Cyber Security</label></div>
-                    </div>
-                    <div class="col-sm-6">
-                    <div><img class="furniture" src="../../../assets/education.jpeg"></div>
-                    <div class="ml-3 ops"><label>Educational Sector</label></div>
-                    </div>
-                    </div>                    
-                    </div>  
+            
+
+            <div class="col-sm-4 "> 
+            <label class="hardware">Hardware</label>
+            
+            <div class="row">
+            <div class="col-sm-6">
+            <div> <img class="images"src="./assets/process-automation.png"></div>
+            <div class="text ml-4"><label>Automation</label></div>
+            </div>
+            <div class="col-sm-6">
+            <div> <img class="furniture" src="./assets/embedded.jpeg"></div>
+            <div class="ml-3 ops"><label>Embedded System</label></div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <div><img class="images"src="./assets/packagess.jpg"></div>
+            <div class="text ml-2"><label>Packaging Solution</label></div>
+            </div>
+            <div class="col-sm-6">
+            <div><img class="furniture" src="./assets/industry1.jpeg"></div>
+            <div class="ml-2 ops"><label>Industries Automation</label></div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <div><img class="images"src="./assets/images (2).jpeg"></div>
+            <div class="architech"><label>Architecting office spaces</label></div>
+            </div>
+            <div class="col-sm-6">
+            <img class="furniture" src="./assets/interior.jpg">
+            <div class="ml-5 ops"><label>Interiors</label></div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <div><img class="images"src="./assets/eco.jpeg"></div>
+            <div class="text ml-3"><label>Energy Ecosystem</label></div>
+            </div>
+            <div class="col-sm-6">
+            <div><img class="furniture" src="./assets/images (1).jpeg"></div>
+            <div class="ml-4 ops"><label>Smart Furniture</label></div>
+            </div>
+            </div>
+            
+            <label class="hardware">Software</label>
+            
+            <div class="row">
+            <div class="col-sm-6">
+            <div> <img class="images"src="./assets/machine.jpeg"></div>
+            <div class="text ml-2"><label>machine learning</label></div>
+            </div>
+            <div class="col-sm-6">
+            <div> <img class="furniture" src="./assets/devops.jpg"></div>
+            <div class="ml-5 ops"><label>Dev ops</label></div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <div><img class="images"src="./assets/banking.jpeg"></div>
+            <div class="text ml-2"><label>Banking & Finance</label></div>
+            </div>
+            <div class="col-sm-6">
+            <div><img class="furniture" src="./assets/userexp.png"></div>
+            <div class="ml-4 ops"><label>User Experience</label></div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <div><img class="images"src="./assets/e-commerce.png"></div>
+            <div class="text ml-4"><label>E-Commerce</label></div>
+            
+            </div>
+            <div class="col-sm-6">
+            <div><img class="furniture" src="./assets/softarchi.jpeg"></div>
+            <div class="ml-2 ops"><label>Software Architecture</label></div>
+            
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <div><img class="images"src="./assets/cyber.jpeg"></div>
+            <div class="text ml-3"><label>Cyber Security</label></div>
+            </div>
+            <div class="col-sm-6">
+            <div><img class="furniture" src="./assets/education.jpeg"></div>
+            <div class="ml-3 ops"><label>Educational Sector</label></div>
+            </div>
+            </div> 
+            </div>
+            <div class="col-sm-2 "></div>
     </div>
 </div>

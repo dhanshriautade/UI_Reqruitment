@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   fileUploadProgress: string = null;
   selectedFile = null;
   displayp = false
+  msdata;
   myDate = new Date();
   fileToUpload: File = null;
   otherDoc;
@@ -68,6 +69,8 @@ export class ProfileComponent implements OnInit {
   selectedCategory;
   selectedPincode;
   selectedLanguages;
+  selectedGraduation;
+  selectedGradCourse;
   mydata;
   selectedStatus;
 
@@ -414,15 +417,25 @@ this.displaytentheducation=true;
       "maritialStatus":this.selectedStatus,
     }
    
-    console.log('Ahdkjh',this.mydata)
+    // console.log('Ahdkjh',this.mydata)
     this.TeamService.saveDetails(this.mydata).subscribe((res:any) => {
-     
-     
- 
   
     })
   
    
+  }
+  saveEducationDetails(){
+    alert(JSON.stringify(this.msdata));
+    this.msdata={
+      "email": localStorage.getItem('email'),
+      "education":this.selectedGraduation,
+      "course":this.selectedGradCourse,
+    }
+  
+    this.TeamService.saveGraduationDetails(this.msdata).subscribe((res:any) => {
+      this.msdata=res;
+      console.log('COLLEGE',this.msdata)
+    }) 
   }
 
 

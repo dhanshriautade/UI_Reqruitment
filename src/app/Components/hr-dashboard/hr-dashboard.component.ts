@@ -44,7 +44,8 @@ export class HrDashboardComponent implements OnInit {
       ]
   }
   createjob(){
-    this.display=true
+    this.display=true;
+    this.skillArray =  [];
     this.TeamService.getjobId().subscribe((res:string) => {
         this.id= res;
      });
@@ -185,8 +186,32 @@ export class HrDashboardComponent implements OnInit {
   }
 
   addskill() {
+    if(this.createJobForm.get('skills').value == '')
+    {
+        this.toastr.error('Please Add Skill');
+         return 0 ;
+
+    }
     this.skillArray.push(this.createJobForm.get('skills').value);
     console.log(this.skillArray)
+  }
+
+  addskilledit(){
+    this.skillArray =  this.skillArray;
+    if(this.EditJobForm.get('skills').value == '')
+    {
+        this.toastr.error('Please Add Skill');
+         return 0 ;
+
+    }
+    if(this.skillArray == null){
+      this.skillArray = [];
+      this.skillArray.push(this.EditJobForm.get('skills').value);  
+    }
+    else{
+      this.skillArray.push(this.EditJobForm.get('skills').value);  
+  
+    }
   }
   removeSkill(i: any) {
     console.log(i)

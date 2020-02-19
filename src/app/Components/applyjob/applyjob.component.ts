@@ -3,21 +3,36 @@ import { TeamService } from 'src/services/team.service';
 import { ToastrService } from 'ngx-toastr';
 
 
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-applyjob',
   templateUrl: './applyjob.component.html',
-  styleUrls: ['./applyjob.component.scss']
+  styleUrls: ['./applyjob.component.scss'],
+  providers: [DatePipe],
 })
 export class ApplyjobComponent implements OnInit, OnDestroy {
   data;
   viewalljobid;
+  display = false;
   dataone;
   role;
   info;
   disableButton = false;
   button;
   public apply: boolean = true;
-  constructor(public TeamService: TeamService, private toastr: ToastrService) {
+
+  deptartment;
+  dataApply;
+  myDate = new Date();
+  applyJobForm= new FormGroup({
+
+  })
+  constructor(public TeamService: TeamService,private formBuilder: FormBuilder,private toastr: ToastrService, private datePipe: DatePipe) {
+    this.deptartment = [{ 'dept': 'IT' }, { 'dept': 'Computer' }, { 'dept': 'Meachanical' }, { 'dept': 'ENTC' }
+    , { 'dept': 'Electrical' }, { 'dept': 'Civil' }, { 'dept': 'Electronic' }
+
+  ]
     this.viewalljobid = localStorage.getItem('ViewJobId')
     // alert(this.viewalljobid)
     this.role = localStorage.getItem('role');
@@ -35,7 +50,7 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
   }
 
 
-  public checkIfJobAppliedAlready(): void {
+   public checkIfJobAppliedAlready(){
 
 
     this.data = {
@@ -60,53 +75,80 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
 
   }
 
-
-
-
-  public ApplyJob(): void {
-
-
+  onSubmit(){
     this.data = {
-
+    
       "emailId": localStorage.getItem('email'),
       "jobId": localStorage.getItem('ApplyJobId')
-
-    }
-    this.TeamService.ApplyJob(this.data).subscribe((res: any) => {
-      localStorage.setItem("reloadPage", "false");
-
-      //this.toastr.success('Successfully Applied !!!');
-      console.log(JSON.stringify(res))
-      if (res.code === '200') {
-        this.apply = false;
-        this.disableButton = true;
-        this.toastr.success('Successfully Applied !!!');
-      }
-
-
-      // if(this.text=== 'Apply' && res.code === '200'){
-      //   this.text = 'Applied'
-      //   this.disableButton=true; 
-      //   this.toastr.success('Successfully Applied !!!'); 
-      //  } 
-
-      //  if(res.code === '210'){
-      //   this.text=== 'Applied'
-      //   this.disableButton=true;
-
-      // } else{
-      //   this.text=== 'Apply'
-      //   this.disableButton=false;
-      // }
-
-
-      console.log('job', res);
-    })
-
+  
   }
+
+  this.TeamService.ApplyJob(this.data).subscribe(res => {
+    console.log('job', res);
+  })
+
+  this.dataApply = {
+    
+
+      "jobId":this.dataone.jobId,
+      
+      "candidateName": this.applyJobForm.value.candidateName,
+      
+      "candidateId" : localStorage.getItem('id'),
+      
+      "designation":this.applyJobForm.value.designation,
+      
+      "noticePeriod":this.applyJobForm.value.noticePeriod,
+      
+      "experienceInYears":this.applyJobForm.value.experienceInYears,
+      
+      "ctc":this.applyJobForm.value.ctc,
+      
+      "ectc":this.applyJobForm.value.ectc,
+      
+      "relevantExpInYears":this.applyJobForm.value.relevantExpInYears,
+      
+      "skills":this.dataone.skills,
+      
+      "department":this.applyJobForm.value.department,
+      
+      "seen":"false",
+      
+      "status":"slected",
+      
+      "proceedFurther": "false",
+      
+      "bookmarked": "false",
+      
+      "appliedDate":this.datePipe.transform(this.myDate, 'yyyy-MM-dd')
+      
+  }
+  this.TeamService.saveCandidateJobApplication(this.dataApply).subscribe(res => {
+    console.log('job', res);
+    this.display = false;
+    this.toastr.success('Successfully Apply Job !!!');
+  })
+  }
+  ApplyJob() {
+
+    this.display = true;   
+   
+  }
+
   ngOnInit() {
-
+    this.applyJobForm = this.formBuilder.group({
+      candidateName: [''],
+      department: [''],
+      relevantExpInYears: [''],
+      ectc: [''],
+      ctc: [''],
+      experienceInYears: [''],
+      noticePeriod: [''],
+      designation: [''],
+   
+    })
   }
+ 
   ngOnDestroy() {
     localStorage.setItem("reloadPage", "false");
   }

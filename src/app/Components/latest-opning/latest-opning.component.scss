@@ -1,0 +1,295 @@
+.dashboard{
+    height: 89vh;
+    background-color: #ECEFF1;
+ }
+
+.main{
+    background-color: white;    
+    //padding: 6px;
+}
+.summary{
+    background-color: white;  
+   // padding: 6px;
+}
+
+  .gradient{
+    background-color: white
+}
+.detail{
+    background-color: white;    
+    height: 75px;
+}
+
+.wel{
+    font-weight: bolder;
+    color: #253238;
+   
+}
+.name1{
+    color: blue;
+}
+
+.card-header{
+    padding: 0px !important;
+}
+ .bocard-body{
+    padding: 5px 15px 0px 20px;
+}
+.table-striped tbody tr:nth-of-type(odd){
+    background-color: #F4F4F5
+     }
+ 
+ .table-striped tbody tr:nth-of-type(even){
+         background-color: #F5FBFF
+          }
+        .evnt{
+
+            color: #157DEC;
+            margin-left: 10px;
+            font-weight: bold;
+            font-size:large;
+            
+            }
+            .headone{
+                height: 10px!important;
+                background-color: #90A4AE;
+                color: white;
+            }
+            
+            th ,td {
+    border-right: 1px solid white;
+    // color: white;
+}
+.img{
+    width: 26px;
+}
+.replace{
+background-color: #AFBEC6;
+color: white;
+width: 106%;
+    height: 32px;
+    line-height: 1px;
+    margin-left: 71px;
+}
+.job{
+    height: 32px;
+    line-height: 1px;
+    width: 150px;
+}
+.head{
+    background-color:#8EA3AF;
+   
+}
+
+.apply{
+    background-color: #AFBEC6;
+    color: white;
+    height: 30px;
+    line-height: 1px;
+}
+.windowclose{
+    background-color: #AFBEC6;
+    color: white;
+    height: 30px;
+    line-height: 1px;
+    width: 120px;
+}
+.diaheader{
+    height: 0px;
+}
+.complete{
+    font-weight: bold;
+    color: white;
+}
+
+.box{
+    border: none;
+    width: 167px;
+    color: #AFBEC6;
+}
+.for{
+    color: #AFBEC6;
+}
+.bookmark{
+    color: red;
+}
+.search{
+    width: 490px;
+    height: 33px;
+    margin-top: 3px;
+    border-radius: 6px;
+    padding: 23px,6px,4px,5px;
+    font-size: smaller;
+}
+
+.note{
+    color:#6F838C;
+    border-radius: 5px;
+    padding: 11px 55px 5px 0px;
+    border-color: #CCD8DD;
+    background-color: white;
+    width: 284px;
+}
+.nam_e{
+    text-align: end;
+}
+.notice{
+  
+    margin-top: 9px;
+}
+.dept{
+    width: 286px;
+    color:#6F838C;
+    border-radius: 5px;
+    padding: 11px 55px 5px 0px;
+    border-color: #CCD8DD;
+    background-color: white;
+}
+.tick{
+    display: inline-block;
+    color:#ACBEC6;
+    float: right;
+    
+   }
+.add{
+    background-color: #ACBEC6;
+    margin-left: 10px;
+    width:65px;
+    color:white;
+}
+.des{
+    border: 1px solid #CCD8DD;
+    border-radius: 3px;
+    height: 152px;
+}
+.draw{
+    border: 1px solid #CCD8DD;
+    border-radius: 3px;
+    height: 30px;
+    background-color: #E8E7E8;
+}
+.left_chip {
+    font-size: 13px;
+    background-color: #EBEFF1;
+    padding: 2px 9px 8px 9px;
+    color: #536D77;
+    border-radius: 15px;
+    display: inline-block;
+    margin-right: 15px;
+    }
+    .clip{
+    background-color:white;
+    border: 1px solid #CCD8DD;
+    border-radius: 3px;
+ 
+    }
+    .line{
+        border-bottom: 1px solid #CCD8DD;
+        margin-top: 20px;
+      
+    }
+    :host ::ng-deep .pi-times{
+     display: none;
+    }
+   
+      .report{
+        color: #3E5EFF;
+        font-size: larger;
+       
+      }
+      .info{
+          color: white;
+        background-color: blue;
+        width: 180px;
+    }
+    .submit{
+        color: white;
+        background-color: #3E5EFF;
+        width: 150px;
+
+    }
+    .preview{
+        color: gray;
+        background-color: #ACBEC6;
+        width: 150px;
+
+    }
+    .cancel{
+        color: gray;
+        background-color: white;
+        width: 150px;
+
+    }
+    .replaced{
+        color:gray;
+    }
+    :host ::ng-deep.ui-dialog-content {
+        height: 490px;
+        overflow-y: scroll !important;
+     
+    }
+    .dia{
+        position: absolute; 
+     }
+     .hidepreview{
+        opacity: 0.5 !important;
+ 
+     }
+ .Centered{
+     position: fixed;
+     left: 28%;
+     top: 24%;
+     width: 76%;
+     z-index: 1;
+ }
+    
+    .show_button{
+        margin-bottom: 30px;
+    }
+    .tick1{
+        display: none;
+    }
+   
+    .imge{
+        padding-bottom: 4px;
+    }
+    .pckg{
+        text-align: left;
+    }
+    .exper{
+        width: 120%;
+    }
+    .pckg{
+        width: 118%;   
+    }
+    
+    
+    .lead{
+        font-weight: 550;
+        font-size: small;
+        color: #435965;
+    }
+    .pack{
+        font-size: 700;
+        color: #586B75;
+    }
+    .line{
+        color: black;
+    }
+    .hideicon{
+        z-index: 0;
+    }
+
+    :host ::ng-deep .k-chart-donut-center{
+        position: absolute;
+        padding-top: 8px;
+        padding-left: 5px;
+    }
+    .depts{
+        font-weight: bold;
+border: none;
+color:black;
+height: 30px;
+background-color: white;
+
+    }

@@ -36,7 +36,7 @@
                         <span class=" mt-2 ml-1 view">{{NotificationGetDataJobId}}</span>
                     </div>
                     <div class="col-sm-6">
-                       
+
                     </div>
                 </div>
                 <div class="row">
@@ -61,11 +61,37 @@
                     <span class="ml-2 mt-3 report">Assign</span>
                     <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removedialog()"></i>
                 </p-header>
-               
-                    <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-10">
-                            <div class="row my-2">
+
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                        <div class="row my-2">
+                            <div class="col-sm-4">
+                                <label>Department :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select id="department" class="form-control box" size="0" name="department"
+                                    [(ngModel)]="selecteddepartment" (change)="getDeparmentwiseEmpList()">
+                                    <option>Select Department</option>
+                                    <option [value]="departments" *ngFor="let departments of department">
+                                        {{departments}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-sm-4">
+                                <label>Employee :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select class="form-control box" [(ngModel)]="selectedemployee">
+                                    <option>Select Employee</option>
+                                    <option *ngFor="let employee of dataone" [value]="employee.email">
+                                        {{employee?.firstName}} {{employee?.lastName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="row my-2">
                                 <div class="col-sm-4">
                                     <label>Employee :</label>
                                 </div>
@@ -76,85 +102,86 @@
                                     </select>
 
                                 </div>
+                            </div> -->
+                        <div class="row my-2">
+                            <div class="col-sm-4">
+                                <label>Email Id :</label>
                             </div>
-                            <div class="row my-2">
-                                <div class="col-sm-4">
-                                    <label>Email Id :</label>
-                                </div>
-                                <div class="col-sm-8">
-                                    {{ProfileData?.email}}
-                                </div>
+                            <div class="col-sm-8">
+                                {{ProfileData?.email}}
                             </div>
-                            <div class="row my-2">
-                                <div class="col-sm-4">
-                                    <label>Job Id :</label>
-                                </div>
-                                <div class="col-sm-8">
-                                   {{NotificationGetDataJobId}}
-
-                                </div>
-                            </div>
-                            <div class="row my-2">
-                                <div class="col-sm-9"></div>
-                                <div class="col-sm-3">
-                                    <button type="button" class=" btn btn-primary send ml-3">Send</button> 
-                                </div>
-                            </div>
-                            
                         </div>
-                        <div class="col-sm-1"></div>
+                        <div class="row my-2">
+                            <div class="col-sm-4">
+                                <label>Job Id :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                {{NotificationGetDataJobId}}
+
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-sm-9"></div>
+                            <div class="col-sm-3">
+                                <button type="button"  (click)="AssignEmpployeeToInterview()" class=" btn btn-primary send ml-3">Send</button>
+                            </div>
+                        </div>
+
                     </div>
-              
+                    <div class="col-sm-1"></div>
+                </div>
+
             </p-dialog>
         </div>
     </div>
     <div class="col-sm-2"></div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            <div class="card card1">
-                <div class="header"><span class=" my-2">View Resume</span></div>
-                <div class="ml-3 attach">Resume is the most important document recruiters look for.
-                    Recruiters generally do not look at profiles without resumes.</div>
-                    <div class=" my-3 ml-3 upload_resume">
-                        <span
-                            style="color: #4A90E2;">{{ResumeInfo?.resumePath?.split('/')[this.ResumeInfo?.resumePath?.split('/').length-1]}}
-                            - Uploaded on - {{ResumeInfo?.date}} </span>
-                        <i style="color: #4A90E2;" (click)="downloadResume()" class="pi pi-download ml-5"></i>
-        
-                    </div>
-            </div>
-            <div class="card my-3">
-                <p class="header my-2">View Other Document</p>
-
-                <div class="ml-3  upload_resume">
-                    <div *ngFor="let dataone of otherDocPathName">
-                        <span style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
-                            - Uploaded on - {{ResumeInfo?.date}} <i (click)="downloadOtherDoc(dataone)"
-                                class="pi pi-download ml-5 mt-4"></i></span>
-                    </div>
-                   
-
-                </div>
+</div>
+<div class="row mt-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card card1">
+            <div class="header"><span class=" my-2">View Resume</span></div>
+            <div class="ml-3 attach">Resume is the most important document recruiters look for.
+                Recruiters generally do not look at profiles without resumes.</div>
+            <div class=" my-3 ml-3 upload_resume">
+                <span
+                    style="color: #4A90E2;">{{ResumeInfo?.resumePath?.split('/')[this.ResumeInfo?.resumePath?.split('/')?.length-1]}}
+                    - Uploaded on - {{ResumeInfo?.date}} </span>
+                <i style="color: #4A90E2;" (click)="downloadResume()" class="pi pi-download ml-5"></i>
 
             </div>
-          
-                <div class=" mt-3 card">              
-                <p class="header my-2">View Primary Skills</p>               
-                <div class="col-sm-4"></div>
-                <div class="displayskill ml-4 mb-4">
-                   <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.primarySkill">  {{Skill}} </span>
-                </div>               
-                </div>
-                <div class=" mt-3 card">              
-                    <p class="header my-2 ">View Secondary Skills</p>               
-                    <div class="col-sm-4"></div>
-                    <div class="displayskill ml-4 mb-4">
-                       <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.secondarySkill;let i=index">  {{Skill}} </span>
-                    </div>               
-                    </div>
-           
         </div>
-        <div class="col-sm-2"></div>
+        <div class="card my-3">
+            <p class="header my-2">View Other Document</p>
+
+            <div class="ml-3  upload_resume">
+                <div *ngFor="let dataone of otherDocPathName">
+                    <span style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
+                        - Uploaded on - {{ResumeInfo?.date}} <i (click)="downloadOtherDoc(dataone)"
+                            class="pi pi-download ml-5 mt-4"></i></span>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class=" mt-3 card">
+            <p class="header my-2">View Primary Skills</p>
+            <div class="col-sm-4"></div>
+            <div class="displayskill ml-4 mb-4">
+                <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.primarySkill"> {{Skill}} </span>
+            </div>
+        </div>
+        <div class=" mt-3 card">
+            <p class="header my-2 ">View Secondary Skills</p>
+            <div class="col-sm-4"></div>
+            <div class="displayskill ml-4 mb-4">
+                <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.secondarySkill;let i=index"> {{Skill}}
+                </span>
+            </div>
+        </div>
+
     </div>
+    <div class="col-sm-2"></div>
+</div>

@@ -1,0 +1,509 @@
+<div class="dashboard">
+        <div class="card_size">
+            <div class="row px-3">
+                <div class="col-sm-1 col-md-1 col-lg-1">
+                </div>
+                <div class="col-sm-10 col-md-10 col-lg-10 my-3">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-7 main pt-1 pb-1" (click)="goToAdmin()" >
+                                            <img class="img2" src="../../../assets/Account Summary.png" alt="">
+                                            <span class="wel ml-2">Account Summary</span>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="main pt-1 pb-1">
+                                                <img class="img2 ml-1" src="../../../assets/reports.png" alt="">
+                                                <span class="wel ml-2">Reports</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="main  pt-1 pb-1">
+                                                <img class="img2 ml-1" src="../../../assets/notification (2).png" alt="">
+                                                <span class="wel ml-2">Notification</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="main ">
+                                                <img class="img2 ml-1" src="../../../assets/department.png" alt="">
+                                               
+                                                <select class="depts my-0" (change)="onChange($event.target.value)">
+                                                    <option disabled="true" display="true">Department</option>
+                                                    <option>IT</option>
+                                                    <option>computer</option>
+                                                    <option>Computer</option>
+                                                    <option>Mechanical</option>
+                                                    <option>ENTC</option>
+                                                    <option>Electrical</option>
+        
+                                                </select>
+                                  
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="main">
+                                        <span class="wel ml-2">Date Filter:</span>
+                                        <span><input type="date" autocomplete="off" class="box"></span>
+                                        <span><button type="submit" class="btn apply">Reset</button></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn btn-primary job" (click)="createjob()">Create
+                                        Job</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Centered">
+                        <p-dialog [(visible)]="displayp" [style]="{width: '62%'}" class="abc">
+                              <p-header class="dialogHeader"> 
+                                <div class="row diaheader"> 
+                                 <div class="col-sm-10">
+                                  <img class="imge" src="../../../assets/logo/Create Job.png" alt="">
+                                  <span class="ml-2 report">JVL0145</span>
+                                  </div>
+                                  <div class="col-sm-2">
+                                  <i class="tick fa fa-times mt-2" aria-hidden="true"(click)="removeWindow()"></i>
+                                  </div>
+                               </div>
+                              </p-header>
+                              <form class="group grp_form">
+                                  <div class="row my-3">
+                                      <div class="col-sm-2 text-right pack">Designation:</div>
+                                      <div class="col-sm-10 lead">{{data?.designation}}</div>
+                                  </div>
+                                  <div class="row my-3">
+                                      <div class="col-sm-2 text-right pack">Experience:</div>
+                                      <div class="col-sm-10 lead">{{data?.experienceInYears}}</div>
+                                  </div>
+                                  <div class="row my-3">
+                                    <div class="col-sm-2 text-right pack">Rel Experience :</div>
+                                    <div class="col-sm-10 lead">{{data?.relevantExpInYears}}</div>
+                                </div>
+                                  <div class="row my-3">
+                                      <div class="col-sm-2 text-right pack">Package:</div>
+                                      <div class="col-sm-10 lead">{{data?.minPackage}} to {{data?.maxPackage}}</div>
+                                  </div>
+                                  <div class="row my-3">
+                                    <div class="col-sm-2 text-right pack">Department:</div>
+                                    <div class="col-sm-10 lead">{{data?.department}}</div>
+                                </div>
+                                <div class="row my-3">
+                                    <div class="col-sm-2 text-right pack">Status:</div>
+                                    <div class="col-sm-10 lead">{{data?.status}}</div>
+                                </div>
+                                <div class="row my-3">
+                                    <div class="col-sm-2 text-right pack">Job Status:</div>
+                                    <div class="col-sm-10 lead">{{data?.jobStatus}}</div>
+                                </div>
+                                  <div class="row my-3">
+                                      <div class="col-sm-2 text-right pack">Notice Period:</div>
+                                      <div class="col-sm-10 lead">{{data?.noticePeriod}}</div>
+                                  </div>
+                                  <div class="row my-3">
+                                      <div class="col-sm-2 text-right pack">Skill's:</div>
+                                      <div class="col-sm-10 lead">{{data?.skills}}</div>
+                                  </div>
+                                  <div class="row my-3">
+                                      <div class="col-sm-2 text-right pack">Description:</div>
+                                      <div class="col-sm-10 pack">{{data?.jobDescription}}</div>
+                                  </div>
+                                  <hr class="line">
+                                  <div class="row">
+                                      <div class="col-sm-9"></div>
+                                      <div class="col-sm-3">
+                                          <button type="button" class="btn windowclose" (click)="removeWindow()">Close</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </p-dialog>
+                          </div>
+                    <div [ngClass]="displayPreview ? 'hidepreview' : ''" *ngIf="display">
+                    <p-dialog [(visible)]="display" [style]="{width: '102%', height: '85%',margin:'40px 50px 0px 0px'}">
+                        <p-header class="dialogHeader mt-2">
+                            <img class="imge" src="../../../assets/logo/Create Job.png" alt="">
+                            <span class="ml-2 mt-2 report">Create Job <span class="replaced">| Replacement</span></span>
+                            <i class="tick fa fa-times mt-2" aria-hidden="true"(click)="closeWindow()"></i>
+                        </p-header>
+                        <form class="group grp_form" [formGroup]="createJobForm" (ngSubmit)="onSubmit()">
+                            <div class="row ">
+                                <div class="col-sm-9">
+                                    <div class="row notice">
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Job ID :</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <span class="text-primary">JVL0145</span>
+                                        </div>
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Designation :</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" autocomplete="off" class="form-control text-centre"
+                                                placeholder="" name="desgn" formControlName="designation">
+    
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+    
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="row notice">
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Experience:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <input type="text" autocomplete="off" class="form-control text-centre exper"
+                                                        placeholder="00" name="exp" formControlName="experienceInYears">
+    
+                                                </div>
+                                                <div class="col-sm-1"><label class="my-2">Yrs.</label></div>
+                                                <div class="col-sm-5"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Rel. Experience :</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <input type="text" autocomplete="off" class="form-control text-centre exper"
+                                                        placeholder="00" name="exp" formControlName="relevantExpInYears">
+    
+                                                </div>
+                                                <div class="col-sm-1"><label class="my-2">Yrs.</label></div>
+                                                <div class="col-sm-5"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3"></div>
+    
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="row notice">
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Package:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row ">
+                                                <div class="col-sm-5">
+                                                    <input type="text" autocomplete="off" class="form-control text-centre pckg"
+                                                        placeholder="0.00" name="minpackage" formControlName="minPackage">
+    
+                                                </div>
+                                                <span class="ml-2 my-2"> to</span>
+                                               
+                                                <div class="col-sm-5">
+                                                 
+                                                    <input type="text" autocomplete="off" class="form-control text-centre pckg"
+                                                        placeholder="0.00" name="maxpackage" formControlName="maxPackage">
+    
+                                                </div>
+                                                <div class="col-sm-1"><label class=" my-1">LPA</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Department :</label>
+                                        </div>
+                                        <div class="col-sm-4 ">
+                                            <select class="dept" name="department" formControlName="department">
+                                                <option disabled="true" display="true">Select</option>
+                                                <option *ngFor="let n of deptartment" [value]="n.dept">{{n.dept}}</option>
+    
+                                            </select>
+    
+                                        </div>
+    
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3"></div>
+    
+                            </div>
+                            <div class="row ">
+                                <div class="col-sm-9">
+                                    <div class="row notice">
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Status :</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" autocomplete="off" class="form-control text-centre"
+                                                placeholder="...." name="status" formControlName="status">
+                                        </div>
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Job Status :</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" autocomplete="off" class="form-control text-centre"
+                                                placeholder="...." name="jobstatus" formControlName="jobStatus">
+    
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+    
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="row notice">
+                                        <div class="col-sm-2 nam_e">
+                                            <label>Notice Period:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="notice note" formControlName='noticePeriod'>
+                                                <option disabled="true" display="true">Select</option>
+                                                <option *ngFor="let n of notice" [value]="n.notes">{{n.notes}}</option>
+    
+                                            </select>
+                                        </div>
+    
+                                        <div class="col-sm-6"> </div>
+                                        <div class="col-sm-3"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+    
+                            </div>
+                            <label class="font-weight-bold notice">Add Skill's</label>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="row notice">
+                                        <div class="col-sm-2 nam_e">
+                                            <label>skill:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" autocomplete="off" class="form-control text-centre"
+                                                placeholder="type..." name="Skill" formControlName='skills'>
+                                        </div>
+    
+                                        <div class="col-sm-6">
+                                            <button type="button" class="btn upload add" (click)='addskill()'>Add</button>
+                                            <span class="ml-2 text-muted">Add max 20 skill's.</span>
+                                            <div class="col-sm-3"></div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="clip ml-5 my-2">
+                                                    <span class="left_chip my-2 ml-1"
+                                                        *ngFor="let skills of this.skillArray;index as i">
+                                                        {{skills}}
+                                                        <i class="tick fa fa-times mt-2" aria-hidden="true"
+                                                            (click)="removeSkill(i)"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+    
+                            </div>
+                            <label class="font-weight-bold notice">Add Description</label>
+                            <div class="row notice">
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-sm-2 nam_e">
+                                            <label class="notice">Description:</label>
+                                        </div>
+                                        <div class="col-sm-10 nam_e ">
+                                            <div>
+                                                <div class="draw">
+                                                </div>
+                                                <textarea id="description" cols="22" rows="8" autocomplete="off" class="form-control text-centre  "
+                                                    placeholder="" name="description" formControlName='jobDescription'></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
+                            <div class="row notice">
+                                <div class="col-sm-8"></div>
+                                <div class="col-sm-4">
+                                    <button type="button" class="btn upload add">Add</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 line"></div>
+                            <div class="row ">
+                            </div>
+                            <div class="row ">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-6 show_button">
+                                    <button type="button" class="btn cancel my-3 mr-4">cancel</button>
+                                    <button type="button" class="btn preview my-3 mr-4" (click)="previewjob()">Preview</button>
+                                    <button type="submit" class="btn submit my-3 mr-4">Submit
+                                        <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </p-dialog>
+                    </div>
+                    <div class="mainhr" *ngIf="currentStatus">
+                        <div class="row main my-3 ">
+                            <span class="wel pl-2 pt-1"> Account Summary:</span>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <kendo-chart>
+                                        <ng-template kendoChartDonutCenterTemplate>
+                                          007 
+                                        </ng-template>
+                                        <kendo-chart-series>
+                                          <kendo-chart-series-item
+                                              type="donut" [data]="datadonut"
+                                              categoryField="kind" field="share">
+                                            <kendo-chart-series-item-labels
+                                              [content]="labelContent" [visible]="false"
+                                              color="#fff" background="none">
+                                            </kendo-chart-series-item-labels>
+                                          </kendo-chart-series-item>
+                                        </kendo-chart-series>
+                                        <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+                                      </kendo-chart>
+                                </div>
+                                <div class="col-sm-3">
+                                   
+                                    <kendo-chart >
+                                        <ng-template kendoChartDonutCenterTemplate >
+                                          007
+                                        </ng-template>
+                                        <kendo-chart-series>
+                                          <kendo-chart-series-item
+                                              type="donut" [data]="datadonut"
+                                              categoryField="kind" field="share">
+                                            <kendo-chart-series-item-labels
+                                              [content]="labelContent" [visible]="false"
+                                              color="#fff" background="none">
+                                            </kendo-chart-series-item-labels>
+                                          </kendo-chart-series-item>
+                                        </kendo-chart-series>
+                                        <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+                                      </kendo-chart>
+                                </div>
+                                <div class="col-sm-3">
+                                    <kendo-chart >
+                                        <ng-template kendoChartDonutCenterTemplate>
+                                          007
+                                        </ng-template>
+                                        <kendo-chart-series>
+                                          <kendo-chart-series-item
+                                              type="donut" [data]="datadonut"
+                                              categoryField="kind" field="share">
+                                            <kendo-chart-series-item-labels
+                                              [content]="labelContent" [visible]="false"
+                                              color="#fff" background="none" >
+                                            </kendo-chart-series-item-labels>
+                                          </kendo-chart-series-item>
+                                        </kendo-chart-series>
+                                        <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+                                      </kendo-chart>
+                                </div>
+                                <div class="col-sm-3">
+                                    <kendo-chart >
+                                        <ng-template kendoChartDonutCenterTemplate>
+                                          007
+                                        </ng-template>
+                                        <kendo-chart-series>
+                                          <kendo-chart-series-item
+                                              type="donut" [data]="datadonut"
+                                              categoryField="kind" field="share">
+                                            <kendo-chart-series-item-labels
+                                              [content]="labelContent" [visible]="false"
+                                              color="#fff" background="none">
+                                            </kendo-chart-series-item-labels>
+                                          </kendo-chart-series-item>
+                                        </kendo-chart-series>
+                                        <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+                                      </kendo-chart>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row head">
+                            <div class="col-sm-2"></div>
+                            <div class=" col-sm-8 ">
+                                <div class="input-group">
+                                    <input type="text" class="search"   [(ngModel)]="term"
+                                        placeholder="Search Employees,designations,jobs,job ID...">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary hideicon" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                        <div class="card my-3">
+                            <div class="card-header">
+                                <div class="d-flex">
+                                    <div class="my-1 mr-auto">
+                                        <img class="my-1 ml-3 open" src="../../../assets/latest opening.png" alt="">
+                                        <span class="evnt">Latest Openings</span>
+                                    </div>
+                                    <div class="my-2 mr-2">
+                                    </div>
+                                </div>
+    
+                            </div>
+                            <div class="card-body my-1">
+                                <table class="table table-striped" style="margin: auto; width: 99%;">
+                                    <thead>
+                                        <tr class="headone">
+                                            <th align="center" scope="col">Sr.</th>
+                                            <th align="center" scope="col">Openings</th>
+                                            <th align="center" scope="col">Job ID</th>
+                                            <th align="center" scope="col">Applies</th>
+                                            <th align="center" scope="col">Seen</th>
+                                            <th align="center" scope="col">Proceed Further</th>
+                                            <th align="center" scope="col">Bookmarked</th>
+                                            <th align="center" scope="col">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let job of getAllJob| paginate: config   | filter:term  ;index as i">
+                                            <td scope="row" class="name">{{i+1}}</td>
+                                            <td class="name">Java Lead</td>
+                                            <td align="center" class="blue text-primary" (click)="goToJob(job.jobId)">{{job.jobId}}</td>
+                                            <td align="center" class="name">05</td>
+                                            <td align="center" class="name">03</td>
+                                            <td align="center" class="red">07</td>
+                                            <td align="center" class="red bookmark">07</td>
+                                            <td align="center" class="red">28-12-2019</td>
+                                        </tr>
+                                        
+                                    </tbody>
+    
+                                </table>
+                                <div class="text-right">
+                                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-md-1 col-lg-1">
+                </div>
+            </div>

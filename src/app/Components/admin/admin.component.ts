@@ -85,12 +85,7 @@ export class AdminComponent implements OnInit {
       for (var i = 0; i < keys.length; i++) {
         this.infodetail.push(this.data[keys[i]]);
       }
-      this.configer = {
-        itemsPerPage: 8,
-        currentPage: 1,
-        totalItems: this.infodetail.length
-      };
-      console.log('list', this.infodetail);
+
     });
   }
   pageChanged(event) {

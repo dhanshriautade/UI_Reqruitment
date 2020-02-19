@@ -12,18 +12,21 @@ export class AddEmployeeComponent implements OnInit {
     getAllEmployeedata;
     display = false;
     data;
-    dataone
+    dataone;
+    list;
     action = 'Save'
     designationList: any = [];
     submitted: boolean;
     useradd: boolean = false;
-    infodetailemployee
+    infodetailemployee;
+    configer;
     docArray = [];
     documentArray = [];
     editStatus = false;
     docidArray = [];
     infodetail = [];
     role;
+    lengthItem;
     employeeForm = new FormGroup({
     });
     departmentsAndDesignations: any = [];
@@ -35,18 +38,31 @@ export class AddEmployeeComponent implements OnInit {
         this.getAllEmployeesList();
 
     }
+
     getAllEmployeesList() {
-        this.TeamService.GetAllEmployee().subscribe(res => {
-            this.data = res;
-            this.infodetail = [];
-            let keys = Object.keys(this.data);
-            //console.log('keys', keys);
-            for (var i = 0; i < keys.length; i++) {
-                this.infodetail.push(this.data[keys[i]]);
-            }
-             console.log(this.infodetail);
-        })
-    }
+        this.EmployeeService.getEmployee().subscribe(res => {
+          this.infodetail = [];
+          this.data = res;
+          let keys = Object.keys(this.data);
+          // console.log('keys', keys);
+          for (var i = 0; i < keys.length; i++) {
+            this.infodetail.push(this.data[keys[i]]);
+          }
+          if(this.infodetail.length != 0 ){
+            this.lengthItem = this.infodetail.length
+          }
+          else{
+              this.lengthItem = 0
+          }
+          this.configer = {
+            itemsPerPage: 8,
+            currentPage: 1,
+            totalItems: this.lengthItem
+          };
+        //   console.log('list', this.infodetail);
+        });
+      }
+   
     getDesignationList() {
         let dept = this.employeeForm.get('department').value;
         let map = new Map(this.departmentsAndDesignations);
@@ -55,9 +71,15 @@ export class AddEmployeeComponent implements OnInit {
                 this.designationList = entry[1];
             }
         }
+        this.list = this.designationList;
     }
+
+    pageChanged(event) {
+        this.configer.currentPage = event;
+      }
+      
     EditEmployee(i: any) {
-        console.log('edit', this.infodetail[i].designation);
+        // console.log('edit', this.infodetail[i].designation);
 
         this.action = ''
         this.display = true;
@@ -74,8 +96,28 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.get('pan').setValue(this.infodetail[i].pan);
         this.employeeForm.get('voterId').setValue(this.infodetail[i].voterId);
         this.employeeForm.get('adhar').setValue(this.infodetail[i].adhar);
-        this.employeeForm.get('drivingLicence').setValue(this.infodetail[i].drivingLicence);
-    }
+        this.employeeForm.get('drivingLicence').setValue(this.infodetail[i].drivingLicence); 
+        this.docArray = [];
+        if(this.infodetail[i].adhar !== ""){
+            this.docArray.push( 'Adhar Card' + ' ( ' + this.infodetail[i].adhar + ')');     
+               
+        }
+        if(this.infodetail[i].passport !==  "" ){
+            this.docArray.push('Passport' + ' ( ' + this.infodetail[i].passport + ')');
+      
+        }
+        if(this.infodetail[i].pan !== ""){
+            this.docArray.push('PAN Card' + ' ( ' +  this.infodetail[i].pan + ')');
+               }
+        if(this.infodetail[i].drivingLicence !== ""){
+            this.docArray.push('Driving Lincese'+ ' ( ' + this.infodetail[i].drivingLicence + ' )');
+      
+        }
+        if(this.infodetail[i].voterId !== "" ){
+            this.docArray.push('Voter IDt'+ ' ( ' + this.infodetail[i].voterId + ') ')
+   
+        }
+         }
     DeleteEmployee(email: any) {
        
         const emailData =
@@ -131,13 +173,15 @@ export class AddEmployeeComponent implements OnInit {
             "designation": this.employeeForm.value.designation,
             "status": "1"
         };
-        // debugger;
-        if (action == 'Save'){
+         if (action == 'Save'){
            
             this.EmployeeService.AddEmployee(JSON.stringify(this.data)).subscribe((res:any) => {
                 if(res.responseMessage === 'PhoneNo already exists'){
                 this.toastr.success('Phone Number Already Exists !!!');
                 return 0;
+                } else if(res.responseMessage === 'Email id exists already'){
+                    this.toastr.success('Email Id Already Exists !!!');
+                    return 0;
                 } else if(res.responseMessage === 'Success'){
                     this.toastr.success('Successfully Added Employee !!!');
                 }
@@ -165,7 +209,7 @@ export class AddEmployeeComponent implements OnInit {
        
     }
     removeSkill() {
-        debugger
+       
         if (this.action == 'Save'){
              this.employeeForm.reset();
         }
@@ -177,7 +221,21 @@ export class AddEmployeeComponent implements OnInit {
 
     }
     addDocument() {
-        this.docArray.push(this.employeeForm.get('ID').value + this.employeeForm.get('idno').value)
+        if (this.action == 'Save'){
+            if(this.employeeForm.get('ID').value == '')  {
+            this.toastr.error('Please Select Identity Card');
+            return 0;
+            }
+        }
+        else{
+        if(this.employeeForm.get('ID').value  == '' || this.employeeForm.get('idno').value == '' || this.employeeForm.get('idno').value == null ){
+            this.toastr.error('Please Select Identity Card');
+            return 0;
+        }
+        }
+        
+        console.log('type',this.docArray);
+        this.docArray.push(this.employeeForm.get('ID').value + ' ('+ this.employeeForm.get('idno').value + ')')
         this.documentArray.push(this.employeeForm.get('idno').value)
         this.docidArray.push(this.employeeForm.get('ID').value);
 
@@ -198,5 +256,6 @@ export class AddEmployeeComponent implements OnInit {
     }
     PersonalInfo() {
         this.display = true;
+        this.docArray = [];
     }
 }

@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 const base_url = 'http://localhost:8081/';
 const notify_url = 'http://localhost:8085/';
+// const base_url = 'http://localhost:8080/MDPRecruitment/';
+// const notify_url = 'http://localhost:8080/MDPNotification/';
 export const environment = {
   production: false,
   Employeepost:base_url + 'addEmployee',
@@ -34,11 +36,17 @@ export const environment = {
   UpdatePostEducationlDetails:  base_url +'updatePostEducationlDetails',
   UpdatePersonalDetails:  base_url +'updatePersonalDetails',
 
+  AssignEmployeeToInterview: base_url + 'assignCandidateForInterview',
+  getEmployeeByDepartment: base_url + 'getEmployeeInfoByDepartment',
+  saveCandidateJobApplication: base_url + 'savecandidatejobapplication',
+  getJobIdWiseDetail:base_url + 'jobidwithcandidates?jobId=',
+  allotTimetoJobseeker: base_url + 'allotTime',
   //Notification
   getnotification: notify_url + 'getAllNotification',
   getNotificationReminder: notify_url +'hrreminder',
   ApplyJob:  notify_url +'jobapplynotification',
   AppliedJob:  notify_url +'jobApplied',
+  getAllocatedJobseeker: notify_url + 'getAssignCandidateInfoById?employeeId='
 
 };
 
