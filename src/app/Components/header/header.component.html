@@ -185,7 +185,7 @@
 
 
   </p-overlayPanel>
-  <p-dialog [(visible)]="display" [style]="{width: '50%'}" class="abc" class="aa">
+  <p-dialog [(visible)]="display" [style]="{width: '60%'}" class="abc" class="aa">
     <p-header class="dialogHeader mt-2">
         <span>Assign Time</span>
     </p-header>
@@ -227,5 +227,35 @@
              <button type="button" class="btn btn-primary" (click)="AssignTime()">Send</button>
         </div>
     </div>
+    <div class="card my-3">
+      <div class="card-header">
+        <div class="d-flex">
+          <span class="my-1">Assign time Details</span>
+        </div>
+      </div>
+      <div class="card-body my-1">
+        <table class="table table-striped" style="margin: auto; width: 99%;">
+          <thead>
+            <tr class="headone">
+                <th align="center" scope="col">Sr.</th>
+                <th align="center" scope="col">Jobseeker Email ID</th>
+                <th align="center" scope="col">Time Slot1</th>
+                <th align="center" scope="col">Time Slot2</th>
+                <th align="center" scope="col">Time Slot3</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>{{allocatedJobSeeker?.candidateEmail}}</td>
+            <td>2020-02-2411: 19: 08</td>
+            <td>2020-02-2411: 19: 08</td>
+            <td>2020-02-2411: 19: 08</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
 </p-dialog>
+
 </div>

@@ -161,6 +161,7 @@ export class HeaderComponent implements OnInit {
       var email = localStorage.getItem('email')
       this.TeamService.getAllocatedJobseeker(email).subscribe((res: any) => {
         this.allocatedJobSeeker = res;
+        console.log('rani',this.allocatedJobSeeker.candidateEmail)
         this.count = this.count + this.allocatedJobSeeker.length;
 
       })

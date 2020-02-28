@@ -1,5 +1,47 @@
 <div class="dashboard">
-    <div class="row">
+    <div class="row head">
+        <div class="col-sm-1"> </div>
+        <div class="col-sm-5">
+            <div class="row search mt-5">
+                <div class="ml-5"> Search Jobs:</div> <br>
+            </div>
+            <div class="row mb-5 mt-2">
+                <input type="text" [(ngModel)]="term" placeholder="Search Jobs by Skills,Designation..."
+                    class="box ml-5">
+                <button type="submit" class="btn-primary btn1">Search</button>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="card card2">
+                    <div class="imagetag">
+                        <img class="profileimage ml-4" src="http://lorempixel.com/100/100" />
+                    </div>
+                    <div class="row name1">
+                        <span class="nme pt-2 ml-2 mt-3 ">{{ProfileData?.firstName}}
+                            {{ProfileData?.lastName}}</span>
+                    </div>
+                    <div class="row mt-2">
+                        <i class="pi pi-envelope enevlop ml-4"></i>
+                        <span class="company ml-1">{{ProfileData?.email}}</span>
+                    </div>
+                    <div class="row mt-2">
+                        <i class="pi pi-mobile  enevlop ml-4"></i>
+                        <span class="company ml-1">{{ProfileData?.contact}}</span>
+                    </div>
+                    <div class="row ml-3 mt-3">
+                        <span class="profile">Profile Completeness(Excellent)</span>
+                    </div>
+                    <div class="row deteminate ml-3 mr-3 mt-3">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-1"> </div>
+
+    </div>
+    <!-- <div class="row">
         <div class="image-box">
             <img class="image-box__background img" src="../../../assets/logo1.png" alt="">
             <div class="image-box__overlay"></div>
@@ -12,7 +54,7 @@
                         <input type="text"   [(ngModel)]="term"  placeholder="Search Jobs by Skills,Designation..." class="box">
                         <button type="submit"  class="btn-primary btn1">Search</button>
                     </div>
-                </div>
+                </div>  
             </div>
             <div class="mt-2">
                 <div class="row">
@@ -43,143 +85,143 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  -->
 
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-sm-2"></div>
-
         <div class="col-sm-4 ">
             <div class="row ">
                 <div class="new ml-4"> {{data?.length}} New Recommended Job(s)</div>
             </div>
 
             <div class="card card1 my-4 cardmenu" *ngFor="let dataone of data |filter:term ;let i=index">
-                 <div class="" (click)="viewJobId(i)">
-                <div class="row">
-                    <p class="ml-5 name mt-1"></p>
-                </div> <span style="color: blue"> {{dataone?.jobTitle}} </span> Position  <span style="color: orange "> {{dataone?.jobId}} </span>
-                <div class="row mt-0">
-                    <p class="ml-5 company">Beauto System Pvt Ltd</p>
-                </div>
-                <div class="row">
-                    <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
-                    <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
-                    <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
-                    <div class="col-sm-2 company pl-0">{{dataone?.location}}</div>
-                    <div class="col-sm-6"></div>
-                </div>
-                <div class="row company ml-5 my-1">
-                    <i class="pi pi-android"></i>
-                    <span>{{dataone?.skills}}</span>
-                </div>
-                <div class="row company ml-5 my-1">
-                    <i class="pi pi-list"></i>
-                    <span>Job description
-                        Greetings from Beauto System,
+                <div class="" (click)="viewJobId(i)">
+                    <div class="row">
+                        <p class="ml-5 name mt-1"></p>
+                    </div> <span style="color: blue"> {{dataone?.jobTitle}} </span> Position <span
+                        style="color: orange "> {{dataone?.jobId}} </span>
+                    <div class="row mt-0">
+                        <p class="ml-5 company">Beauto System Pvt Ltd</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
+                        <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
+                        <div class="col-sm-1 company"><i class="pi pi-map-marker" aria-hidden="true"></i></div>
+                        <div class="col-sm-2 company pl-0">{{dataone?.location}}</div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row company ml-5 my-1">
+                        <i class="pi pi-android"></i>
+                        <span>{{dataone?.skills}}</span>
+                    </div>
+                    <div class="row company ml-5 my-1">
+                        <i class="pi pi-list"></i>
+                        <span>Job description
+                            Greetings from Beauto System,
 
-                        We are looking for a {{dataone?.jobDescription}}</span>
+                            We are looking for a {{dataone?.jobDescription}}</span>
+                    </div>
+                    <div class="row company ml-5 my-1">
+                        <i class="pi pi-file-o"></i>
+                        <span>Not Disclosed</span>
+                    </div>
                 </div>
-                <div class="row company ml-5 my-1">
-                    <i class="pi pi-file-o"></i>
-                    <span>Not Disclosed</span>
-                </div>
-             </div>
             </div>
 
         </div>
         <!-- <div class="mt-5 ml-5 "> -->
-          
-            <div class="col-sm-2 "></div>
 
-            <div class="col-sm-4 "> 
+        <div class="col-sm-2 "></div>
+
+        <div class="col-sm-4 ">
             <label class="hardware">Hardware</label>
-            
+
             <div class="row">
-            <div class="col-sm-6">
-            <div> <img class="images"src="./assets/process-automation.png"></div>
-            <div class="text ml-4"><label>Automation</label></div>
-            </div>
-            <div class="col-sm-6">
-            <div> <img class="furniture" src="./assets/embedded.jpeg"></div>
-            <div class="ml-3 ops"><label>Embedded System</label></div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-sm-6">
-            <div><img class="images"src="./assets/packagess.jpg"></div>
-            <div class="text ml-2"><label>Packaging Solution</label></div>
-            </div>
-            <div class="col-sm-6">
-            <div><img class="furniture" src="./assets/industry1.jpeg"></div>
-            <div class="ml-2 ops"><label>Industries Automation</label></div>
-            </div>
+                <div class="col-sm-6">
+                    <div> <img class="images" src="./assets/process-automation.png"></div>
+                    <div class="text ml-4"><label>Automation</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <div> <img class="furniture" src="./assets/embedded.jpeg"></div>
+                    <div class="ml-3 ops"><label>Embedded System</label></div>
+                </div>
             </div>
             <div class="row">
-            <div class="col-sm-6">
-            <div><img class="images"src="./assets/images (2).jpeg"></div>
-            <div class="architech"><label>Architecting office spaces</label></div>
-            </div>
-            <div class="col-sm-6">
-            <img class="furniture" src="./assets/interior.jpg">
-            <div class="ml-5 ops"><label>Interiors</label></div>
-            </div>
+                <div class="col-sm-6">
+                    <div><img class="images" src="./assets/packagess.jpg"></div>
+                    <div class="text ml-2"><label>Packaging Solution</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <div><img class="furniture" src="./assets/industry1.jpeg"></div>
+                    <div class="ml-2 ops"><label>Industries Automation</label></div>
+                </div>
             </div>
             <div class="row">
-            <div class="col-sm-6">
-            <div><img class="images"src="./assets/eco.jpeg"></div>
-            <div class="text ml-3"><label>Energy Ecosystem</label></div>
+                <div class="col-sm-6">
+                    <div><img class="images" src="./assets/images (2).jpeg"></div>
+                    <div class="architech"><label>Architecting office spaces</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <img class="furniture" src="./assets/interior.jpg">
+                    <div class="ml-5 ops"><label>Interiors</label></div>
+                </div>
             </div>
-            <div class="col-sm-6">
-            <div><img class="furniture" src="./assets/images (1).jpeg"></div>
-            <div class="ml-4 ops"><label>Smart Furniture</label></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><img class="images" src="./assets/eco.jpeg"></div>
+                    <div class="text ml-3"><label>Energy Ecosystem</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <div><img class="furniture" src="./assets/images (1).jpeg"></div>
+                    <div class="ml-4 ops"><label>Smart Furniture</label></div>
+                </div>
             </div>
-            </div>
-            
+
             <label class="hardware">Software</label>
-            
+
             <div class="row">
-            <div class="col-sm-6">
-            <div> <img class="images"src="./assets/machine.jpeg"></div>
-            <div class="text ml-2"><label>machine learning</label></div>
-            </div>
-            <div class="col-sm-6">
-            <div> <img class="furniture" src="./assets/devops.jpg"></div>
-            <div class="ml-5 ops"><label>Dev ops</label></div>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-sm-6">
-            <div><img class="images"src="./assets/banking.jpeg"></div>
-            <div class="text ml-2"><label>Banking & Finance</label></div>
-            </div>
-            <div class="col-sm-6">
-            <div><img class="furniture" src="./assets/userexp.png"></div>
-            <div class="ml-4 ops"><label>User Experience</label></div>
-            </div>
+                <div class="col-sm-6">
+                    <div> <img class="images" src="./assets/machine.jpeg"></div>
+                    <div class="text ml-2"><label>machine learning</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <div> <img class="furniture" src="./assets/devops.jpg"></div>
+                    <div class="ml-5 ops"><label>Dev ops</label></div>
+                </div>
             </div>
             <div class="row">
-            <div class="col-sm-6">
-            <div><img class="images"src="./assets/e-commerce.png"></div>
-            <div class="text ml-4"><label>E-Commerce</label></div>
-            
-            </div>
-            <div class="col-sm-6">
-            <div><img class="furniture" src="./assets/softarchi.jpeg"></div>
-            <div class="ml-2 ops"><label>Software Architecture</label></div>
-            
-            </div>
+                <div class="col-sm-6">
+                    <div><img class="images" src="./assets/banking.jpeg"></div>
+                    <div class="text ml-2"><label>Banking & Finance</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <div><img class="furniture" src="./assets/userexp.png"></div>
+                    <div class="ml-4 ops"><label>User Experience</label></div>
+                </div>
             </div>
             <div class="row">
-            <div class="col-sm-6">
-            <div><img class="images"src="./assets/cyber.jpeg"></div>
-            <div class="text ml-3"><label>Cyber Security</label></div>
+                <div class="col-sm-6">
+                    <div><img class="images" src="./assets/e-commerce.png"></div>
+                    <div class="text ml-4"><label>E-Commerce</label></div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div><img class="furniture" src="./assets/softarchi.jpeg"></div>
+                    <div class="ml-2 ops"><label>Software Architecture</label></div>
+
+                </div>
             </div>
-            <div class="col-sm-6">
-            <div><img class="furniture" src="./assets/education.jpeg"></div>
-            <div class="ml-3 ops"><label>Educational Sector</label></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><img class="images" src="./assets/cyber.jpeg"></div>
+                    <div class="text ml-3"><label>Cyber Security</label></div>
+                </div>
+                <div class="col-sm-6">
+                    <div><img class="furniture" src="./assets/education.jpeg"></div>
+                    <div class="ml-3 ops"><label>Educational Sector</label></div>
+                </div>
             </div>
-            </div> 
-            </div>
+        </div>
     </div>
 </div>
