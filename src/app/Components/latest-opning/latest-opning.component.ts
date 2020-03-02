@@ -38,6 +38,7 @@ export class LatestOpningComponent implements OnInit {
   spinner = false;
   term;
   charts;
+  id:string;
   deptartment: {}[];
   skillArray = [];
   createJobForm = new FormGroup({
@@ -70,6 +71,11 @@ export class LatestOpningComponent implements OnInit {
     this.currentStatus = false;
     this.display = true;
     this.displayp = false
+
+    this.skillArray =  [];
+    this.TeamService.getjobId().subscribe((res:string) => {
+        this.id= res;
+     });
   }
 
 
@@ -79,7 +85,7 @@ export class LatestOpningComponent implements OnInit {
     this.displayPreview = true
 
     this.data = {
-      "jobId": "A0013",
+      "jobId": this.id,
       "designation": this.createJobForm.value.designation,
       "experienceInYears": this.createJobForm.value.experienceInYears,
       "noticePeriod": this.createJobForm.value.noticePeriod,
@@ -173,7 +179,7 @@ export class LatestOpningComponent implements OnInit {
     this.spinner = true;
 
     this.data = {
-      "jobId": "A0023",
+      "jobId": this.id,
       "designation": this.createJobForm.value.designation,
       "experienceInYears": this.createJobForm.value.experienceInYears,
       "noticePeriod": this.createJobForm.value.noticePeriod,
