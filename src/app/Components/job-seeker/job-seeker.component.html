@@ -39,71 +39,22 @@
             </div>
         </div>
         <div class="col-sm-1"> </div>
-
     </div>
-    <!-- <div class="row">
-        <div class="image-box">
-            <img class="image-box__background img" src="../../../assets/logo1.png" alt="">
-            <div class="image-box__overlay"></div>
-            <div class="image-box__content">
-                <div class="mt-4">
-                    <div class="row search">
-                        <div class=" mt-4 ml-4"> Search Jobs:</div> <br>
-                    </div>
-                    <div class="row">
-                        <input type="text"   [(ngModel)]="term"  placeholder="Search Jobs by Skills,Designation..." class="box">
-                        <button type="submit"  class="btn-primary btn1">Search</button>
-                    </div>
-                </div>  
-            </div>
-            <div class="mt-2">
-                <div class="row">
-                    <div class="col-sm-10"></div>
-                    <div class="col-sm-2">
-                        <div class="card card2">
-                            <div class="imagetag">
-                            <img class="profileimage ml-4" src="http://lorempixel.com/100/100" />
-                            </div>
-                            <div class="row name1">
-                                 <span class="nme pt-2 ml-2 mt-3 ">{{ProfileData?.firstName}} {{ProfileData?.lastName}}</span>
-                            </div>
-                            <div class="row mt-2">
-                                <i class="pi pi-envelope enevlop ml-4"></i>
-                                <span class="company ml-1">{{ProfileData?.email}}</span>
-                            </div>
-                            <div class="row mt-2">
-                                <i class="pi pi-mobile  enevlop ml-4"></i>
-                                <span class="company ml-1">{{ProfileData?.contact}}</span>
-                            </div>
-                            <div class="row ml-3 mt-3">
-                                <span class="profile">Profile Completeness(Excellent)</span>
-                            </div>
-                            <div class="row deteminate ml-3 mr-3 mt-3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>  -->
-
-
     <div class="row mt-5">
         <div class="col-sm-2"></div>
         <div class="col-sm-4 ">
             <div class="row ">
                 <div class="new ml-4"> {{data?.length}} New Recommended Job(s)</div>
             </div>
-
             <div class="card card1 my-4 cardmenu" *ngFor="let dataone of data |filter:term ;let i=index">
                 <div class="" (click)="viewJobId(i)">
                     <div class="row">
-                        <p class="ml-5 name mt-1"></p>
-                    </div> <span style="color: blue"> {{dataone?.jobTitle}} </span> Position <span
-                        style="color: orange "> {{dataone?.jobId}} </span>
-                    <div class="row mt-0">
-                        <p class="ml-5 company">Beauto System Pvt Ltd</p>
+                        <p style="color: blue" class="position ml-5">Position: {{dataone?.designation}} </p>
                     </div>
+                    <div class="row mt-0">
+                        <p class="ml-5 company1">Beauto System Pvt Ltd</p>
+                    </div>
+                    <span style="color: orange " class="ml-5">Job ID: {{dataone?.jobId}} </span>
                     <div class="row">
                         <div class="col-sm-1 ml-5 company"><i class="pi pi-briefcase" aria-hidden="true"></i></div>
                         <div class="col-sm-2 company pl-0">{{dataone?.experienceInYears}} Year</div>
@@ -113,30 +64,26 @@
                     </div>
                     <div class="row company ml-5 my-1">
                         <i class="pi pi-android"></i>
-                        <span>{{dataone?.skills}}</span>
+                        <span class="ml-2">{{dataone?.skills}}</span>
                     </div>
                     <div class="row company ml-5 my-1">
                         <i class="pi pi-list"></i>
-                        <span>Job description
+                        <p class="ml-2">Job description,
                             Greetings from Beauto System,
-
-                            We are looking for a {{dataone?.jobDescription}}</span>
+                        </p>
+                        <p>{{dataone?.jobDescription}}</p>
                     </div>
                     <div class="row company ml-5 my-1">
                         <i class="pi pi-file-o"></i>
-                        <span>Not Disclosed</span>
+                        <span class="ml-2">Not Disclosed</span>
                     </div>
                 </div>
             </div>
 
         </div>
-        <!-- <div class="mt-5 ml-5 "> -->
-
         <div class="col-sm-2 "></div>
-
         <div class="col-sm-4 ">
             <label class="hardware">Hardware</label>
-
             <div class="row">
                 <div class="col-sm-6">
                     <div> <img class="images" src="./assets/process-automation.png"></div>

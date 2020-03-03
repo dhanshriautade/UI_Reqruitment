@@ -19,11 +19,9 @@
     font-size: xx-large;
     font-weight: bold;
     color: white;
-    // margin-right: 472px;
-    // padding-left: 267px;
+     padding-left: 267px;
     }
     .box{
-        //margin-left: 29%;
         width: 57%;
     height: 52px;
     font-size: small;
@@ -84,7 +82,6 @@
     height: auto;
     width: auto;
     color: white;
-    // min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,12 +108,19 @@
     .new{
     font-weight: bold;
     }
+    .position{
+        font-size: 21px;
+    }
     .name{
     font-size: small;
     font-weight: bold;
     }
     .company{
-    font-size: small;
+    font-size: 15px;
+    color: #9C9C9B;
+    }.company1{
+        font-weight: bold;
+    font-size: 21px;
     color: #9C9C9B;
     }
 
@@ -191,6 +195,5 @@
         }
         .head{
             background-color: blue;
-            //height: 160px;
             background-image: linear-gradient(141deg, #1A8AEE 2%, #1fc8db 51%, #2cb5e8 75%);
           }
