@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-sm-3 my-3"><img src="../../../assets/beauto_logo.png" class="bgimg logo"></div>
-  <div class="col-sm-1 my-3"><a (click)="job()"class="job">Jobs</a></div>
-  <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div>
+  <div class="col-sm-1 my-3"><a (click)="job()"class="job" *ngIf="role !== '0'">Jobs</a></div>
+  <div class="col-sm-1 my-3"> <a (click)="EmployeePage()" *ngIf="role !== '0'" class="job">Employee</a></div>
+<div class="col-sm-1 my-3"><a class="job" *ngIf="role !== '0' && role !=='3'">Job Seeker</a></div>
+  <!-- <div class="col-sm-1 my-3"><a class="more" (click)="op1.toggle($event)">More</a></div> -->
   <div class="col-sm-2"></div>
   <!-- <div class="col-sm-1 my-3"><img src="../../../assets/Notification.png" (click)="op3.toggle($event)"
       class="bgimg logo"></div> -->
@@ -29,8 +31,8 @@
       <div class="col-sm-11">
         <li class="my-1 profile" *ngIf="role === '0'"><a (click)="EditProfileSeeker()">Edit Profile</a></li>
         <li class="my-1 profile" *ngIf="role !== '0'"><a (click)="EditProfile()">Edit Profile</a></li>
-       
-        <li class="my-1"><a>Recommended Jobs</a> </li>
+<!--        
+        <li class="my-1"><a>Recommended Jobs</a> </li> -->
         <li (click)="LogOut()"> <a>Logout</a> </li>
       </div>
       <div class="col-sm-1"></div>

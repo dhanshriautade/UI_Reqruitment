@@ -75,7 +75,7 @@ export class ApplyjobComponent implements OnInit {
       
       "seen":"false",
       
-      "status":"slected",
+      "status":"selected",
       
       "proceedFurther": "false",
       
