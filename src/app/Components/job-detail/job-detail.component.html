@@ -103,7 +103,7 @@
                                          </div></td>
                                         <td align="center" class="red text-primary" style="z-index: 1;"><i
                                                 class="font fa fa-gear" (click)="op.toggle($event)"></i>   </td>
-                                                <td align="center" class="red text-primary">assign</td>
+                                                <td align="center" class="red text-primary" (click)=" viewjob()">assign</td>
                                                 <td align="center" class="red">{{job?.status}}</td>
             
                                             </tr>
@@ -111,7 +111,83 @@
     
                             </table>
                            
-                          
+                            <p-dialog [(visible)]="displayjob" [style]="{width: '40%'}" class="abc" class="aa">
+                                <p-header class="dialogHeader mt-2">
+                                    <!-- <img class="imge" src="../../../assets/logo/Create Job.png" alt=""> -->
+                                    <span class="ml-2 mt-3 report">Assign</span>
+                                    <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removedialog()"></i>
+                                </p-header>
+                
+                                <div class="row">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-10">
+                                        <div class="row my-2">
+                                            <div class="col-sm-4 assigns">
+                                                <label>Department :</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select id="department" class="form-control box" size="0" name="department"
+                                                    [(ngModel)]="selecteddepartment" (change)="getDeparmentwiseEmpList()">
+                                                    <option>Select Department</option>
+                                                    <option [value]="departments" *ngFor="let departments of department">
+                                                        {{departments}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row my-2">
+                                            <div class="col-sm-4 assigns">
+                                                <label>Employee :</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <select class="form-control box" [(ngModel)]="selectedemployee">
+                                                    <option>Select Employee</option>
+                                                    <option *ngFor="let employee of dataone" [value]="employee.email" class="name1">
+                                                        {{employee?.firstName}} {{employee?.lastName}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row my-2">
+                                                <div class="col-sm-4">
+                                                    <label>Employee :</label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <select id="employee" name="employee" class="box">
+                                                        <option *ngFor="let employee of infodetail">
+                                                            {{employee?.firstName}} {{employee?.lastName}}</option>
+                                                    </select>
+                
+                                                </div>
+                                            </div> -->
+                                        <div class="row my-2">
+                                            <div class="col-sm-4 assigns">
+                                                <label>Email Id :</label>
+                                            </div>
+                                            <div class="col-sm-8 ">
+                                               <span class="name1">{{ProfileData?.email}}</span> 
+                                            </div>
+                                        </div>
+                                        <div class="row my-2">
+                                            <div class="col-sm-4 assigns">
+                                                <label>Job Id :</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                {{NotificationGetDataJobId}}
+                
+                                            </div>
+                                        </div>
+                                        <div class="row my-2">
+                                            <div class="col-sm-9"></div>
+                                            <div class="col-sm-3">
+                                                <button type="button"  (click)="AssignEmpployeeToInterview()" class=" btn btn-primary send ml-3">Send</button>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                </div>
+                
+                            </p-dialog>
                             <div class="text-right">
                                 <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                             </div>

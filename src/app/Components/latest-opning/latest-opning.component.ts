@@ -13,13 +13,16 @@ export class LatestOpningComponent implements OnInit {
   
   public datadonut: any[] = [
     {
-      kind: 'Completed', share: 0.175,  color:'#37D7FF' 
+      kind: 'Completed', share: 0.175,  color:'#A3A0FB' 
     }, 
     {
-      kind: 'On Hold', share: 0.175 , color:'#FF746D'
+      kind: 'On Hold', share: 0.175 , color:'#6DD8FD'
     },
      {
-      kind: 'In Progress', share: 0.175 ,  color:'#FEE37B'
+      kind: 'In Progress', share: 0.175 ,  color:'#EB8172'
+    }, 
+    {
+      kind: ' Progress', share: 0.175 ,  color:'#F7D982'
     }, 
     ];
   
