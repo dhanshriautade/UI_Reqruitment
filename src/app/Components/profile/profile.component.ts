@@ -13,9 +13,13 @@ import { saveAs } from 'file-saver';
   preserveWhitespaces: false
 })
 export class ProfileComponent implements OnInit {
+  today: number = Date.now();
   public options = [
     {value: 1, id:"Male"},
     {value: 2, id:"Female"},
+  ]
+  public courses = [
+    {value: 1, id:"Full Time"},{value: 2, id:"Part Time"},{value: 2, id:"Correspondance/Distance learning"},
   ]
   fileUploadProgress: string = null;
   selectedFile = null;
@@ -39,12 +43,14 @@ export class ProfileComponent implements OnInit {
   PrimarySkillValue;
   submitted: boolean;
   sentSecondarySkill: any = [];
+  sentLanguage: any = [];
   email_id;
   sent_data;
   ProfileData;
   secondarySkillValue;
   ResumeInfo;
   data;
+  edudetails
   displayCertification = false;
   notes;
   note;
@@ -58,6 +64,11 @@ export class ProfileComponent implements OnInit {
   date;
   year
   month;
+  selectBoard;
+  selectMedium
+  selectMath;
+  selectEnglish;
+  selectTotal;
   sentDetails;
   selectedDate;
   selectedYear
@@ -71,7 +82,19 @@ export class ProfileComponent implements OnInit {
   selectedLanguages;
   selectedGraduation;
   selectedGradCourse;
+  selectSpecialization;
+  selectUnivercity;
+  selectedCorsetype;
+  selectPassYear;selectedpostGraduation;selectPostGrade;
+  selecttwelthEducation;selecttenthEducation;
+  selectedpostCourse;selectpostSpecialization;selectpostUnivercity;
+  selectpostCorsetype;selectpostPassYear;selecttwelthBoard;selecttenthBoard
+  selectGrade;selecttwelthTotal;selecttenthTotal;selecttwelthEnglish;selecttenthEnglish;
+  selecttwelthMath;selecttenthMath;selecttwelthPassYear;selecttenthPassYear;
+  selecttenthMedium;selecttwelthMedium;
+
   mydata;
+  mssdata
   selectedStatus;
 
   constructor(public TeamService: TeamService, private http: HttpClient, private datePipe: DatePipe) {
@@ -264,8 +287,48 @@ export class ProfileComponent implements OnInit {
      
      
       this.mydata=res;
+      this.mssdata=res;
       this.sentPrimarySkill = this.ProfileData.primarySkill;
-      // console.log('Hello', this.ProfileData)
+     console.log('Hello', this.ProfileData);
+     console.log('#######', this.mssdata);
+     console.log('@@@@@@@@@@@', this.mssdata);
+      this.selectedDate=this.mydata.dob;
+      this.selectedMale=this.mydata.gender;
+      this.selectedAddress=this.mydata.permanentAddress;
+      this.selectedPincode=this.mydata.areaPinCode;
+      this.selectedHometown=this.mydata.homeTown;
+      this.selectedCategory=this.mydata.category;
+      this.selectedStatus=this.mydata.maritalStatus;
+      this.sentLanguage=this.ProfileData.language;
+      this.selectedGraduation=this.mssdata.education;
+       this.selectedGradCourse=this.mssdata.course;
+       this.selectSpecialization=this.mssdata.specialization;
+       this.selectUnivercity=this.mssdata.university;
+       this.selectedCorsetype=this.mssdata.courseType;
+       this.selectPassYear=this.mssdata.passingYear;
+         this.selectGrade=this.mssdata.gradeSystem;
+         this.selecttwelthEducation=this.mssdata.education;
+         this.selecttwelthBoard=this.mssdata.board;
+         this.selecttwelthTotal=this.mssdata.totalMark;
+         this.selecttwelthEnglish=this.mssdata.englishMarks;
+         this.selecttwelthMath=this.mssdata.mathsMarks;
+         this.selecttwelthPassYear=this.mssdata.passingYear;
+         this.selecttwelthMedium=this.mssdata.schoolMedium;
+         this.selecttenthEducation=this.mssdata.education;
+         this.selecttenthBoard=this.mssdata.board;
+         this.selecttenthTotal=this.mssdata.totalMark;
+         this.selecttenthEnglish=this.mssdata.englishMarks;
+         this.selecttenthMath=this.mssdata.mathsMarks;
+      this.selecttenthPassYear=this.mssdata.passingYear;
+         this.selecttenthMedium=this.mssdata.schoolMedium;
+         this.selectedpostGraduation=this.mssdata.education;
+       this.selectedpostCourse=this.mssdata.course;
+       this.selectpostSpecialization=this.mssdata.specialization;
+       this.selectpostUnivercity=this.mssdata.university;
+       this.selectpostCorsetype=this.mssdata.courseType;
+       this.selectpostPassYear=this.mssdata.passingYear;
+         this.selectPostGrade=this.mssdata.gradeSystem;
+
     })
   }
   onUpload() {
@@ -404,40 +467,119 @@ this.displaytentheducation=true;
     this.getProfileEmployee();
 
   }
-  savePersoanlDetails(){   
+  savePersoanlDetails(){  
+    this.sentLanguage = this.ProfileData.language;
+    this.sentLanguage.push(this.selectedLanguages); 
     this.mydata={
       "email": localStorage.getItem('email'),
+      
       "dob": this.selectedDate,
       "gender":this.selectedMale,
-      "permanatAddress":this.selectedAddress,
+      "permanentAddress":this.selectedAddress,
       "homeTown":this.selectedHometown,
       "areaPinCode":this.selectedPincode,
       "category":this.selectedCategory,
-      "language":this.selectedLanguages,
-      "maritialStatus":this.selectedStatus,
+      "language":this.sentLanguage,
+      "maritalStatus":this.selectedStatus,
     }
    
     // console.log('Ahdkjh',this.mydata)
     this.TeamService.saveDetails(this.mydata).subscribe((res:any) => {
   
     })
-  
+    this.getProfileEmployee();
    
   }
+
+  // // removeLang(i: any) {
+
+  // //   this.sentLanguage = this.ProfileData.language;
+  // //   this.sentLanguage.splice(i, 1);
+  // //   this.data = {
+  // //     "email": localStorage.getItem('email'),
+  // //     "language":this.sentLanguage,
+  // //   }
+
+  //   this.TeamService.saveDetails(this.mydata).subscribe(res => {
+
+  //   })
+  //   this.getProfileEmployee();
+
+  // }
+  
   saveEducationDetails(){
-    alert(JSON.stringify(this.msdata));
-    this.msdata={
+    alert(JSON.stringify(this.mssdata));
+    this.mssdata={
       "email": localStorage.getItem('email'),
       "education":this.selectedGraduation,
       "course":this.selectedGradCourse,
+      "specialization":this.selectSpecialization,
+      "university":this.selectUnivercity,
+      "courseType":this.selectedCorsetype,
+      "passingYear":this.selectPassYear,
+      "gradeSystem":this.selectGrade,
     }
   
-    this.TeamService.saveGraduationDetails(this.msdata).subscribe((res:any) => {
-      this.msdata=res;
-      console.log('COLLEGE',this.msdata)
+    this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res:any) => {
+    this.edudetails=res  
+         console.log('COLLEGE',this.edudetails)
     }) 
+    this.getProfileEmployee();
   }
+  saveTwelthEducation(){
+    alert(JSON.stringify(this.mssdata));
+    this.mssdata={
+      "email": localStorage.getItem('email'),
+      "education":this.selecttwelthEducation,
+      "board":this.selecttwelthBoard,
+      "totalMark":this.selecttwelthTotal,
+      "englishMarks":this.selecttwelthEnglish,
+      "mathsMarks":this.selecttwelthMath,
+      "passingYear":this.selecttwelthPassYear,
+      "schoolMedium":this.selecttwelthMedium,
+    }
+    this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res:any) => {
+      this.mssdata=res;
+      console.log('Twelth',this.mssdata)
+    }) 
+    this.getProfileEmployee();
+  }
+  saveTenthEducation(){
+    this.mssdata={
+      "email": localStorage.getItem('email'),
+      "education":this.selecttenthEducation,
+      "board":this.selecttenthBoard,
+      "totalMark":this.selecttenthTotal,
+      "englishMarks":this.selecttenthEnglish,
+      "mathsMarks":this.selecttenthMath,
+      "passingYear":this.selecttenthPassYear,
+      "schoolMedium":this.selecttenthMedium,
+    }
+    this.TeamService.saveschoolDetails(this.mssdata).subscribe((res:any) => {
+      this.mssdata=res;
+      console.log('Twelth',this.mssdata)
+    }) 
 
+
+  }
+  savepostEducation(){
+    this.mssdata={
+      "email": localStorage.getItem('email'),
+      "education":this.selectedpostGraduation,
+      "course":this.selectedpostCourse,
+      "specialization":this.selectpostSpecialization,
+      "university":this.selectpostUnivercity,
+      "courseType":this.selectpostCorsetype,
+      "passingYear":this.selectpostPassYear,
+      "gradeSystem":this.selectPostGrade,
+    }
+  
+    this.TeamService.savePosteducationDetails(this.mssdata).subscribe((res:any) => {
+      this.mssdata=res;
+      console.log('COLLEGE',this.mssdata)
+    }) 
+
+  }
 
   getFileDetails(event: any) {
     for (var i = 0; i < event.target.files.length; i++) {

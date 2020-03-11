@@ -24,6 +24,7 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
 
   deptartment;
   dataApply;
+
   myDate = new Date();
   applyJobForm= new FormGroup({
 
@@ -62,7 +63,7 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
     console.log('hello',this.data);
     this.TeamService.checkIfJobApplied(this.data).subscribe((res: any) => {
       localStorage.setItem("reloadPage", "false");
-      alert(JSON.stringify(res))
+      // alert(JSON.stringify(res))
       if (res.code === '211') {
         this.apply = true;
         this.disableButton = false;
@@ -83,7 +84,15 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
   
   }
 
-  this.TeamService.ApplyJob(this.data).subscribe(res => {
+  this.TeamService.ApplyJob(this.data).subscribe((res:any) => {
+    if (res.code === '200') {
+      this.apply = false;
+      this.disableButton = true;
+
+    } else if (res.code === '211') {
+      this.apply = true;
+      this.disableButton = false;
+    }
     console.log('job', res);
   })
 
@@ -131,7 +140,7 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
   }
   ApplyJob() {
 
-    this.display = true;   
+     this.display = true;   
    
   }
 
