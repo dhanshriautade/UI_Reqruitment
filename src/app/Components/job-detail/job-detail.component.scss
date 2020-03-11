@@ -117,4 +117,19 @@ font-size: 25px;
             }
              
          
-            
+            .assigns{
+                text-align: end;
+                font-size: 17px;
+                }
+                :host ::ng-deep .ui-dialog .ui-dialog-titlebar-icon span{
+                    color: white;
+                    }
+        
+                    .name1{
+                        font-size: 17px;
+                    }
+                    :host ::ng-deep.ui-dialog .ui-dialog-titlebar{
+                        background-color: #007bff;
+                        color: white;
+                        font-size: 19px;
+                    }

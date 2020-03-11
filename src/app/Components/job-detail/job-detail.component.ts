@@ -12,6 +12,7 @@ export class JobDetailComponent implements OnInit {
   isActive: boolean;
   data;
   term;
+  displayjob = false;
 
   constructor(public TeamService: TeamService) {
     this.TeamService.getJobIdWiseDetail(localStorage.getItem('jobByIdDetail')).subscribe((res: any) => {
@@ -19,7 +20,9 @@ export class JobDetailComponent implements OnInit {
        
     })
    }
-
+   viewjob() {
+    this.displayjob = true;
+  }
   showTest(){
     this.displaydilog=true;
   }

@@ -18,9 +18,9 @@ export class JobSeekerComponent implements OnInit {
     })
 
     this.TeamService.Getalljob().subscribe(res => {
-      this.data = res;
-
-    })
+         this.data = res;
+    console.log('HIII',this.data)
+     })
   }
 
 

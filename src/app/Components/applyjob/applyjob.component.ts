@@ -123,7 +123,7 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
       
       "seen":"false",
       
-      "status":"slected",
+      "status":"selected",
       
       "proceedFurther": "false",
       

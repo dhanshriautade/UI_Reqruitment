@@ -5,11 +5,9 @@
 
 .main{
     background-color: white;    
-    //padding: 6px;
 }
 .summary{
     background-color: white;  
-   // padding: 6px;
 }
 
   .gradient{
@@ -58,7 +56,6 @@
             
             th ,td {
     border-right: 1px solid white;
-    // color: white;
 }
 .img{
     width: 26px;
@@ -72,10 +69,10 @@ width: 106%;
     margin-left: 71px;
 }
 .job{
-    height: 32px;
+    height: 40px;
     line-height: 1px;
-    width: 150px;
-}
+    width: 101%;
+    }
 .head{
     background-color:#8EA3AF;
    
@@ -84,8 +81,9 @@ width: 106%;
 .apply{
     background-color: #AFBEC6;
     color: white;
-    height: 30px;
+    height: 39px;
     line-height: 1px;
+    margin-left: 52px;
 }
 .windowclose{
     background-color: #AFBEC6;
@@ -115,8 +113,8 @@ width: 106%;
 }
 .search{
     width: 490px;
-    height: 33px;
-    margin-top: 3px;
+    height: 42px;
+    margin-top: 8px;
     border-radius: 6px;
     padding: 23px,6px,4px,5px;
     font-size: smaller;
@@ -249,7 +247,9 @@ width: 106%;
     .tick1{
         display: none;
     }
-   
+    .k-chart, .k-stockchart {
+        height: 200px;
+        }
     .imge{
         padding-bottom: 4px;
     }
@@ -262,7 +262,9 @@ width: 106%;
     .pckg{
         width: 118%;   
     }
-    
+    .exp{
+        width: 80px;
+      }
     
     .lead{
         font-weight: 550;
@@ -285,11 +287,55 @@ width: 106%;
         padding-top: 8px;
         padding-left: 5px;
     }
+    .dept{
+        width: 73%;
+        color:#6F838C;
+        border-radius: 5px;
+        padding: 11px 55px 5px 0px;
+        border-color: #CCD8DD;
+        background-color: white;
+    }
+    .dept1{
+        width: 73%;
+        color:#6F838C;
+        border-radius: 5px;
+        padding: 11px 55px 5px 0px;
+        border-color: #CCD8DD;
+        background-color: white;
+    }
     .depts{
         font-weight: bold;
 border: none;
 color:black;
-height: 30px;
 background-color: white;
 
     }
+    .pi-pencil{
+        font-size: 27px;
+      color: #3090C7;
+     //float: right;
+      }
+      .pi-trash{
+        font-size: 27px;
+        color: 	#DC143C;
+      }
+    .main1{
+        background-color: white;
+        width: 379px;
+        }
+        .input-group-append {
+            margin-left: -1px;
+            height: 41px;
+            margin-top: 8px;
+            }
+            .input-group {
+                float: right;
+                width: unset;
+                }
+              
+                  .box1{
+                    width: 73%;
+                  }
+                  .box2{
+                    width: 85%;
+                  }

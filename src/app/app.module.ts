@@ -38,7 +38,7 @@ import { LatestOpningComponent } from './Components/latest-opning/latest-opning.
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import {CalendarModule} from 'primeng/calendar';
 import 'hammerjs';
-
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 
 
 
@@ -70,6 +70,7 @@ import 'hammerjs';
   
   ],
   imports: [
+    RecaptchaModule,
     CalendarModule,
     NgxPaginationModule,
     ChartModule,
@@ -92,7 +93,14 @@ import 'hammerjs';
       preventDuplicates : true
     }), ChartsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+       siteKey: '6LfeasYUAAAAAITP4bKdndM-R6_L211YDfzwY8If',
+      } as RecaptchaSettings,
+     }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
