@@ -44,12 +44,12 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4 ">
             <div class="row ">
-                <div class="new ml-4"> {{data?.length}} New Recommended Job(s)</div>
+                <div class="new ml-4">Latest openings ({{data?.length}}) </div>
             </div>
             <div class="card card1 my-4 cardmenu" *ngFor="let dataone of data |filter:term ;let i=index">
                 <div class="" (click)="viewJobId(i)">
                     <div class="row">
-                        <p style="color: blue" class="position ml-5">Position: {{dataone?.designation}} </p>
+                        <p style="color: blue" class="position ml-5">{{dataone?.designation}} </p>
                     </div>
                     <div class="row mt-0">
                         <p class="ml-5 company1">Beauto System Pvt Ltd</p>
