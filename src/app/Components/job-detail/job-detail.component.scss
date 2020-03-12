@@ -10,6 +10,10 @@
      font-weight: bold;
      color: #253238;
  }
+ .job1{
+    font-weight: bold;
+    color: blue;
+ }
  .design{
     font-weight: bold;
     color: #787c7e;
@@ -30,7 +34,7 @@
 }
 .search{
     width: 490px;
-    height: 33px;
+    height: 42px;
     margin-top: 3px;
     border-radius: 6px;
     padding: 23px,6px,4px,5px;
@@ -132,4 +136,7 @@ font-size: 25px;
                         background-color: #007bff;
                         color: white;
                         font-size: 19px;
-                    }
+                    }.input-group {
+                        float: right;
+                        width: unset;
+                        }
