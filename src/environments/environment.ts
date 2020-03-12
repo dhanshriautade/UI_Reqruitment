@@ -33,6 +33,7 @@ export const environment = {
   getjobId: base_url + 'getUniqueJobId',
   AssignEmployeeToInterview: base_url + 'assignCandidateForInterview',
   getEmployeeByDepartment: base_url + 'getEmployeeInfoByDepartment',
+  getEmployeeByDesignation: base_url + 'getEmployeeInfoByDesignation',
   saveCandidateJobApplication: base_url + 'savecandidatejobapplication',
   getJobIdWiseDetail:base_url + 'jobidwithcandidates?jobId=',
   allotTimetoJobseeker: base_url + 'allotTime',

@@ -70,11 +70,33 @@
                                 <label>Department :</label>
                             </div>
                             <div class="col-sm-8">
-                                <select id="department" class="form-control box" size="0" name="department"
+                                <select id="department" class="form-control code skill box" size="0" name="department"
+                                [(ngModel)]="selecteddepartment" (change)="getDesignationList()">
+    
+                                <option value="" disable>Select
+                                    department</option>
+                                <option>Software</option>
+                                <option>Embedded</option>
+                                <option>Mechanical</option>
+                            </select>
+                                <!-- <select id="department" class="form-control box" size="0" name="department"
                                     [(ngModel)]="selecteddepartment" (change)="getDeparmentwiseEmpList()">
                                     <option>Select Department</option>
                                     <option [value]="departments" *ngFor="let departments of department">
                                         {{departments}}</option>
+                                </select> -->
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-sm-4 assigns">
+                                <label>Designation :</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select id="designation" class="form-control code skill box" size="0"  [(ngModel)]="selecteddesignation"
+                                (change)="getDesignationwiseEmpList()">
+                                    <option [value]="designation" *ngFor="let designation of designationList">
+                                        {{designation}}</option>
+        
                                 </select>
                             </div>
                         </div>
@@ -108,7 +130,7 @@
                                 <label>Email Id :</label>
                             </div>
                             <div class="col-sm-8 ">
-                               <span class="name1">{{ProfileData?.email}}</span> 
+                                <span class="name1">{{ProfileData?.email}}</span>
                             </div>
                         </div>
                         <div class="row my-2">
@@ -123,7 +145,8 @@
                         <div class="row my-2">
                             <div class="col-sm-9"></div>
                             <div class="col-sm-3">
-                                <button type="button"  (click)="AssignEmpployeeToInterview()" class=" btn btn-primary send ml-3">Send</button>
+                                <button type="button" (click)="AssignEmpployeeToInterview()"
+                                    class=" btn btn-primary send ml-3">Send</button>
                             </div>
                         </div>
 

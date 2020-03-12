@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/services/team.service';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpParams } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
 import { saveAs } from 'file-saver';
 
 import { ToastrService } from 'ngx-toastr';
@@ -21,66 +21,93 @@ export class ViewcandidateapplyComponent implements OnInit {
   otherDocPathName;
   department;
   selecteddepartment;
+  selecteddesignation
   selectedemployee;
   dataone;
   displayjob = false;
   empdeptdata;
   NotificationGetData;
   path;
-
+  departmentsAndDesignations: any = [];
   infodetail = [];
-  constructor(public TeamService: TeamService, private http: HttpClient,private toastr: ToastrService, public EmployeeService: EmployeeService) {
+  designationList: any = [];
+  list
+  constructor(public TeamService: TeamService, private http: HttpClient, private toastr: ToastrService, public EmployeeService: EmployeeService) {
     this.email_id = localStorage.getItem('email');
     this.NotificationGetData = localStorage.getItem('NotificationGetData');
     this.NotificationGetDataJobId = localStorage.getItem('NotificationGetDataJobId');
-    this.department=[
-      'Software','Embedded','Mechanical'
-    ]
-    
+    // this.department=[
+    //   'Software','Embedded','Mechanical'
+    // ]
+    this.departmentsAndDesignations = [['Software', ["Android", "IOS", "Java"]],
+    ["Embedded", ["Embedded department 1", "Embedded department 2", "Embedded department 3"]],
+    ["Mechanical", ["Mechanical department 1", "Mechanical department 2", "Mechanical department 3"]]];
     console.log(this.NotificationGetData);
     this.getAllEmployeesList();
     this.getResume();
     this.getProfileEmployee();
   }
-
-  getDeparmentwiseEmpList() {
+  getDesignationList() {
     let dept = this.selecteddepartment
-    this.data = {
-    "department": dept
-    };
-    this.TeamService.EmployeeByDepartment(this.data).subscribe((res: any) => {
-    this.empdeptdata = [];
-    this.dataone = res;
-    var email = this.NotificationGetData;
-    })
+    let map = new Map(this.departmentsAndDesignations);
+    for (let entry of map.entries()) {
+      if (dept === entry[0]) {
+        this.designationList = entry[1];
+      }
     }
-    AssignEmpployeeToInterview() {
-      if(this.ResumeInfo != null){
+    this.list = this.designationList;
+  }
+  // getDeparmentwiseEmpList() {
+  //   let dept = this.selecteddepartment
+  //   this.data = {
+  //     "department": dept
+  //   };
+  //   this.TeamService.EmployeeByDepartment(this.data).subscribe((res: any) => {
+  //     this.empdeptdata = [];
+  //     this.dataone = res;
+  //     var email = this.NotificationGetData;
+  //   })
+  // }
+  getDesignationwiseEmpList() {
+    let desig = this.selecteddesignation
+    JSON.stringify(this.selecteddesignation)
+    this.data = {
+      "designation": desig
+    };
+    this.TeamService.EmployeeByDesignation(this.data).subscribe((res: any) => {
+      this.empdeptdata = [];
+      this.dataone = res;
+      console.log("RANI",this.dataone)
+      var email = this.NotificationGetData;
+    })
+  }
+  AssignEmpployeeToInterview() {
+    if (this.ResumeInfo != null) {
       this.path = this.ResumeInfo.resumePath;
-      }
-      else{
-        this.path  = '';
-      }
-      this.data = {
+    }
+    else{
+      this.path  = '';
+    }
+    this.data = {
       "jobId": this.NotificationGetDataJobId,
       "candidateEmail": this.ProfileData.email,
       "candidateDocument": this.path,
       "employeeId": this.selectedemployee,
-      }
-      this.TeamService.AssignEmployeeToInterview(this.data).subscribe((res: any) => {
+    }
+    this.TeamService.AssignEmployeeToInterview(this.data).subscribe((res: any) => {
       this.toastr.success('Successfully Assign Employee !!!');
-      })
-      }
+    })
+  }
   ngOnInit() {
     this.getResume();
     this.getProfileEmployee();
-    
+
 
     if (localStorage.getItem('role') == '2') {
       this.TeamService.getNotification().subscribe((res: any) => {
         console.log(res);
         this.notificationData = res.finalNotificationResponse;
-        console.log('hiii',this.notificationData)
+        console.log('hiii', this.notificationData)
       })
     }
   }
@@ -97,8 +124,8 @@ export class ViewcandidateapplyComponent implements OnInit {
     formData.append('id', email);
     this.TeamService.GetResume(formData).subscribe((res: any) => {
       this.ResumeInfo = res;
-      if(this.ResumeInfo != null){
-      this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
+      if (this.ResumeInfo != null) {
+        this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
       }
 
     })
@@ -142,7 +169,7 @@ export class ViewcandidateapplyComponent implements OnInit {
     var email = this.NotificationGetData;
     this.TeamService.GetProfile(email).subscribe((res: any) => {
       this.ProfileData = res;
-      console.log('data',this.ProfileData);
+      console.log('data', this.ProfileData);
     })
   }
   getAllEmployeesList() {
