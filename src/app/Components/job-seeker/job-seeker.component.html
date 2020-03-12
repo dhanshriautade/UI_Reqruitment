@@ -47,7 +47,7 @@
                 <div class="new ml-4">Latest openings ({{data?.length}}) </div>
             </div>
             <div class="card card1 my-4 cardmenu" *ngFor="let dataone of data |filter:term ;let i=index">
-                <div class="" (click)="viewJobId(i)">
+                <div class="" (click)="viewJobId(dataone.jobId)">
                     <div class="row">
                         <p style="color: blue" class="position ml-5">{{dataone?.designation}} </p>
                     </div>
