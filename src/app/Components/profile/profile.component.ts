@@ -58,6 +58,7 @@ export class ProfileComponent implements OnInit {
   detail;
   displayDetails = false;
   displayeducation = false;
+  displayDocs=false;
   displaytweltheducation=false;
   displaytentheducation=false;
   displayposteducation=false;
@@ -222,16 +223,16 @@ export class ProfileComponent implements OnInit {
     }
   }
   getResume() {
-    // const formData = new FormData();
-    // var email = this.email_id;
-    // formData.append('id', email);
-    // this.TeamService.GetResume(formData).subscribe((res: any) => {
-    // this.ResumeInfo = res;
+     const formData = new FormData();
+    var email = this.email_id;
+     formData.append('id', email);
+     this.TeamService.GetResume(formData).subscribe((res: any) => {
+     this.ResumeInfo = res;
 
-    // this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
+     this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
 
 
-    // })
+     })
 
   }
 
@@ -285,12 +286,14 @@ export class ProfileComponent implements OnInit {
     this.TeamService.GetProfile(email).subscribe((res: any) => {
       this.ProfileData = res;
      
-     
       this.mydata=res;
       this.mssdata=res;
       this.sentPrimarySkill = this.ProfileData.primarySkill;
+     // alert(JSON.stringify(this.mssdata.education))
+     
      console.log('Hello', this.ProfileData);
      console.log('#######', this.mssdata);
+     
      console.log('@@@@@@@@@@@', this.mssdata);
       this.selectedDate=this.mydata.dob;
       this.selectedMale=this.mydata.gender;
@@ -333,6 +336,12 @@ export class ProfileComponent implements OnInit {
   }
   onUpload() {
     this.submitted = true;
+  }
+  addDocs(){
+    this.displayDocs=true;
+  }
+  removeDocs(){
+    this.displayDocs=false;
   }
   addEducation() {
     this.displayeducation = true;
@@ -508,7 +517,6 @@ this.displaytentheducation=true;
   // }
   
   saveEducationDetails(){
-    alert(JSON.stringify(this.mssdata));
     this.mssdata={
       "email": localStorage.getItem('email'),
       "education":this.selectedGraduation,
@@ -520,6 +528,8 @@ this.displaytentheducation=true;
       "gradeSystem":this.selectGrade,
     }
   
+    alert(JSON.stringify(this.mssdata));
+
     this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res:any) => {
     this.edudetails=res  
          console.log('COLLEGE',this.edudetails)

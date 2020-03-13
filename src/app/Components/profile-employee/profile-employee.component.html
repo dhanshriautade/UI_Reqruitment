@@ -1,4 +1,4 @@
- <div class=" row">
+<div class=" row">
 
     <div class="col-sm-2">
 
@@ -44,13 +44,13 @@
 
                 <hr>
             </div>
-            <div class="col-sm-4">
+            <!-- <div class="col-sm-4">
                 <div class="action mt-1 mb-1 mr-2">
                     <label class="name ml-3 mt-3 ">Pending Action(s)</label>
                     <label class="view ml-3 mt-2">Please complete your pending action to make your profile attractive to
                         recruiters.</label>
                     <label class="name mt-3 mb-3">VIEW ALL</label></div>
-            </div>
+            </div> -->
         </div>
         <div class="col-sm-2"></div>
 
@@ -100,918 +100,396 @@
         </div>
     </div>
 </p-dialog>
-<div class="row my-4">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-        <div class="card cardBox">
-            <div class="row mt-4">
-                <div class="col-sm-8">
-                    <p class="header ml-3">Attach Resume</p>
-                </div>
-                <div class="col-sm-4"></div>
-            </div>
-            <div class="ml-3 attach">Resume is the most important document recruiters look for.
-                Recruiters generally do not look at profiles without resumes.</div>
-
-            <div class="row my-3 ml-3">
-                <span
-                    style="color: #4A90E2;">{{ResumeInfo?.resumePath?.split('/')[this.ResumeInfo?.resumePath?.split('/').length-1]}}
-                    - Uploaded on - {{ResumeInfo?.date}} </span>
-                <i style="color: #4A90E2;" (click)="downloadResume()" class="pi pi-download ml-5"></i>
-
-            </div>
-            <div class="row mb-4">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10 border">
-                    <div class="row">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8">
-                            <div class="my-3"> <input type="file"
-                                    class=" btn-file-upload1 form-control mt-2 my-4" value="UPLOAD RESUME"
-                                    placeholder="" (change)="uploadResume($event )" /></div>
-                            <div class="error" *ngIf="errormassage">Please ensure the file size is less
-                                than 2MB and file type is doc, docx, rtf or pdf. </div>
-                            <div class="upload my-4 ml-5">Supported Formats: doc, docx,pdf, upto 2 MB</div>
-                        </div>
-                        <div class="col-sm-2"></div>
-                    </div>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-2"></div>
-</div>
 <div class="row">
     <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-        <div class="card my-3">
-            <p class="header my-2 ml-3">Attach Other Document</p>
+    <div class="col-sm-8" style="text-align: center;">
+        <button type="button" class="btn info my-3 mr-4" (click)="PersonalInfo()">Personal Information
+        </button>
+    </div>
+    <div class="centered">
+        <p-dialog [(visible)]="infodispaly" [style]="{width: '90%', height: '70%'}">
+            <p-header class="dialogHeader mt-2">
+                <img src="../../../assets/user big.png" alt="">
+                <span class="ml-2 mt-2 report"> Profile</span>
+                <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeinfo()"></i>
+            </p-header>
+            <form class="group grp_form" [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()">
 
-            <div class="ml-3">
-                <div *ngFor="let dataone of otherDocPathName">
-                    <span style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
-                        - Uploaded on - {{ResumeInfo?.date}} <i (click)="downloadOtherDoc(dataone)"
-                            class="pi pi-download ml-5 mt-4"></i></span>
-                </div>
-                <div class="row mb-4 my-3">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-10 border">
-                        <div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-8">
-                                <div class="my-3"> <input type="file"
-                                        class=" btn-file-upload1 form-control mt-2 my-4" value="UPLOAD DOCUMENT"
-                                        placeholder="" (change)="uploadOtherDoc($event)" multiple /></div>
-                                <div class="error" *ngIf="errormassage">Invalid file type or size </div>
-                                <div class="upload my-4">Supported Formats: doc, docx,pdf, upto 2 MB</div>
+                <label class="head">Personal Information</label>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row ">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>FirstName :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="firstname" formControlName="firstName">
                             </div>
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-2 nam_e">
+
+                                <label>LastName :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="lastname" formControlName="lastName">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Email Id :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="email" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="Email" formControlName="email">
+
+                            </div>
+                            <div class="col-sm-2 nam_e">
+
+                                <label>DOB :</label> </div>
+                            <div class="col-sm-4">
+                                <!-- <p-calendar [(ngModel)]="DueDate" [showIcon]="true" [yearNavigator]="true" yearRange="1900:2019"></p-calendar> -->
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="dob" formControlName="dob">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row ">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Cell No. :</label> </div>
+                            <div class="col-sm-4 ">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <input type="text" formControlName="countryCode" placeholder="+91"
+                                            class="form-control" /> </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" formControlName="phoneNumber"
+                                            placeholder="Where recruiter can contact you" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Title :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="title" formControlName="title">
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-12 line"></div>
+                <div class="row ">
+                </div>
+
+                <label class="head">Experience Details</label>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row loc">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Total Experience :</label> </div>
+
+                            <div class="col-sm-10">
+
+
+
+                                <select class="year" formControlName='expYear'>
+
+                                    <option *ngFor="let d of data" [value]="d.num">{{d.num}}</option>
+
+                                </select>
+                                <select class="month" formControlName='expMonth'>
+                                    <option *ngFor="let s of detail" [value]="s.id">{{s.id}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3"></div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row loc my-2">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Current Location :</label> </div>
+                            <div class="col-sm-10">
+
+
+
+                                <select class="country" formControlName='country' (change)="getCountryLocationList()">
+                                    <option>India</option>
+                                    <option>South Africa</option>
+                                    <option>America</option>
+                                    <option>Germany</option>
+                                    <option>China</option>
+                                    <option>Afghanistan</option>
+                                </select>
+
+                                <select class="state" formControlName='state' (change)="getStateLocationList()">
+                                    <option [value]="state" *ngFor="let state of locationList">
+                                        {{state}}</option>
+                                </select>
+                                <select class="city" formControlName='city'>
+                                    <option [value]="city" *ngFor="let city of locationCityList">
+                                        {{city}}</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row loc">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Notice Period :</label> </div>
+
+                            <div class="col-sm-10">
+
+
+
+                                <select class="note" formControlName='noticePer'>
+                                    <option *ngFor="let n of note" [value]="n.notes">{{n.notes}}</option>
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+
+
+                <div class="col-sm-3"></div>
+                <label class="head">Add Skill's and Experience Details </label>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row ">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Primary Skill :</label> </div>
+                            <div class="col-sm-4">
+                                <select id="user_time_zone" class="form-control code " size="0" placeholder="Area Code"
+                                    name="skill" formControlName='primarySkill'>
+                                    <option>Skill Name</option>
+                                    <option>C</option>
+                                    <option>C++</option>
+                                    <option>php</option>
+                                    <option>Python</option>
+                                    <option>Embedded</option>
+                                    <option>Ruby</option>
+
+                                </select>
+
+                            </div>
+                            <button type="button" class="btn upload add" (click)='addSkill()'>Add</button>
+
+
+                            <div class="col-sm-6"></div>
                         </div>
                     </div>
-                    <div class="col-sm-1"></div>
-                </div>
 
-            </div>
+                    <div class="col-sm-3"></div>
 
-        </div>
-    </div>
-    <div class="col-sm-2"></div> 
-</div>
-<div class="row my-3">
-    <div class="col-sm-2"></div> 
-    <div class="col-sm-8">
-    <div class="card cards">
-       
-            <div class="col-sm-8">
-                <p class="header ml-3">Primary Skills <span class="pencil" (click)="addPriSkill()">
-                        <i class="pi pi-pencil mt-2 ml-2"></i></span></p>
-            </div>
-            <div class="col-sm-4"></div>
-            <div class="displayskill ml-4 mb-4">
-                <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.primarySkill"> {{Skill}}
-                </span>
-            </div>
-       
-        <p-dialog [visible]="displayPriSkill" [style]="{width: '50%'}">
-            <p-header>
-                <span>Add Skill</span>
-            </p-header>
-            <div class="row mb-3">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <div><span class="attach ">Tell recruiters what you know or what you are known
-                            for e.g. Direct Marketing, Oracle,
-                            Java etc. We will send you job recommendations based on these skills.
-                            Each skill is separated by a comma. Max limit is 250 character(s)
-                            including
-                            commas.</span></div>
-
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2 mt-3">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <div><span class="clipskill my-2 ml-1"
-                            *ngFor="let Skill of ProfileData?.primarySkill;let i=index">
-                            {{Skill}}
-                            <i class=" tick pi pi-times mt-2 " aria-hidden="true"
-                                (click)="removePriSkill(i)"></i>
-                        </span></div>
-                    <div class="row my-2">
-                        <input type="text" [(ngModel)]="PrimarySkillValue"
-                            placeholder="Enter your area of expertise/specialization" name="secskill"
-                            class="form-control my-4" autocomplete="off">
+                    <div class="clip ml-5 my-2">
+                        <span class="left_chip my-2 ml-1" *ngFor="let primarySkill of this.skillArray;index as i">
+                            {{primarySkill}}
+                            <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeSkill(i)"></i>
+                        </span>
                     </div>
                 </div>
-                <div class="col-sm-1"></div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-5"></div>
-                <div class="col-sm-6">
-                    <button type="button" (click)="cancelPrimarySkill()"
-                        class="btn button my-3 ml-4">Cancel </button>
-                    <button type="button" (click)="AddPrimarySkill()"
-                        class="btn btn-primary buttons my-3 ml-4">Save </button>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row codes">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Secondary Skill :</label> </div>
+                            <div class="col-sm-4">
+                                <select id="user_time_zone" class="form-control code " size="0" placeholder="Area Code"
+                                    name="secskill" formControlName='secondorySkill'>
+                                    <option>Skill Name</option>
+                                    <option>Angular</option>
+                                    <option>Java</option>
+                                    <option>Android</option>
+                                    <option>Spring</option>
+                                    <option>Hibernate</option>
+                                    <option>servlet</option>
+                                    <option>JSP</option>
+                                </select>
+
+                            </div>
+                            <button type="button" class="btn upload add" (click)='addsecSkill()'>Add</button>
+                            <div class="col-sm-6"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3"></div>
+                    <div class="clip ml-5 my-2">
+                        <span class="left_chip my-2 ml-1" *ngFor="let secondorySkill of this.secskillArray;index as i">
+                            {{secondorySkill}} <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+                                (click)="removesecSkill(i)"></i>
+                        </span>
+                    </div>
+
 
                 </div>
-                <div class="col-sm-1"></div>
-            </div>
+                <div class="col-sm-12 line"></div>
+                <div class="row ">
+                </div>
+                <label class="head">Identity Proof </label>
 
+                <div class="col-sm-9">
+                    <div class="row ">
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label>Select Id Proof :</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select #selectLang (change)="selected(selectLang.value,i)"
+                                        class="form-control code skill" name="idproof" formControlName='idProof'>
+                                        <option value="undefined" disabled>Select file type</option>
+                                        <option *ngFor="let file of fileList" value={{file.name}}>{{file.name}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label class="nam_e"> Identity No.:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" autocomplete="off" class="form-control idno"
+                                        placeholder="***********" name="id" formControlName='identityNo'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+
+                            <button type="button" class="btn upload plus">
+                                <div class="pluss" (click)="addDocument()">+
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="row">
+                    <div class="clip ml-5 my-2">
+                        <span class="left_chip my-2 ml-1" *ngFor="let doc of this.docArray;let i = index">
+                            {{doc}}
+                            <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeDoc(i)"></i>
+                        </span></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+
+                                <label></label>Designation: </div>
+                            <div class="col-sm-4 ">
+                                <input type="email" autocomplete="off" class="form-control des"
+                                    placeholder="Current Designation" name="desgn" formControlName="designation">
+                            </div>
+
+                            <div class="col-sm-6">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-12 line"></div>
+                <label class="head">Add Educational Details: </label>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label></label>Education:
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="" class="form-control box" size="0" placeholder="">
+                            <option>Select education</option>
+                            <option>Doctorate/PhD</option>
+                            <option>Master/Post-Graduation</option>
+                            <option>12 th</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="head">Course :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="" class="form-control box" size="0" placeholder="">
+                            <option>Select Course</option>
+                            <option>CA</option>
+                            <option>CS</option>
+                            <option>MBA</option>
+                            <option>MCA</option>
+                            <option>Diploma</option>
+                            <option>BE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label></label>Education:
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="" class="form-control box" size="0" placeholder="">
+                            <option>Select education</option>
+                            <option>Doctorate/PhD</option>
+                            <option>Master/Post-Graduation</option>
+                            <option>12 th</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-sm-7"></div>
+                    <div class="col-sm-5">
+                        <button type="submit" class="btn btn-primary save">Save
+
+                            <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
+                        </button></div>
+                </div>
+
+
+
+
+
+            </form>
         </p-dialog>
     </div>
-</div> 
-    <div class="col-sm-2"></div> 
-</div>
-<div class="row my-3">
-    <div class="col-sm-2"></div> 
-    <div class="col-sm-8">
-        <div class="  card cards">
-            <div class="row mt-4">
-                <div class="col-sm-8">
-                    <p class="header ml-3">Secondary Skills <span class="pencil" (click)="addSecSkill()">
-                            <i class="pi pi-pencil mt-2 ml-2"></i></span></p>
-                </div>
-                <div class="col-sm-4"></div>
-                <div class="displayskill ml-4 mb-4">
-                    <span class="clipskill mr-2" *ngFor="let Skill of ProfileData?.secondarySkill">
-                        {{Skill}} </span>
-                </div>
-            </div>
-            <p-dialog [visible]="displaySecSkill" [style]="{width: '50%'}">
-                <p-header>
-                    <span>Add Skill</span>
-                </p-header>
-                <div class="row mb-3">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-10">
-                        <div><span class="attach ">Tell recruiters what you know or what you are known
-                                for e.g. Direct Marketing, Oracle,
-                                Java etc. We will send you job recommendations based on these skills.
-                                Each skill is separated by a comma. Max limit is 250 character(s)
-                                including
-                                commas.</span></div>
-
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="row my-2 mt-3">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-10">
-                        <div><span class="clipskill my-2 ml-1"
-                                *ngFor="let Skill of ProfileData?.secondarySkill;let i=index">
-                                {{Skill}}
-                                <i class=" tick pi pi-times mt-2 " aria-hidden="true"
-                                    (click)="removesecSkill(i)"></i>
-                            </span></div>
-                        <div class="row my-2">
-                            <input type="text" [(ngModel)]="secondarySkillValue"
-                                placeholder="Enter your area of expertise/specialization" name="secskill"
-                                class="form-control my-4" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-5"></div>
-                    <div class="col-sm-6">
-                        <button type="button" (click)="cancelSecondarySkill()"
-                            class="btn button my-3 ml-4">Cancel </button>
-                        <button type="button" (click)="AddSecondarySkill()"
-                            class="btn btn-primary buttons my-3 ml-4">Save </button>
-
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-
-            </p-dialog>
-        </div>
-    </div> 
-    <div class="col-sm-2"></div> 
-</div>
-
-
-<p-dialog [(visible)]="displayDetails" [style]="{width: '63%'}">
-    <p-header class="dialogHeader">
-        <div class="row">
-            <div class="col-sm-11">
-                <span class=" text-primary">Add Persoanl Details</span>
-            </div>
-            <div class="col-sm-1">
-                <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true" (click)="removedialog()"></i>
-            </div>
-        </div>
-    </p-header>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Date of Birth :</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <select class=" month" formControlName='expMonth'>
-                        <option *ngFor="let dates of date" [value]="dates.id">{{dates.id}}</option>
-                    </select>
-             
-              
-                    <select class=" month" formControlName='expMonth'>
-                        <option *ngFor="let months of month" [value]="months.id">{{months.name}}</option>
-                    </select>
-              
-                
-                    <select class=" month" formControlName='expMonth'>
-                        <option *ngFor="let years of year" [value]="years.id">{{years.value}}</option>
-                    </select>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Gender :</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <input type="radio" name="age" value="30">Male
-
-                    <input type="radio" class="ml-3" name="age" value="30">Female
-                <div class="col-sm-1"></div>
-            </div>
-        </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Permanent Address : </label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row mu-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <input type="text" autocomplete="off" class="university"
-                        placeholder="Enter Address" >
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-3">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Hometown :</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <input type="text" autocomplete="off" class="university"
-                        placeholder="*********" >
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-3">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Pincode :</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <input type="text" autocomplete="off" class="university"
-                        placeholder="*************" >
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-           
-            <div class="row my-3">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Marital Status:</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <select id="" class="form-control box" size="0" placeholder="">
-                        <option>Select</option>
-                        <option>Single/unmarried</option>
-                        <option>Married</option>
-                        <option>Widowed</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Category :</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <select id="" class="form-control box" size="0" placeholder="">
-                        <option>Select</option>
-                        <option>General</option>
-                        <option>SC</option>
-                        <option>ST</option>
-                        <option>OBC- Creamy</option>
-                        <option>OBC- Non-Creamy</option>
-                     
-                    </select>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <label class="head">Differently Abled :</label>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row my-2">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
-                    <input type="radio" name="age" value="30">Yes
-
-                    <input type="radio" class="ml-3" name="age" value="30">No
-                <div class="col-sm-1"></div>
-            </div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Work Permit for USA :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="">
-                    <option>Select</option>
-                    <option>Have H1 Visa</option>
-                    <option>Need H1 Visa</option>
-                    <option>TN Permit Holder</option>
-                    <option>Green Card Holder</option>
-                    <option>US Citizen</option>
-                    <option>Authorized to work in US</option>
-                 
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Work Permit for Other Countries :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="">
-                    <option>Select</option>
-                    <option>India</option>
-                    <option>China</option>
-                    <option>Dubai</option>
-                    <option>Austrelia</option>
-                    <option>France</option>
-                    <option>Germany</option>
-                 
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Languages :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <input type="radio" name="age" value="30">English
-                <input type="radio" class="ml-3" name="age" value="30">Marathi
-                <input type="radio" class="ml-3" name="age" value="30">Hindi
-            <div class="col-sm-1"></div>
-        </div>
-    </div>
-           
-            <div class="row">
-                <div class="col-sm-7"></div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn button my-3 ml-4" (click)="removeDetails()">Cancel </button>
-
-                    <button type="button" class="btn btn-primary buttons my-3 ml-4" (click)="savePersoanlDetails()">Save </button>
-
-
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-
-</p-dialog> 
-
-
-
-<div class="row my-3">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-        <div class=" card cards">
-            <div class="mt-3 names  ml-3 mb-3 header">Personal Details
-                <span class="icon"><i class="pi pi-pencil mt-2" (click)="addDetails()"></i></span>
-            </div>
-            <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Date of Birth</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 summary">Permanent Address</div>
-            </div>
-            <div class="row">
-
-                <div class="col-sm-5"><span class="ml-4 attach">06 Feb 1996</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 attach">A/P Dehu ,Tal-Haveli ,Dist-Pune</div>
-            </div>
-            <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Gender</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 summary">Area Pin Code</div>
-            </div>
-            <div class="row">
-
-                <div class="col-sm-5"><span class="ml-4 attach">Female</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 attach">422666</div>
-            </div>
-
-            <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Marital Status</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 summary">Hometown</div>
-            </div>
-            <div class="row">
-
-                <div class="col-sm-5"><span class="ml-4 attach">married</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 attach">Dapur,Sinnar</div>
-            </div>
-            <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Category</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 summary">Work permit for USA
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-sm-5"><span class="ml-4 attach">General</span>,
-                        </div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 attach"><span>Have H1 Visa</span></div>
-            </div>
-            <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Work permit for USA</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 summary">Differently Abled
-                </div>
-            </div>
-            <!-- <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Current Location</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 summary">ID type & Number</div>
-            </div> -->
-            <div class="row mb-2">
-
-                <div class="col-sm-5"><span class="ml-4 attach">India</span></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5 attach">none</div>
-            </div>
-            <div class="row mt-3">
-
-                <div class="col-sm-5"><span class="ml-4 summary">Languages</span></div>
-                <div class="col-sm-7"></div>                          
-            </div>
-            <div class="row mb-2">
-
-                <div class="col-sm-5"><span class="ml-4 attach">java,Html</span></div>
-                <div class="col-sm-7"></div>
-               
-            </div>
-        </div>
-</div>
-<div class="col-sm-2"></div>
-</div>
-<p-dialog [(visible)]="displayeducation" [style]="{width: '50%'}">
-    <p-header class="dialogHeader">
-        <div class="row">
-            <div class="col-sm-11">
-                <span class=" text-primary">Add Educational Details</span>
-            </div>
-            <div class="col-sm-1">
-                <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true"
-                    (click)="removedetail()"></i>
-            </div>
-        </div>
-    </p-header>
-    
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Education :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="" >
-                    <option>Select education</option>
-                    <option>Doctorate/PhD</option>
-                    <option>Master/Post-Graduation</option>
-                    <option>12 th</option>
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Course :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="" >
-                    <option>Select Course</option>
-                    <option>CA</option>
-                    <option>CS</option>
-                    <option>MBA</option>
-                    <option>MCA</option>
-                    <option>Diploma</option>
-                    <option>BE</option>
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Specialization :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row mu-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="" >
-                    <option>Select Specialization</option>
-                    <option>CA</option>
-                    <option>CS</option>
-                    <option>ENTC</option>
-                    <option>IT</option>
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">University/Institute :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <input type="text" autocomplete="off" class="university"
-                    placeholder="University name" >
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-3">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Cource Type :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <input type="radio" name="age" value="30">Full Time
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="radio" name="age" value="30">Part Time
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="radio" name="age" value="30">Correspondance/Distance Learning
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Passing Out Year:</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="">
-                    <option>Select Passing Out Year</option>
-                    <option>2014</option>
-                    <option>2013</option>
-                    <option>2012</option>
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Grading :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="" >
-                    <option>Grading System</option>
-                    <option>Scale 10 Grading System</option>
-                    <option>%marks of 100 Maximum</option>
-                    <option>Course requires a pass</option>
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-7"></div>
-            <div class="col-sm-4">
-                <button type="button" class="btn button my-3 ml-4" (click)="removeEducation()">Cancel </button>
-
-                <button type="button" class="btn btn-primary buttons my-3 ml-4">Save </button>
-
-
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-
-   
-</p-dialog>
-<div class="row">
-<div class="col-sm-2"></div>
-<div class="col-sm-8">
-    <div class="  mt-3 card cards">
-        <div class="mt-3 names  ml-3 mb-3 header">Education <span class="detail mr-2"
-                (click)="addEducation()">ADD EDUCATION</span>
-        </div>
-      
-        <div class="ml-3 degree">B.Tech/B.E.-Computers
-            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
-        </div>
-        <div class="ml-3 attach">Jagdamba Education Society Nashik's SND College of Engineering &
-            Research, Pune</div>
-        <div class="ml-3 attach"><span>2018</span> <span>(Full Time)</span></div>
-        <div class="ml-3 mt-5 degree">Other-English
-            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
-        </div>
-        <div class="ml-3 attach"><span>2014</span></div>
-    
-        <div class="ml-3 mt-5 degree">National Open School-English
-            <span class="icon"><i class="pi pi-pencil mt-2"></i></span></div>
-        <div class="ml-3 attach">2012</div>
-    
-        <div class="ml-3 mt-5 degree">B.Tech/B.E.-Computers
-            <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
-        </div>
-        <div class="ml-3 attach ">Jagdamba Education Society Nashik's SND College of Engineering &
-            Research, Pune</div>
-        <div class="ml-3 attach mb-3"><span>2018</span> <span>(Full Time)</span></div>
-    
-    
-    
-    </div>
-</div>
-<div class="col-sm-2"></div>
-</div>
-
-<p-dialog [(visible)]="displayProject" [style]="{width: '50%'}">
-    <p-header class="dialogHeader">
-        <div class="row ">
-
-            <div class="col-sm-11">
-                <span class=" text-primary">Add Project</span>
-            </div>
-            <div class="col-sm-1">
-                <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true"
-                    (click)="projectremove()"></i>
-            </div>
-        </div>
-    </p-header>
-    
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Project Title :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <input type="text" autocomplete="off" class="university"
-                placeholder="Enter Project Title" >
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2 mt-4">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Tag this project with your Employment/Education :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select id="" class="form-control box" size="0" placeholder="" >
-                    <option>Select Course</option>
-                    <option>UG - Computers</option>
-                    <option>Class XII</option>
-                    <option>Class X</option>
-                     
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Client : </label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row mu-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <input type="text" autocomplete="off" class="university"
-                placeholder="Enter Client Name" >
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-       
-        <div class="row my-3 mt-4">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Project Status :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <input type="radio" name="age" value="30">In Progressed
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="radio" name="age" value="30">Finished
-                    </div>
-                    <div class="col-sm-6">
-                      
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Started Working From :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <select class=" month">
-                    <option>Select year</option>
-                    <option *ngFor="let years of year" [value]="years.id">{{years.value}}</option>
-                </select>
-                <select class=" month">
-                    <option>Select month</option>
-                    <option *ngFor="let months of month" [value]="months.id">{{months.name}}</option>
-                </select>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2 mt-4">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Worked Till :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <input type="text" autocomplete="off" class="university"
-                placeholder="Enter" >
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2 mt-4">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <label class="head">Details of Project :</label>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row my-2">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <textarea id="project"  cols="71" placeholder="Type here.."> </textarea>                                  
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-7"></div>
-            <div class="col-sm-4">
-                <button type="button" class="btn button my-3 ml-4" (click)="removeProject()">Cancel </button>
-
-                <button type="button" class="btn btn-primary buttons my-3 ml-4">Save </button>
-
-
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-
-    
-</p-dialog>
-<div class="row my-3">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-            <div class="mt-3 card cards">
-                <div class="mt-3 names  ml-3 mb-3 header">Projects <span class="detail mr-2"
-                    (click)="addCertification()">ADD PROJECT</span>
-            </div>
-               
-            </div>
-    </div>
     <div class="col-sm-2"></div>
 </div>
-
-
-
-
