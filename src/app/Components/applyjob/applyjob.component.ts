@@ -1,22 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TeamService } from 'src/services/team.service';
+import { ToastrService } from 'ngx-toastr';
+
+
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-applyjob',
   templateUrl: './applyjob.component.html',
   styleUrls: ['./applyjob.component.scss'],
   providers: [DatePipe],
 })
-export class ApplyjobComponent implements OnInit {
+export class ApplyjobComponent implements OnInit, OnDestroy {
   data;
   viewalljobid;
   display = false;
   dataone;
   role;
+  info;
+  disableButton = false;
+  button;
+  public apply: boolean = true;
+
   deptartment;
   dataApply;
+
   myDate = new Date();
   applyJobForm= new FormGroup({
 
@@ -27,13 +35,45 @@ export class ApplyjobComponent implements OnInit {
 
   ]
     this.viewalljobid = localStorage.getItem('ViewJobId')
-   this.role = localStorage.getItem('role');
+    // alert(this.viewalljobid)
+    this.role = localStorage.getItem('role');
     this.TeamService.Getalljob().subscribe(res => {
       this.data = res;
+     
       this.dataone = (res[this.viewalljobid]);
-      localStorage.setItem('ApplyJobId',  this.dataone.jobId);
+      localStorage.setItem('ApplyJobId', this.dataone.jobId);
+      // Check if job applied already
+      this.checkIfJobAppliedAlready();
+    });
 
+
+
+  }
+
+
+   public checkIfJobAppliedAlready(){
+
+
+    this.data = {
+
+      "emailId": localStorage.getItem('email'),
+      "jobId": localStorage.getItem('ApplyJobId')
+     
+    }
+    console.log('hello',this.data);
+    this.TeamService.checkIfJobApplied(this.data).subscribe((res: any) => {
+      localStorage.setItem("reloadPage", "false");
+      // alert(JSON.stringify(res))
+      if (res.code === '211') {
+        this.apply = true;
+        this.disableButton = false;
+
+      } else if (res.code === '210') {
+        this.apply = false;
+        this.disableButton = true;
+      }
     })
+
   }
 
   onSubmit(){
@@ -44,7 +84,15 @@ export class ApplyjobComponent implements OnInit {
   
   }
 
-  this.TeamService.ApplyJob(this.data).subscribe(res => {
+  this.TeamService.ApplyJob(this.data).subscribe((res:any) => {
+    if (res.code === '200') {
+      this.apply = false;
+      this.disableButton = true;
+
+    } else if (res.code === '211') {
+      this.apply = true;
+      this.disableButton = false;
+    }
     console.log('job', res);
   })
 
@@ -92,7 +140,7 @@ export class ApplyjobComponent implements OnInit {
   }
   ApplyJob() {
 
-    this.display = true;   
+     this.display = true;   
    
   }
 
@@ -109,5 +157,8 @@ export class ApplyjobComponent implements OnInit {
    
     })
   }
-
+ 
+  ngOnDestroy() {
+    localStorage.setItem("reloadPage", "false");
+  }
 }

@@ -7,14 +7,13 @@
             <div class="card card1">
                 <div class="row">
                     <div class="col-sm-8">
-                        <div class="my-3 ml-5">
-                         <span style="color: orange "> {{dataone?.designation}} </span>
-                            <!-- <p class="ml-5 title mt-3">{{dataone?.jobTitle}}</p> -->
+                        <div class="row ml-5 mt-3">
+                            <p class="title"  style="color: blue "> {{dataone?.designation}}
+                               </p>
                         </div>
                         <div class="row ml-5">
-                            <span style="color: blue"> {{dataone?.jobId}} </span>
+                            <span class="jobid" style="color: orange">{{dataone?.jobId}}</span>
                         </div>
-                       
                         <div class="mt-0">
                             <p class="ml-5 comp">Beauto System Pvt Ltd</p>
                         </div>
@@ -39,7 +38,6 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="row mt-4">
-
                             <div class="ml-5"> <span> <img src="../../../assets/output-onlinepngtools.png" class="logo">
                                 </span>
                             </div>
@@ -47,8 +45,8 @@
                         <div class="row mt-5">
                             <div class="col-sm-6"> <button class="btn btn-primary btn1 mr-2">Save</button></div>
                             <div class="col-sm-6">
-                                <button class="btn btn-primary apply mr-3" *ngIf="role === '0'"
-                                    (click)="ApplyJob()">Apply</button>
+                                <button class="btn btn-primary apply mr-3" *ngIf="role === '0'" (click)="ApplyJob()"
+                                    [disabled]="disableButton"> {{ apply == true ? 'Apply' : 'Applied' }}</button>
                             </div>
                         </div>
                     </div>
@@ -62,83 +60,83 @@
                 </p-header>
                 <form class="group grp_form" [formGroup]="applyJobForm" (ngSubmit)="onSubmit()">
                     <div class="row my-2">
-                            <div class="col-sm-2 nam_e">
-                                    <label>Name :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="candidateName">
-                                </div>
-                                <div class="col-sm-2 nam_e">
-                                    <label>Designation :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="designation">
-        
-                                </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Name :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="candidateName">
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Designation :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="designation">
+
+                        </div>
                     </div>
                     <div class="row my-2">
-                            <div class="col-sm-2 nam_e">
-                                    <label>notice Period :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="noticePeriod">
-                                </div>
-                                <div class="col-sm-2 nam_e">
-                                    <label>Experience :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="experienceInYears">
-        
-                                </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>notice Period :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="noticePeriod">
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Experience :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="experienceInYears">
+
+                        </div>
                     </div>
                     <div class="row my-2">
-                            <div class="col-sm-2 nam_e">
-                                    <label>CTC :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="ctc">
-                                </div>
-                                <div class="col-sm-2 nam_e">
-                                    <label>Expected CTC :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="ectc">
-        
-                                </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>CTC :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="ctc">
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Expected CTC :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="ectc">
+
+                        </div>
                     </div>
                     <div class="row my-2">
-                            <div class="col-sm-2 nam_e">
-                                    <label>Relevant Experience :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
-                                        name="desgn" formControlName="relevantExpInYears">
-                                </div>
-                                <div class="col-sm-2 nam_e">
-                                    <label>Department :</label>
-                                </div>
-                                <div class="col-sm-4">
-                                        <select class="dept" name="department" formControlName="department">
-                                                <option disabled="true" display="true">Select</option>
-                                                <option *ngFor="let n of deptartment" [value]="n.dept">{{n.dept}}</option>
-                
-                                         </select>
-                                </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Relevant Experience :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                                name="desgn" formControlName="relevantExpInYears">
+                        </div>
+                        <div class="col-sm-2 nam_e">
+                            <label>Department :</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="dept" name="department" formControlName="department">
+                                <option disabled="true" display="true">Select</option>
+                                <option *ngFor="let n of deptartment" [value]="n.dept">{{n.dept}}</option>
+
+                            </select>
+                        </div>
                     </div>
                     <div class="row my-2">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-6 show_button">
-                                    <button type="submit" class="btn submit my-3 mr-4">Apply
-                                            <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
-                                        </button>
-                                        </div>
-                                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6 show_button">
+                            <button type="submit" class="btn submit my-3 mr-4">Apply
+                                <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </p-dialog>
             <div class="card card1 my-4">

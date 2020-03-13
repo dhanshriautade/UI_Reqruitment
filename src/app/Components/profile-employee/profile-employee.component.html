@@ -1,1 +1,495 @@
-<p>profile-employee works!</p>
+<div class=" row">
+
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8 magic">
+        <div class="row mt-3 mb-3">
+            <div class="col-sm-8 ">
+                <img class="user-img" class="img" src="../../../assets/manemp.jpeg">
+                <label class="ml-3 name">{{ProfileData?.firstName}} {{ProfileData?.lastName}}
+                    <i class="pi pi-pencil mt-2" (click)="EditEmployee()"></i>
+                </label>
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <span class="envelop"><i class="pi pi-map-marker" aria-hidden="true"></i></span>
+                        <span class=" mt-2 view"> Pune ,INDIA</span>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <span class="envelop mr-3"><i class="pi pi-mobile " aria-hidden="true"></i></span>
+                        <span class=" mt-2 view" style="text-align: left;">{{ProfileData?.contact}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <span class="envelop"><i class="pi pi-briefcase ml-3" aria-hidden="true"></i></span>
+                        <span class=" mt-2 ml-1 view">Fresher</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="envelop"> <i class="pi pi-envelope " aria-hidden="true"></i></span>
+                        <span class=" mt-1 ml-2 view">{{ProfileData?.email}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <label class="view mt-2 ml-3 stren">Profile Strength (Excellent)</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class=" mt-2 mr-5 view views">100%</span>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+            <!-- <div class="col-sm-4">
+                <div class="action mt-1 mb-1 mr-2">
+                    <label class="name ml-3 mt-3 ">Pending Action(s)</label>
+                    <label class="view ml-3 mt-2">Please complete your pending action to make your profile attractive to
+                        recruiters.</label>
+                    <label class="name mt-3 mb-3">VIEW ALL</label></div>
+            </div> -->
+        </div>
+        <div class="col-sm-2"></div>
+
+
+    </div>
+</div>
+
+<p-dialog [(visible)]="displayprofile" [style]="{width: '25%'}" class="abc">
+    <p-header class="dialogHeader">
+        <div class="row diaheader">
+            <div class="col-sm-10">
+                <span class="ml-2 text-primary">Edit Profile</span>
+            </div>
+            <div class="col-sm-2">
+                <i class=" tick pi pi-times mt-2 mr-2 " aria-hidden="true" (click)="removeWindow()"></i>
+            </div>
+        </div>
+    </p-header>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">First Name:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="first name">
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">Last Name:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="last name">
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">Email Id:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="xyz@gmail.com">
+        </div>
+    </div>
+    <div class="row my-1">
+        <div class="col-sm-4 nam_e">Contact:</div>
+        <div class="col-sm-8 info my-1">
+            <input type="text" autocomplete="off" class="form-control text-centre tag" placeholder="Mobile No.">
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary job my-2" (click)="createjob()">Update</button>
+        </div>
+    </div>
+</p-dialog>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8" style="text-align: center;">
+        <button type="button" class="btn info my-3 mr-4" (click)="PersonalInfo()">Personal Information
+        </button>
+    </div>
+    <div class="centered">
+        <p-dialog [(visible)]="infodispaly" [style]="{width: '90%', height: '70%'}">
+            <p-header class="dialogHeader mt-2">
+                <img src="../../../assets/user big.png" alt="">
+                <span class="ml-2 mt-2 report"> Profile</span>
+                <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeinfo()"></i>
+            </p-header>
+            <form class="group grp_form" [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()">
+
+                <label class="head">Personal Information</label>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row ">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>FirstName :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="firstname" formControlName="firstName">
+                            </div>
+                            <div class="col-sm-2 nam_e">
+
+                                <label>LastName :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="lastname" formControlName="lastName">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Email Id :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="email" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="Email" formControlName="email">
+
+                            </div>
+                            <div class="col-sm-2 nam_e">
+
+                                <label>DOB :</label> </div>
+                            <div class="col-sm-4">
+                                <!-- <p-calendar [(ngModel)]="DueDate" [showIcon]="true" [yearNavigator]="true" yearRange="1900:2019"></p-calendar> -->
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="dob" formControlName="dob">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row ">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Cell No. :</label> </div>
+                            <div class="col-sm-4 ">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <input type="text" formControlName="countryCode" placeholder="+91"
+                                            class="form-control" /> </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" formControlName="phoneNumber"
+                                            placeholder="Where recruiter can contact you" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Title :</label> </div>
+                            <div class="col-sm-4">
+                                <input type="text" autocomplete="off" class="form-control text-centre" placeholder=""
+                                    name="title" formControlName="title">
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-12 line"></div>
+                <div class="row ">
+                </div>
+
+                <label class="head">Experience Details</label>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row loc">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Total Experience :</label> </div>
+
+                            <div class="col-sm-10">
+
+
+
+                                <select class="year" formControlName='expYear'>
+
+                                    <option *ngFor="let d of data" [value]="d.num">{{d.num}}</option>
+
+                                </select>
+                                <select class="month" formControlName='expMonth'>
+                                    <option *ngFor="let s of detail" [value]="s.id">{{s.id}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3"></div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row loc my-2">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Current Location :</label> </div>
+                            <div class="col-sm-10">
+
+
+
+                                <select class="country" formControlName='country' (change)="getCountryLocationList()">
+                                    <option>India</option>
+                                    <option>South Africa</option>
+                                    <option>America</option>
+                                    <option>Germany</option>
+                                    <option>China</option>
+                                    <option>Afghanistan</option>
+                                </select>
+
+                                <select class="state" formControlName='state' (change)="getStateLocationList()">
+                                    <option [value]="state" *ngFor="let state of locationList">
+                                        {{state}}</option>
+                                </select>
+                                <select class="city" formControlName='city'>
+                                    <option [value]="city" *ngFor="let city of locationCityList">
+                                        {{city}}</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row loc">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Notice Period :</label> </div>
+
+                            <div class="col-sm-10">
+
+
+
+                                <select class="note" formControlName='noticePer'>
+                                    <option *ngFor="let n of note" [value]="n.notes">{{n.notes}}</option>
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+
+
+                <div class="col-sm-3"></div>
+                <label class="head">Add Skill's and Experience Details </label>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row ">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Primary Skill :</label> </div>
+                            <div class="col-sm-4">
+                                <select id="user_time_zone" class="form-control code " size="0" placeholder="Area Code"
+                                    name="skill" formControlName='primarySkill'>
+                                    <option>Skill Name</option>
+                                    <option>C</option>
+                                    <option>C++</option>
+                                    <option>php</option>
+                                    <option>Python</option>
+                                    <option>Embedded</option>
+                                    <option>Ruby</option>
+
+                                </select>
+
+                            </div>
+                            <button type="button" class="btn upload add" (click)='addSkill()'>Add</button>
+
+
+                            <div class="col-sm-6"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3"></div>
+
+                    <div class="clip ml-5 my-2">
+                        <span class="left_chip my-2 ml-1" *ngFor="let primarySkill of this.skillArray;index as i">
+                            {{primarySkill}}
+                            <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeSkill(i)"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row codes">
+                            <div class="col-sm-2 nam_e">
+
+                                <label>Secondary Skill :</label> </div>
+                            <div class="col-sm-4">
+                                <select id="user_time_zone" class="form-control code " size="0" placeholder="Area Code"
+                                    name="secskill" formControlName='secondorySkill'>
+                                    <option>Skill Name</option>
+                                    <option>Angular</option>
+                                    <option>Java</option>
+                                    <option>Android</option>
+                                    <option>Spring</option>
+                                    <option>Hibernate</option>
+                                    <option>servlet</option>
+                                    <option>JSP</option>
+                                </select>
+
+                            </div>
+                            <button type="button" class="btn upload add" (click)='addsecSkill()'>Add</button>
+                            <div class="col-sm-6"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3"></div>
+                    <div class="clip ml-5 my-2">
+                        <span class="left_chip my-2 ml-1" *ngFor="let secondorySkill of this.secskillArray;index as i">
+                            {{secondorySkill}} <i class=" tick pi pi-times mt-2 " aria-hidden="true"
+                                (click)="removesecSkill(i)"></i>
+                        </span>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-12 line"></div>
+                <div class="row ">
+                </div>
+                <label class="head">Identity Proof </label>
+
+                <div class="col-sm-9">
+                    <div class="row ">
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label>Select Id Proof :</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select #selectLang (change)="selected(selectLang.value,i)"
+                                        class="form-control code skill" name="idproof" formControlName='idProof'>
+                                        <option value="undefined" disabled>Select file type</option>
+                                        <option *ngFor="let file of fileList" value={{file.name}}>{{file.name}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label class="nam_e"> Identity No.:</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" autocomplete="off" class="form-control idno"
+                                        placeholder="***********" name="id" formControlName='identityNo'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+
+                            <button type="button" class="btn upload plus">
+                                <div class="pluss" (click)="addDocument()">+
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="row">
+                    <div class="clip ml-5 my-2">
+                        <span class="left_chip my-2 ml-1" *ngFor="let doc of this.docArray;let i = index">
+                            {{doc}}
+                            <i class=" tick pi pi-times mt-2 " aria-hidden="true" (click)="removeDoc(i)"></i>
+                        </span></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row my-2">
+                            <div class="col-sm-2 nam_e">
+
+                                <label></label>Designation: </div>
+                            <div class="col-sm-4 ">
+                                <input type="email" autocomplete="off" class="form-control des"
+                                    placeholder="Current Designation" name="desgn" formControlName="designation">
+                            </div>
+
+                            <div class="col-sm-6">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-12 line"></div>
+                <label class="head">Add Educational Details: </label>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label></label>Education:
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="" class="form-control box" size="0" placeholder="">
+                            <option>Select education</option>
+                            <option>Doctorate/PhD</option>
+                            <option>Master/Post-Graduation</option>
+                            <option>12 th</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="head">Course :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="" class="form-control box" size="0" placeholder="">
+                            <option>Select Course</option>
+                            <option>CA</option>
+                            <option>CS</option>
+                            <option>MBA</option>
+                            <option>MCA</option>
+                            <option>Diploma</option>
+                            <option>BE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label></label>Education:
+                    </div>
+                    <div class="col-sm-7">
+                        <select id="" class="form-control box" size="0" placeholder="">
+                            <option>Select education</option>
+                            <option>Doctorate/PhD</option>
+                            <option>Master/Post-Graduation</option>
+                            <option>12 th</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-sm-7"></div>
+                    <div class="col-sm-5">
+                        <button type="submit" class="btn btn-primary save">Save
+
+                            <i *ngIf="spinner" class="pi pi-spin pi-spinner ml-1"></i>
+                        </button></div>
+                </div>
+
+
+
+
+
+            </form>
+        </p-dialog>
+    </div>
+    <div class="col-sm-2"></div>
+</div>

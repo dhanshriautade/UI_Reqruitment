@@ -52,6 +52,36 @@ export class TeamService {
     return this.http.get(environment.getNotificationReminder, { headers: headers });
 
   }
+  checkIfJobApplied(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.AppliedJob, data, { headers: headers });
+  }
+  saveDetails(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.UpdatePersonalDetails, data, { headers: headers });
+  }
+  saveGraduationDetails(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.UpdateCollegeEducationlDetails, data, { headers: headers });
+  }
+  savePosteducationDetails(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.UpdatePostEducationlDetails, data, { headers: headers });
+  }
+  saveschoolDetails(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.UpdateSchoolEducationlDetails, data, { headers: headers });
+  }
   ApplyJob(data: any){
   let headers = new HttpHeaders({
     'Content-Type': 'application/json'

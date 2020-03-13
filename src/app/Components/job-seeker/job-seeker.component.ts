@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./job-seeker.component.scss']
 })
 export class JobSeekerComponent implements OnInit {
-  data;
+  data: any = [];
   term;
   ProfileData;
-  constructor(public TeamService: TeamService,public router: Router,) { 
-   
-      this.TeamService.GetProfile(localStorage.getItem('email')).subscribe((res: any) => {
-        this.ProfileData = res;
-      })
-    
+  constructor(public TeamService: TeamService, public router: Router, ) {
+
+    this.TeamService.GetProfile(localStorage.getItem('email')).subscribe((res: any) => {
+      this.ProfileData = res;
+    })
+
     this.TeamService.Getalljob().subscribe(res => {
          this.data = res;
     console.log('HIII',this.data)
@@ -24,12 +24,21 @@ export class JobSeekerComponent implements OnInit {
   }
 
 
-  viewJobId(index:any){
+  viewJobId(jobid: any) {
+    let selectedJobIdIndex: string = "";
+    for (var i = 0; i < this.data.length; i++) {
+      if (jobid === this.data[i].jobId) {
+
+        selectedJobIdIndex = i + "";
+        break;
+      }
+    }
+
     // console.log(index);
-    localStorage.setItem('ViewJobId', index);
+    localStorage.setItem('ViewJobId', selectedJobIdIndex);
     this.router.navigateByUrl('/User/ApplyJob');
 
-   }
+  }
   ngOnInit() {
   }
 

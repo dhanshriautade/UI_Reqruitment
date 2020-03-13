@@ -31,6 +31,11 @@ export const environment = {
   UpdatePrimarySkill: base_url + 'updatePrimarySkill',
   UpdateSecondarySkill: base_url + 'updateSecondarySkill',
   getjobId: base_url + 'getUniqueJobId',
+  UpdateCollegeEducationlDetails:  base_url +'updateCollegeEducationlDetails',
+  UpdateSchoolEducationlDetails: base_url +'updateSchoolEducationlDetails',
+  UpdatePostEducationlDetails:  base_url +'updatePostEducationlDetails',
+  UpdatePersonalDetails:  base_url +'updatePersonalDetails',
+
   AssignEmployeeToInterview: base_url + 'assignCandidateForInterview',
   getEmployeeByDepartment: base_url + 'getEmployeeInfoByDepartment',
   getEmployeeByDesignation: base_url + 'getEmployeeInfoByDesignation',
@@ -41,6 +46,7 @@ export const environment = {
   getnotification: notify_url + 'getAllNotification',
   getNotificationReminder: notify_url +'hrreminder',
   ApplyJob:  notify_url +'jobapplynotification',
+  AppliedJob:  notify_url +'jobApplied',
   getAllocatedJobseeker: notify_url + 'getAssignCandidateInfoById?employeeId='
 
 };
