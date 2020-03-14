@@ -129,10 +129,8 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.renameOtherDoc = false
     this.getProfileEmployee();
     this.getResume();
-    // this. EditDocument();
   }
   addPriSkill() {
     this.displayPriSkill = true;
@@ -243,15 +241,10 @@ export class ProfileComponent implements OnInit {
     formData.append('id', email);
     this.TeamService.GetResume(formData).subscribe((res: any) => {
       this.ResumeInfo = res;
-
       this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
-      // this.document = this.otherDocPathName
-      // this.doc1 = (this.document[1].split('/')[this.document[1].split('/').length - 1])
-      // console.log('RANI', this.doc1)
       console.log('HELLO',this.otherDocPathName)
       this.document = this.otherDocPathName
       this.doc1 = (this.document[1].split('/')[this.document[1].split('/').length - 1])
-
     })
   } 
   EditDocument() {
