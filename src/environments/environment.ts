@@ -35,13 +35,13 @@ export const environment = {
   UpdateSchoolEducationlDetails: base_url +'updateSchoolEducationlDetails',
   UpdatePostEducationlDetails:  base_url +'updatePostEducationlDetails',
   UpdatePersonalDetails:  base_url +'updatePersonalDetails',
-
   AssignEmployeeToInterview: base_url + 'assignCandidateForInterview',
   getEmployeeByDepartment: base_url + 'getEmployeeInfoByDepartment',
   getEmployeeByDesignation: base_url + 'getEmployeeInfoByDesignation',
   saveCandidateJobApplication: base_url + 'savecandidatejobapplication',
   getJobIdWiseDetail:base_url + 'jobidwithcandidates?jobId=',
   allotTimetoJobseeker: base_url + 'allotTime',
+  renameDocument: base_url + 'renameCandidateDocument',
   //Notification
   getnotification: notify_url + 'getAllNotification',
   getNotificationReminder: notify_url +'hrreminder',

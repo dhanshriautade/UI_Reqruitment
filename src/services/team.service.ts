@@ -64,6 +64,12 @@ export class TeamService {
     });
     return this.http.post(environment.UpdatePersonalDetails, data, { headers: headers });
   }
+  RenameDocuments(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.renameDocument, data, { headers: headers });
+  }
   saveGraduationDetails(data: any) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'

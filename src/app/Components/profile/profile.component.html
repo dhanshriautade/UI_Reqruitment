@@ -157,6 +157,8 @@
                     <span class="ml-4" style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
                         - Uploaded on - {{ResumeInfo?.date}} <i (click)="downloadOtherDoc(dataone)"
                             class="pi pi-download ml-5 mt-4"></i></span>
+                    <i class="pi pi-pencil ml-2" (click)="EditDocument(i)"></i>
+                    <i class="pi pi-trash ml-2" (click)="DeleteDocument()"></i>
                 </div>
                 <div class="row mb-4 my-3">
                     <div class="col-sm-1"></div>
@@ -177,6 +179,39 @@
                 </div>
             </div>
         </div>
+        <p-dialog [(visible)]="renameOtherDoc" [style]="{width: '45%'}">
+            <p-header class="dialogHeader">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <span class="rename">Rename Document</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <i class=" tick pi pi-times ml-3 mr-2 " aria-hidden="true" (click)="removeeditDoc()"></i>
+                    </div>
+                </div>
+
+            </p-header>
+            <div class="row">
+                <span class="rename1 ml-3">New Document Name:</span>
+                <input type="text" autocomplete="off" class="doc ml-3 my-2" placeholder="Document name"
+                    [(ngModel)]="Document2">
+            </div>
+            <div class="row">
+                <span class="rename1 ml-3">Old Document Name:</span>
+                {{doc1}}
+                <!-- <input type="text" autocomplete="off" class="doc ml-3 my-2" placeholder="Document name"
+                    [(ngModel)]="Document1"> -->
+                <!-- <div>OLD Document Name:</div>
+                <div *ngFor="let dataone of otherDocPathName">
+                    <span style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
+                    </span>
+                </div> -->
+            </div>
+            <div class="row">
+                <button type="button" (click)="renameDoc(i)" class="btn btn-primary buttons my-3 ml-4">Save </button>
+            </div>
+
+        </p-dialog>
         <div class="row">
             <div class=" ml-3 mt-3 card cards">
                 <div class="row mt-4">

@@ -4,7 +4,7 @@ import { TeamService } from 'src/services/team.service';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpParams } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { saveAs } from 'file-saver';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -15,11 +15,11 @@ import { saveAs } from 'file-saver';
 export class ProfileComponent implements OnInit {
   today: number = Date.now();
   public options = [
-    {value: 1, id:"Male"},
-    {value: 2, id:"Female"},
+    { value: 1, id: "Male" },
+    { value: 2, id: "Female" },
   ]
   public courses = [
-    {value: 1, id:"Full Time"},{value: 2, id:"Part Time"},{value: 2, id:"Correspondance/Distance learning"},
+    { value: 1, id: "Full Time" }, { value: 2, id: "Part Time" }, { value: 2, id: "Correspondance/Distance learning" },
   ]
   fileUploadProgress: string = null;
   selectedFile = null;
@@ -56,12 +56,14 @@ export class ProfileComponent implements OnInit {
   note;
   value;
   detail;
+  displayedit = false
+  renameOtherDoc = false
   displayDetails = false;
   displayeducation = false;
-  displayDocs=false;
-  displaytweltheducation=false;
-  displaytentheducation=false;
-  displayposteducation=false;
+  displayDocs = false;
+  displaytweltheducation = false;
+  displaytentheducation = false;
+  displayposteducation = false;
   date;
   year
   month;
@@ -86,21 +88,26 @@ export class ProfileComponent implements OnInit {
   selectSpecialization;
   selectUnivercity;
   selectedCorsetype;
-  selectPassYear;selectedpostGraduation;selectPostGrade;
-  selecttwelthEducation;selecttenthEducation;
-  selectedpostCourse;selectpostSpecialization;selectpostUnivercity;
-  selectpostCorsetype;selectpostPassYear;selecttwelthBoard;selecttenthBoard
-  selectGrade;selecttwelthTotal;selecttenthTotal;selecttwelthEnglish;selecttenthEnglish;
-  selecttwelthMath;selecttenthMath;selecttwelthPassYear;selecttenthPassYear;
-  selecttenthMedium;selecttwelthMedium;
-
+  selectPassYear; selectedpostGraduation; selectPostGrade;
+  selecttwelthEducation; selecttenthEducation;
+  selectedpostCourse; selectpostSpecialization; selectpostUnivercity;
+  selectpostCorsetype; selectpostPassYear; selecttwelthBoard; selecttenthBoard
+  selectGrade; selecttwelthTotal; selecttenthTotal; selecttwelthEnglish; selecttenthEnglish;
+  selecttwelthMath; selecttenthMath; selecttwelthPassYear; selecttenthPassYear;
+  selecttenthMedium; selecttwelthMedium;
+  doc1
+  doc2
   mydata;
   mssdata
   selectedStatus;
-
-  constructor(public TeamService: TeamService, private http: HttpClient, private datePipe: DatePipe) {
+  document
+  dataDoc
+  newDocName
+  Document1
+  Document2
+  constructor(public TeamService: TeamService, private http: HttpClient, private datePipe: DatePipe,
+    private toastr: ToastrService) {
     this.email_id = localStorage.getItem('email');
-
     this.date = [
       { 'id': 1 }, { 'id': 2 }, { 'id': 3 }, { 'id': 4 }, { 'id': 5 }, { 'id': 6 }, { 'id': 7 }, { 'id': 8 }, { 'id': 9 }, { 'id': 10 }, { 'id': 11 },
       { 'id': 12 }, { 'id': 13 }, { 'id': 14 }, { 'id': 15 }, { 'id': 16 }, { 'id': 17 }, { 'id': 18 }, { 'id': 19 }, { 'id': 20 }, { 'id': 21 }, { 'id': 22 },
@@ -122,17 +129,17 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
+    // this.renameOtherDoc = false
     this.getProfileEmployee();
     this.getResume();
+    // this. EditDocument();
   }
-
   addPriSkill() {
     this.displayPriSkill = true;
   }
   addCertification() {
     this.displayCertification = true;
   }
-
   uploadOtherDoc(event: any) {
     const formData = new FormData();
     this.otherFileName = [];
@@ -144,7 +151,6 @@ export class ProfileComponent implements OnInit {
     for (var i = 0; i < this.otherFileName.length; i++) {
       formData.append('otherDocs', this.otherFileName[i]);
     }
-
     this.sent_data = {
       "id": this.email_id,
       "date": this.datePipe.transform(this.myDate, 'yyyy-MM-dd')
@@ -164,12 +170,8 @@ export class ProfileComponent implements OnInit {
           this.fileUploadProgress = 'Uploading Completed';
           console.log(events.body);
           this.getResume();
-
-        }
-
+}
       })
-
-
   }
   uploadResume(event: any) {
     this.fileToUpload = <File>event.target.files[0];
@@ -218,24 +220,47 @@ export class ProfileComponent implements OnInit {
 
         this.valid = false;
       }
-
-
     }
   }
-  getResume() {
-     const formData = new FormData();
+  renameDoc() {
     var email = this.email_id;
-     formData.append('id', email);
-     this.TeamService.GetResume(formData).subscribe((res: any) => {
-     this.ResumeInfo = res;
-
-     this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
-
-
-     })
-
+    this.dataDoc = {
+      "newFileName":this.Document2,
+      "oldFileName":this.doc1,
+      "id":this.email_id,
+    }
+    console.log('RANI',this.dataDoc)
+    this.TeamService.RenameDocuments(this.dataDoc).subscribe((res: any) => {
+      if(res.responseMessage === 'Success'){
+        this.toastr.success('Successfully Updated  !!!');
+        this.renameOtherDoc=false
+        }
+    }) 
   }
+  getResume() {
+    const formData = new FormData();
+    var email = this.email_id;
+    formData.append('id', email);
+    this.TeamService.GetResume(formData).subscribe((res: any) => {
+      this.ResumeInfo = res;
 
+      this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
+      // this.document = this.otherDocPathName
+      // this.doc1 = (this.document[1].split('/')[this.document[1].split('/').length - 1])
+      // console.log('RANI', this.doc1)
+      console.log('HELLO',this.otherDocPathName)
+      this.document = this.otherDocPathName
+      this.doc1 = (this.document[1].split('/')[this.document[1].split('/').length - 1])
+
+    })
+  } 
+  EditDocument() {
+    this.renameOtherDoc=true
+    this.Document1=this.doc1
+  }
+  removeeditDoc() {
+    this.renameOtherDoc = false
+  }
   downloadResume() {
     var filepath = this.ResumeInfo.resumePath;
     var request = {
@@ -249,8 +274,6 @@ export class ProfileComponent implements OnInit {
 
       saveAs(response, this.ResumeInfo.resumePath.split('/')[this.ResumeInfo.resumePath.split('/').length - 1])
     });
-
-
   }
 
   downloadOtherDoc(dataone) {
@@ -266,11 +289,7 @@ export class ProfileComponent implements OnInit {
 
       saveAs(response, filepath.split('/')[filepath.split('/').length - 1])
     });
-
-
   }
-
-
   EditEmployee() {
     this.displayp = true;
   }
@@ -285,63 +304,63 @@ export class ProfileComponent implements OnInit {
     var email = this.email_id;
     this.TeamService.GetProfile(email).subscribe((res: any) => {
       this.ProfileData = res;
-     
-      this.mydata=res;
-      this.mssdata=res;
+
+      this.mydata = res;
+      this.mssdata = res;
       this.sentPrimarySkill = this.ProfileData.primarySkill;
-     // alert(JSON.stringify(this.mssdata.education))
-     
-     console.log('Hello', this.ProfileData);
-     console.log('#######', this.mssdata);
-     
-     console.log('@@@@@@@@@@@', this.mssdata);
-      this.selectedDate=this.mydata.dob;
-      this.selectedMale=this.mydata.gender;
-      this.selectedAddress=this.mydata.permanentAddress;
-      this.selectedPincode=this.mydata.areaPinCode;
-      this.selectedHometown=this.mydata.homeTown;
-      this.selectedCategory=this.mydata.category;
-      this.selectedStatus=this.mydata.maritalStatus;
-      this.sentLanguage=this.ProfileData.language;
-      this.selectedGraduation=this.mssdata.education;
-       this.selectedGradCourse=this.mssdata.course;
-       this.selectSpecialization=this.mssdata.specialization;
-       this.selectUnivercity=this.mssdata.university;
-       this.selectedCorsetype=this.mssdata.courseType;
-       this.selectPassYear=this.mssdata.passingYear;
-         this.selectGrade=this.mssdata.gradeSystem;
-         this.selecttwelthEducation=this.mssdata.education;
-         this.selecttwelthBoard=this.mssdata.board;
-         this.selecttwelthTotal=this.mssdata.totalMark;
-         this.selecttwelthEnglish=this.mssdata.englishMarks;
-         this.selecttwelthMath=this.mssdata.mathsMarks;
-         this.selecttwelthPassYear=this.mssdata.passingYear;
-         this.selecttwelthMedium=this.mssdata.schoolMedium;
-         this.selecttenthEducation=this.mssdata.education;
-         this.selecttenthBoard=this.mssdata.board;
-         this.selecttenthTotal=this.mssdata.totalMark;
-         this.selecttenthEnglish=this.mssdata.englishMarks;
-         this.selecttenthMath=this.mssdata.mathsMarks;
-      this.selecttenthPassYear=this.mssdata.passingYear;
-         this.selecttenthMedium=this.mssdata.schoolMedium;
-         this.selectedpostGraduation=this.mssdata.education;
-       this.selectedpostCourse=this.mssdata.course;
-       this.selectpostSpecialization=this.mssdata.specialization;
-       this.selectpostUnivercity=this.mssdata.university;
-       this.selectpostCorsetype=this.mssdata.courseType;
-       this.selectpostPassYear=this.mssdata.passingYear;
-         this.selectPostGrade=this.mssdata.gradeSystem;
+      // alert(JSON.stringify(this.mssdata.education))
+
+      // console.log('Hello', this.ProfileData);
+      // console.log('#######', this.mssdata);
+
+      // console.log('@@@@@@@@@@@', this.mssdata);
+      this.selectedDate = this.mydata.dob;
+      this.selectedMale = this.mydata.gender;
+      this.selectedAddress = this.mydata.permanentAddress;
+      this.selectedPincode = this.mydata.areaPinCode;
+      this.selectedHometown = this.mydata.homeTown;
+      this.selectedCategory = this.mydata.category;
+      this.selectedStatus = this.mydata.maritalStatus;
+      this.sentLanguage = this.ProfileData.language;
+      this.selectedGraduation = this.mssdata.education;
+      this.selectedGradCourse = this.mssdata.course;
+      this.selectSpecialization = this.mssdata.specialization;
+      this.selectUnivercity = this.mssdata.university;
+      this.selectedCorsetype = this.mssdata.courseType;
+      this.selectPassYear = this.mssdata.passingYear;
+      this.selectGrade = this.mssdata.gradeSystem;
+      this.selecttwelthEducation = this.mssdata.education;
+      this.selecttwelthBoard = this.mssdata.board;
+      this.selecttwelthTotal = this.mssdata.totalMark;
+      this.selecttwelthEnglish = this.mssdata.englishMarks;
+      this.selecttwelthMath = this.mssdata.mathsMarks;
+      this.selecttwelthPassYear = this.mssdata.passingYear;
+      this.selecttwelthMedium = this.mssdata.schoolMedium;
+      this.selecttenthEducation = this.mssdata.education;
+      this.selecttenthBoard = this.mssdata.board;
+      this.selecttenthTotal = this.mssdata.totalMark;
+      this.selecttenthEnglish = this.mssdata.englishMarks;
+      this.selecttenthMath = this.mssdata.mathsMarks;
+      this.selecttenthPassYear = this.mssdata.passingYear;
+      this.selecttenthMedium = this.mssdata.schoolMedium;
+      this.selectedpostGraduation = this.mssdata.education;
+      this.selectedpostCourse = this.mssdata.course;
+      this.selectpostSpecialization = this.mssdata.specialization;
+      this.selectpostUnivercity = this.mssdata.university;
+      this.selectpostCorsetype = this.mssdata.courseType;
+      this.selectpostPassYear = this.mssdata.passingYear;
+      this.selectPostGrade = this.mssdata.gradeSystem;
 
     })
   }
   onUpload() {
     this.submitted = true;
   }
-  addDocs(){
-    this.displayDocs=true;
+  addDocs() {
+    this.displayDocs = true;
   }
-  removeDocs(){
-    this.displayDocs=false;
+  removeDocs() {
+    this.displayDocs = false;
   }
   addEducation() {
     this.displayeducation = true;
@@ -364,25 +383,25 @@ export class ProfileComponent implements OnInit {
     this.displayDetails = false;
 
   }
-  addTenthDetails(){
-this.displaytentheducation=true;
+  addTenthDetails() {
+    this.displaytentheducation = true;
   }
-  removetenthEducation(){
-    this.displaytentheducation=false;
+  removetenthEducation() {
+    this.displaytentheducation = false;
   }
-  removetenthdetails(){
-    this.displaytentheducation=false;
+  removetenthdetails() {
+    this.displaytentheducation = false;
   }
-  addpostDetails(){
-    this.displayposteducation=true;
+  addpostDetails() {
+    this.displayposteducation = true;
   }
-  removepostEducation(){
-    this.displayposteducation=false;
+  removepostEducation() {
+    this.displayposteducation = false;
   }
-  removepostdetails(){
-    this.displayposteducation=false;
+  removepostdetails() {
+    this.displayposteducation = false;
   }
- 
+
   removecertificates() {
     this.displayCertification = false;
   }
@@ -395,17 +414,17 @@ this.displaytentheducation=true;
   addDetails() {
     this.displayDetails = true;
   }
-  addTwelthDetails(){
-    this.displaytweltheducation=true;
+  addTwelthDetails() {
+    this.displaytweltheducation = true;
   }
-  removetwelthEducation(){
-    this.displaytweltheducation=false;
+  removetwelthEducation() {
+    this.displaytweltheducation = false;
   }
-  removetwelthdetails(){
-    this.displaytweltheducation=false;
+  removetwelthdetails() {
+    this.displaytweltheducation = false;
   }
-  removeEducation(){
-    this.displayeducation=false;
+  removeEducation() {
+    this.displayeducation = false;
   }
 
   remove() {
@@ -413,15 +432,15 @@ this.displaytentheducation=true;
   }
 
   AddSecondarySkill() {
- 
-     alert(JSON.stringify(this.ProfileData));
+
+    alert(JSON.stringify(this.ProfileData));
     this.sentSecondarySkill = this.ProfileData.secondarySkill;
     this.sentSecondarySkill.push(this.secondarySkillValue);
     //debugger;
-    this.data = { 
+    this.data = {
 
       "email": localStorage.getItem('email'),
-      "secondarySkill":this.sentSecondarySkill
+      "secondarySkill": this.sentSecondarySkill
     }
     this.TeamService.UpdateSecondarySkill(this.data).subscribe(res => {
 
@@ -460,8 +479,8 @@ this.displaytentheducation=true;
 
   }
   AddPrimarySkill() {
-    
-      // alert(JSON.stringify(this.ProfileData));
+
+    // alert(JSON.stringify(this.ProfileData));
     this.sentPrimarySkill = this.ProfileData.primarySkill;
     this.sentPrimarySkill.push(this.PrimarySkillValue);
     this.data = {
@@ -476,28 +495,28 @@ this.displaytentheducation=true;
     this.getProfileEmployee();
 
   }
-  savePersoanlDetails(){  
+  savePersoanlDetails() {
     this.sentLanguage = this.ProfileData.language;
-    this.sentLanguage.push(this.selectedLanguages); 
-    this.mydata={
+    this.sentLanguage.push(this.selectedLanguages);
+    this.mydata = {
       "email": localStorage.getItem('email'),
-      
+
       "dob": this.selectedDate,
-      "gender":this.selectedMale,
-      "permanentAddress":this.selectedAddress,
-      "homeTown":this.selectedHometown,
-      "areaPinCode":this.selectedPincode,
-      "category":this.selectedCategory,
-      "language":this.sentLanguage,
-      "maritalStatus":this.selectedStatus,
+      "gender": this.selectedMale,
+      "permanentAddress": this.selectedAddress,
+      "homeTown": this.selectedHometown,
+      "areaPinCode": this.selectedPincode,
+      "category": this.selectedCategory,
+      "language": this.sentLanguage,
+      "maritalStatus": this.selectedStatus,
     }
-   
+
     // console.log('Ahdkjh',this.mydata)
-    this.TeamService.saveDetails(this.mydata).subscribe((res:any) => {
-  
+    this.TeamService.saveDetails(this.mydata).subscribe((res: any) => {
+
     })
     this.getProfileEmployee();
-   
+
   }
 
   // // removeLang(i: any) {
@@ -515,79 +534,79 @@ this.displaytentheducation=true;
   //   this.getProfileEmployee();
 
   // }
-  
-  saveEducationDetails(){
-    this.mssdata={
+
+  saveEducationDetails() {
+    this.mssdata = {
       "email": localStorage.getItem('email'),
-      "education":this.selectedGraduation,
-      "course":this.selectedGradCourse,
-      "specialization":this.selectSpecialization,
-      "university":this.selectUnivercity,
-      "courseType":this.selectedCorsetype,
-      "passingYear":this.selectPassYear,
-      "gradeSystem":this.selectGrade,
+      "education": this.selectedGraduation,
+      "course": this.selectedGradCourse,
+      "specialization": this.selectSpecialization,
+      "university": this.selectUnivercity,
+      "courseType": this.selectedCorsetype,
+      "passingYear": this.selectPassYear,
+      "gradeSystem": this.selectGrade,
     }
-  
+
     alert(JSON.stringify(this.mssdata));
 
-    this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res:any) => {
-    this.edudetails=res  
-         console.log('COLLEGE',this.edudetails)
-    }) 
+    this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res: any) => {
+      this.edudetails = res
+      console.log('COLLEGE', this.edudetails)
+    })
     this.getProfileEmployee();
   }
-  saveTwelthEducation(){
+  saveTwelthEducation() {
     alert(JSON.stringify(this.mssdata));
-    this.mssdata={
+    this.mssdata = {
       "email": localStorage.getItem('email'),
-      "education":this.selecttwelthEducation,
-      "board":this.selecttwelthBoard,
-      "totalMark":this.selecttwelthTotal,
-      "englishMarks":this.selecttwelthEnglish,
-      "mathsMarks":this.selecttwelthMath,
-      "passingYear":this.selecttwelthPassYear,
-      "schoolMedium":this.selecttwelthMedium,
+      "education": this.selecttwelthEducation,
+      "board": this.selecttwelthBoard,
+      "totalMark": this.selecttwelthTotal,
+      "englishMarks": this.selecttwelthEnglish,
+      "mathsMarks": this.selecttwelthMath,
+      "passingYear": this.selecttwelthPassYear,
+      "schoolMedium": this.selecttwelthMedium,
     }
-    this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res:any) => {
-      this.mssdata=res;
-      console.log('Twelth',this.mssdata)
-    }) 
+    this.TeamService.saveGraduationDetails(this.mssdata).subscribe((res: any) => {
+      this.mssdata = res;
+      console.log('Twelth', this.mssdata)
+    })
     this.getProfileEmployee();
   }
-  saveTenthEducation(){
-    this.mssdata={
+  saveTenthEducation() {
+    this.mssdata = {
       "email": localStorage.getItem('email'),
-      "education":this.selecttenthEducation,
-      "board":this.selecttenthBoard,
-      "totalMark":this.selecttenthTotal,
-      "englishMarks":this.selecttenthEnglish,
-      "mathsMarks":this.selecttenthMath,
-      "passingYear":this.selecttenthPassYear,
-      "schoolMedium":this.selecttenthMedium,
+      "education": this.selecttenthEducation,
+      "board": this.selecttenthBoard,
+      "totalMark": this.selecttenthTotal,
+      "englishMarks": this.selecttenthEnglish,
+      "mathsMarks": this.selecttenthMath,
+      "passingYear": this.selecttenthPassYear,
+      "schoolMedium": this.selecttenthMedium,
     }
-    this.TeamService.saveschoolDetails(this.mssdata).subscribe((res:any) => {
-      this.mssdata=res;
-      console.log('Twelth',this.mssdata)
-    }) 
+    this.TeamService.saveschoolDetails(this.mssdata).subscribe((res: any) => {
+      this.mssdata = res;
+      console.log('Twelth', this.mssdata)
+    })
 
 
   }
-  savepostEducation(){
-    this.mssdata={
+  savepostEducation() {
+    this.mssdata = {
       "email": localStorage.getItem('email'),
-      "education":this.selectedpostGraduation,
-      "course":this.selectedpostCourse,
-      "specialization":this.selectpostSpecialization,
-      "university":this.selectpostUnivercity,
-      "courseType":this.selectpostCorsetype,
-      "passingYear":this.selectpostPassYear,
-      "gradeSystem":this.selectPostGrade,
+      "education": this.selectedpostGraduation,
+      "course": this.selectedpostCourse,
+      "specialization": this.selectpostSpecialization,
+      "university": this.selectpostUnivercity,
+      "courseType": this.selectpostCorsetype,
+      "passingYear": this.selectpostPassYear,
+      "gradeSystem": this.selectPostGrade,
     }
-  
-    this.TeamService.savePosteducationDetails(this.mssdata).subscribe((res:any) => {
-      this.mssdata=res;
-      console.log('COLLEGE',this.mssdata)
-    }) 
+
+    this.TeamService.savePosteducationDetails(this.mssdata).subscribe((res: any) => {
+      this.mssdata = res;
+      console.log('COLLEGE', this.mssdata)
+    })
 
   }
 
