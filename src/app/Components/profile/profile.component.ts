@@ -126,8 +126,6 @@ export class ProfileComponent implements OnInit {
         { 'value': 1971 }, { 'value': 1970 }, { 'value': 1969 }, { 'value': 1968 }, { 'value': 1967 }, { 'value': 1966 },
       ]
   }
-
-
   ngOnInit() {
     this.getProfileEmployee();
     this.getResume();
@@ -178,7 +176,6 @@ export class ProfileComponent implements OnInit {
       var type = event.target.files[i].type;
       var size = event.target.files[i].size;
       var modifiedDate = event.target.files[i].lastModifiedDate;
-
       var fileType = name.split('.').pop();
 
       if (Math.round(size / 1024) <= 20000 && fileType == 'pdf' || fileType == 'docx') {
@@ -215,19 +212,16 @@ export class ProfileComponent implements OnInit {
 
       } else {
         this.errormassage = true;
-
         this.valid = false;
       }
     }
   }
   renameDoc() {
-    var email = this.email_id;
     this.dataDoc = {
       "newFileName":this.Document2,
-      "oldFileName":this.doc1,
+      "oldFileName":this.Document1,
       "id":this.email_id,
     }
-    console.log('RANI',this.dataDoc)
     this.TeamService.RenameDocuments(this.dataDoc).subscribe((res: any) => {
       if(res.responseMessage === 'Success'){
         this.toastr.success('Successfully Updated  !!!');
@@ -242,14 +236,12 @@ export class ProfileComponent implements OnInit {
     this.TeamService.GetResume(formData).subscribe((res: any) => {
       this.ResumeInfo = res;
       this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
-      console.log('HELLO',this.otherDocPathName)
-      this.document = this.otherDocPathName
-      this.doc1 = (this.document[1].split('/')[this.document[1].split('/').length - 1])
     })
   } 
-  EditDocument() {
+  EditDocument(a) {
     this.renameOtherDoc=true
-    this.Document1=this.doc1
+    this.Document2=a
+    this.Document1=a
   }
   removeeditDoc() {
     this.renameOtherDoc = false
@@ -301,12 +293,6 @@ export class ProfileComponent implements OnInit {
       this.mydata = res;
       this.mssdata = res;
       this.sentPrimarySkill = this.ProfileData.primarySkill;
-      // alert(JSON.stringify(this.mssdata.education))
-
-      // console.log('Hello', this.ProfileData);
-      // console.log('#######', this.mssdata);
-
-      // console.log('@@@@@@@@@@@', this.mssdata);
       this.selectedDate = this.mydata.dob;
       this.selectedMale = this.mydata.gender;
       this.selectedAddress = this.mydata.permanentAddress;
@@ -503,8 +489,6 @@ export class ProfileComponent implements OnInit {
       "language": this.sentLanguage,
       "maritalStatus": this.selectedStatus,
     }
-
-    // console.log('Ahdkjh',this.mydata)
     this.TeamService.saveDetails(this.mydata).subscribe((res: any) => {
 
     })

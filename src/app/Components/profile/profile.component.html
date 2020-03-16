@@ -131,7 +131,7 @@
                     <span class="ml-4" style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
                         - Uploaded on - {{ResumeInfo?.date}} <i (click)="downloadOtherDoc(dataone)"
                             class="pi pi-download ml-5 mt-4"></i></span>
-                    <i class="pi pi-pencil ml-2" (click)="EditDocument(i)"></i>
+                    <i class="pi pi-pencil ml-2" (click)="EditDocument(dataone?.split('/')[dataone?.split('/').length-1])"></i>
                     <i class="pi pi-trash ml-2" (click)="DeleteDocument()"></i>
                 </div>
                 <div class="row mb-4 my-3">
@@ -171,18 +171,7 @@
                     [(ngModel)]="Document2">
             </div>
             <div class="row">
-                <span class="rename1 ml-3">Old Document Name:</span>
-                {{doc1}}
-                <!-- <input type="text" autocomplete="off" class="doc ml-3 my-2" placeholder="Document name"
-                    [(ngModel)]="Document1"> -->
-                <!-- <div>OLD Document Name:</div>
-                <div *ngFor="let dataone of otherDocPathName">
-                    <span style="color: #4A90E2;">{{dataone?.split('/')[dataone?.split('/').length-1]}}
-                    </span>
-                </div> -->
-            </div>
-            <div class="row">
-                <button type="button" (click)="renameDoc(i)" class="btn btn-primary buttons my-3 ml-4">Save </button>
+                <button type="button" (click)="renameDoc()" class="btn btn-primary buttons my-3 ml-4">Save </button>
             </div>
 
         </p-dialog>
@@ -1326,14 +1315,6 @@
                 <div class="col-sm-1"></div>
             </div>
         </p-dialog>
-        <!-- <div class="row">
-            <div class=" ml-3 mt-3 card cards">
-                <div class="mt-3 names  mb-3 header">Projects <span class="detail mr-2" (click)="addCertification()">ADD
-                        PROJECT</span>
-                </div>
-            </div>
-        </div> -->
-
         <p-dialog [(visible)]="displayDocs" [style]="{width: '50%'}">
             <p-header class="dialogHeader">
                 <div class="row ">
@@ -1397,7 +1378,6 @@
                 </div>
             </div>
         </p-dialog>
-
         <div class="row">
             <div class=" ml-3 mt-3 card cards">
                 <div class="mt-3 names  mb-3 header ml-5">Certification
@@ -1405,140 +1385,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-    <!-- <div class=" ml-3 mt-3 card cards">
-                    <div class="mt-3 names  mb-3 header">IT Skill <span class="detail mr-2">ADD DETAILS</span>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-2 skill">Skill</div>
-                        <div class="col-sm-2 skill">Version</div>
-                        <div class="col-sm-2 skill">Last used</div>
-                        <div class="col-sm-3 skill">Experience</div>
-                        <div class="col-sm-2"></div>
-                    </div>
-                    <div class="row mr-5 mt-2">
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-2 attach ">Core Java</div>
-                        <div class="col-sm-2 attach">Java 11</div>
-                        <div class="col-sm-2 attach">Last used</div>
-                        <div class="col-sm-3 attach">0 year 0 month</div>
-                        <div class="col-sm-2 "></div>
-                    </div>
-
-                </div> -->
-    <!-- <div class="row">
-                <div class=" ml-3 mt-3 card cards">
-                    <div class="mt-3 names  mb-3 header">Project <span class="detail mr-2">ADD PROJECT</span>
-                    </div>
-
-                    <div class="ml-3 degree">Project Title
-                        <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
-                    </div>
-                    <div class="ml-3 attach"><span>Client</span></div>
-                    <div class="ml-3 attach">Tag this project with your Employment/Education</div>
-                    <div class="ml-3 attach"><span>2018 To 2019</span></div>
-
-                    <div class="ml-3 attach mb-2"><span>details of Project</span></div>
-
-                </div>
-
-            </div> -->
-    <!-- <div class="row">
-                <div class=" ml-3 mt-3 card cards">
-                    <div class="mt-3 names  mb-3 header">Profile Summary
-                    </div>
-
-                    <div class="ml-3 degree">Add Profile Summary
-                        <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
-                    </div>
-                    <div class="ml-3 attach mb-2"><span>Your Profile Summary should mention the highlights of
-                            your career and education, what your professional interests are,
-                            and what kind of a career you are looking for. Write a meaningful
-                            summary of more than 50 characters.
-                        </span></div>
-
-
-                </div>
-
-            </div> -->
-
-    <!-- <div class="row">
-                <div class=" ml-3 mt-3 card cards">
-                    <div class="mt-3 names  mb-3 header">Desired Career Profile
-                        <span class="icon"><i class="pi pi-pencil mt-2"></i></span>
-                    </div>
-                    <div class="row mt-3">
-
-                        <div class="col-sm-5"><span class="ml-4 summary">Industry</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 summary">Functional Area</div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-5"><span class="ml-4 attach">IT-Software/Software Services</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 attach">IT Software - Other</div>
-                    </div>
-                    <div class="row mt-3">
-
-                        <div class="col-sm-5"><span class="ml-4 summary">Role</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 summary">Job Type</div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-5"><span class="ml-4 attach">Software Developer</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 attach">Contractual, Permanent</div>
-                    </div>
-
-                    <div class="row mt-3">
-
-                        <div class="col-sm-5"><span class="ml-4 summary">Employment Type</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 summary">Desired Shift</div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-5"><span class="ml-4 attach">Full Time</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 attach">Day</div>
-                    </div>
-                    <div class="row mt-3">
-
-                        <div class="col-sm-5"><span class="ml-4 summary">Availability to Join</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 summary">Expected Salary</div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-5"><span class="ml-4 attach"><span>Feb</span>, <span>2020</span></span>
-                        </div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 attach">INR <span>1 Lakh</span>(s)<span> 5 Thousand</span></div>
-                    </div>
-                    <div class="row mt-3">
-
-                        <div class="col-sm-5"><span class="ml-4 summary">Desired Location</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 summary">Desired Industry</div>
-                    </div>
-                    <div class="row mb-2">
-
-                        <div class="col-sm-5"><span class="ml-4 attach">Pune</span></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-5 attach">Animation</div>
-                    </div>
-                </div>
-
-            </div> -->
-
     <div class="col-sm-2"></div>
 </div>
