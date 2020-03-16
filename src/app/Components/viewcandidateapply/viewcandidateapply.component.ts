@@ -96,6 +96,7 @@ export class ViewcandidateapplyComponent implements OnInit {
     }
     this.TeamService.AssignEmployeeToInterview(this.data).subscribe((res: any) => {
       this.toastr.success('Successfully Assign Employee !!!');
+      this.displayjob = false;
     })
   }
   ngOnInit() {
@@ -127,7 +128,6 @@ export class ViewcandidateapplyComponent implements OnInit {
       if (this.ResumeInfo != null) {
         this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
       }
-
     })
 
   }

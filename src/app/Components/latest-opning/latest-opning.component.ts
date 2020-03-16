@@ -197,7 +197,8 @@ export class LatestOpningComponent implements OnInit {
       relevantExpInYears: ['', Validators.required],
       status: [''],
       jobStatus: [''],
-
+      title: [''],
+      location: [''],
 
     })
 
@@ -291,6 +292,7 @@ export class LatestOpningComponent implements OnInit {
 
     this.mydata = {
       "jobId": this.id,
+      "location": this.createJobForm.value.location,
       "designation": this.createJobForm.value.designation,
       "experienceInYears": this.createJobForm.value.experienceInYears,
       "noticePeriod": this.createJobForm.value.noticePeriod,
@@ -305,6 +307,7 @@ export class LatestOpningComponent implements OnInit {
 
 
     }
+    console.log(this.mydata)
     this.TeamService.CreateJob(this.mydata).subscribe(res => {
       this.spinner = false;
       this.toastr.success('Successfully created job !!!');

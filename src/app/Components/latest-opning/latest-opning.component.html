@@ -53,11 +53,11 @@
                                 <span class="text-primary">{{id}}</span>
                             </div>
                             <div class="col-sm-2 nam_e">
-                                <label>Title :</label>
+                                <label>Designation :</label>
                             </div>
                             <div class="col-sm-4">
                                 <input type="text" autocomplete="off" class="form-control text-centre box1"
-                                    placeholder="" name="desgn" formControlName="title">
+                                    placeholder="" name="desgn" formControlName="designation">
 
                             </div>
                         </div>
@@ -67,15 +67,15 @@
                             </div>
                             <div class="col-sm-4">
                                 <input type="text" autocomplete="off" class="form-control text-centre box1"
-                                    placeholder="" name="desgn" formControlName="location">
+                                    placeholder="" name="location" formControlName="location">
 
                             </div>
                             <div class="col-sm-2 nam_e">
-                                <label>Designation :</label>
+                                <label>Education :</label>
                             </div>
                             <div class="col-sm-4">
                                 <input type="text" autocomplete="off" class="form-control text-centre box1"
-                                    placeholder="" name="desgn" formControlName="designation">
+                                    placeholder="...." name="jobstatus" formControlName="education">
 
                             </div>
                         </div>
@@ -164,14 +164,6 @@
                                     <option *ngFor="let n of notice" [value]="n.notes">{{n.notes}}</option>
 
                                 </select>
-                            </div>
-                            <div class="col-sm-2 nam_e">
-                                <label>Education :</label>
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" autocomplete="off" class="form-control text-centre box1"
-                                    placeholder="...." name="jobstatus" formControlName="education">
-
                             </div>
                         </div>
                         <label class="font-weight-bold notice">Add Skill's</label>
@@ -455,13 +447,21 @@
                         <span class="text-primary">{{id}}</span>
                     </div>
                     <div class="col-sm-2 nam_e">
+                        <label>Designation :</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
+                            name="desgn" formControlName="designation">
+
+                    </div>
+                    <!-- <div class="col-sm-2 nam_e">
                         <label>Title :</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
                             name="desgn" formControlName="title">
 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row my-2">
                     <div class="col-sm-2 nam_e">
@@ -473,13 +473,21 @@
 
                     </div>
                     <div class="col-sm-2 nam_e">
+                        <label>Education :</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder="...."
+                            name="jobstatus" formControlName="education">
+
+                    </div>
+                    <!-- <div class="col-sm-2 nam_e">
                         <label>Designation :</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder=""
                             name="desgn" formControlName="designation">
 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row my-2">
                     <div class="col-sm-2 nam_e">
@@ -566,14 +574,14 @@
 
                         </select>
                     </div>
-                    <div class="col-sm-2 nam_e">
+                    <!-- <div class="col-sm-2 nam_e">
                         <label>Education :</label>
                     </div>
                     <div class="col-sm-4">
                         <input type="text" autocomplete="off" class="form-control text-centre box1" placeholder="...."
                             name="jobstatus" formControlName="education">
 
-                    </div>
+                    </div> -->
                 </div>
                 <label class="font-weight-bold notice">Add Skill's</label>
                 <div class="row my-2">
