@@ -70,6 +70,12 @@ export class TeamService {
     });
     return this.http.post(environment.renameDocument, data, { headers: headers });
   }
+  DeleteDocuments(data: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(environment.deleteDocument, data, { headers: headers });
+  }
   saveGraduationDetails(data: any) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'

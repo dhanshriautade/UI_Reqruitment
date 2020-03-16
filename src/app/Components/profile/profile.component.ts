@@ -105,6 +105,7 @@ export class ProfileComponent implements OnInit {
   newDocName
   Document1
   Document2
+  deletedoc
   constructor(public TeamService: TeamService, private http: HttpClient, private datePipe: DatePipe,
     private toastr: ToastrService) {
     this.email_id = localStorage.getItem('email');
@@ -166,7 +167,7 @@ export class ProfileComponent implements OnInit {
           this.fileUploadProgress = 'Uploading Completed';
           console.log(events.body);
           this.getResume();
-}
+        }
       })
   }
   uploadResume(event: any) {
@@ -218,16 +219,31 @@ export class ProfileComponent implements OnInit {
   }
   renameDoc() {
     this.dataDoc = {
-      "newFileName":this.Document2,
-      "oldFileName":this.Document1,
-      "id":this.email_id,
+      "newFileName": this.Document2,
+      "oldFileName": this.Document1,
+      "id": this.email_id,
     }
     this.TeamService.RenameDocuments(this.dataDoc).subscribe((res: any) => {
-      if(res.responseMessage === 'Success'){
+      if (res.responseMessage === 'Success') {
         this.toastr.success('Successfully Updated  !!!');
-        this.renameOtherDoc=false
-        }
-    }) 
+        this.renameOtherDoc = false
+      }
+    })
+    this.getResume();
+  }
+  DeleteDocument(a) {
+    this.deletedoc = {
+      "id": this.email_id,
+      "downloadDocPath": a
+    }
+    console.log(this.deletedoc)
+    this.TeamService.DeleteDocuments(this.deletedoc).subscribe((res: any) => {
+      if (res.responseMessage === 'Success') {
+        this.toastr.success('Successfully Deleted  !!!');
+        this.renameOtherDoc = false
+      }
+    })
+    this.getResume();
   }
   getResume() {
     const formData = new FormData();
@@ -237,11 +253,11 @@ export class ProfileComponent implements OnInit {
       this.ResumeInfo = res;
       this.otherDocPathName = this.ResumeInfo.otherDocumentPaths;
     })
-  } 
+  }
   EditDocument(a) {
-    this.renameOtherDoc=true
-    this.Document2=a
-    this.Document1=a
+    this.renameOtherDoc = true
+    this.Document2 = a
+    this.Document1 = a
   }
   removeeditDoc() {
     this.renameOtherDoc = false
