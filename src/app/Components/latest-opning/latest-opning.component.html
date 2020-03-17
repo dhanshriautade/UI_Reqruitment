@@ -297,69 +297,52 @@
                     <div class=" main my-3 ">
                         <span class="wel pl-2 mt-4"> Account Summary:</span>
                         <div class="row">
-                            <div class="col-sm-3">
-                                <kendo-chart>
+                            <div class="col-sm-6">
+                                <kendo-chart [style.height.px]="300">
                                     <ng-template kendoChartDonutCenterTemplate>
-                                        007
+                                        {{data.length}}
                                     </ng-template>
                                     <kendo-chart-series>
-                                        <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind"
+                                        <kendo-chart-series-item [autoFit]="autofit" type="donut" [data]="jobopening"
+                                            categoryField="kind" field="share">
+                                            <kendo-chart-series-item-labels position="outsideEnd" color="#000"
+                                                [content]="labelContent">
+                                            </kendo-chart-series-item-labels>
+                                        </kendo-chart-series-item>
+                                    </kendo-chart-series>
+                                    <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+                                </kendo-chart>
+                            </div>
+                            <!-- <div class="col-sm-3">
+                                <kendo-chart>
+                                    <ng-template kendoChartDonutCenterTemplate>
+                                        {{data.length}}
+                                    </ng-template>
+                                    <kendo-chart-series>
+                                        <kendo-chart-series-item type="donut" [data]="jobopening" categoryField="kind"
                                             field="share">
-                                            <kendo-chart-series-item-labels [content]="labelContent" [visible]="false"
+                                            <kendo-chart-series-item-labels [content]="labelContent" [visible]="true"
                                                 color="#fff" background="none">
                                             </kendo-chart-series-item-labels>
                                         </kendo-chart-series-item>
                                     </kendo-chart-series>
                                     <kendo-chart-legend [visible]="true"></kendo-chart-legend>
                                 </kendo-chart>
-                            </div>
-                            <div class="col-sm-3">
-
-                                <kendo-chart>
+                            </div> -->
+                            <div class="col-sm-6">
+                                <kendo-chart [style.height.px]="300">
                                     <ng-template kendoChartDonutCenterTemplate>
-                                        007
+                                        {{data.length}}
                                     </ng-template>
                                     <kendo-chart-series>
-                                        <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind"
-                                            field="share">
-                                            <kendo-chart-series-item-labels [content]="labelContent" [visible]="false"
-                                                color="#fff" background="none">
+                                        <kendo-chart-series-item [autoFit]="autofit" type="donut" [data]="datadonut"
+                                            categoryField="kind" field="share">
+                                            <kendo-chart-series-item-labels position="outsideEnd" color="#000"
+                                                [content]="labelContent">
                                             </kendo-chart-series-item-labels>
                                         </kendo-chart-series-item>
                                     </kendo-chart-series>
-                                    <kendo-chart-legend [visible]="true"></kendo-chart-legend>
-                                </kendo-chart>
-                            </div>
-                            <div class="col-sm-3">
-                                <kendo-chart>
-                                    <ng-template kendoChartDonutCenterTemplate>
-                                        007
-                                    </ng-template>
-                                    <kendo-chart-series>
-                                        <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind"
-                                            field="share">
-                                            <kendo-chart-series-item-labels [content]="labelContent" [visible]="false"
-                                                color="#fff" background="none">
-                                            </kendo-chart-series-item-labels>
-                                        </kendo-chart-series-item>
-                                    </kendo-chart-series>
-                                    <kendo-chart-legend [visible]="true"></kendo-chart-legend>
-                                </kendo-chart>
-                            </div>
-                            <div class="col-sm-3">
-                                <kendo-chart>
-                                    <ng-template kendoChartDonutCenterTemplate>
-                                        007
-                                    </ng-template>
-                                    <kendo-chart-series>
-                                        <kendo-chart-series-item type="donut" [data]="datadonut" categoryField="kind"
-                                            field="share">
-                                            <kendo-chart-series-item-labels [content]="labelContent" [visible]="false"
-                                                color="#fff" background="none">
-                                            </kendo-chart-series-item-labels>
-                                        </kendo-chart-series-item>
-                                    </kendo-chart-series>
-                                    <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+                                    <kendo-chart-legend [visible]="false"></kendo-chart-legend>
                                 </kendo-chart>
                             </div>
                         </div>
@@ -407,7 +390,7 @@
                                 <tbody>
                                     <tr *ngFor="let job of getAllJob| paginate: config   | filter:term  ;index as i">
                                         <td scope="row" class="name">{{i+1}}</td>
-                                        <td class="name">Java Lead</td>
+                                        <td class="name">{{job.designation}}</td>
                                         <td align="center" class="blue text-primary" (click)="goToJob(job.jobId)">
                                             {{job.jobId}}</td>
                                         <td align="center" class="name">05</td>

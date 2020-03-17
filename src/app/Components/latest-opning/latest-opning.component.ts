@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TeamService } from 'src/services/team.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-latest-opning',
@@ -10,27 +11,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./latest-opning.component.scss']
 })
 export class LatestOpningComponent implements OnInit {
-  
+
   public datadonut: any[] = [
     {
-      kind: 'Completed', share: 0.175,  color:'#A3A0FB' 
-    }, 
-    {
-      kind: 'On Hold', share: 0.175 , color:'#6DD8FD'
+      kind: 'java', share: 0.200, color: '#A3A0FB'
     },
-     {
-      kind: 'In Progress', share: 0.175 ,  color:'#EB8172'
-    }, 
     {
-      kind: ' Progress', share: 0.175 ,  color:'#F7D982'
-    }, 
-    ];
-  
-    public labelContent(e: any): string {
-      return e.category;
-    }
+      kind: 'Angular', share: 0.175, color: '#6DD8FD'
+    },
+    {
+      kind: 'Andriod', share: 0.175, color: '#EB8172'
+    },
+    {
+      kind: 'IOS', share: 0.175, color: '#F7D982'
+    },
+  ];
 
- currentStatus = true;
+
+  public labelContent(e: any): string {
+    return e.category;
+  }
+
+  currentStatus = true;
   display = false;
   displayPreview = false;
   displayp = false;
@@ -42,14 +44,17 @@ export class LatestOpningComponent implements OnInit {
   spinner = false;
   term;
   charts;
-  id:string;
+  id: string;
   deptartment: {}[];
   skillArray = [];
   role;
   EditMydata;
   dataPrivew
   editdisplay = false;
-  
+  computer
+  ENTC
+  entccount
+  Mechanical
   createJobForm = new FormGroup({
 
   })
@@ -64,7 +69,7 @@ export class LatestOpningComponent implements OnInit {
   name: {}[];
   constructor(private formBuilder: FormBuilder, public router: Router, private toastr: ToastrService, public TeamService: TeamService) {
 
-    this.role =localStorage.getItem('role');
+    this.role = localStorage.getItem('role');
 
     this.notice = [
       { 'notes': 'one week' }, { 'notes': ' 15 days' }, { 'notes': '1 month' }, { 'notes': ' 2 month' }, { 'notes': '3 month' }, { 'notes': 'other' }
@@ -74,57 +79,82 @@ export class LatestOpningComponent implements OnInit {
         , { 'dept': 'Electrical' }, { 'dept': 'Civil' }, { 'dept': 'Electronic' }
 
       ]
-   
   }
-  createjob(){
-    this.display = true;
-    this.skillArray =  [];
-    this.TeamService.getjobId().subscribe((res:string) => {
-        this.id= res;
-     });
-  }
-  DeleteEmployee(id){
-    this.TeamService.DeletejobId(id).subscribe((res:string) => {
-      this.id= res;
-   });
-   this.getAllJobDetail();
-  }
-  EditEmployee(i:any){
-       this.editdisplay = true;
-       this.TeamService.Getalljob().subscribe(res => {
-        this.data = res;
-        console.log(this.data)
-        console.log(i)
-        console.log(this.data[i])
+  public autofit = true;
+  public jobopening: any[] = [
+    {
+      kind: 'IT', share: 10, color: '#F7D982'
+    },
+    {
+      kind: 'Computer', share: 4, color: '#A3A0FB'
+    },
+    {
+      kind: 'ENTC', share: 3, color: '#6DD8FD'
+    },
+    {
+      kind: 'Mechanical', share: 8, color: '#EB8172'
+    },
+    
+  ];
+
+  getcomputercount() {
+    this.data = "ENTC"
+    this.TeamService.searchDepartmentWiseJob(this.data).subscribe((res: any) => {
+      this.entccount=res.length
+      console.log('@@',this.entccount)
+    })
   
-      })
-       this.id = this.data[i].jobId;
-       this.skillArray = this.data[i].skills;
-       this.EditJobForm.get('title').setValue(this.data[i].jobTitle);
-       this.EditJobForm.get('location').setValue(this.data[i].location);
-       this.EditJobForm.get('designation').setValue(this.data[i].designation);
-       this.EditJobForm.get('experienceInYears').setValue(this.data[i].experienceInYears);    
-       this.EditJobForm.get('relevantExpInYears').setValue(this.data[i].relevantExpInYears);
-       this.EditJobForm.get('minPackage').setValue(this.data[i].minPackage  );
-       this.EditJobForm.get('maxPackage').setValue(this.data[i].maxPackage);    
-       this.EditJobForm.get('department').setValue(this.data[i].department);
-       this.EditJobForm.get('status').setValue(this.data[i].status);
-       this.EditJobForm.get('jobStatus').setValue(this.data[i].jobStatus);    
-       this.EditJobForm.get('noticePeriod').setValue(this.data[i].noticePeriod);
-       this.EditJobForm.get('education').setValue(this.data[i].requiredEducation);
-       this.EditJobForm.get('jobDescription').setValue(this.data[i].jobDescription);
   }
-  removeeditWindow(){
+
+  createjob() {
+    this.display = true;
+    this.skillArray = [];
+    this.TeamService.getjobId().subscribe((res: string) => {
+      this.id = res;
+    });
+  }
+  DeleteEmployee(id) {
+    this.TeamService.DeletejobId(id).subscribe((res: string) => {
+      this.id = res;
+    });
+    this.getAllJobDetail();
+  }
+  EditEmployee(i: any) {
+    this.editdisplay = true;
+    this.TeamService.Getalljob().subscribe(res => {
+      this.data = res;
+      // console.log(this.data)
+      // console.log(i)
+      // console.log(this.data[i])
+
+    })
+    this.id = this.data[i].jobId;
+    this.skillArray = this.data[i].skills;
+    this.EditJobForm.get('title').setValue(this.data[i].jobTitle);
+    this.EditJobForm.get('location').setValue(this.data[i].location);
+    this.EditJobForm.get('designation').setValue(this.data[i].designation);
+    this.EditJobForm.get('experienceInYears').setValue(this.data[i].experienceInYears);
+    this.EditJobForm.get('relevantExpInYears').setValue(this.data[i].relevantExpInYears);
+    this.EditJobForm.get('minPackage').setValue(this.data[i].minPackage);
+    this.EditJobForm.get('maxPackage').setValue(this.data[i].maxPackage);
+    this.EditJobForm.get('department').setValue(this.data[i].department);
+    this.EditJobForm.get('status').setValue(this.data[i].status);
+    this.EditJobForm.get('jobStatus').setValue(this.data[i].jobStatus);
+    this.EditJobForm.get('noticePeriod').setValue(this.data[i].noticePeriod);
+    this.EditJobForm.get('education').setValue(this.data[i].requiredEducation);
+    this.EditJobForm.get('jobDescription').setValue(this.data[i].jobDescription);
+  }
+  removeeditWindow() {
     this.editdisplay = false;
   }
-  EditJobData(){
+  EditJobData() {
     this.EditMydata = {
       "jobId": this.id,
       "designation": this.EditJobForm.value.designation,
       "experienceInYears": this.EditJobForm.value.experienceInYears,
       "noticePeriod": this.EditJobForm.value.noticePeriod,
-      "jobTitle":this.EditJobForm.value.title,
-      "location":this.EditJobForm.value.location,
+      "jobTitle": this.EditJobForm.value.title,
+      "location": this.EditJobForm.value.location,
       "minPackage": this.EditJobForm.value.minPackage,
       "maxPackage": this.EditJobForm.value.maxPackage,
       "relevantExpInYears": this.EditJobForm.value.relevantExpInYears,
@@ -133,7 +163,7 @@ export class LatestOpningComponent implements OnInit {
       "jobDescription": this.EditJobForm.value.jobDescription,
       "status": this.EditJobForm.value.status,
       "jobStatus": this.EditJobForm.value.jobStatus,
-      "requiredEducation":this.EditJobForm.value.education,
+      "requiredEducation": this.EditJobForm.value.education,
     }
 
     this.TeamService.EditJob(this.EditMydata).subscribe(res => {
@@ -145,7 +175,7 @@ export class LatestOpningComponent implements OnInit {
     });
   }
 
-  previewjob(){
+  previewjob() {
     //  console.log(this.createJobForm.get('designation').value);
     this.displayp = true;
 
@@ -168,21 +198,23 @@ export class LatestOpningComponent implements OnInit {
   }
 
   removeWindow() {
-    this.display=false;
+    this.display = false;
   }
   closeWindow() {
     this.display = false;
     this.currentStatus = true;
   }
-  removePriview(){
-    this.displayp=false
-    }
-  getAllJobDetail(){
-    this.TeamService.Getalljob().subscribe(res => {
+  removePriview() {
+    this.displayp = false
+  }
+  getAllJobDetail() {
+    this.TeamService.Getalljob().subscribe((res: any) => {
       this.data = res;
-        })
+      // console.log('**************',this.data.length)
+    })
   }
   ngOnInit() {
+    this.getcomputercount();
     this.getAllJobDetail();
     this.createJobForm = this.formBuilder.group({
       jobId: [''],
@@ -203,7 +235,7 @@ export class LatestOpningComponent implements OnInit {
     })
 
     this.TeamService.Getalljob().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.getAllJob = res;
       this.config = {
         itemsPerPage: 6,
@@ -233,7 +265,7 @@ export class LatestOpningComponent implements OnInit {
     })
   }
   goToJob(id) {
-    localStorage.setItem('jobByIdDetail',id);
+    localStorage.setItem('jobByIdDetail', id);
     this.router.navigateByUrl('/User/job/detail');
   }
   goToAdmin() {
@@ -241,10 +273,9 @@ export class LatestOpningComponent implements OnInit {
 
   }
   addskill() {
-    if(this.createJobForm.get('skills').value == '')
-    {
-        this.toastr.error('Please Add Skill');
-         return 0 ;
+    if (this.createJobForm.get('skills').value == '') {
+      this.toastr.error('Please Add Skill');
+      return 0;
 
     }
     this.skillArray.push(this.createJobForm.get('skills').value);
@@ -277,16 +308,17 @@ export class LatestOpningComponent implements OnInit {
   showDialog() {
     this.display = false;
   }
-  onChange(deviceValue:any){
+  onChange(deviceValue: any) {
     console.log(deviceValue);
     this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe(res => {
+     
     })
   }
   selectedDepartment(selectedDepartment: any) {
     throw new Error("Method not implemented.");
   }
   onSubmit() {
-    this.display=false;
+    this.display = false;
     this.submitted = true;
     this.spinner = true;
 
