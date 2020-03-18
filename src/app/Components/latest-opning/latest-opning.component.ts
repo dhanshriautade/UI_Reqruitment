@@ -37,6 +37,7 @@ export class LatestOpningComponent implements OnInit {
   softwareCount
   embededCount
   mechanicalCount
+  jobid
   createJobForm = new FormGroup({
 
   })
@@ -57,7 +58,7 @@ export class LatestOpningComponent implements OnInit {
       { 'notes': 'one week' }, { 'notes': ' 15 days' }, { 'notes': '1 month' }, { 'notes': ' 2 month' }, { 'notes': '3 month' }, { 'notes': 'other' }
 
     ],
-      this.deptartment = [{ 'dept': 'Software' }, { 'dept': 'Embedded' }, { 'dept': 'Mechanical' }  ]
+      this.deptartment = [{ 'dept': 'Software' }, { 'dept': 'Embedded' }, { 'dept': 'Mechanical' }]
   }
   public autofit = true;
   public datadonut: any[] = [
@@ -79,9 +80,15 @@ export class LatestOpningComponent implements OnInit {
   }
   onChange(deviceValue: any) {
     console.log(deviceValue);
-    this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe((res:any) => {
-      this.jobopeningcount=res.length
-      console.log('RANI',this.jobopeningcount)
+    this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe((res: any) => {
+      this.jobopeningcount = res.length
+      console.log('RANI', this.jobopeningcount)
+    })
+  }
+  getappliedCountagainstJobid() {
+    this.jobid = "JOB_M1vZ"
+    this.TeamService.getappliedCountagainstJobid(this.jobid).subscribe((res: any) => {
+      console.log('@@@@', res)
     })
   }
   getjobcount() {
@@ -90,13 +97,13 @@ export class LatestOpningComponent implements OnInit {
       this.softwareCount = res.length
       this.getcount = [
         {
-          kind: 'Software:'+this.softwareCount, share: this.softwareCount, color: '#EB8172'
+          kind: 'Software:' + this.softwareCount, share: this.softwareCount, color: '#EB8172'
         },
         {
-          kind: 'Embedded:'+this.embededCount, share: this.embededCount, color: '#A3A0FB'
+          kind: 'Embedded:' + this.embededCount, share: this.embededCount, color: '#A3A0FB'
         },
         {
-          kind: 'Mechanical:'+this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
+          kind: 'Mechanical:' + this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
         },
       ];
     })
@@ -105,13 +112,13 @@ export class LatestOpningComponent implements OnInit {
       this.embededCount = res.length
       this.getcount = [
         {
-          kind: 'Software:'+this.softwareCount, share: this.softwareCount, color: '#EB8172'
+          kind: 'Software:' + this.softwareCount, share: this.softwareCount, color: '#EB8172'
         },
         {
-          kind: 'Embedded:'+this.embededCount, share: this.embededCount, color: '#A3A0FB'
+          kind: 'Embedded:' + this.embededCount, share: this.embededCount, color: '#A3A0FB'
         },
         {
-          kind: 'Mechanical:'+this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
+          kind: 'Mechanical:' + this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
         },
       ];
     })
@@ -120,13 +127,13 @@ export class LatestOpningComponent implements OnInit {
       this.mechanicalCount = res.length
       this.getcount = [
         {
-          kind: 'Software:'+this.softwareCount, share: this.softwareCount, color: '#EB8172'
+          kind: 'Software:' + this.softwareCount, share: this.softwareCount, color: '#EB8172'
         },
         {
-          kind: 'Embedded:'+this.embededCount, share: this.embededCount, color: '#A3A0FB'
+          kind: 'Embedded:' + this.embededCount, share: this.embededCount, color: '#A3A0FB'
         },
         {
-          kind: 'Mechanical:'+this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
+          kind: 'Mechanical:' + this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
         },
       ];
     })
@@ -240,6 +247,7 @@ export class LatestOpningComponent implements OnInit {
     })
   }
   ngOnInit() {
+    this.getappliedCountagainstJobid()
     this.getjobcount()
     this.getAllJobDetail();
     this.createJobForm = this.formBuilder.group({

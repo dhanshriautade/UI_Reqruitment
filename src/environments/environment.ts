@@ -43,6 +43,7 @@ export const environment = {
   allotTimetoJobseeker: base_url + 'allotTime',
   renameDocument: base_url + 'renameCandidateDocument',
   deleteDocument: base_url + 'deleteSpecificDocument',
+  getappliedCountagainstJobid: base_url + 'candidatecountagainstjobid?jobId=',
   //Notification
   getnotification: notify_url + 'getAllNotification',
   getNotificationReminder: notify_url +'hrreminder',
