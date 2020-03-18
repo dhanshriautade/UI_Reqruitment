@@ -15,16 +15,11 @@
                     </div>
                     <div class="col-sm-2 ">
                         <div class="main ml-2 p-2"><img class="img2 ml-1" src="../../../assets/department.png" alt="">
-
                             <select class="depts my-0" (change)="onChange($event.target.value)">
                                 <option disabled="true" display="true">Department</option>
-                                <option>IT</option>
-                                <option>computer</option>
-                                <option>Computer</option>
+                                <option>Software</option>
+                                <option>Embedded</option>
                                 <option>Mechanical</option>
-                                <option>ENTC</option>
-                                <option>Electrical</option>
-
                             </select></div>
                     </div>
                     <div class="col-sm-4 ">
@@ -303,7 +298,7 @@
                                         {{data.length}}
                                     </ng-template>
                                     <kendo-chart-series>
-                                        <kendo-chart-series-item [autoFit]="autofit" type="donut" [data]="jobopening"
+                                        <kendo-chart-series-item [autoFit]="autofit" type="donut" [data]="getcount"
                                             categoryField="kind" field="share">
                                             <kendo-chart-series-item-labels position="outsideEnd" color="#000"
                                                 [content]="labelContent">
@@ -332,7 +327,7 @@
                             <div class="col-sm-6">
                                 <kendo-chart [style.height.px]="300">
                                     <ng-template kendoChartDonutCenterTemplate>
-                                        {{data.length}}
+                                       {{jobopeningcount}}
                                     </ng-template>
                                     <kendo-chart-series>
                                         <kendo-chart-series-item [autoFit]="autofit" type="donut" [data]="datadonut"

@@ -11,27 +11,6 @@ import { share } from 'rxjs/operators';
   styleUrls: ['./latest-opning.component.scss']
 })
 export class LatestOpningComponent implements OnInit {
-
-  public datadonut: any[] = [
-    {
-      kind: 'java', share: 0.200, color: '#A3A0FB'
-    },
-    {
-      kind: 'Angular', share: 0.175, color: '#6DD8FD'
-    },
-    {
-      kind: 'Andriod', share: 0.175, color: '#EB8172'
-    },
-    {
-      kind: 'IOS', share: 0.175, color: '#F7D982'
-    },
-  ];
-
-
-  public labelContent(e: any): string {
-    return e.category;
-  }
-
   currentStatus = true;
   display = false;
   displayPreview = false;
@@ -41,11 +20,13 @@ export class LatestOpningComponent implements OnInit {
   notice;
   mydata
   data;
+  jobopeningcount
   spinner = false;
   term;
   charts;
   id: string;
   deptartment: {}[];
+  getcount: {}[]
   skillArray = [];
   role;
   EditMydata;
@@ -53,8 +34,9 @@ export class LatestOpningComponent implements OnInit {
   editdisplay = false;
   computer
   ENTC
-  entccount
-  Mechanical
+  softwareCount
+  embededCount
+  mechanicalCount
   createJobForm = new FormGroup({
 
   })
@@ -75,35 +57,79 @@ export class LatestOpningComponent implements OnInit {
       { 'notes': 'one week' }, { 'notes': ' 15 days' }, { 'notes': '1 month' }, { 'notes': ' 2 month' }, { 'notes': '3 month' }, { 'notes': 'other' }
 
     ],
-      this.deptartment = [{ 'dept': 'IT' }, { 'dept': 'Computer' }, { 'dept': 'Meachanical' }, { 'dept': 'ENTC' }
-        , { 'dept': 'Electrical' }, { 'dept': 'Civil' }, { 'dept': 'Electronic' }
-
-      ]
+      this.deptartment = [{ 'dept': 'Software' }, { 'dept': 'Embedded' }, { 'dept': 'Mechanical' }  ]
   }
   public autofit = true;
-  public jobopening: any[] = [
+  public datadonut: any[] = [
     {
-      kind: 'IT', share: 10, color: '#F7D982'
+      kind: 'java', share: 0.200, color: '#A3A0FB'
     },
     {
-      kind: 'Computer', share: 4, color: '#A3A0FB'
+      kind: 'Angular', share: 0.175, color: '#6DD8FD'
     },
     {
-      kind: 'ENTC', share: 3, color: '#6DD8FD'
+      kind: 'Andriod', share: 0.175, color: '#EB8172'
     },
     {
-      kind: 'Mechanical', share: 8, color: '#EB8172'
+      kind: 'IOS', share: 0.175, color: '#F7D982'
     },
-    
   ];
-
-  getcomputercount() {
-    this.data = "ENTC"
-    this.TeamService.searchDepartmentWiseJob(this.data).subscribe((res: any) => {
-      this.entccount=res.length
-      console.log('@@',this.entccount)
+  public labelContent(e: any): string {
+    return e.category;
+  }
+  onChange(deviceValue: any) {
+    console.log(deviceValue);
+    this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe((res:any) => {
+      this.jobopeningcount=res.length
+      console.log('RANI',this.jobopeningcount)
     })
-  
+  }
+  getjobcount() {
+    this.data = "Software"
+    this.TeamService.searchDepartmentWiseJob(this.data).subscribe((res: any) => {
+      this.softwareCount = res.length
+      this.getcount = [
+        {
+          kind: 'Software:'+this.softwareCount, share: this.softwareCount, color: '#EB8172'
+        },
+        {
+          kind: 'Embedded:'+this.embededCount, share: this.embededCount, color: '#A3A0FB'
+        },
+        {
+          kind: 'Mechanical:'+this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
+        },
+      ];
+    })
+    this.data = "Embedded"
+    this.TeamService.searchDepartmentWiseJob(this.data).subscribe((res: any) => {
+      this.embededCount = res.length
+      this.getcount = [
+        {
+          kind: 'Software:'+this.softwareCount, share: this.softwareCount, color: '#EB8172'
+        },
+        {
+          kind: 'Embedded:'+this.embededCount, share: this.embededCount, color: '#A3A0FB'
+        },
+        {
+          kind: 'Mechanical:'+this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
+        },
+      ];
+    })
+    this.data = "Mechanical"
+    this.TeamService.searchDepartmentWiseJob(this.data).subscribe((res: any) => {
+      this.mechanicalCount = res.length
+      this.getcount = [
+        {
+          kind: 'Software:'+this.softwareCount, share: this.softwareCount, color: '#EB8172'
+        },
+        {
+          kind: 'Embedded:'+this.embededCount, share: this.embededCount, color: '#A3A0FB'
+        },
+        {
+          kind: 'Mechanical:'+this.mechanicalCount, share: this.mechanicalCount, color: '#6DD8FD'
+        },
+      ];
+    })
   }
 
   createjob() {
@@ -214,7 +240,7 @@ export class LatestOpningComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.getcomputercount();
+    this.getjobcount()
     this.getAllJobDetail();
     this.createJobForm = this.formBuilder.group({
       jobId: [''],
@@ -307,12 +333,6 @@ export class LatestOpningComponent implements OnInit {
   }
   showDialog() {
     this.display = false;
-  }
-  onChange(deviceValue: any) {
-    console.log(deviceValue);
-    this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe(res => {
-     
-    })
   }
   selectedDepartment(selectedDepartment: any) {
     throw new Error("Method not implemented.");

@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   NotificationGetData;
   constructor(public TeamService: TeamService, public router: Router, private http: HttpClient) {
     this.role = localStorage.getItem('role');
-    console.log(this.role)
+    // console.log(this.role)
 
     this.TeamService.GetProfile(localStorage.getItem('email')).subscribe((res: any) => {
       this.ProfileData = res;
@@ -132,7 +132,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('role'));
+    // console.log(localStorage.getItem('role'));
     if (localStorage.getItem('role') == '2') {
       this.TeamService.getNotification().subscribe((res: any) => {
         // console.log(res);
