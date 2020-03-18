@@ -38,6 +38,7 @@ export class LatestOpningComponent implements OnInit {
   embededCount
   mechanicalCount
   jobid
+  jobopening
   createJobForm = new FormGroup({
 
   })
@@ -81,14 +82,15 @@ export class LatestOpningComponent implements OnInit {
   onChange(deviceValue: any) {
     console.log(deviceValue);
     this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe((res: any) => {
-      this.jobopeningcount = res.length
-      console.log('RANI', this.jobopeningcount)
+      this.jobopening = res
+    this.jobopeningcount=this.jobopening.length
+    // console.log(this.jobopening)
     })
   }
   getappliedCountagainstJobid() {
     this.jobid = "JOB_M1vZ"
     this.TeamService.getappliedCountagainstJobid(this.jobid).subscribe((res: any) => {
-      console.log('@@@@', res)
+      // console.log('@@@@', res)
     })
   }
   getjobcount() {
