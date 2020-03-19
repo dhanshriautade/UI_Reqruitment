@@ -4,6 +4,7 @@ import { TeamService } from 'src/services/team.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { share } from 'rxjs/operators';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-latest-opning',
@@ -64,16 +65,13 @@ export class LatestOpningComponent implements OnInit {
   public autofit = true;
   public datadonut: any[] = [
     {
-      kind: 'java', share: 0.200, color: '#A3A0FB'
+      jobs: 'java dev', appliedCount: 4, color: '#A3A0FB'
     },
     {
-      kind: 'Angular', share: 0.175, color: '#6DD8FD'
+      jobs: 'UI Dev', appliedCount: 7, color: '#6DD8FD'
     },
     {
-      kind: 'Andriod', share: 0.175, color: '#EB8172'
-    },
-    {
-      kind: 'IOS', share: 0.175, color: '#F7D982'
+      jobs: 'Android', appliedCount: 2, color: '#EB8172'
     },
   ];
   public labelContent(e: any): string {
@@ -82,16 +80,43 @@ export class LatestOpningComponent implements OnInit {
   onChange(deviceValue: any) {
     console.log(deviceValue);
     this.TeamService.searchDepartmentWiseJob(deviceValue).subscribe((res: any) => {
+
       this.jobopening = res
-    this.jobopeningcount=this.jobopening.length
-    // console.log(this.jobopening)
+      this.jobopeningcount = this.jobopening.length
+      // console.log(JSON.stringify(this.jobopening))
+      this.datadonut = []
+
     })
+    console.log('**********************',this.jobopening.length)
+    for (let i = 0; i <= this.jobopening.length; i++) {
+      
+      // this.datadonut.push('kind', this.jobopening[i].designation)
+    //  this.datadonut.push( 'jobs' + ' :' + this.jobopening[i].designation);
+     this.datadonut.push({'jobs':this.jobopening[i].designation})
+      this.getappliedCountagainstJobid(this.jobopening[i].jobId)
+      this.datadonut= [
+        {
+          color: '#A3A0FB'
+        },
+        {
+         color: '#6DD8FD'
+        },
+        {
+          color: '#EB8172'
+        },
+      ];
+    }
+   
   }
-  getappliedCountagainstJobid() {
-    this.jobid = "JOB_M1vZ"
+  getappliedCountagainstJobid(jobId) {
+    this.jobid = jobId;
+    // console.log('@@@@',jobId)
     this.TeamService.getappliedCountagainstJobid(this.jobid).subscribe((res: any) => {
-      // console.log('@@@@', res)
+      //  console.log('@@@@', res)
+      this.datadonut.push('appliedCount', res)
+      
     })
+    // console.log('HIIIII', this.datadonut)
   }
   getjobcount() {
     this.data = "Software"
@@ -249,7 +274,7 @@ export class LatestOpningComponent implements OnInit {
     })
   }
   ngOnInit() {
-    this.getappliedCountagainstJobid()
+    // this.getappliedCountagainstJobid()
     this.getjobcount()
     this.getAllJobDetail();
     this.createJobForm = this.formBuilder.group({
