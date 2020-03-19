@@ -30,9 +30,7 @@ export class ApplyjobComponent implements OnInit, OnDestroy {
 
   })
   constructor(public TeamService: TeamService,private formBuilder: FormBuilder,private toastr: ToastrService, private datePipe: DatePipe) {
-    this.deptartment = [{ 'dept': 'IT' }, { 'dept': 'Computer' }, { 'dept': 'Meachanical' }, { 'dept': 'ENTC' }
-    , { 'dept': 'Electrical' }, { 'dept': 'Civil' }, { 'dept': 'Electronic' }
-
+    this.deptartment = [{ 'dept': 'Software' }, { 'dept': 'Embedded' }, { 'dept': 'Mechanical' }
   ]
     this.viewalljobid = localStorage.getItem('ViewJobId')
     // alert(this.viewalljobid)
